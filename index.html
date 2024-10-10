@@ -62,6 +62,79 @@
          }
       </style>
       <link href="Assets/CSS/novstyle.css" rel="stylesheet" type="text/css" media="all" />
+      <script>
+         var theme = {
+           strings: {
+             select_options: "Select Options",
+             addToCart: "Add to cart",
+             preorder: "Pre - Order",
+             soldOut: "Sold out",
+             unavailable: "Unavailable",
+             showMore: "Show More",
+             showLess: "Show Less",
+             addressError: "Error looking up that address",
+             addressNoResults: "No results for that address",
+             addressQueryLimit: "You have exceeded the Google API usage limit. Consider upgrading to a \u003ca href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\"\u003ePremium Plan\u003c\/a\u003e.",
+             authError: "There was a problem authenticating your Google Maps account.",
+             total: "Total",
+             spend: "Spend",
+             content_threshold: "Congratulations! You\u0026#39;ve got free shipping!",
+             spend__html: "for free shipping",
+             check_out: "Check out",
+             remove_wishlist: "Remove Wishlist",
+             addto_wishlist: "Add To Wishlist",
+             view_cart: "View Cart",
+             cart_empty: "Your cart is currently empty.",
+             continue_shopping: "Continue shopping",
+             shippingCalcSubmitButton: "Calculate shipping",
+             shippingCalcSubmitButtonDisabled: "Calculating...",
+             
+             shippingCalcMoneyFormat: "${{amount}} USD",
+             cart_message_html: "has been added to the shopping cart.",
+             results_all: "See all results",
+             close_mini_canvas: "Close",
+             days: "Days",
+             hours: "Hours",
+             minutes: "Mins",
+             seconds: "Secs"
+           },
+           moneyFormat: "${{amount}}",
+           moneyFormatnojson: "${{amount}}",
+           freeshipping_value: 200,
+           show_free_shipping: true,
+           cart_note: true,
+           cart_shipping_calculator: true,
+           cart_discount_code: true,
+           proceed_to_checkout: "\u003cp\u003eI agree with the \u003ca href=\"\/pages\/term-and-services\" title=\"Term and Services\"\u003e\u003cstrong\u003eTerms\u003c\/strong\u003e \u0026 \u003cstrong\u003econditions\u003c\/strong\u003e\u003c\/a\u003e\u003c\/p\u003e",
+           cart_status: 'show_popup',
+           terms_conditions_enable: true,
+         }
+         window.variantStrings = {
+           addToCart: `Add to cart`,
+           addTobag: `Add to bag`,
+           soldOut: `Sold out`,
+           unavailable: `Unavailable`,
+           notify_me: `Notify Me`,
+           preorder: `Pre - Order`,
+         }
+         window.inventory_text = {
+           add_to_cart: "Add to cart",
+           sold_out: "Sold out",
+           preorder: "Pre - Order",
+         }
+         document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+         window.router = "";
+         window.use_color_swatch = 'true';
+         window.option_color_swatch = 'color';
+         var vinovathemes = {
+           main_info: {
+             shop: 'vinova-umove.myshopify.com',
+             domain: 'vinova-umove.myshopify.com',
+             lic: '3274c311-ae69-4041-9f53-bd0876ed99df',
+             status: 'active',
+           }
+         }
+      </script>
       <!-- Pop-up and Load images-->
       <script src="Assets/JS/jquery.3.6.0.min.js" type="text/javascript"></script>
       <script src="Assets/JS/vendor.js" defer="defer"></script>
@@ -73,6 +146,9 @@
       <script src="Assets/JS/option_selection-86cdd286ddf3be7e25d68b9fc5965d7798a3ff6228ff79a.js" type="text/javascript"></script>
       <!-- Header Product slider -->
       <script src="Assets/JS/global.js" defer="defer"></script>
+      <script src="Assets/JS/wow.min.js" defer="defer" ></script>
+      <script src="Assets/JS/parallax.js" defer="defer"></script>
+      <!-- POP-UP -->
    </head>
    <body class="template-index">
       <a class="in-page-link hidden skip-link" href="#MainContent">Skip to content</a>
@@ -586,19 +662,19 @@
                                        <a href="#" class="site-nav__link">Blog Without Sidebar</a>
                                     </li>
                                     <li >
-                                       <a href="https://vinova-umove.myshopify.com/blogs/news?view=list" class="site-nav__link">Blog List View</a>
+                                       <a href="#" class="site-nav__link">Blog List View</a>
                                     </li>
                                     <li >
-                                       <a href="https://vinova-umove.myshopify.com/blogs/news?view=column" class="site-nav__link">Blog Column View</a>
+                                       <a href="#" class="site-nav__link">Blog Column View</a>
                                     </li>
                                     <li >
                                        <a href="/blogs/news/planning-a-perfect-picnic" class="site-nav__link">Blog Detail Left Sidebar</a>
                                     </li>
                                     <li >
-                                       <a href="https://vinova-umove.myshopify.com/blogs/news/planning-a-perfect-picnic?view=rightsidebar" class="site-nav__link">Blog Detail Right Sidebar</a>
+                                       <a href="#" class="site-nav__link">Blog Detail Right Sidebar</a>
                                     </li>
                                     <li >
-                                       <a href="https://vinova-umove.myshopify.com/blogs/news/planning-a-perfect-picnic?view=withoutsidebar" class="site-nav__link">Blog Detail Without Sidebar</a>
+                                       <a href="#" class="site-nav__link">Blog Detail Without Sidebar</a>
                                     </li>
                                  </ul>
                               </div>
@@ -1375,7 +1451,7 @@
                font-size: px;
                }
                #shopify-section-template--22986719232314__40e14247-a415-4764-81be-2e93acba4cf5 .slide-image-1 {
-               background-image: url(//vinova-umove.myshopify.com/cdn/shop/files/s-3-1_767x.jpg?v=1719993684);
+               background-image: url(Assets/Images/s-3-1_767x.jpg);
                }
                }
                @media(max-width: 575px) {
@@ -2879,8 +2955,8 @@
                                                                <div class="product-top thumbnail-container has-multiimage">
                                                                   <a href="/products/nike-air-max-90-ocean">
                                                                      <div class="respone_image" style="padding-top:117.0%;">
-                                                                        <img class="product__thumbnail lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="//vinova-umove.myshopify.com/cdn/shop/files/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_260x.jpg?v=1720493358" data-srcset="//vinova-umove.myshopify.com/cdn/shop/files/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_260x.jpg?v=1720493358 260w,//vinova-umove.myshopify.com/cdn/shop/files/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_360x.jpg?v=1720493358 360w,//vinova-umove.myshopify.com/cdn/shop/files/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_540x.jpg?v=1720493358 540w,//vinova-umove.myshopify.com/cdn/shop/files/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_720x.jpg?v=1720493358 720w,//vinova-umove.myshopify.com/cdn/shop/files/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_900x.jpg?v=1720493358 900w,//vinova-umove.myshopify.com/cdn/shop/files/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_1080x.jpg?v=1720493358 1080w" data-sizes="auto" alt="Micen Air Max 90 Ocean">
-                                                                        <img class="product__thumbnail-second lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="//vinova-umove.myshopify.com/cdn/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c_260x.gif" data-srcset="//vinova-umove.myshopify.com/cdn/shop/files/1_a05ed37f-4982-474b-b568-b6af680d3b67_260x.jpg?v=1720493358 260w,//vinova-umove.myshopify.com/cdn/shop/files/1_a05ed37f-4982-474b-b568-b6af680d3b67_360x.jpg?v=1720493358 360w,//vinova-umove.myshopify.com/cdn/shop/files/1_a05ed37f-4982-474b-b568-b6af680d3b67_540x.jpg?v=1720493358 540w,//vinova-umove.myshopify.com/cdn/shop/files/1_a05ed37f-4982-474b-b568-b6af680d3b67_720x.jpg?v=1720493358 720w,//vinova-umove.myshopify.com/cdn/shop/files/1_a05ed37f-4982-474b-b568-b6af680d3b67_900x.jpg?v=1720493358 900w,//vinova-umove.myshopify.com/cdn/shop/files/1_a05ed37f-4982-474b-b568-b6af680d3b67_1080x.jpg?v=1720493358 1080w" data-sizes="auto" alt="Micen Air Max 90 Ocean">
+                                                                        <img class="product__thumbnail lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="Assets/Images/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_260x.jpg" data-srcset="Assets/Images/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_260x.jpg 260w,Assets/Images/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_360x.jpg 360w,Assets/Images/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_540x.jpg 540w,Assets/Images/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_720x.jpg 720w,Assets/Images/2_d99f1843-1faf-4f1b-940a-7ccf6472b215_900x.jpg 900w" data-sizes="auto" alt="Micen Air Max 90 Ocean">
+                                                                        <img class="product__thumbnail-second lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="Assets/Images/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c_260x.gif" data-srcset="Assets/Images/1_a05ed37f-4982-474b-b568-b6af680d3b67_260x.jpg 260w,Assets/Images/1_a05ed37f-4982-474b-b568-b6af680d3b67_360x.jpg 360w,Assets/Images/1_a05ed37f-4982-474b-b568-b6af680d3b67_540x.jpg 540w,Assets/Images/1_a05ed37f-4982-474b-b568-b6af680d3b67_720x.jpg 720w,Assets/Images/1_a05ed37f-4982-474b-b568-b6af680d3b67_900x.jpg 900w" data-sizes="auto" alt="Micen Air Max 90 Ocean">
                                                                      </div>
                                                                   </a>
                                                                   <div class="product--badge">
@@ -5163,4 +5239,3 @@
       </div>
    </body>
 </html>
-
