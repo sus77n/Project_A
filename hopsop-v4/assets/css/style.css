@@ -235,8 +235,6 @@ ul {
 .coustom-container {
     display: block;
     margin: 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
     width: 1545px;
 }
 .absolute-header {
@@ -446,7 +444,7 @@ ul {
     position: absolute;
     top: 100%;
     width: 180px;
-    z-index: 999;
+    z-index: 1000;
     -webkit-box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
     -ms-box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
@@ -509,7 +507,7 @@ ul {
     width: 675px
 }
 .megamenu-three {
-    width: 460px;
+    width: 800px;
 }
 .megamenu > li,
 .megamenu-two > li,
@@ -533,6 +531,10 @@ ul {
     -ms-flex-preferred-size: 50%;
     flex-basis: 50%;
 }
+
+/*header .products{
+    margin-left: 210px;
+}*/
 
 
 /* search and cart area css */
@@ -752,6 +754,7 @@ ul {
 
 /* currency selection css*/
 
+
 .currency-selector h3 {
     border-bottom: 1px solid rgba(55, 55, 55, 0.1);
     color: #292929;
@@ -761,7 +764,7 @@ ul {
     margin-bottom: 10px;
     text-transform: uppercase;
 }
-.currency-selector ul li a {
+.currency-selector  ul li a {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     color: #444;
     display: block;
@@ -770,7 +773,10 @@ ul {
     padding: 3px 20px;
     text-transform: capitalize;
     width: 100%;
+    pointer-events: auto;
 }
+
+
 
 /* search box css */
 
@@ -814,6 +820,10 @@ ul {
     background: none;
     width: 530px;
     padding: 0;
+}
+
+#icon-user {
+    font-size: 22px;
 }
 
 /*----------------------------------------*/
