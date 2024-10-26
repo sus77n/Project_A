@@ -2040,7 +2040,7 @@ ul {
 /*----------------------------------------*/
 
 .footer-title > h4 {
-    color: #666666;
+    color: #eeeeee;
     font-size: 24px;
     font-weight: 500;
     position: relative;
@@ -2061,7 +2061,7 @@ ul {
     padding-bottom: 0px;
 }
 .footer-content ul li a {
-    color: #333;
+    color: #e3e3e3;
     font-size: 16px;
     font-weight: 500;
 }
@@ -2070,18 +2070,19 @@ ul {
     color: #9db5d9;
 }
 .footer-addres > p {
-    color: #666666;
+    color: #e3e3e3;
     font-size: 16px;
     font-weight: 500;
     line-height: 26px;
     margin: 0 0 14px;
 }
 .footer-phn-email > a {
-    color: #666;
+    color: #e3e3e3;
     display: block;
     font-size: 16px;
     font-weight: 500;
     line-height: 26px;
+    padding-bottom: 15px;
 }
 .footer-phn-email {
     margin-bottom: 15px;
@@ -2089,6 +2090,17 @@ ul {
 .footer-phn-email:last-child {
     margin-bottom: 0px;
 }
+
+.social-element p{
+    font-size: 40px;
+}
+
+.social-element p a {
+    color: #e6e6e6;
+    margin-right: 15px;
+}
+
+
 .copyright > p {
     color: #666666;
     font-size: 16px;
