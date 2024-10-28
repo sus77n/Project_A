@@ -7,20 +7,28 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     @GetMapping("")
-    public String showHomePage() {return "index-2";}
+    public String showHomePage() {return "index-2.html";}
 
-    @GetMapping("/index-2")
-    public String showIndexPage() {return "index-2";}
+    @GetMapping("/index-2.html")
+    public String showIndexPage() {return "index-2.html";}
 
-    @GetMapping("/shop")
-    public String showProductPage() {return "shop";}
+    @GetMapping("/shop-list.html")
+    public String showProductPage() {return "shop-list.html";}
 
-    @GetMapping("/blog")
-    public String showBlogPage() {return "blog";}
+    @GetMapping("/shop.html")
+    public String showProductsPage() {return "shop.html";}
 
-    @GetMapping("/contact")
-    public String showContactPage() {return "contact";}
+    @GetMapping("/blog.html")
+    public String showBlogPage() {return "blog.html";}
 
-    @GetMapping("/about")
-    public String showAboutUsPage() {return "about";}
+    @GetMapping("/contact.html")
+    public String showContactPage() {return "contact.html";}
+
+    @GetMapping("/about.html")
+    public String showAboutUsPage() {return "about.html";}
+
+    @GetMapping("/product-details.html")
+    public String showProductDetails() {return "product-details.html";}
+
+
 }
