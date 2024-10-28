@@ -36,9 +36,6 @@ public class MainController {
     @GetMapping("/account.html")
     public String showAccount() {return "account.html";}
 
-    @GetMapping("/blog.html")
-    public String showBlog() {return "blog.html";}
-
     @GetMapping("/blog-details-audio.html")
     public String showBlogDetailsAudio() {return "blog-details-audio.html";}
 
