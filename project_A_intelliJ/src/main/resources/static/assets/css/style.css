@@ -4964,10 +4964,13 @@ a.shipping-calculator-button:hover {
     padding-bottom: 0px;
 }
 
+.blog-area .news-thumbnail {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
 .blog-area .news-thumbnail .news-content{
     text-align: center;
-    padding: 30px 10px;
-    
+    padding: 20px 5px;
 }
 
 .blog-area .news-thumbnail .news-content a{
