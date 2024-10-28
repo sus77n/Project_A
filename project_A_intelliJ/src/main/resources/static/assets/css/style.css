@@ -4963,3 +4963,14 @@ a.shipping-calculator-button:hover {
 .brand .pb-90{
     padding-bottom: 0px;
 }
+
+.blog-area .news-thumbnail .news-content{
+    text-align: center;
+    padding: 30px 10px;
+    
+}
+
+.blog-area .news-thumbnail .news-content a{
+    color: black;
+    font-weight: 500;
+}
