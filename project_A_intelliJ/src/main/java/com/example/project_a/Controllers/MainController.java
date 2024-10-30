@@ -9,7 +9,7 @@ public class MainController {
     @GetMapping("")
     public String showHomePage() {return "index-2.html";}
 
-    @GetMapping("/index-2.html")
+    @GetMapping("/home")
     public String showIndexPage() {return "index-2.html";}
 
     @GetMapping("/shop-list.html")
