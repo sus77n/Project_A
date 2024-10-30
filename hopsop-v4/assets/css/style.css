@@ -235,8 +235,6 @@ ul {
 .coustom-container {
     display: block;
     margin: 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
     width: 1545px;
 }
 .absolute-header {
@@ -446,7 +444,7 @@ ul {
     position: absolute;
     top: 100%;
     width: 180px;
-    z-index: 999;
+    z-index: 1000;
     -webkit-box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
     -ms-box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
@@ -509,7 +507,7 @@ ul {
     width: 675px
 }
 .megamenu-three {
-    width: 460px;
+    width: 800px;
 }
 .megamenu > li,
 .megamenu-two > li,
@@ -533,6 +531,10 @@ ul {
     -ms-flex-preferred-size: 50%;
     flex-basis: 50%;
 }
+
+/*header .products{
+    margin-left: 210px;
+}*/
 
 
 /* search and cart area css */
@@ -752,6 +754,7 @@ ul {
 
 /* currency selection css*/
 
+
 .currency-selector h3 {
     border-bottom: 1px solid rgba(55, 55, 55, 0.1);
     color: #292929;
@@ -761,7 +764,7 @@ ul {
     margin-bottom: 10px;
     text-transform: uppercase;
 }
-.currency-selector ul li a {
+.currency-selector  ul li a {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     color: #444;
     display: block;
@@ -770,7 +773,10 @@ ul {
     padding: 3px 20px;
     text-transform: capitalize;
     width: 100%;
+    pointer-events: auto;
 }
+
+
 
 /* search box css */
 
@@ -814,6 +820,10 @@ ul {
     background: none;
     width: 530px;
     padding: 0;
+}
+
+#icon-user {
+    font-size: 22px;
 }
 
 /*----------------------------------------*/
@@ -1469,8 +1479,9 @@ ul {
     padding-right: 1.5px;
 }
 .single-aboss-product {
-    border: 1px solid #efefef;
     position: relative;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    margin: 5px;
 }
 .best-seller-active .single-aboss-product {
     margin-bottom: 1px;
@@ -1491,9 +1502,7 @@ ul {
     width: 100%;
     z-index: 2;
 }
-.single-aboss-product:hover .pro-img:before {
-    opacity: 1;
-}
+
 .pro-content {
     padding: 20px 24px 21px 30px;
 }
@@ -2030,7 +2039,7 @@ ul {
 /*----------------------------------------*/
 
 .footer-title > h4 {
-    color: #666666;
+    color: #eeeeee;
     font-size: 24px;
     font-weight: 500;
     position: relative;
@@ -2051,7 +2060,7 @@ ul {
     padding-bottom: 0px;
 }
 .footer-content ul li a {
-    color: #333;
+    color: #e3e3e3;
     font-size: 16px;
     font-weight: 500;
 }
@@ -2060,18 +2069,19 @@ ul {
     color: #9db5d9;
 }
 .footer-addres > p {
-    color: #666666;
+    color: #e3e3e3;
     font-size: 16px;
     font-weight: 500;
     line-height: 26px;
     margin: 0 0 14px;
 }
 .footer-phn-email > a {
-    color: #666;
+    color: #e3e3e3;
     display: block;
     font-size: 16px;
     font-weight: 500;
     line-height: 26px;
+    padding-bottom: 15px;
 }
 .footer-phn-email {
     margin-bottom: 15px;
@@ -2079,6 +2089,17 @@ ul {
 .footer-phn-email:last-child {
     margin-bottom: 0px;
 }
+
+.social-element p{
+    font-size: 40px;
+}
+
+.social-element p a {
+    color: #e6e6e6;
+    margin-right: 15px;
+}
+
+
 .copyright > p {
     color: #666666;
     font-size: 16px;
@@ -4872,4 +4893,73 @@ a.shipping-calculator-button:hover {
     margin-bottom: 10px;
     text-transform: uppercase;
     line-height: 35px;
+}
+/*BLOCK FLASH SALE*/
+.flash-sale{
+    background-color: #aecff3;
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-top: 25px;
+    border-radius: 20px;
+}
+
+.flash-sale h2{
+    font-weight: 500;
+    color: white;
+}
+
+.flash-sale .single-aboss-product{
+    position: relative;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.flash-sale .single-aboss-product img{
+    width: 200px;
+    margin-left: 25px;
+    margin-top: 2px;
+}
+
+.flash-sale .carousel-control-prev{
+    background-color: none;
+    opacity: 0;
+}
+
+.flash-sale .carousel-control-next{
+    background-color: none;
+    opacity: 0;
+}
+
+.flash-sale .carouselExampleIndicators span{
+    color: white;
+}
+
+.flash-sale .carousel-item{
+    padding: 50px 20px;
+    padding-top: 30px;
+}
+
+.flash-sale .countdown{
+    justify-items: right;
+}
+
+.flash-sale .countdown .time{
+    border: 2px solid white;
+    border-radius: 15px;
+    background-color: white;
+    padding: 10px;
+}
+
+.flash-sale .countdown h5{
+    color: #aecff3;
+    font-weight: bold;
+}
+
+.best-seller-area h2 i {
+    color: #FFAD60;
+}
+
+.brand .pb-90{
+    padding-bottom: 0px;
 }
