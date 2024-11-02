@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-
-    <data-source source="LOCAL" name="mysql" uuid="023a328f-5750-4d29-8457-75efae1f6fb7">
-
-    <data-source source="LOCAL" name="mysql" uuid="805d9727-e412-4494-a5e4-f4d63991af7a">
-
+    <data-source source="LOCAL" name="@localhost" uuid="5c5eb704-52ba-48c8-9478-495ed2b5762a">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/project_A_intelliJ/src/main/resources/application.properties</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
       <jdbc-additional-properties>
