@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-    @GetMapping("/index-2.html)
+    @GetMapping("")
     public String showHomePage() {return "index-2.html";}
 
     @GetMapping("/index-2.html")
@@ -64,6 +64,6 @@ public class MainController {
     public String ShowPageRegister() {return "register.html";}
 
     @GetMapping("/wishlist.html")
-    public String ShowPageWishlist() {return "wishlist.html";}
+    public String ShowPageWishlist() {return "/wishlist.html";}
 
 }

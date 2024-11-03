@@ -5,14 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fe941ca-2bc1-4e9f-b202-38c1b3e633cd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/user/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/user/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_A_intelliJ/src/test/java/com/example/project_a/UserRepositoryTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Project_A_MTN.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project_A_MTN.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/apps-calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/apps-calendar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/apps-chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/apps-chat.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/apps-email.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/apps-email.html" afterDir="false" />
@@ -191,85 +197,11 @@
       <change beforePath="$PROJECT_DIR$/admin/ui-toasts.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-toasts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/ui-tooltips.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-tooltips.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/widgets.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/widgets.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/animate.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/animate.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/default.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/default.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/font-awesome.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/fontello.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/fontello.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_glass_75_d0e5f5_1x400.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_glass_75_d0e5f5_1x400.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_glass_85_dfeffc_1x400.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_glass_85_dfeffc_1x400.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_glass_95_fef1ec_1x400.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_217bc0_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_217bc0_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_2e83ff_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_2e83ff_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_469bdd_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_469bdd_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_6da8d5_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_6da8d5_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_cd0a0a_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_d8e7f3_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_d8e7f3_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_f9bd01_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_f9bd01_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/jquery.fancybox.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/jquery.fancybox.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/meanmenu.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/meanmenu.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/nice-select.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/nice-select.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/owl.carousel.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/owl.carousel.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/owl.video.play.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/owl.video.play.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/responsive.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/fonts/fontawesome-webfont3e6e.svg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/fonts/fontawesome-webfont3e6e.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/fonts/fontellod5d9.svg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/fonts/fontellod5d9.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/body-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/body-bg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/deal-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/deal-bg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/newsletter-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/newsletter-bg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/professional-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/professional-bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/testmonial-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/testmonial-bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/ajax-mail.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/ajax-mail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery-ui.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.countdown.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.countdown.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.fancybox.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.fancybox.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.nice-select.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.nice-select.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.scrollUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.scrollUp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/owl.carousel.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/owl.carousel.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/plugins.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/popper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/popper.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/vendor/jquery-3.2.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/vendor/jquery-3.2.1.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/vendor/modernizr-3.5.0.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/vendor/modernizr-3.5.0.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/blog-details-audio.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/blog-details-audio.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/blog-details-blockquote.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/blog-details-blockquote.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/blog-details-gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/blog-details-gallery.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/blog-details-video.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/blog-details-video.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/blog-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/blog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/compare.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/compare.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/forgot-password.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/index-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/product-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/shop-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/shop-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/shop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hopsop-v4/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/wishlist.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/Controllers/MainController.java" afterDir="false" />
@@ -346,21 +278,112 @@
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/contact.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/forgot-password.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/product-details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/shop-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/shop-list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/shop.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/wishlist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/test/java/com/example/project_a/ProjectAApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/test/java/com/example/project_a/ProjectAApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/test/java/com/example/project_a/ProjectAApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/animate.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/animate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/default.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/default.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/font-awesome.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/fontello.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/fontello.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-bg_glass_75_d0e5f5_1x400.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-bg_glass_75_d0e5f5_1x400.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-bg_glass_85_dfeffc_1x400.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-bg_glass_85_dfeffc_1x400.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-bg_glass_95_fef1ec_1x400.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_217bc0_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_217bc0_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_2e83ff_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_2e83ff_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_469bdd_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_469bdd_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_6da8d5_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_6da8d5_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_cd0a0a_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_d8e7f3_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_d8e7f3_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_f9bd01_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/images/ui-icons_f9bd01_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/jquery-ui.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/jquery.fancybox.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/jquery.fancybox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/meanmenu.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/meanmenu.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/nice-select.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/nice-select.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/owl.carousel.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/owl.carousel.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/owl.video.play.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/owl.video.play.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/responsive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/fonts/fontawesome-webfont3e6e.svg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/fonts/fontawesome-webfont3e6e.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/fonts/fontellod5d9.svg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/fonts/fontellod5d9.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/banner/b1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/banner/b1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/banner/b2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/banner/b2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/banner/b4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/banner/b4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/banner/b5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/banner/b5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/bg-image/body-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/bg-image/body-bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/bg-image/deal-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/bg-image/deal-bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/bg-image/newsletter-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/bg-image/newsletter-bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/bg-image/professional-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/bg-image/professional-bg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/bg-image/testmonial-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/bg-image/testmonial-bg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/slider/s1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/slider/s1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/slider/s2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/slider/s2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/slider/s3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/slider/s3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/slider/s4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/slider/s4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/slider/s5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/slider/s5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/slider/s6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/img/slider/s6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/ajax-mail.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/ajax-mail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/jquery-ui.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/jquery.countdown.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/jquery.countdown.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/jquery.fancybox.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/jquery.fancybox.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/jquery.nice-select.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/jquery.nice-select.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/jquery.scrollUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/jquery.scrollUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/owl.carousel.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/owl.carousel.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/popper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/popper.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/vendor/jquery-3.2.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/vendor/jquery-3.2.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/vendor/modernizr-3.5.0.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/static/assets/js/vendor/modernizr-3.5.0.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/blog-details-audio.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/blog-details-audio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/blog-details-blockquote.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/blog-details-blockquote.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/blog-details-gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/blog-details-gallery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/blog-details-video.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/blog-details-video.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/blog-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/blog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/compare.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/compare.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/forgot-password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/product-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/shop-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/shop-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/target/classes/templates/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qodana.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/project_A_intelliJ/src/test/java/com/example/project_a/UserRepositoryTests.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -376,6 +399,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.UserRepositoryTests.AddNewUser.executor": "Run",
+    "JUnit.UserRepositoryTests.testDeleteUser.executor": "Run",
+    "JUnit.UserRepositoryTests.testGetUser.executor": "Profiler#1",
+    "JUnit.UserRepositoryTests.testListAllUsers.executor": "Run",
+    "JUnit.UserRepositoryTests.testUdateUser.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
@@ -384,18 +412,21 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ProjectAApplication.executor": "Profiler#1",
-    "git-widget-placeholder": "ThuanCreateModle",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ProjectAApplication.executor": "Run",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Study material/CSE454/Github/Project_A",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "database.query.execution",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -421,15 +452,105 @@
       <ReportDescription localRun="true" path="C:\Users\MINHTUANIT\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="d2838601-af9c-4803-8f6f-44abfb698ee4" reportId="Project_A_MTN/qodana/2024-11-02" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.UserRepositoryTests.testDeleteUser">
+    <configuration name="UserRepositoryTests.AddNewUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project_A" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.project_a.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.project_a" />
+      <option name="MAIN_CLASS_NAME" value="com.example.project_a.UserRepositoryTests" />
+      <option name="METHOD_NAME" value="AddNewUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTests.testDeleteUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project_A" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.project_a.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.project_a" />
+      <option name="MAIN_CLASS_NAME" value="com.example.project_a.UserRepositoryTests" />
+      <option name="METHOD_NAME" value="testDeleteUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTests.testGetUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project_A" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.project_a.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.project_a" />
+      <option name="MAIN_CLASS_NAME" value="com.example.project_a.UserRepositoryTests" />
+      <option name="METHOD_NAME" value="testGetUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTests.testListAllUsers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project_A" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.project_a.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.project_a" />
+      <option name="MAIN_CLASS_NAME" value="com.example.project_a.UserRepositoryTests" />
+      <option name="METHOD_NAME" value="testListAllUsers" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTests.testUdateUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project_A" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.project_a.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.project_a" />
+      <option name="MAIN_CLASS_NAME" value="com.example.project_a.UserRepositoryTests" />
+      <option name="METHOD_NAME" value="testUdateUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProjectAApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ALTERNATIVE_JRE_PATH" value="C:/Program Files/Java/jdk-22" />
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="Project_A_MTN" />
+      <module name="project_A" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.project_a.ProjectAApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserRepositoryTests.testDeleteUser" />
+        <item itemvalue="JUnit.UserRepositoryTests.testGetUser" />
+        <item itemvalue="JUnit.UserRepositoryTests.testUdateUser" />
+        <item itemvalue="JUnit.UserRepositoryTests.testListAllUsers" />
+        <item itemvalue="JUnit.UserRepositoryTests.AddNewUser" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -450,10 +571,23 @@
       <workItem from="1730094793635" duration="4622000" />
       <workItem from="1730099453703" duration="724000" />
       <workItem from="1730555533170" duration="1980000" />
+      <workItem from="1730560201810" duration="807000" />
+      <workItem from="1730561033169" duration="20036000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
