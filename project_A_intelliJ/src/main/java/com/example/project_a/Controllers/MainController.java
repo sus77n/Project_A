@@ -15,9 +15,6 @@ public class MainController {
     @GetMapping("/shop-list.html")
     public String showProductPage() {return "shop-list.html";}
 
-    @GetMapping("/shop.html")
-    public String showProductsPage() {return "shop.html";}
-
     @GetMapping("/blog.html")
     public String showBlogPage() {return "blog.html";}
 
