@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0fe941ca-2bc1-4e9f-b202-38c1b3e633cd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Project_A_MTN.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project_A_MTN.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/apps-calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/apps-calendar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/apps-chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/apps-chat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/apps-email.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/apps-email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/apps-todo.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/apps-todo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/css/app.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/css/app.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/css/icons.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/css/icons.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/css/vendor.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/css/vendor.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/fonts/boxiconsd41d.svg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/fonts/boxiconsd41d.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/images/seller/dyson.svg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/images/seller/dyson.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/images/seller/gopro.svg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/images/seller/gopro.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/images/seller/h&amp;m.svg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/images/seller/h&amp;m.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/images/seller/huawei.svg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/images/seller/huawei.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/images/seller/image.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/images/seller/image.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/images/seller/nike.svg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/images/seller/nike.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/images/seller/thenorthface.svg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/images/seller/thenorthface.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/images/seller/zara.svg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/images/seller/zara.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-area.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-area.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-bar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-boxplot.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-boxplot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-bubble.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-bubble.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-candlestick.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-candlestick.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-column.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-column.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-heatmap.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-heatmap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-line.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-line.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-mixed.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-mixed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-pie.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-pie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-polar-area.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-polar-area.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-radar.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-radar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-radialbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-radialbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-scatter.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-scatter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-timeline.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-timeline.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/apexchart-treemap.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/apexchart-treemap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/extended-rating.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/extended-rating.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/extended-sweetalert.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/extended-sweetalert.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/form-clipboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/form-clipboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/form-flatepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/form-flatepicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/form-quilljs.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/form-quilljs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/form-slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/form-slider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/maps-google.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/maps-google.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/maps-vector.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/maps-vector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/components/table-gridjs.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/components/table-gridjs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/app-calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/app-calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/app-chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/app-chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/app-email.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/app-email.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/coming-soon.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/coming-soon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/coupons-add.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/coupons-add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/customer-details.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/customer-details.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/invoice-add.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/invoice-add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/order-cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/order-cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/product-details.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/product-details.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/product-grid.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/product-grid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/seller-add.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/seller-add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/seller-detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/seller-detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/pages/widgets.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/pages/widgets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/vendor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/vendor/fullcalendar/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/vendor/fullcalendar/main.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/vendor/gmaps/gmaps.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/vendor/gmaps/gmaps.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/vendor/gridjs/gridjs.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/vendor/gridjs/gridjs.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/vendor/jsvectormap/js/jsvectormap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/vendor/jsvectormap/js/jsvectormap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/vendor/jsvectormap/maps/world-merc.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/vendor/jsvectormap/maps/world-merc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/vendor/jsvectormap/maps/world.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/vendor/jsvectormap/maps/world.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/attributes-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/attributes-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/attributes-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/attributes-edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/attributes-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/attributes-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/auth-lock-screen.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/auth-lock-screen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/auth-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/auth-password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/auth-signin.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/auth-signin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/auth-signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/auth-signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/category-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/category-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/category-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/category-edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/category-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/category-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-area.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-area.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-bar.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-bar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-boxplot.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-boxplot.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-bubble.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-bubble.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-candlestick.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-candlestick.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-column.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-column.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-heatmap.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-heatmap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-line.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-line.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-mixed.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-mixed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-pie.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-pie.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-polar-area.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-polar-area.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-radar.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-radar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-radialbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-radialbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-scatter.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-scatter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-timeline.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-timeline.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/charts-apex-treemap.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/charts-apex-treemap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/coupons-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/coupons-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/coupons-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/coupons-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/customer-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customer-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/customer-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customer-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/extended-ratings.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/extended-ratings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/extended-scrollbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/extended-scrollbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/extended-sweetalert.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/extended-sweetalert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/extended-swiper-silder.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/extended-swiper-silder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/extended-toastify.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/extended-toastify.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/forms-basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/forms-basic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/forms-checkbox-radio.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/forms-checkbox-radio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/forms-choices.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/forms-choices.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/forms-clipboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/forms-clipboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/forms-editors.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/forms-editors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/forms-fileuploads.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/forms-fileuploads.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/forms-flatepicker.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/forms-flatepicker.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/forms-input-mask.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/forms-input-mask.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/forms-range-slider.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/forms-range-slider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/forms-validation.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/forms-validation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/forms-wizard.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/forms-wizard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/help-center.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/help-center.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/icons-boxicons.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/icons-boxicons.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/icons-solar.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/icons-solar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/inventory-received-orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/inventory-received-orders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/inventory-warehouse.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/inventory-warehouse.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/invoice-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/invoice-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/invoice-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/invoice-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/invoice-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/invoice-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/maps-google.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/maps-google.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/maps-vector.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/maps-vector.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/order-cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/order-cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/order-checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/order-checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/order-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/order-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/orders-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/orders-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pages-404-alt.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pages-404-alt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pages-404.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pages-404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pages-comingsoon.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pages-comingsoon.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pages-faqs.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pages-faqs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pages-maintenance.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pages-maintenance.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pages-permissions.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pages-permissions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pages-pricing.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pages-pricing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pages-profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pages-profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pages-review.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pages-review.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pages-starter.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pages-starter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pages-timeline.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pages-timeline.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/privacy-policy.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/privacy-policy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/product-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/product-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/product-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/product-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/product-edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/product-grid.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/product-grid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/product-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/product-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/purchase-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/purchase-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/purchase-order.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/purchase-order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/purchase-returns.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/purchase-returns.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/role-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/role-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/role-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/role-edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/role-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/role-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/seller-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/seller-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/seller-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/seller-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/seller-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/seller-edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/seller-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/seller-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/tables-basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tables-basic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/tables-gridjs.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tables-gridjs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-accordion.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-accordion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-alerts.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-alerts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-avatar.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-avatar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-badge.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-badge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-breadcrumb.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-breadcrumb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-buttons.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-buttons.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-card.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-card.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-carousel.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-carousel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-collapse.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-collapse.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-dropdown.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-dropdown.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-list-group.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-list-group.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-offcanvas.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-offcanvas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-pagination.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-pagination.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-placeholders.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-placeholders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-popovers.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-popovers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-progress.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-progress.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-scrollspy.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-scrollspy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-spinners.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-spinners.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-tabs.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-tabs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-toasts.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-toasts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ui-tooltips.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/ui-tooltips.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/widgets.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/widgets.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/animate.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/animate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/default.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/default.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/font-awesome.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/fontello.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/fontello.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_glass_75_d0e5f5_1x400.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_glass_75_d0e5f5_1x400.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_glass_85_dfeffc_1x400.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_glass_85_dfeffc_1x400.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_glass_95_fef1ec_1x400.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_217bc0_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_217bc0_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_2e83ff_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_2e83ff_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_469bdd_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_469bdd_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_6da8d5_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_6da8d5_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_cd0a0a_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_d8e7f3_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_d8e7f3_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_f9bd01_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/images/ui-icons_f9bd01_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/jquery-ui.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/jquery.fancybox.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/jquery.fancybox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/meanmenu.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/meanmenu.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/nice-select.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/nice-select.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/owl.carousel.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/owl.carousel.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/owl.video.play.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/owl.video.play.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/responsive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/fonts/fontawesome-webfont3e6e.svg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/fonts/fontawesome-webfont3e6e.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/fonts/fontellod5d9.svg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/fonts/fontellod5d9.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/banner/b5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/body-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/body-bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/deal-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/deal-bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/newsletter-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/newsletter-bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/professional-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/professional-bg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/testmonial-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/bg-image/testmonial-bg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/img/slider/s6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/ajax-mail.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/ajax-mail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery-ui.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.countdown.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.countdown.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.fancybox.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.fancybox.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.nice-select.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.nice-select.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.scrollUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/jquery.scrollUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/owl.carousel.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/owl.carousel.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/popper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/popper.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/vendor/jquery-3.2.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/vendor/jquery-3.2.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/assets/js/vendor/modernizr-3.5.0.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/assets/js/vendor/modernizr-3.5.0.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/blog-details-audio.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/blog-details-audio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/blog-details-blockquote.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/blog-details-blockquote.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/blog-details-gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/blog-details-gallery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/blog-details-video.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/blog-details-video.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/blog-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/blog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/compare.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/compare.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/forgot-password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/product-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/shop-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/shop-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopsop-v4/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/hopsop-v4/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/Controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/ProjectAApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/ProjectAApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/animate.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/animate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/default.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/default.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/font-awesome.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/fontello.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/fontello.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-bg_glass_75_d0e5f5_1x400.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-bg_glass_75_d0e5f5_1x400.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-bg_glass_85_dfeffc_1x400.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-bg_glass_85_dfeffc_1x400.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-bg_glass_95_fef1ec_1x400.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_217bc0_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_217bc0_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_2e83ff_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_2e83ff_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_469bdd_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_469bdd_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_6da8d5_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_6da8d5_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_cd0a0a_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_d8e7f3_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_d8e7f3_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_f9bd01_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/images/ui-icons_f9bd01_256x240.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/jquery-ui.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/jquery.fancybox.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/jquery.fancybox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/meanmenu.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/meanmenu.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/nice-select.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/nice-select.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/owl.carousel.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/owl.carousel.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/owl.video.play.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/owl.video.play.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/responsive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/fonts/fontawesome-webfont3e6e.svg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/fonts/fontawesome-webfont3e6e.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/fonts/fontellod5d9.svg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/fonts/fontellod5d9.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/banner/b1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/banner/b1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/banner/b2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/banner/b2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/banner/b4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/banner/b4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/banner/b5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/banner/b5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/bg-image/body-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/bg-image/body-bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/bg-image/deal-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/bg-image/deal-bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/bg-image/newsletter-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/bg-image/newsletter-bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/bg-image/professional-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/bg-image/professional-bg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/bg-image/testmonial-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/bg-image/testmonial-bg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/slider/s1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/slider/s1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/slider/s2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/slider/s2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/slider/s3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/slider/s3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/slider/s4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/slider/s4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/slider/s5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/slider/s5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/slider/s6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/img/slider/s6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/ajax-mail.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/ajax-mail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/jquery-ui.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/jquery.countdown.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/jquery.countdown.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/jquery.fancybox.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/jquery.fancybox.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/jquery.nice-select.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/jquery.nice-select.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/jquery.scrollUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/jquery.scrollUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/owl.carousel.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/owl.carousel.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/popper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/popper.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/vendor/jquery-3.2.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/vendor/jquery-3.2.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/vendor/modernizr-3.5.0.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/static/assets/js/vendor/modernizr-3.5.0.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/blog-details-audio.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/blog-details-audio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/blog-details-blockquote.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/blog-details-blockquote.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/blog-details-gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/blog-details-gallery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/blog-details-video.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/blog-details-video.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/blog-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/blog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/compare.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/compare.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/forgot-password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/product-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/shop-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/shop-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/test/java/com/example/project_a/ProjectAApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/test/java/com/example/project_a/ProjectAApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2o3ORoQwcdMzcgZmbvQbneUyL1d" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.ProjectAApplication.executor": "Profiler#1",
+    "git-widget-placeholder": "ThuanCreateModle",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="QodanaHighlightedReportService">
+    <option name="localRunNotPublishedPersistedInfo">
+      <LocalReportPersistedInfo>
+        <option name="path" value="C:\Users\MINHTUANIT\AppData\Local\Temp\qodana_output\qodana.sarif.json" />
+        <option name="reportGuid" value="d2838601-af9c-4803-8f6f-44abfb698ee4" />
+        <option name="reportName" value="Project_A_MTN/qodana/2024-11-02" />
+      </LocalReportPersistedInfo>
+    </option>
+  </component>
+  <component name="QodanaIsSelectedPersistenceService">
+    <option name="selectedOrLoading" value="true" />
+  </component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="C:\Users\MINHTUANIT\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="d2838601-af9c-4803-8f6f-44abfb698ee4" reportId="Project_A_MTN/qodana/2024-11-02" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="ProjectAApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Project_A_MTN" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.project_a.ProjectAApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0fe941ca-2bc1-4e9f-b202-38c1b3e633cd" name="Changes" comment="" />
+      <created>1730094791022</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730094791022</updated>
+      <workItem from="1730094793635" duration="4622000" />
+      <workItem from="1730099453703" duration="724000" />
+      <workItem from="1730555533170" duration="1980000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
