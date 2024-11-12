@@ -73,7 +73,7 @@ public class UserRepositoryTests {
 
     @Test
     public void testDeleteUser() {
-        Integer userID = 6;
+        Integer userID = 1;
         repo.deleteById(userID);
         Optional deletedUser = repo.findById(userID);
         Assertions.assertFalse(deletedUser.isPresent() , "User should be null");
