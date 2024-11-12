@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fe941ca-2bc1-4e9f-b202-38c1b3e633cd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/quickviewProduct.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/about.html" afterDir="false" />
@@ -24,6 +25,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -46,6 +48,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.UserRepositoryTests.AddNewUser.executor": "Run",
     "JUnit.UserRepositoryTests.testDeleteUser.executor": "Run",
@@ -209,7 +212,7 @@
       <workItem from="1730555533170" duration="1980000" />
       <workItem from="1730560201810" duration="807000" />
       <workItem from="1730561033169" duration="20036000" />
-      <workItem from="1731397792375" duration="2774000" />
+      <workItem from="1731397792375" duration="3702000" />
     </task>
     <servers />
   </component>
