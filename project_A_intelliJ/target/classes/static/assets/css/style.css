@@ -377,19 +377,20 @@ ul {
 /* header style two for home2 css end */
 
 .sticky .primary-menu-list > li > a {
-    line-height: 80px;
+    line-height: 128px;
 }
 .sticky .logo {
     padding: 21px 0;
 }
 .sticky .search-cart-area > ul > li {
-    padding: 30px 0 5px 47px;
+    padding: 54px 0 31px 47px;
+    cursor: pointer;
 }
 .sticky .search-cart-area > ul > li.search-mrg {
-    padding: 30px 0 5px 39px;
+    padding: 54px 0 31px 39px;
 }
 .sticky .search-cart-area > ul > li:first-child {
-    padding: 30px 0 5px 0px;
+    padding: 54px 0 31px 0px;
 }
 .primary-menu-list > li,
 .search-cart-area > ul > li,
@@ -408,7 +409,7 @@ ul {
 }
 .search-cart-area > ul > li {
     display: block;
-    padding: 54px 0 31px 47px;
+    padding: 54px 0 34px 47px;
     width: 100%;
 }
 .search-cart-area > ul > li.search-mrg {
@@ -418,8 +419,9 @@ ul {
     padding: 54px 0 31px 0px;
 }
 .logo {
-    padding: 45px 0;
+    padding: 21px 0;
 }
+
 .primary-menu-list > li > a {
     color: #000;
     display: block;
@@ -428,6 +430,8 @@ ul {
     line-height: 128px;
     margin-right: 77px;
     position: relative;
+    height: 128px;
+    align-items: center;
 }
 .primary-menu-list > li:hover > a {
     color: #9db5d9;
@@ -2911,6 +2915,11 @@ ul {
 .shop-banner img {
     width: 100%;
 }
+
+.main-shop-page .sidebar-banner img{
+    margin-bottom: 10px;
+}
+
 .sidebar-banner-relative {
     position: relative;
 }
@@ -4483,73 +4492,20 @@ a.shipping-calculator-button:hover {
 /*----------------------------------------*/
 /* 20. About us CSS
 /*----------------------------------------*/
-
-.skill-content {
-    margin-left: 50px;
-    overflow: hidden;
-    padding-top: 40px;
-}
-.skill .progress-bar {
-    background: #303030 none repeat scroll 0 0;
-    position: relative;
-}
-.skill .progress .lead {
-    font-size: 14px;
-    left: 0;
-    position: absolute;
-    text-transform: capitalize;
-    top: -35px;
-    width: 100%;
-    z-index: 99;
-    font-weight: 400;
-}
-.progress-bar > span {
-    color: #303030;
-    font-size: 14px;
-    height: 24px;
-    line-height: 25px;
-    position: absolute;
-    right: -12px;
-    top: -38px;
-    width: auto;
-}
-.progress-bar > span::before {
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 10px solid #000;
-    bottom: -8px;
-    content: "";
-    left: 50%;
-    position: absolute;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-}
-.skill .progress {
-    background: #ebebeb none repeat scroll 0 0;
-    border-radius: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    height: 13px;
-    margin-bottom: 55px;
-    overflow: visible;
-    position: relative;
-}
-.skill .progress:last-child {
-    margin-bottom: 0;
-}
-.all-skill {
-    overflow: hidden;
-}
-.single-skill {
-    background: #303030 none repeat scroll 0 0;
-    float: left;
-    padding: 80px 0;
-    text-align: center;
-    width: 25%;
-}
 .skill-area .login-btn {
     margin-bottom: 0;
     margin-top: 25px;
+}
+.about-content{
+    text-align: center;
+}
+
+.customer-say{
+    text-align: center;
+}
+
+.our-team{
+    text-align: center;
 }
 .single-team {
     background: #fff none repeat scroll 0 0;
@@ -4976,4 +4932,10 @@ a.shipping-calculator-button:hover {
 .blog-area .news-thumbnail .news-content a{
     color: black;
     font-weight: 500;
+}
+
+.blog-area .news-thumbnail .news-content p{
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 5px;
 }
