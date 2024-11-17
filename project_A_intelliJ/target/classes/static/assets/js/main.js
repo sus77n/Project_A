@@ -9,7 +9,6 @@ Version: 1.0;
     
     /* Cart Currency Search toggle active */
     $(".cart-drop a , .currency-drop a , .search-drop a").on("click", function(e) {
-        e.preventDefault();
         $(this).parent().find('.ht-dropdown-cart , .ht-dropdown-currency , .ht-dropdown-search').slideToggle('medium');
     })
     
