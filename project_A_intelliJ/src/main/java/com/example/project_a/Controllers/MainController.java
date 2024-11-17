@@ -1,6 +1,8 @@
 package com.example.project_a.Controllers;
 
+import com.example.project_a.user.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -11,7 +13,7 @@ public class MainController {
 
     @GetMapping("/home")
     public String showIndexPage() {return "index-2.html";}
-
+    
     @GetMapping("/shop")
     public String showProductPage() {return "shop-list.html";}
 
@@ -62,5 +64,5 @@ public class MainController {
 
     @GetMapping("/wishlist")
     public String ShowPageWishlist() {return "/wishlist.html";}
-
+    
 }
