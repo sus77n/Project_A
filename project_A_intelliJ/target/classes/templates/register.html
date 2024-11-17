@@ -25,7 +25,7 @@
 		        <div class="row">
 		            <div class="offset-xl-2 col-xl-10">
                         <div class="register-form login-form clearfix">
-                            <form th:action="@{/user/save}" method="post" th:object="${user}">
+                            <form th:action="@{/users/save}" method="post" th:object="${user}">
                                 <p>Already have an account? <a th:href="@{/login}">Log in instead!</a></p>
                                 <div class="form-group row align-items-center">
                                     <label class="col-lg-3 col-md-3 col-form-label">Social title</label>
@@ -34,22 +34,22 @@
                                         <span class="custom-radio"><input name="id_gender" value="1" type="radio"> Mrs.</span>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="f-name" class="col-lg-3 col-md-3 col-form-label">First Name</label>
-                                    <div class="col-lg-6 col-md-6">
-                                        <input type="text" class="form-control" id="f-name">
-                                    </div>
-                                </div>
+<!--                                <div class="form-group row">-->
+<!--                                    <label for="f-name" class="col-lg-3 col-md-3 col-form-label">First Name</label>-->
+<!--                                    <div class="col-lg-6 col-md-6">-->
+<!--                                        <input type="text" class="form-control" id="f-name" th:field="*{ID}" value="2">-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                  <div class="form-group row">
-                                    <label for="l-name" class="col-lg-3 col-md-3 col-form-label">Last Name</label>
+                                    <label for="l-name" class="col-lg-3 col-md-3 col-form-label">Username</label>
                                     <div class="col-lg-6 col-md-6">
-                                        <input type="text" class="form-control" id="l-name">
+                                        <input type="text" class="form-control" th:field="*{username}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="email" class="col-lg-3 col-md-3 col-form-label">Email</label>
                                     <div class="col-lg-6 col-md-6">
-                                        <input type="text" class="form-control" th:field="*{username}" id="email">
+                                        <input type="text" class="form-control" th:field="*{email}" id="email" value="minh1234@gmail.com">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -58,13 +58,6 @@
                                         <input type="password" class="form-control" id="inputPassword" th:field="*{password}">
                                         <button class="btn show-btn" type="button">Show</button>
                                     </div>
-                                </div>
-                                <div class="form-group row align-items-center">
-                                    <label for="birth" class="col-lg-3 col-md-3 col-form-label">Birthdate</label>
-                                    <div class="col-lg-6 col-md-6">
-                                        <input type="text" class="form-control" id="birth" placeholder="MM/DD/YYYY">
-                                    </div>
-                                     <span class="col-sm-3 form-control-comment">optional</span>
                                 </div>
                                 <div class="form-check row p-0 mt-20">
                                     <div class="col-md-6 offset-md-3">

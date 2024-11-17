@@ -14,10 +14,16 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @GetMapping("/user")
+    public String user(Model model) {
+        List<User> users = service.getAllUsers();
+        model.addAttribute("users", users);
+        return "user";
+    }
+
     @GetMapping("/register")
     public String showRegister(Model model) {
         model.addAttribute("user", new User());
-        model.addAttribute("pageTitle", "Add New User");
         return "register";
     }
 
@@ -25,8 +31,7 @@ public class UserController {
     public String saveUser(User user, RedirectAttributes ra) {
         service.save(user);
         ra.addFlashAttribute("message", "The user has been saved successfully.");
-        return "redirect:/users";
+        return "redirect:/register";
     }
-
 
 }
