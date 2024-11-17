@@ -14,7 +14,7 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @GetMapping("")
+    @GetMapping("/register")
     public String showRegister(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("pageTitle", "Add New User");

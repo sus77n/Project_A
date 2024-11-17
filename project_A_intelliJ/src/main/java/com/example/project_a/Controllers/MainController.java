@@ -59,9 +59,6 @@ public class MainController {
     @GetMapping("/login")
     public String ShowPageLogin() {return "login.html";}
 
-    @GetMapping("/register")
-    public String ShowPageRegister() {return "register.html";}
-
     @GetMapping("/wishlist")
     public String ShowPageWishlist() {return "/wishlist.html";}
     
