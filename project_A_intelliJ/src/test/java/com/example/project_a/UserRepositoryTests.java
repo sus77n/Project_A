@@ -20,14 +20,14 @@ public class UserRepositoryTests {
     @Test
     public void AddNewUser() {
         User user = new User();
-        user.setID(123);
-        user.setUsername("newOne");
+        user.setID(34);
+        user.setUsername("New6");
         user.setPassword("456789");
         user.setGender("Meo");
         user.setDOB("5/5/2005");
         user.setPhoneNumber(923654787);
         user.setAddress("KhuOChuot Dinh Hoa");
-        user.setEmail("abc@gmail.com");
+        user.setEmail("absdsac@gmail.com");
         user.setStatus("Active");
         user.setRole("Admin");
         user.setCitizenID("1465131");
