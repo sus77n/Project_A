@@ -20,7 +20,12 @@ public class UserController {
         model.addAttribute("pageTitle", "Add New User");
         return "register";
     }
-
+    @PostMapping("/users/save")
+    public String saveUser(User user, RedirectAttributes ra) {
+        service.save(user);
+        ra.addFlashAttribute("message", "The user has been saved successfully.");
+        return "redirect:/users";
+    }
 
 
 }
