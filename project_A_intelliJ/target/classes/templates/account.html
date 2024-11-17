@@ -32,7 +32,7 @@
                                 <li><a class="nav-link active" data-toggle="tab" href="#account-details">Account details</a></li>
                                 <li> <a class="nav-link" data-toggle="tab" href="#orders">Orders</a></li>
                                 <li><a class="nav-link" data-toggle="tab" href="#address">Addresses</a></li>
-                                <li><a class="nav-link" href="login.html">logout</a></li>
+                                <li><a class="nav-link" th:href="@{/home}">">logout</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-10">
@@ -57,14 +57,14 @@
                                                     <td>May 10, 2018</td>
                                                     <td>Processing</td>
                                                     <td>$25.00 for 1 item </td>
-                                                    <td><a class="view" href="cart.html">view</a></td>
+                                                    <td><a class="view" th:href="@{/cart}">view</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
                                                     <td>May 10, 2018</td>
                                                     <td>Processing</td>
                                                     <td>$17.00 for 1 item </td>
-                                                    <td><a class="view" href="cart.html">view</a></td>
+                                                    <td><a class="view" th:href="@{/cart}">view</a></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -186,7 +186,4 @@
     <!-- Main activaion js -->
     <script src="assets/js/main.js"></script>
 </body>
-
-
-<!-- Mirrored from preview.hasthemes.com/hopsop-v4/account.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Oct 2024 15:28:50 GMT -->
 </html>
