@@ -8,8 +8,7 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    @Autowired
-    private UserRepository userRepository;
+    @Autowired private UserRepository userRepository;
 
     public List<User> getAllUsers() {
         return (List<User>) userRepository.findAll();
