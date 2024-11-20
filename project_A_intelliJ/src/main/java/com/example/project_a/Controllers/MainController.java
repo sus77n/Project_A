@@ -1,72 +1,68 @@
 package com.example.project_a.Controllers;
 
+import com.example.project_a.user.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
 
-    @GetMapping("/index-2.html)
+    @GetMapping("")
     public String showHomePage() {return "index-2.html";}
 
-    @GetMapping("/index-2.html")
+    @GetMapping("/home")
     public String showIndexPage() {return "index-2.html";}
-
-    @GetMapping("/shop-list.html")
+    
+    @GetMapping("/shop")
     public String showProductPage() {return "shop-list.html";}
 
-    @GetMapping("/shop.html")
-    public String showProductsPage() {return "shop.html";}
-
-    @GetMapping("/blog.html")
+    @GetMapping("/blog")
     public String showBlogPage() {return "blog.html";}
 
-    @GetMapping("/contact.html")
+    @GetMapping("/contact")
     public String showContactPage() {return "contact.html";}
 
-    @GetMapping("/about.html")
+    @GetMapping("/about")
     public String showAboutUsPage() {return "about.html";}
 
-    @GetMapping("/product-details.html")
+    @GetMapping("/product-details")
     public String showProductDetails() {return "product-details.html";}
 
-<<<<<<< HEAD
-    @GetMapping("/404.html")
+
+    @GetMapping("/404")
+
     public String showPageNotFound() {return "404.html";}
 
-    @GetMapping("/account.html")
+    @GetMapping("/account")
     public String showAccount() {return "account.html";}
 
-    @GetMapping("/blog-details-audio.html")
+    @GetMapping("/blog-details-audio")
     public String showBlogDetailsAudio() {return "blog-details-audio.html";}
 
-    @GetMapping("/blog-details.html")
+    @GetMapping("/blog-details")
     public String showBlogDetails() {return "blog-details.html";}
 
-    @GetMapping("/blog-details-blockquote.html")
+    @GetMapping("/blog-details-blockquote")
     public String showblogdetailsblockquote() {return "blog-details-blockquote.html";}
 
-    @GetMapping("/cart.html")
+    @GetMapping("/cart")
     public String showCart() {return "cart.html";}
 
-    @GetMapping("/checkout.html")
+    @GetMapping("/checkout")
     public String showCheckout() {return "checkout.html";}
 
-    @GetMapping("/compare.html")
+    @GetMapping("/compare")
     public String showCompare() {return "compare.html";}
 
-    @GetMapping("/forgot-password.html")
+    @GetMapping("/forgot-password")
     public String ShowPageForgotPassword() {return "forgot-password.html";}
 
-    @GetMapping("/login.html")
+    @GetMapping("/login")
     public String ShowPageLogin() {return "login.html";}
 
-    @GetMapping("/register.html")
-    public String ShowPageRegister() {return "register.html";}
-
-    @GetMapping("/wishlist.html")
-    public String ShowPageWishlist() {return "wishlist.html";}
-=======
->>>>>>> parent of 82fa1a3 (Thuan13h55)
+    @GetMapping("/wishlist")
+    public String ShowPageWishlist() {return "/wishlist.html";}
+    
 
 }

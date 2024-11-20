@@ -12,8 +12,8 @@
                 <div class="breadcrumb-wrap text-center">
                     <h3>Login</h3>
                     <ol class="breadcrumb breadcrumb-list">
-                        <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="account.html">Account</a></li>
+                        <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+                        <li class="breadcrumb-item"><a th:href="@{/account}">Account</a></li>
                         <li class="breadcrumb-item active">Login</li>
                     </ol>
                 </div>
@@ -27,7 +27,7 @@
                <div class="row">
                    <div class="col-lg-6 offset-lg-3">
                         <div class="login-form">
-                            <form>
+                            <form >
                                 <div class="form-group row">
                                     <label for="email" class="col-sm-3 col-form-label">Email</label>
                                     <div class="col-sm-7">
@@ -42,11 +42,11 @@
                                     </div>
                                 </div>
                                 <div class="login-details text-center mb-25">
-                                    <a href="forgot-password.html">Forgot your password? </a>
+                                    <a th:href="@{/forgot-password}">Forgot your password? </a>
                                     <button type="submit" class="login-btn">Sign in</button>
                                 </div>
                                 <div class="login-footer text-center">
-                                    <p>No account? <a href="register.html">Create one here</a></p>
+                                    <p>No account? <a th:href="@{/register}">Create one here</a></p>
                                 </div>
                             </form>
                         </div>
@@ -84,7 +84,4 @@
     <!-- Main activaion js -->
     <script src="assets/js/main.js"></script>
 </body>
-
-
-<!-- Mirrored from preview.hasthemes.com/hopsop-v4/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Oct 2024 15:28:50 GMT -->
 </html>

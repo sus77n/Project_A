@@ -1,6 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout::page_head}""></head>
+<head th:replace="~{layout::page_head}"></head>
 
 <body>
     <div class="wrapper">
@@ -11,7 +11,7 @@
                 <div class="breadcrumb-wrap text-center">
                     <h3>404</h3>
                     <ol class="breadcrumb breadcrumb-list">
-                        <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                        <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
                         <li class="breadcrumb-item active">404</li>
                     </ol>
                 </div>
@@ -36,7 +36,7 @@
                                 </form>
                             </div>
                             <div class="error-button">
-                                <a href="index-2.html">Back to home page</a>
+                                <a th:href="@{/home}">Back to home page</a>
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,4 @@
     <!-- Main activaion js -->
     <script src="assets/js/main.js"></script>
 </body>
-
-
-<!-- Mirrored from preview.hasthemes.com/hopsop-v4/404.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Oct 2024 15:28:50 GMT -->
 </html>
