@@ -30,6 +30,7 @@ public class MainController {
     @GetMapping("/product-details.html")
     public String showProductDetails() {return "product-details.html";}
 
+<<<<<<< HEAD
     @GetMapping("/404.html")
     public String showPageNotFound() {return "404.html";}
 
@@ -65,5 +66,7 @@ public class MainController {
 
     @GetMapping("/wishlist.html")
     public String ShowPageWishlist() {return "wishlist.html";}
+=======
+>>>>>>> parent of 82fa1a3 (Thuan13h55)
 
 }
