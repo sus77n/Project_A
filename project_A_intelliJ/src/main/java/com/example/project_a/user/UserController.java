@@ -1,6 +1,7 @@
 package com.example.project_a.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,9 +30,17 @@ public class UserController {
 
     @PostMapping("/users/save")
     public String saveUser(User user, RedirectAttributes ra) {
+        user = hashingPassword(user);
         service.save(user);
         ra.addFlashAttribute("message", "The user has been saved successfully.");
         return "redirect:/register";
     }
+
+    private User hashingPassword(User user) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hashedPassword = encoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
+        return user;
+    };
 
 }
