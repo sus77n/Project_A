@@ -10,11 +10,6 @@ import java.util.Optional;
 @Service
 public class UserService {
     @Autowired private UserRepository userRepository;
-     private  BCryptPasswordEncoder passwordEncoder;
-
-    public UserService(BCryptPasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
-    }
 
     public List<User> getAllUsers() {
         return (List<User>) userRepository.findAll();
@@ -22,6 +17,7 @@ public class UserService {
 
     public String hashingPassword(String plainPassword) {
         // Hash the password
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.encode(plainPassword);
     }
 
