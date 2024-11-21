@@ -56,8 +56,8 @@ public class MainController {
 //    @GetMapping("/forgot-password")
 //    public String ShowPageForgotPassword() {return "forgot-password";}
 
-//    @GetMapping("/login")
-//    public String ShowPageLogin() {return "login";}
+    @GetMapping("/login")
+    public String ShowPageLogin() {return "login";}
 
     @GetMapping("/wishlist")
     public String ShowPageWishlist() {return "wishlist";}

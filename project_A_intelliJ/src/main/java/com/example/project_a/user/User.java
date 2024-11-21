@@ -31,10 +31,10 @@ public class User {
     @Column(nullable = false, unique = true)
     private String Email;
 
-    @Column
+    @Column(columnDefinition = "Active")
     private String Status;
 
-    @Column
+    @Column(columnDefinition ="Client")
     private String Role;
 
     @Column
