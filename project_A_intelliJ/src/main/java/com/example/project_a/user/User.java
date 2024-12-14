@@ -34,7 +34,7 @@ public class User {
     @Column(columnDefinition = "Active")
     private String Status;
 
-    @Column(columnDefinition ="Client")
+    @Column(columnDefinition = "Client")
     private String Role;
 
     @Column

@@ -15,16 +15,15 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests()
-                .anyRequest().permitAll(); // Allow all requests without authentication
-//                .and()
-//                .formLogin()
-//                .loginPage("/login") // Display the login page only when accessing /login
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .permitAll(); // Allow logout without authentication
+        http.authorizeHttpRequests()
+                .anyRequest().permitAll() // Allow all requests without authentication
+                .and()
+                .formLogin()
+                .loginPage("/login") // Display the login page only when accessing /login
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll(); // Allow logout without authentication
 
         return http.build();
     }
