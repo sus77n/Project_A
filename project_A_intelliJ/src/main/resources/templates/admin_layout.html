@@ -227,7 +227,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="settings.html">
+                <a class="nav-link" th:href="@{/admin/settings}">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:settings-bold-duotone"></iconify-icon>
                                    </span>
@@ -237,14 +237,14 @@
 
             <li class="menu-title mt-2">Users</li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="pages-profile.html">
-                                   <span class="nav-icon">
-                                        <iconify-icon icon="solar:chat-square-like-bold-duotone"></iconify-icon>
-                                   </span>
-                    <span class="nav-text"> Profile </span>
-                </a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" th:href="@{/admin/profile}">-->
+<!--                                   <span class="nav-icon">-->
+<!--                                        <iconify-icon icon="solar:chat-square-like-bold-duotone"></iconify-icon>-->
+<!--                                   </span>-->
+<!--                    <span class="nav-text"> Profile </span>-->
+<!--                </a>-->
+<!--            </li>-->
 
             <li class="nav-item">
                 <a class="nav-link menu-arrow" href="#sidebarRoles" data-bs-toggle="collapse" role="button"
@@ -258,13 +258,13 @@
                     <ul class="nav sub-navbar-nav">
                         <ul class="nav sub-navbar-nav">
                             <li class="sub-nav-item">
-                                <a class="sub-nav-link" href="role-list.html">List</a>
+                                <a class="sub-nav-link" th:href="@{/admin/role/list}">List</a>
                             </li>
                             <li class="sub-nav-item">
-                                <a class="sub-nav-link" href="role-edit.html">Edit</a>
+                                <a class="sub-nav-link" th:href="@{/admin/role/edit}">Edit</a>
                             </li>
                             <li class="sub-nav-item">
-                                <a class="sub-nav-link" href="role-add.html">Create</a>
+                                <a class="sub-nav-link" th:href="@{/admin/role/add}">Create</a>
                             </li>
                         </ul>
                     </ul>

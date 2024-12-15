@@ -114,4 +114,10 @@ public class MainController {
 
     @GetMapping("/admin/invoice/add")
     public String ShowPageAdminOrderAdd() {return "admin/invoice-add";}
+
+    @GetMapping("/admin/settings")
+    public String ShowPageAdminSettings() {return "admin/settings";}
+
+    @GetMapping("/admin/profile")
+    public String ShowPageAdminProfile() {return "admin/pages-profile";}
 }
