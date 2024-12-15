@@ -60,6 +60,7 @@ public class MainController {
     @GetMapping("/wishlist")
     public String ShowPageWishlist() {return "shop/wishlist";}
 
+//   Admin mapping
     @GetMapping("/admin")
     public String ShowPageAdmin() {return "admin/index";}
 
@@ -74,4 +75,31 @@ public class MainController {
 
     @GetMapping("/admin/category/edit")
     public String ShowPageAdminCategoryEdit() {return "admin/category-edit";}
+
+    @GetMapping("/admin/product/list")
+    public String ShowPageAdminProduct() {return "admin/product-list";}
+
+    @GetMapping("/admin/product/grid")
+    public String ShowPageAdminProductGrid() {return "admin/product-grid";}
+
+    @GetMapping("/admin/product/add")
+    public String ShowPageAdminProductAdd() {return "admin/product-add";}
+
+    @GetMapping("/admin/product/details")
+    public String ShowPageAdminProductDetails() {return "admin/product-details";}
+
+    @GetMapping("/admin/product/edit")
+    public String ShowPageAdminProductEdit() {return "admin/product-edit";}
+
+    @GetMapping("/admin/order/cart")
+    public String ShowPageAdminOrderCart() {return "admin/order-cart";}
+
+    @GetMapping("/admin/order/checkout")
+    public String ShowPageAdminOrderCheckOut() {return "admin/order-checkout";}
+
+    @GetMapping("/admin/order/details")
+    public String ShowPageAdminOrderDetail() {return "admin/order-detail";}
+
+    @GetMapping("/admin/order/list")
+    public String ShowPageAdminOrderList() {return "admin/orders-list";}
 }
