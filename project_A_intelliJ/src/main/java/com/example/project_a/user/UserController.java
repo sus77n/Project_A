@@ -21,11 +21,11 @@ public class UserController {
         return "user";
     }
 
-    @GetMapping("/register")
-    public String showRegister(Model model) {
-        model.addAttribute("user", new User());
-        return "register";
-    }
+//    @GetMapping("/register")
+//    public String showRegister(Model model) {
+//        model.addAttribute("user", new User());
+//        return "shop/register";
+//    }
 
     @PostMapping("/users/save")
     public String saveUser(User user, RedirectAttributes ra) {
