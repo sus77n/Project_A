@@ -15,15 +15,11 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests()
-                .anyRequest().permitAll() // Allow all requests without authentication
+        http
+                .authorizeHttpRequests()
+                .anyRequest().permitAll() // Allow unrestricted access to all endpoints
                 .and()
-                .formLogin()
-                .loginPage("/login") // Display the login page only when accessing /login
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll(); // Allow logout without authentication
+                .csrf().disable(); // Disable CSRF for unrestricted POST requests
 
         return http.build();
     }

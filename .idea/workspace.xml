@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fe941ca-2bc1-4e9f-b202-38c1b3e633cd" name="Changes" comment="" />
+    <list default="true" id="0fe941ca-2bc1-4e9f-b202-38c1b3e633cd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/admin/category-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/admin/category-list.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "nqminh4604"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/nqminh4604/Project_A.git",
+    "accountId": "330c89b0-8b94-4e9a-8ace-0fe1643deb46"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/project_A_intelliJ/src/test/java/com/example/project_a/UserRepositoryTests.java" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -58,7 +74,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/ProjectA/Project_A_Minh_Thuan_Ngan",
+    "last_opened_file_path": "D:/Project/Project_A",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -209,6 +225,7 @@
       <workItem from="1732185132332" duration="8901000" />
       <workItem from="1732202370216" duration="1341000" />
       <workItem from="1734327375170" duration="22409000" />
+      <workItem from="1734343515617" duration="2250000" />
     </task>
     <servers />
   </component>
