@@ -25,8 +25,10 @@
             <div class="row">
               <div class="offset-xl-2 col-xl-10">
                 <div class="register-form login-form clearfix">
-                    <form th:action="@{/users/save}" method="post" th:object="${user}">
+                    <form>
+<!--                    <form th:action="@{/users/save}" method="post" th:object="${user}">-->
                         <p>Already have an account? <a th:href="@{/login}">Log in instead!</a></p>
+<!--                        <p>Already have an account? <a th:href="@{/login}">Log in instead!</a></p>-->
                         <div class="form-group row align-items-center">
                             <label class="col-lg-3 col-md-3 col-form-label">Social title</label>
                             <div class="col-lg-6 col-md-6">
@@ -37,19 +39,22 @@
                         <div class="form-group row">
                             <label for="email" class="col-lg-3 col-md-3 col-form-label">Email</label>
                             <div class="col-lg-6 col-md-6">
-                                <input type="email" class="form-control" th:field="*{email}" id="email">
+                                <input type="email" class="form-control" id="email">
+<!--                                <input type="email" class="form-control" th:field="*{email}" id="email">-->
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="username" class="col-lg-3 col-md-3 col-form-label">Username</label>
                             <div class="col-lg-6 col-md-6">
-                                <input type="text" id="username" class="form-control"pattern="[^#$%^!&*-+=\|'<>,./?]{5}" th:field="*{username}">
+                                <input type="text" id="username" class="form-control" pattern="[^#$%^!&*-+=\|'<>,./?]{5}">
+<!--                                <input type="text" id="username" class="form-control" pattern="[^#$%^!&*-+=\|'<>,./?]{5}" th:field="*{username}">-->
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputPassword" class="col-lg-3 col-md-3 col-form-label">Password</label>
                             <div class="col-lg-6 col-md-6">
-                                <input type="password" class="form-control" id="inputPassword" th:field="*{password}">
+                                <input type="password" class="form-control" id="inputPassword">
+<!--                                <input type="password" class="form-control" id="inputPassword" th:field="*{password}">-->
                                 <button class="btn show-btn" id="showPassWordBtn" type="button">Show</button>
                             </div>
                         </div>

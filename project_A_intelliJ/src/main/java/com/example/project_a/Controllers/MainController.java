@@ -51,11 +51,14 @@ public class MainController {
     @GetMapping("/compare")
     public String showCompare() {return "shop/compare";}
 
-//    @GetMapping("/forgot-password")
-//    public String ShowPageForgotPassword() {return "forgot-password";}
+    @GetMapping("/forgot-password")
+    public String ShowPageForgotPassword() {return "shop/forgot-password";}
 
     @GetMapping("/login")
     public String ShowPageLogin() {return "shop/login";}
+
+    @GetMapping("/register")
+    public String ShowPageRegister() {return "shop/register";}
 
     @GetMapping("/wishlist")
     public String ShowPageWishlist() {return "shop/wishlist";}
@@ -99,4 +102,19 @@ public class MainController {
 
     @GetMapping("/admin/order/list")
     public String ShowPageAdminOrderList() {return "admin/orders-list";}
+
+    @GetMapping("/admin/invoice/list")
+    public String ShowPageAdminInvoiceList() {return "admin/invoice-list";}
+
+    @GetMapping("/admin/invoice/details")
+    public String ShowPageAdminOrderDetails() {return "admin/invoice-details";}
+
+    @GetMapping("/admin/invoice/add")
+    public String ShowPageAdminOrderAdd() {return "admin/invoice-add";}
+
+    @GetMapping("/admin/settings")
+    public String ShowPageAdminSettings() {return "admin/settings";}
+
+    @GetMapping("/admin/profile")
+    public String ShowPageAdminProfile() {return "admin/pages-profile";}
 }
