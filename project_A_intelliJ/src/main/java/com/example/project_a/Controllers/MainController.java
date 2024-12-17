@@ -67,14 +67,11 @@ public class MainController {
     @GetMapping("/admin/home")
     public String ShowPageAdminHome() {return "admin/index";}
 
-    @GetMapping("/admin/category/add")
-    public String ShowPageAdminCategoryAdd() {return "admin/category-add";}
+//    @GetMapping("/admin/category/list")
+//    public String ShowPageAdminCategoryList() {return "admin/category-list";}
 
-    @GetMapping("/admin/category/list")
-    public String ShowPageAdminCategoryList() {return "admin/category-list";}
-
-    @GetMapping("/admin/category/edit")
-    public String ShowPageAdminCategoryEdit() {return "admin/category-edit";}
+//    @GetMapping("/admin/category/edit")
+//    public String ShowPageAdminCategoryEdit() {return "admin/category-edit";}
 
     @GetMapping("/admin/product/list")
     public String ShowPageAdminProduct() {return "admin/product-list";}
@@ -82,8 +79,8 @@ public class MainController {
     @GetMapping("/admin/product/grid")
     public String ShowPageAdminProductGrid() {return "admin/product-grid";}
 
-    @GetMapping("/admin/product/add")
-    public String ShowPageAdminProductAdd() {return "admin/product-add";}
+//    @GetMapping("/admin/product/add")
+//    public String ShowPageAdminProductAdd() {return "admin/product-add";}
 
     @GetMapping("/admin/product/details")
     public String ShowPageAdminProductDetails() {return "admin/product-details";}
