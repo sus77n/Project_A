@@ -143,7 +143,7 @@
 
                               <!-- Activity -->
                               <div class="topbar-item d-none d-md-flex">
-                                   <button type="button" class="topbar-button" id="theme-settings-btn" data-bs-toggle="offcanvas" data-bs-target="#theme-activity-offcanvas" aria-controls="theme-settings-offcanvas">
+                                   <button type="button" class="topbar-button" id="theme-settings-btn2" data-bs-toggle="offcanvas" data-bs-target="#theme-activity-offcanvas" aria-controls="theme-settings-offcanvas">
                                         <iconify-icon icon="solar:clock-circle-bold-duotone" class="fs-24 align-middle"></iconify-icon>
                                    </button>
                               </div>
@@ -556,13 +556,19 @@
                                                        <td>
                                                             <div class="d-flex gap-2">
                                                                  <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                 <a th:href="@{/admin/category/edit/{id}(id=${category.ID})}" class="btn btn-soft-primary btn-sm" }>
-                                                                      <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                 <a th:href="@{/admin/category/delete/{id}(id=${category.ID})}" class="btn btn-soft-danger btn-sm">
-                                                                      <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
+
+                                                                 <form th:action="@{/admin/category/edit}" method="post" th:object="${categorySent}" >
+                                                                       <input type="hidden" name="id" th:value="${category.ID}">
+                                                                      <button type="submit" class="btn btn-soft-primary btn-sm"> <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></button>
+                                                                 </form>
+
+                                                                 <!--deletebutton-->
+                                                                 <a th:href="@{/admin/category/delete/{id}(id=${category.ID})}" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                             </div>
                                                        </td>
                                                   </tr>
+
+
 
                                                   </tbody>
                                              </table>

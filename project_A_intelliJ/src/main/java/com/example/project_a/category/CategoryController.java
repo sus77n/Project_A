@@ -1,5 +1,6 @@
 package com.example.project_a.category;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,13 +17,6 @@ public class CategoryController {
     @Autowired
     private CategoryService service;
 
-    @GetMapping("/admin/category/list")
-    public String list(Model model) {
-        List<Category> categories = service.getAllCategories();
-        model.addAttribute("categories", categories);
-        return "admin/category-list";
-    }
-
     @GetMapping("/admin/category/add")
     public String showCategoryForm(Model model) {
         model.addAttribute("category", new Category());
@@ -36,21 +30,27 @@ public class CategoryController {
         ra.addFlashAttribute("message", "The category has been saved successfully.");
         return "redirect:/admin/category/add";
     }
+
     @GetMapping("/admin/category/delete/{id}")
        public String deleteCategory(@PathVariable("id") String id , RedirectAttributes ra) {
-                service.deleteUserById(Integer.parseInt(id));
-                ra.addFlashAttribute("message", "The category has been deleted successfully.");
-                return "redirect:/admin/category/list";
+            service.deleteUserById(Integer.parseInt(id));
+            ra.addFlashAttribute("message", "The category has been deleted successfully.");
+            return "redirect:/admin/category/list";
     }
 
-    @GetMapping("/admin/category/edit/{id}")
-    public String showEditForm(@PathVariable("id") String id, Model model) {
-        // Fetch the category by its ID
+    @GetMapping("/admin/category/list")
+    public String list(Model model) {
+        List<Category> categories = service.getAllCategories();
+        model.addAttribute("categories", categories);
+        String idcate = "1";
+        model.addAttribute("categoryID",  idcate);
+        return "admin/category-list";
+    }
+
+    @PostMapping("/admin/category/edit")
+    public String showEditForm(String id, Model model) {
         Category category = service.findCategoryById(Integer.parseInt(id));
-
-        // Add the category object to the model
         model.addAttribute("updatedCategory", category);
-
         // Return the view for the edit form
         return "admin/category-edit";
     }
@@ -60,13 +60,17 @@ public class CategoryController {
     public String updateCategory(@PathVariable("id") String id, Category category, RedirectAttributes redirectAttributes) {
         service.updateCategory(id, category);
         redirectAttributes.addFlashAttribute("message", "Category updated successfully!");
+
         return "redirect:/admin/category/list";
     }
 
 
-        @GetMapping("/admin/category/edit")
-    public String ShowPageAdminCategoryEdit( Model model) {
-            model.addAttribute("updatedCategory",new Category());
+    @GetMapping("/admin/category/edit")
+    public String ShowPageAdminCategoryEdit(Category category, Model model) {
+        if (category.getID() == null) {
+            category = new Category();
+        }
+        model.addAttribute("updatedCategory",category);
         return "admin/category-edit";
     }
 
