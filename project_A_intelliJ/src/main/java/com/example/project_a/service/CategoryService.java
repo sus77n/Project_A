@@ -1,9 +1,9 @@
-package com.example.project_a.category;
-import com.example.project_a.user.User;
-import com.example.project_a.user.UserRepository;
+package com.example.project_a.service;
+import com.example.project_a.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.example.project_a.repository.CategoryRepository;
+
 import java.util.List;
 import java.util.Optional;
 

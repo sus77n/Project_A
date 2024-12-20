@@ -1,7 +1,6 @@
 package com.example.project_a;
-import com.example.project_a.category.Category;
-import com.example.project_a.category.CategoryRepository;
-import com.example.project_a.user.User;
+import com.example.project_a.model.Category;
+import com.example.project_a.repository.CategoryRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

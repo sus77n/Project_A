@@ -1,5 +1,7 @@
-package com.example.project_a.user;
+package com.example.project_a.controller;
 
+import com.example.project_a.model.User;
+import com.example.project_a.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
