@@ -21,9 +21,7 @@ public class CategoryRepositoryTests {
     public void AddNewCategory() {
         Category category = new Category();
         category.setCategoryname("Tent");
-        category.setQuantity("10");
         category.setStatus("ACTIVE");
-        category.setImage("asset/image.png");
 
         Category savedCategory = repo.save(category);
         Assertions.assertNotNull(savedCategory);

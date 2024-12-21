@@ -6,6 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="0fe941ca-2bc1-4e9f-b202-38c1b3e633cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/repository/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/java/com/example/project_a/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/main/resources/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_A_intelliJ/src/test/java/com/example/project_a/CategoryRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/project_A_intelliJ/src/test/java/com/example/project_a/CategoryRepositoryTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,6 +244,7 @@
       <workItem from="1734684548558" duration="1397000" />
       <workItem from="1734691047746" duration="934000" />
       <workItem from="1734700955356" duration="4042000" />
+      <workItem from="1734769975564" duration="4683000" />
     </task>
     <servers />
   </component>
