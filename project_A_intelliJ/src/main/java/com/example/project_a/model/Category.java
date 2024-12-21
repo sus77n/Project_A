@@ -1,4 +1,4 @@
-package com.example.project_a.model;
+package com.example.outstride.model;
 import jakarta.persistence.*;
 @Entity
 @Table(name ="categories")
@@ -11,12 +11,6 @@ public class Category {
 
     @Column
     private String CategoryName;
-
-    @Column
-    private String Quantity;
-
-    @Column
-    private String Image;
 
     @Column
     private String Status;
@@ -35,22 +29,6 @@ public class Category {
 
     public void setCategoryname(String categoryName) {
         CategoryName = categoryName;
-    }
-
-    public String getQuantity() {
-        return Quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        Quantity = quantity;
-    }
-
-    public String getImage() {
-        return Image;
-    }
-
-    public void setImage(String image) {
-        Image = image;
     }
 
     public String getStatus() {
