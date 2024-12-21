@@ -471,22 +471,10 @@
                             <!-- Sidebar Categorie Start -->
                             <div class="sidebar-categorie mb-30">
                                 <h3 class="sidebar-title">categories</h3>
-                                <ul class="sidbar-style">
+                                <ul class="sidbar-style" th:each="category, stat : ${categories}" >
                                     <li class="form-check">
                                         <input class="form-check-input" value="#" id="camera" type="checkbox">
-                                        <label class="form-check-label" for="camera">Clothing (8)</label>
-                                    </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" value="#" id="GamePad" type="checkbox">
-                                        <label class="form-check-label" for="GamePad">Cooking (8)</label>
-                                    </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" value="#" id="Digital" type="checkbox">
-                                        <label class="form-check-label" for="Digital">Lighting (8)</label>
-                                    </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" value="#" id="Virtual" type="checkbox">
-                                        <label class="form-check-label" for="Virtual"> Power (8) </label>
+                                        <td th:text="${category.categoryname}"></td>
                                     </li>
                                 </ul>
                             </div>

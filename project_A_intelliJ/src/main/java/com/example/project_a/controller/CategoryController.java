@@ -66,4 +66,12 @@ public class CategoryController {
     public String showCategories(Model model) {
         return "redirect:/admin/category/list";
     }
+
+    @GetMapping("/shop")
+    public String showProductPage(Model model) {
+        List<Category> categories = service.getAllCategories();
+        model.addAttribute("categories", categories);
+        return "shop/shop-list";
+    }
+
 }
