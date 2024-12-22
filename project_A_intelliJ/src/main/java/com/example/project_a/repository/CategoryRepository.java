@@ -1,6 +1,6 @@
-package com.example.outstride.repository;
+package com.example.project_a.repository;
 
-import com.example.outstride.model.Category;
+import com.example.project_a.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

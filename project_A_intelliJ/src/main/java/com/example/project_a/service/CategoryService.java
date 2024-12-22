@@ -25,7 +25,7 @@ public class CategoryService {
         return category.orElse(null);
     }
 
-    public void deleteUserById(Integer id) {
+    public void deleteCategoryById(Integer id) {
         if (findCategoryById(id) == null) {
             return;
         }
@@ -40,8 +40,7 @@ public class CategoryService {
 
         // Update the fields of the existing category
         category.setCategoryname(updatedCategory.getCategoryname());
-        category.setQuantity(updatedCategory.getQuantity());
-        category.setImage(updatedCategory.getImage());
+
         category.setStatus(updatedCategory.getStatus());
 
         // Save the updated category

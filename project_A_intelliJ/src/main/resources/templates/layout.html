@@ -62,68 +62,15 @@
                                         <li class="active"><a th:href="@{/home}">Home</a></li>
                                         <li><a th:href="@{/shop}">Categories</a>
                                             <!--  Mega-Menu Start -->
-                                            <ul class="ht-dropdown megamenu-three d-flex">
-                                                <!-- Single Column Start -->
-                                                <li>
-                                                    <ul>
-                                                        <li class="menu-title">Clothing</li>
-                                                        <li><a th:href="@{/shop}">Men</a></li>
-                                                        <li><a th:href="@{/shop}">Women</a></li>
-                                                        <li><a th:href="@{/shop}">Hats</a></li>
-                                                        <li><a th:href="@{/shop}">Caps</a></li>
-                                                        <li><a th:href="@{/shop}">Shoes</a></li>
-                                                        <li><a th:href="@{/shop}">Sunglasses</a></li>
-                                                        <li><a th:href="@{/shop}">Unisex</a></li>
-                                                    </ul>
-                                                </li>
-                                                <!-- Single Column End -->
-                                                <!-- Single Column Start -->
-                                                <li>
-                                                    <ul>
-                                                        <li class="menu-title">Cooking</li>
-                                                        <li><a th:href="@{/shop}">Cookware</a></li>
-                                                        <li><a th:href="@{/shop}">Gas</a></li>
-                                                        <li><a th:href="@{/shop}">Braai</a></li>
-                                                        <li><a th:href="@{/shop}">Others</a></li>
-                                                    </ul>
-                                                </li>
-                                                <!-- Single Column End -->
-                                                <!-- Single Column Start -->
-                                                <li>
-                                                    <ul>
-                                                        <li class="menu-title">Lighting</li>
-                                                        <li><a th:href="@{/shop}">Lamps and Lanterns</a></li>
-                                                        <li><a th:href="@{/shop}">Headlamps</a></li>
-                                                        <li><a th:href="@{/shop}">Torches</a></li>
-                                                        <li><a th:href="@{/shop}">Spotlights</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <ul>
-                                                        <li class="menu-title">Power</li>
-                                                        <li><a th:href="@{/shop}">Batteries and Chargers</a></li>
-                                                        <li><a th:href="@{/shop}">Portable Power</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <ul>
-                                                        <li class="menu-title">Tents</li>
-                                                        <li><a th:href="@{/shop}">Canvas Tents</a></li>
-                                                        <li><a th:href="@{/shop}">Tent Accessories</a></li>
-                                                        <li><a th:href="@{/shop}">Tech-Fibre Range</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <ul>
-                                                        <li class="menu-title">Gadgets</li>
-                                                        <li><a th:href="@{/shop}">Binoculars</a></li>
-                                                        <li><a th:href="@{/shop}">Knives and Multi-Tools</a></li>
-                                                        <li><a th:href="@{/shop}">Navigation</a></li>
-                                                        <li><a th:href="@{/shop}">Others</a></li>
-                                                    </ul>
-                                                </li>
-                                                <!-- Single Column End -->
-                                            </ul>
+                                                <ul class="ht-dropdown megamenu-three d-flex">
+                                                    <!-- Single Column Start -->
+                                                    <li th:each="category : ${categories}">
+                                                        <ul>
+                                                            <li class="menu-title" th:text="${category.categoryname}"></li>
+                                                        </ul>
+                                                    </li>
+                                                    <!-- Single Column End -->
+                                                </ul>
                                             <!-- Mega-Menu End -->
                                         </li>
                                         <li><a th:href="@{/blog}">Blog</a></li>

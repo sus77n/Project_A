@@ -1,4 +1,4 @@
-package com.example.outstride.model;
+package com.example.project_a.model;
 import jakarta.persistence.*;
 @Entity
 @Table(name ="categories")

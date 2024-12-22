@@ -1,7 +1,7 @@
-package com.example.outstride.controller;
+package com.example.project_a.controller;
 
-import com.example.outstride.model.Category;
-import com.example.outstride.service.CategoryService;
+import com.example.project_a.model.Category;
+import com.example.project_a.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,4 +66,12 @@ public class CategoryController {
     public String showCategories(Model model) {
         return "redirect:/admin/category/list";
     }
+
+    @GetMapping("/shop")
+    public String showProductPage(Model model) {
+        List<Category> categories = service.getAllCategories();
+        model.addAttribute("categories", categories);
+        return "shop/shop-list";
+    }
+
 }
