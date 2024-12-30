@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @DataJpaTest
@@ -20,8 +21,9 @@ public class CategoryRepositoryTests {
     @Test
     public void AddNewCategory() {
         Category category = new Category();
-        category.setCategoryname("Tent");
+        category.setCategoryname("ThuanTentCamp");
         category.setStatus("ACTIVE");
+        category.setProducts(new ArrayList<>());
 
 
         Category savedCategory = repo.save(category);
