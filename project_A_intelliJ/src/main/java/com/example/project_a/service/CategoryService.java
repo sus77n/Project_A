@@ -46,7 +46,6 @@ public class CategoryService {
 
         // Update the fields of the existing category
         category.setCategoryname(updatedCategory.getCategoryname());
-
         category.setStatus(updatedCategory.getStatus());
 
         // Save the updated category

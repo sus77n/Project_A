@@ -25,7 +25,6 @@ public class CategoryRepositoryTests {
         category.setStatus("ACTIVE");
         category.setProducts(new ArrayList<>());
 
-
         Category savedCategory = repo.save(category);
         Assertions.assertNotNull(savedCategory);
 //        Assertions.assertTrue(savedCategory.getID() > 0, "User ID should be greater than 0");
