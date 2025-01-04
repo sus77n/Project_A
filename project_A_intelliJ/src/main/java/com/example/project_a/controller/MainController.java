@@ -63,6 +63,9 @@ public class MainController {
     @GetMapping("/wishlist")
     public String ShowPageWishlist() {return "shop/wishlist";}
 
+    @GetMapping("/quickview")
+    public String ShowPageQuickreview() {return "shop/quickviewProduct";}
+
 //   Admin mapping
     @GetMapping("/admin")
     public String ShowPageAdmin() {return "admin/index";}
