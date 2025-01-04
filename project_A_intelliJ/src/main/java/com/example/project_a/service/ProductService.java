@@ -31,6 +31,7 @@ public class ProductService {
         if (findProductById(id) == null) {
             return;
         }
+
         productRepository.deleteById(id);
     }
 

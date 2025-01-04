@@ -23,7 +23,7 @@ public class Product {
     private Category category;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<ProductImages> productImages = new ArrayList<>();
+    private List<Product> productImages = new ArrayList<>();
 
 
     // Other fields and their annotations

@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name ="ProductImage")
-public class ProductImages {
+@Table(name ="productImages")
+public class ProductImage {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "productImage_id", nullable = false, unique = true)
