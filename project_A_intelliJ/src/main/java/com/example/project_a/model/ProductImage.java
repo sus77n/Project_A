@@ -2,17 +2,15 @@ package com.example.project_a.model;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-
 @Entity
-@Table(name ="ProductImage")
-public class ProductImages {
+@Table(name ="ProductImages")
+public class ProductImage {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "productImage_id", nullable = false, unique = true)
     private Integer productImage_id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private Product product;
 

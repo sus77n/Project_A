@@ -10,13 +10,7 @@ import java.util.Optional;
 @Service
 
 public class CategoryService {
-    @Autowired private static CategoryRepository categoryRepositoryForTest;
     @Autowired private CategoryRepository categoryRepository;
-
-
-    public static List<Category> getAllCategoriesFortest() {
-        return (List<Category>) categoryRepositoryForTest.findAll();
-    }
 
     public List<Category> getAllCategories() {
         return (List<Category>) categoryRepository.findAll();
@@ -46,6 +40,7 @@ public class CategoryService {
 
         // Update the fields of the existing category
         category.setCategoryname(updatedCategory.getCategoryname());
+
         category.setStatus(updatedCategory.getStatus());
 
         // Save the updated category

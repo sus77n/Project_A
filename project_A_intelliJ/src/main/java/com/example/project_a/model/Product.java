@@ -1,9 +1,7 @@
 package com.example.project_a.model;
 
-import com.fasterxml.jackson.databind.util.NativeImageUtil;
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +20,11 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<ProductImages> productImages = new ArrayList<>();
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ProductImage> productImages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderDetail> orderDetails;
 
 
     // Other fields and their annotations
@@ -42,6 +43,14 @@ public class Product {
     // Getters and Setters
     // ...
 
+
+    public List<ProductImage> getProductImages() {
+        return productImages;
+    }
+
+    public void setProductImages(List<ProductImage> productImages) {
+        this.productImages = productImages;
+    }
 
     public Integer getProduct_id() {
         return product_id;
@@ -116,6 +125,12 @@ public class Product {
         builder.append(inStock);
         builder.append(", price=");
         builder.append(price);
+        builder.append(", URL=");
+        builder.append("\n");
+        for (ProductImage productImage : productImages) {
+           builder.append(productImage.getImageURL());
+           builder.append(", ");
+        }
         builder.append("]");
 
         return builder.toString();

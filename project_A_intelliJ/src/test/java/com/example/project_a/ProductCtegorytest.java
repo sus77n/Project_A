@@ -60,7 +60,7 @@ public class ProductCtegorytest {
         Assertions.assertNotNull(savedProduct);
         Assertions.assertTrue(savedProduct.getProduct_id() > 0, "User ID should be greater than 0");
 
-
     }
+
 
 }
