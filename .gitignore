@@ -63,3 +63,4 @@ replay_pid*
 # OS-specific files
 Thumbs.db
 Desktop.ini
+.idea/workspace.xml
