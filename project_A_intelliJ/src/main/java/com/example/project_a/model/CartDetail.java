@@ -3,7 +3,7 @@ package com.example.project_a.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name ="carts")
+@Table(name ="cartDetails")
 public class CartDetail {
     @EmbeddedId
     private CartDetailKey id;
@@ -15,11 +15,11 @@ public class CartDetail {
     private int quantity;
 
     @ManyToOne
-    @JoinColumn(name = "cart_id")
+    @JoinColumn()
     private Cart cart;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JoinColumn()
     private Product product;
 
     //Getter Setter

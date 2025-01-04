@@ -8,10 +8,10 @@ import java.util.Objects;
 @Embeddable
 public class CartDetailKey implements Serializable {
 
-    @Column(name = "CartID")
+    @Column()
     private int cartId;
 
-    @Column(name = "product_id")
+    @Column()
     private int productId;
 
     // Getters, Setters, equals(), and hashCode()
