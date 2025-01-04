@@ -1,5 +1,9 @@
 package com.example.project_a.model;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name ="categories")
 public class Category {
@@ -14,6 +18,10 @@ public class Category {
 
     @Column
     private String Status;
+
+    //RelationShip
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Product> products = new ArrayList<>();
 
     public Integer getID() {
         return ID;
@@ -37,5 +45,23 @@ public class Category {
 
     public void setStatus(String status) {
         Status = status;
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Category [ID=");
+        builder.append(ID);
+        builder.append(", CategoryName=");
+        builder.append(CategoryName);
+        builder.append(", Product In The Category=");
+        for (Product product : products) {
+            builder.append(product.getName());
+            builder.append(", ");
+        }
+        builder.append("]");
+
+        return builder.toString();
     }
 }

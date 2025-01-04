@@ -40,6 +40,8 @@ public class Product {
     @Column(name = "price")
     private Integer price;
 
+    @Column()
+    private String status;
     // Getters and Setters
     // ...
 
@@ -103,6 +105,22 @@ public class Product {
     public Integer getPrice() {
 
         return price;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 
     public void setPrice(Integer price) {

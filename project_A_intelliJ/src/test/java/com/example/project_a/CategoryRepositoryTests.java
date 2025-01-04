@@ -19,20 +19,30 @@ public class CategoryRepositoryTests {
     @Autowired private CategoryRepository repo;
     @Test
     public void AddNewCategory() {
-        Category category = new Category();
-        category.setCategoryname("Tent");
-        category.setStatus("ACTIVE");
+
+        for (int i = 1; i <= 5; i++) {
+            Category category = new Category();
+            category.setCategoryname("Tent"+ i);
+            category.setStatus("ACTIVE");
 
 
-        Category savedCategory = repo.save(category);
-        Assertions.assertNotNull(savedCategory);
-//        Assertions.assertTrue(savedCategory.getID() > 0, "User ID should be greater than 0");
+            Category savedCategory = repo.save(category);
+            Assertions.assertNotNull(savedCategory);
+        }
+//        Category category = new Category();
+//        category.setCategoryname("Tent");
+//        category.setStatus("ACTIVE");
+//
+//
+//        Category savedCategory = repo.save(category);
+//        Assertions.assertNotNull(savedCategory);
+////        Assertions.assertTrue(savedCategory.getID() > 0, "User ID should be greater than 0");
 
 
     }
 
     @Test
-    public void testListAllUsers() {
+    public void testListAllCategories() {
         Iterable<Category> categories = repo.findAll();
         Assertions.assertTrue(categories.iterator().hasNext(), "Users collection should contain at least one user");
 
@@ -52,11 +62,12 @@ public class CategoryRepositoryTests {
     }
     @Test
     public void testGetCategory() {
-        Integer CategoryID = 1;
+        Integer CategoryID = 2;
         Optional<Category> optionalCategory = repo.findById(CategoryID);
-        Assertions.assertTrue(optionalCategory.isPresent(), "User should be present");
+        Assertions.assertTrue(optionalCategory.isPresent(), "Category should be present");
         Category category = optionalCategory.get();
-        System.out.println(category);
+        System.out.println(category.getID());
+        System.out.println(category.getCategoryname());
     }
 
     @Test
