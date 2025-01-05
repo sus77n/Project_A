@@ -1299,9 +1299,16 @@
 </div>
 
 <div th:fragment="required_script">
-    <!-- Vendor Javascript (Require in all Page) -->
-    <script th:src="@{/assets/js/vendor/vendor.js}"></script>
+    <script src="../../assets/js/vendor/vendor.js"></script>
 
     <!-- App Javascript (Require in all Page) -->
-    <script th:src="@{/assets/js/vendor/app.js}"></script>
+    <script src="../../assets/js/vendor/app.js"></script>
+
+    <!-- Vector Map Js -->
+    <script src="../../assets/vendor/jsvectormap/js/jsvectormap.min.js"></script>
+    <script src="../../assets/vendor/jsvectormap/maps/world-merc.js"></script>
+    <script src="../../assets/vendor/jsvectormap/maps/world.js"></script>
+
+    <!-- Dashboard Js -->
+    <script src="../assets/js/vendor/pages/dashboard.js"></script>
 </div>

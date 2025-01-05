@@ -19682,12 +19682,10 @@ th.fc-day-header {
   background: var(--bs-secondary-bg);
   border-radius: 6px;
   cursor: pointer;
-  min-height: 150px;
-  padding: 20px;
 }
 .dropzone .dz-message {
   text-align: center;
-  margin: 2rem 0;
+  margin: 20px 0;
 }
 .dropzone.dz-started .dz-message {
   display: none;
