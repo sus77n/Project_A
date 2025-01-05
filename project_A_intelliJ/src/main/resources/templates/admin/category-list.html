@@ -53,13 +53,15 @@
                                                 <form th:action="@{/admin/category/edit}" method="post"
                                                       th:object="${categorySent}">
                                                     <input type="hidden" name="id" th:value="${category.ID}">
-                                                    <button type="submit" class="btn btn-soft-primary btn-sm">
-                                                        Edit
-                                                    </button>
+                                                    <a class="btn btn-soft-primary btn-sm">
+                                                        <iconify-icon icon="solar:pen-2-broken"
+                                                                      class="align-middle fs-18"></iconify-icon>
+                                                    </a>
                                                 </form>
                                                 <a th:href="@{/admin/category/delete/{id}(id=${category.ID})}"
                                                    class="btn btn-soft-danger btn-sm">
-                                                    delete
+                                                    <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
+                                                                  class="align-middle fs-18"></iconify-icon>
                                                 </a>
                                             </div>
                                         </td>
