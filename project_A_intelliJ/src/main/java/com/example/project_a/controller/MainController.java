@@ -1,6 +1,7 @@
 package com.example.project_a.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -68,10 +69,14 @@ public class MainController {
 
 //   Admin mapping
     @GetMapping("/admin")
-    public String ShowPageAdmin() {return "admin/index";}
+    public String ShowPageAdmin(Model model) {
+        model.addAttribute("pageTitle", "Welcome" );
+        return "admin/index";}
 
     @GetMapping("/admin/home")
-    public String ShowPageAdminHome() {return "admin/index";}
+    public String ShowPageAdminHome(Model model) {
+        model.addAttribute("pageTitle", "Welcome" );
+        return "admin/index";}
 
 //    @GetMapping("/admin/category/list")
 //    public String ShowPageAdminCategoryList() {return "admin/category-list";}
@@ -80,44 +85,59 @@ public class MainController {
 //    public String ShowPageAdminCategoryEdit() {return "admin/category-edit";}
 
     @GetMapping("/admin/product/list")
-    public String ShowPageAdminProduct() {return "admin/product-list";}
+    public String ShowPageAdminProduct(Model model) {
+        model.addAttribute("pageTitle", "Product" );
+        return "admin/product-list";
+    }
 
-    @GetMapping("/admin/product/grid")
-    public String ShowPageAdminProductGrid() {return "admin/product-grid";}
+//    @GetMapping("/admin/product/grid")
+//    public String ShowPageAdminProductGrid() {return "admin/product-grid";}
 
 //    @GetMapping("/admin/product/add")
 //    public String ShowPageAdminProductAdd() {return "admin/product-add";}
 
     @GetMapping("/admin/product/details")
-    public String ShowPageAdminProductDetails() {return "admin/product-details";}
+    public String ShowPageAdminProductDetails(Model model) {
+        model.addAttribute("pageTitle", "Product Details" );
+        return "admin/product-details";}
 
     @GetMapping("/admin/product/edit")
-    public String ShowPageAdminProductEdit() {return "admin/product-edit";}
-
-    @GetMapping("/admin/order/cart")
-    public String ShowPageAdminOrderCart() {return "admin/order-cart";}
-
-    @GetMapping("/admin/order/checkout")
-    public String ShowPageAdminOrderCheckOut() {return "admin/order-checkout";}
+    public String ShowPageAdminProductEdit(Model model) {
+        model.addAttribute("pageTitle", "Product Edit" );
+        return "admin/product-edit";}
 
     @GetMapping("/admin/order/details")
-    public String ShowPageAdminOrderDetail() {return "admin/order-detail";}
+    public String ShowPageAdminOrderDetail(Model model) {
+        model.addAttribute("pageTitle", "Order Details" );
+        return "admin/order-detail";}
 
     @GetMapping("/admin/order/list")
-    public String ShowPageAdminOrderList() {return "admin/orders-list";}
+    public String ShowPageAdminOrderList(Model model) {
+        model.addAttribute("pageTitle", "Order" );
+        return "admin/orders-list";}
 
     @GetMapping("/admin/invoice/list")
-    public String ShowPageAdminInvoiceList() {return "admin/invoice-list";}
+    public String ShowPageAdminInvoiceList(Model model) {
+        model.addAttribute("pageTitle", "Invoice" );
+        return "admin/invoice-list";}
 
     @GetMapping("/admin/invoice/details")
-    public String ShowPageAdminOrderDetails() {return "admin/invoice-details";}
+    public String ShowPageAdminOrderDetails(Model model) {
+        model.addAttribute("pageTitle", "Invoice Details" );
+        return "admin/invoice-details";}
 
     @GetMapping("/admin/invoice/add")
-    public String ShowPageAdminOrderAdd() {return "admin/invoice-add";}
+    public String ShowPageAdminInvoiceAdd(Model model) {
+        model.addAttribute("pageTitle", "Invoice Add" );
+        return "admin/invoice-add";}
 
     @GetMapping("/admin/settings")
-    public String ShowPageAdminSettings() {return "admin/settings";}
+    public String ShowPageAdminSettings(Model model) {
+        model.addAttribute("pageTitle", "Settings" );
+        return "admin/settings";}
 
     @GetMapping("/admin/profile")
-    public String ShowPageAdminProfile() {return "admin/pages-profile";}
+    public String ShowPageAdminProfile(Model model) {
+        model.addAttribute("pageTitle", "Profile" );
+        return "admin/pages-profile";}
 }

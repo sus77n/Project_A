@@ -17,8 +17,8 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <form th:action="@{/category/save}" method="post" th:object="${category}">
-                                    <div class="col-12">
+                                <form th:action="@{/category/save}" method="post" th:object="${category}" class="row">
+                                    <div class="col-6">
                                         <div class="mb-3">
                                             <label for="category-title" class="form-label">Category Name</label>
                                             <input th:field="*{categoryname}" type="text" id="category-title"
@@ -26,17 +26,23 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Status</label>
-                                            <input th:field="*{status}" type="text" id="" class="form-control"
-                                                   placeholder="Active or Inactive">
-                                        </div>
+                                    <div class="col-6 mb-3">
+                                        <form>
+                                            <label for="status" class="form-label">Status</label>
+                                            <select th:field="*{status}" class="form-control" id="status"
+                                                    data-choices
+                                                    data-choices-groups data-placeholder="Select Status"
+                                                    name="choices-single-groups">
+                                                <option value="Active">Active</option>
+                                                <option value="Inactive">Inactive</option>
+                                            </select>
+                                        </form>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="mb-3">
-                                            <button type="submit" class="btn btn-sm btn-primary w-100">Create Category</button>
+                                            <button type="submit" class="btn btn-sm btn-primary w-100">Create Category
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
