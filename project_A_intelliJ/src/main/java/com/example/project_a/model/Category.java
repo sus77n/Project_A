@@ -19,6 +19,9 @@ public class Category {
     @Column
     private String Status;
 
+    @Column
+    private String Description;
+
     //RelationShip
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Product> products = new ArrayList<>();

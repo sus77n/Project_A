@@ -3,6 +3,7 @@ package com.example.project_a.model;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name ="orders")
@@ -12,17 +13,20 @@ public class Order {
     @Column(name = "order_id" ,nullable = false, unique = true)
     private Integer ID;
 
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderDetail> details;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     @Column(length = 15)
-    private  String formOfPayment;
+    private String formOfPayment;
 
     @Column(length = 7)
-    private  String paymentStatus;
+    private String paymentStatus;
 
-    @Column()
+    @Column
     @Temporal(TemporalType.DATE)
     private Date orderDate;
 

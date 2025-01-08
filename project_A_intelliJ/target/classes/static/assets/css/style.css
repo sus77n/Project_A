@@ -78,7 +78,7 @@ ul {
     position: relative;
 }
 .section-title h2,
-.subscribe-content h2,
+.subscribe-content h2
 {
     font-size: 24px;
     line-height: 24px;
@@ -4878,12 +4878,12 @@ a.shipping-calculator-button:hover {
 }
 
 .flash-sale .carousel-control-prev{
-    background-color: none;
+    background-color: transparent;
     opacity: 0;
 }
 
 .flash-sale .carousel-control-next{
-    background-color: none;
+    background-color: transparent;
     opacity: 0;
 }
 

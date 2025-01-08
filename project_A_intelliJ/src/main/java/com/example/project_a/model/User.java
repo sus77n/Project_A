@@ -7,37 +7,37 @@ import jakarta.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false, unique = true)
+    @Column(name = "id", nullable = false, unique = true)
     private Integer ID;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "username", nullable = false, unique = true)
     private String Username;
 
-    @Column(nullable = false, unique = false)
+    @Column(name = "password", nullable = false, unique = false)
     private String Password;
 
-    @Column
+    @Column(name = "gender")
     private String Gender;
 
-    @Column
+    @Column(name = "date_of_birth")
     private String DOB;
 
-    @Column
+    @Column(name = "phone_number")
     private int PhoneNumber;
 
-    @Column
+    @Column(name = "address")
     private String Address;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String Email;
 
-    @Column(columnDefinition = "Active")
+    @Column(name = "status", columnDefinition = "Active")
     private String Status;
 
-    @Column(columnDefinition = "Client")
+    @Column(name = "role", columnDefinition = "Client")
     private String Role;
 
-    @Column
+    @Column(name = "citizen_id")
     private String CitizenID ;
 
 

@@ -20,12 +20,8 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<ProductImage> productImages = new ArrayList<>();
-
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetail> orderDetails;
-
 
     // Other fields and their annotations
     @Column(name = "description")
@@ -38,21 +34,19 @@ public class Product {
     private Integer inStock;
 
     @Column(name = "price")
-    private Integer price;
+    private Double price;
 
-    @Column()
+    @Column(name = "status")
     private String status;
+
+    @Column(name = "product_slider")
+    private String productSlider;
+
+    @OneToOne(mappedBy = "media", cascade = CascadeType.ALL)
+    @Column(name = "thumbnail")
+    private Media thumbnail;
+
     // Getters and Setters
-    // ...
-
-
-    public List<ProductImage> getProductImages() {
-        return productImages;
-    }
-
-    public void setProductImages(List<ProductImage> productImages) {
-        this.productImages = productImages;
-    }
 
     public Integer getProduct_id() {
         return product_id;
@@ -102,7 +96,7 @@ public class Product {
         this.inStock = inStock;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
 
         return price;
     }
@@ -123,7 +117,7 @@ public class Product {
         this.orderDetails = orderDetails;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
     @Override
@@ -145,10 +139,6 @@ public class Product {
         builder.append(price);
         builder.append(", URL=");
         builder.append("\n");
-        for (ProductImage productImage : productImages) {
-           builder.append(productImage.getImageURL());
-           builder.append(", ");
-        }
         builder.append("]");
 
         return builder.toString();

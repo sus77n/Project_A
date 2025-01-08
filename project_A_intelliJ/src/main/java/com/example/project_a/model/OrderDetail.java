@@ -25,7 +25,6 @@ public class OrderDetail {
 
     //Seter Geter
 
-
     public Integer getID() {
         return ID;
     }
