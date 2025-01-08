@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name ="carts")
-public class Cart {
+public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cart_id", nullable = false, unique = true)
@@ -14,6 +14,13 @@ public class Cart {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @Column(name = "product_id")
+    private Product product;
+
+    @Column(name = "quantity")
+    private int quantity;
 
     public Integer getID() {
         return ID;

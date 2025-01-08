@@ -20,13 +20,13 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(length = 15)
+    @Column(name = "form_of_payment", length = 15)
     private String formOfPayment;
 
-    @Column(length = 7)
+    @Column(name = "payment_status", length = 7)
     private String paymentStatus;
 
-    @Column
+    @Column(name = "order_date")
     @Temporal(TemporalType.DATE)
     private Date orderDate;
 

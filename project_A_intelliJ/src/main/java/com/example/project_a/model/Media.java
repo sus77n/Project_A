@@ -13,16 +13,16 @@ public class Media {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Product product;
 
-    @Column(nullable = false)
+    @Column(name = "image_url", nullable = false)
     private String ImageURL;
 
-    @Column
+    @Column(name = "name")
     private String Name;
 
-    @Column
+    @Column(name = "description")
     private String Description;
 
-    @Column
+    @Column(name = "alter")
     private String Alter;
 
     public int getId() {

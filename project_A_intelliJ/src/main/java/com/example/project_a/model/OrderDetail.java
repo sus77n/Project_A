@@ -20,7 +20,7 @@ public class OrderDetail {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @Column(nullable = false)
+    @Column(name = "quantity", nullable = false)
     private  Integer quantity;
 
     //Seter Geter

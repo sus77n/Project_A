@@ -13,13 +13,13 @@ public class Category {
     @Column(nullable = false, unique = true)
     private Integer ID;
 
-    @Column
+    @Column(nullable = false, name = "name")
     private String CategoryName;
 
-    @Column
+    @Column(nullable = false, name = "status")
     private String Status;
 
-    @Column
+    @Column(name = "description")
     private String Description;
 
     //RelationShip
