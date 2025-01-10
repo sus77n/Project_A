@@ -4,7 +4,6 @@
 <body>
 <div class="wrapper">
     <header th:replace="~{admin_layout::topbar}"></header>
-    <div th:replace="~{admin_layout::setting_sidebar}"></div>
     <div th:replace="~{admin_layout::admin_nav}"></div>
 
     <div class="page-content">
@@ -146,7 +145,8 @@
                                         <label for="product-price" class="form-label">Price</label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text fs-20"><i class='bx bx-dollar'></i></span>
-                                            <input th:field="*{price}" type="number" id="product-price" class="form-control"
+                                            <input th:field="*{price}" type="number" id="product-price"
+                                                   class="form-control"
                                                    placeholder="000" value="80">
                                         </div>
                                     </div>
@@ -154,26 +154,27 @@
                                         <label for="product-stock" class="form-label">In stock</label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text fs-20"><i class='bx bx-cart-add'></i></span>
-                                            <input th:field="*{inStock}" type="number" id="product-stock" class="form-control"
+                                            <input th:field="*{inStock}" type="number" id="product-stock"
+                                                   class="form-control"
                                                    placeholder="000"
                                                    value="3">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <label for="product-status" class="form-label">Status</label>
-                                            <select class="form-control" id="product-status" data-choices
-                                                    data-choices-groups data-placeholder="Select status"
-                                                    name="choices-single-groups">
-                                                <option value="">Choose status</option>
-                                                <option
-                                                        th:value="Active"
-                                                        th:field="*{status}">Active
-                                                </option>
-                                                <option
-                                                        th:value="Inactie"
-                                                        th:field="*{status}">Inactive
-                                                </option>
-                                            </select>
+                                        <select class="form-control" id="product-status" data-choices
+                                                data-choices-groups data-placeholder="Select status"
+                                                name="choices-single-groups">
+                                            <option value="">Choose status</option>
+                                            <option
+                                                    th:value="Active"
+                                                    th:field="*{status}">Active
+                                            </option>
+                                            <option
+                                                    th:value="Inactie"
+                                                    th:field="*{status}">Inactive
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

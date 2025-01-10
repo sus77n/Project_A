@@ -71,10 +71,6 @@ public class CategoryController {
         }
         return "redirect:/admin/category/list";
     }
-//    @GetMapping("/admin/category")
-//    public String showCategories(Model model) {
-//        return "redirect:/admin/category/list";
-//    }
 
     @GetMapping("/shop")
     public String showProductPage(Model model) {

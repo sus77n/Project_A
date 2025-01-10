@@ -22,6 +22,12 @@ public class ProductController {
     @Autowired
     private CategoryService categoryService;
 
+    @GetMapping("/admin/product/list")
+    public String ShowPageAdminProduct(Model model) {
+        model.addAttribute("pageTitle", "Product" );
+        return "admin/product-list";
+    }
+
     @GetMapping("/admin/product/add")
     public String showProductForm(Model model) {
         List<Category> categories = categoryService.getAllCategories();
@@ -29,6 +35,16 @@ public class ProductController {
         model.addAttribute("product", new Product());
         return "admin/product-add";
     }
+
+    @GetMapping("/admin/product/details")
+    public String ShowPageAdminProductDetails(Model model) {
+        model.addAttribute("pageTitle", "Product Details" );
+        return "admin/product-details";}
+
+    @GetMapping("/admin/product/edit")
+    public String ShowPageAdminProductEdit(Model model) {
+        model.addAttribute("pageTitle", "Product Edit" );
+        return "admin/product-edit";}
 
     @PostMapping("/product/save")
     public String saveCategory(Product product, RedirectAttributes ra) {
