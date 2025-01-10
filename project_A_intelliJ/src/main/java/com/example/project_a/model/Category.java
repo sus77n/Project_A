@@ -10,14 +10,22 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false, unique = true)
+    @Column(name = "category_id", nullable = false, unique = true)
     private Integer ID;
 
-    @Column(nullable = false, name = "name")
+    @Column(nullable = false)
     private String CategoryName;
 
-    @Column(nullable = false, name = "status")
+    @Column(nullable = false)
     private String Status;
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
 
     @Column(name = "description")
     private String Description;
@@ -51,20 +59,20 @@ public class Category {
     }
 
 
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Category [ID=");
-        builder.append(ID);
-        builder.append(", CategoryName=");
-        builder.append(CategoryName);
-        builder.append(", Product In The Category=");
-        for (Product product : products) {
-            builder.append(product.getName());
-            builder.append(", ");
-        }
-        builder.append("]");
-
-        return builder.toString();
-    }
+//    @Override
+//    public String toString() {
+//        StringBuilder builder = new StringBuilder();
+//        builder.append("Category [ID=");
+//        builder.append(ID);
+//        builder.append(", CategoryName=");
+//        builder.append(CategoryName);
+//        builder.append(", Product In The Category=");
+//        for (Product product : products) {
+//            builder.append(product.getName());
+//            builder.append(", ");
+//        }
+//        builder.append("]");
+//
+//        return builder.toString();
+//    }
 }
