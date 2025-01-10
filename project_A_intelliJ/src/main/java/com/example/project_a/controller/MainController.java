@@ -99,4 +99,5 @@ public class MainController {
         model.addAttribute("pageTitle", "Profile" );
         return "admin/pages-profile";
     }
+
 }

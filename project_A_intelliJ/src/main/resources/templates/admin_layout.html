@@ -187,14 +187,10 @@
 
 
 <div th:fragment="required_script">
-    <script src="../../assets/js/vendor/vendor.js"></script>
-    <script src="../../assets/js/vendor/app.js"></script>
-
-    <!-- Vector Map Js -->
-    <script src="../../assets/vendor/jsvectormap/js/jsvectormap.min.js"></script>
-    <script src="../../assets/vendor/jsvectormap/maps/world-merc.js"></script>
-    <script src="../../assets/vendor/jsvectormap/maps/world.js"></script>
-
-    <!-- Dashboard Js -->
-    <script src="../assets/js/vendor/pages/dashboard.js"></script>
+    <script th:src="@{/assets/js/vendor/vendor.js}" ></script>
+    <script th:src="@{/assets/js/vendor/app.js}" ></script>
+    <script th:src="@{/assets/js/vendor/pages/dashboard.js}" ></script>
+    <script th:src="@{/assets/vendor/jsvectormap/js/jsvectormap.min.js}" ></script>
+    <script th:src="@{/assets/vendor/jsvectormap/maps/world-merc.js}" ></script>
+    <script th:src="@{/assets/vendor/jsvectormap/maps/world.js}" ></script>
 </div>
