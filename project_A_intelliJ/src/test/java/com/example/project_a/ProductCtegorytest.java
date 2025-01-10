@@ -47,7 +47,7 @@ public class ProductCtegorytest {
         product.setName("ShoeCu");
         product.setSummary("ShoeFe");
         product.setDescription("ShoeFe");
-        product.setPrice(6);
+        product.setPrice(6.0);
         product.setInStock(6);
         Iterable<Category> categories = Caterepo.findAll();
         Category category = new Category();

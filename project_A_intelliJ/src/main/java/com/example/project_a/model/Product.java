@@ -42,8 +42,8 @@ public class Product {
     @Column(name = "product_slider")
     private String productSlider;
 
-    @OneToOne(mappedBy = "media", cascade = CascadeType.ALL)
-    @Column(name = "thumbnail")
+    @OneToOne
+    @JoinColumn(name = "thumbnail_id")
     private Media thumbnail;
 
     // Getters and Setters

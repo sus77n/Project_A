@@ -16,7 +16,7 @@ public class CartItem {
     private User user;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "product_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @Column(name = "quantity")
