@@ -97,15 +97,9 @@ public class MainController {
         return "admin/pages-profile";
     }
 
-    @GetMapping("/admin/customer/list")
-    public  String ShowPageAdminCustomerList(Model model) {
-        model.addAttribute("pageTitle", "Customer" );
-        return "admin/customer-list";
-    }
-
     @GetMapping("/admin/customer/details")
     public String ShowPageAdminCustomerDetail(Model model) {
         model.addAttribute("pageTitle", "Customer Details" );
-        return "admin/customer-details";
+        return "admin/customer-detail";
     }
 }
