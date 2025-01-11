@@ -10,7 +10,8 @@ public class Media {
     @Column(nullable = false, unique = true)
     private int id;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne
+    @JoinColumn(name ="product_id")
     private Product product;
 
     @Column(name = "image_url", nullable = false)
@@ -22,7 +23,7 @@ public class Media {
     @Column(name = "description")
     private String Description;
 
-    @Column(name = "alter")
+    @Column()
     private String Alter;
 
     public int getId() {

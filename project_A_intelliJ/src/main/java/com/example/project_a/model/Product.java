@@ -42,7 +42,7 @@ public class Product {
     @Column(name = "product_slider")
     private String productSlider;
 
-    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Media thumbnail;
 
     // Getters and Setters
