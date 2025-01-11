@@ -24,6 +24,7 @@ public class CategoryController {
     @PostMapping("/category/save")
     public String saveCategory(Category category, RedirectAttributes ra) {
         service.save(category);
+
         ra.addFlashAttribute("message", "The category has been saved successfully.");
         return "redirect:/admin/category/list";
     }
@@ -40,8 +41,8 @@ public class CategoryController {
         List<Category> categories = service.getAllCategories();
         model.addAttribute("categories", categories);
         model.addAttribute("pageTitle", "Category");
-        String idcate = "1";
-        model.addAttribute("categoryID",  idcate);
+        String idCate = "1";
+        model.addAttribute("categoryID", idCate);
         return "admin/category-list";
     }
 

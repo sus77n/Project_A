@@ -28,7 +28,7 @@ public class ProductRepositoryTest {
         pro.setName("ShoeCu3");
         pro.setSummary("ShoeFe");
         pro.setDescription("ShoeFe");
-        pro.setPrice(7);
+        pro.setPrice(7.0);
         pro.setInStock(7);
 
         Integer CategoryID = 1;
