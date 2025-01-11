@@ -2,7 +2,6 @@ package com.example.project_a.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,7 +10,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "product_id", nullable = false, unique = true)
-    private Integer ID;
+    private Integer id;
 
     @Column( nullable = false, length = 50)
     private String name;
@@ -48,11 +47,11 @@ public class Product {
     // Getters and Setters
 
     public Integer getProduct_id() {
-        return ID;
+        return id;
     }
 
     public void setProduct_id(Integer product_id) {
-        this.ID = product_id;
+        this.id = product_id;
     }
 
     public String getName() {
@@ -123,11 +122,11 @@ public class Product {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("Product [product_id=");
-        builder.append(ID);
+        builder.append(id);
         builder.append(", name=");
         builder.append(name);
         builder.append(", category=");
-        builder.append(category.getCategoryname());
+        builder.append(category.getCategoryName());
         builder.append(", description=");
         builder.append(description);
         builder.append(", summary=");

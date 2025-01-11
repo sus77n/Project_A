@@ -109,7 +109,7 @@
                                             <option value="">Choose a category</option>
                                             <option th:each="category : ${categories}"
                                                     th:value="${category.ID}"
-                                                    th:text="${category.categoryname}"
+                                                    th:text="${category.categoryName}"
                                                     th:field="*{category}">
 
                                             </option>

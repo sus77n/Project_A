@@ -1,61 +1,64 @@
 package com.example.project_a.model;
+
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name ="categories")
+@Table(name = "categories")
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "category_id", nullable = false, unique = true)
-    private Integer ID;
+    @Column(name = "id", nullable = false, unique = true)
+    private Integer id;
 
     @Column(nullable = false)
-    private String CategoryName;
+    private String categoryName;
 
     @Column(nullable = false)
-    private String Status;
+    private String status;
+
+    @Column()
+    private String description;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Product> products = new ArrayList<>();
+
+    public Category() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
-    @Column()
-    private String Description;
-
-    //RelationShip
-    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Product> products = new ArrayList<>();
-
-    public Integer getID() {
-        return ID;
-    }
-
-    public void setID(Integer ID) {
-        this.ID = ID;
-    }
-
-    public String getCategoryname() {
-        return CategoryName;
-    }
-
-    public void setCategoryname(String categoryName) {
-        CategoryName = categoryName;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 
 
@@ -75,4 +78,5 @@ public class Category {
 //
 //        return builder.toString();
 //    }
+
 }

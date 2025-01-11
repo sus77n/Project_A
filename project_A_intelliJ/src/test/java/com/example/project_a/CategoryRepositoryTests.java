@@ -22,7 +22,7 @@ public class CategoryRepositoryTests {
 
         for (int i = 1; i <= 5; i++) {
             Category category = new Category();
-            category.setCategoryname("Tent"+ i);
+            category.setCategoryName("Tent"+ i);
             category.setStatus("ACTIVE");
 
 
@@ -66,8 +66,8 @@ public class CategoryRepositoryTests {
         Optional<Category> optionalCategory = repo.findById(CategoryID);
         Assertions.assertTrue(optionalCategory.isPresent(), "Category should be present");
         Category category = optionalCategory.get();
-        System.out.println(category.getID());
-        System.out.println(category.getCategoryname());
+        System.out.println(category.getId());
+        System.out.println(category.getCategoryName());
     }
 
     @Test
