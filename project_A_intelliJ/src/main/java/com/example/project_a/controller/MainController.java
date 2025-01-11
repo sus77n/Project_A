@@ -84,11 +84,11 @@ public class MainController {
 //    @GetMapping("/admin/category/edit")
 //    public String ShowPageAdminCategoryEdit() {return "admin/category-edit";}
 
-    @GetMapping("/admin/product/list")
-    public String ShowPageAdminProduct(Model model) {
-        model.addAttribute("pageTitle", "Product" );
-        return "admin/product-list";
-    }
+//    @GetMapping("/admin/product/list")
+//    public String ShowPageAdminProduct(Model model) {
+//        model.addAttribute("pageTitle", "Product" );
+//        return "admin/product-list";
+//    }
 
 //    @GetMapping("/admin/product/grid")
 //    public String ShowPageAdminProductGrid() {return "admin/product-grid";}

@@ -1,50 +1,66 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{admin_layout::admin_head}">
-</head>
+<head th:replace="~{admin_layout::admin_head}"></head>
 <body>
 <div class="wrapper">
+     <header th:replace="~{admin_layout::topbar}"></header>
+     <div th:replace="~{admin_layout::setting_sidebar}"></div>
+     <div th:replace="~{admin_layout::admin_nav}"></div>
 
-<header th:replace="~{admin_layout::topbar}"></header>
-<div th:replace="~{admin_layout::setting_sidebar}"></div>
-<!-- ========== Topbar End ========== -->
-
-<!-- ========== App Menu Start ========== -->
-<div th:replace="~{admin_layout::admin_nav}"></div>
-     <div class="card">
-          <div class="card-header">
-               <h4 class="card-title">General Information</h4>
-          </div>
-          <div class="card-body">
+     <div class="page-content">
+          <div class="container-xxl">
                <div class="row">
-                    <form th:action="@{/update/{id}(id=${updatedCategory.ID})}" method="post"
-                          th:object="${updatedCategory}">
-                         <div class="col-lg-6">
-                              <div class="mb-3">
-                                   <label for="category-title" class="form-label">Category Name</label>
-                                   <input th:field="*{categoryname}" type="text"  id="category-title"
-                                          class="form-control" placeholder="Enter Category Name">
+                    <div class="col-12">
+                         <div class="card">
+                              <div class="card-header">
+                                   <h4 class="card-title">General Information</h4>
                               </div>
-                         </div>
+                              <div class="card-body">
+                                   <div class="row">
+                                        <form th:action= "@{/admin/Category/update/{id}(id=${category.ID})}" method="post" th:object="${category}" class="row">
+                                             <div class="col-6">
+                                                  <div class="mb-3">
+                                                       <label for="category-title" class="form-label">Category Name</label>
+                                                       <input th:field="*{categoryname}" type="text" id="category-title"
+                                                              class="form-control" placeholder="Enter Category Name">
+                                                  </div>
+                                             </div>
 
-                         <div class="col-lg-6">
-                              <div class="mb-3">
-                                   <label for="" class="form-label">Status</label>
-                                   <input th:field="*{status}" type="text" id="" class="form-control"
-                                          placeholder="Active or Inactive">
-                              </div>
-                         </div>
+                                             <div class="col-6 mb-3">
+                                                  <label for="status" class="form-label">Status</label>
+                                                  <select th:field="*{status}" class="form-control" id="status"
+                                                          data-choices
+                                                          data-choices-groups data-placeholder="Select Status"
+                                                          name="choices-single-groups">
+                                                       <option value="Active">Active</option>
+                                                       <option value="Inactive">Inactive</option>
+                                                  </select>
+                                             </div>
 
-                         <div class="col-lg-6">
-                              <div class="mb-3">
-                                   <button type="submit" class="btn btn-sm btn-primary w-100">Save change</button>
+                                             <div class="col-6">
+                                                  <div class="mb-3">
+                                                       <label for="category-title" class="form-label">Category Depcrip</label>
+                                                       <input th:field="*{description}" type="text" id="title"
+                                                              class="form-control" placeholder="Enter Category Name">
+                                                  </div>
+                                             </div>
+
+                                             <div class="col-lg-12">
+                                                  <div class="mb-3">
+                                                       <button type="submit" class="btn btn-sm btn-primary w-100">Save Change
+                                                       </button>
+                                                  </div>
+                                             </div>
+                                        </form>
+                                   </div>
                               </div>
                          </div>
-                    </form>
+                    </div>
                </div>
           </div>
      </div>
-<div th:replace="admin_layout::required_script"></div>
 </div>
+
+<div th:replace="admin_layout::required_script"></div>
 </body>
 </html>

@@ -11,9 +11,9 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "product_id", nullable = false, unique = true)
-    private Integer product_id;
+    private Integer ID;
 
-    @Column(name = "name", nullable = false, length = 50)
+    @Column( nullable = false, length = 50)
     private String name;
 
     @ManyToOne
@@ -42,18 +42,17 @@ public class Product {
     @Column(name = "product_slider")
     private String productSlider;
 
-    @OneToOne(mappedBy = "media", cascade = CascadeType.ALL)
-    @Column(name = "thumbnail")
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
     private Media thumbnail;
 
     // Getters and Setters
 
     public Integer getProduct_id() {
-        return product_id;
+        return ID;
     }
 
     public void setProduct_id(Integer product_id) {
-        this.product_id = product_id;
+        this.ID = product_id;
     }
 
     public String getName() {
@@ -124,7 +123,7 @@ public class Product {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("Product [product_id=");
-        builder.append(product_id);
+        builder.append(ID);
         builder.append(", name=");
         builder.append(name);
         builder.append(", category=");
