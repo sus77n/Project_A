@@ -8,141 +8,141 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer ID;
+    private Integer id;
 
     @Column(name = "username", nullable = false, unique = true)
-    private String Username;
+    private String username;
 
     @Column(name = "password", nullable = false, unique = false)
-    private String Password;
+    private String password;
 
     @Column(name = "gender")
-    private String Gender;
+    private String gender;
 
     @Column(name = "date_of_birth")
-    private String DOB;
+    private String dateOfBirth;
 
     @Column(name = "phone_number")
-    private int PhoneNumber;
+    private int phoneNumber;
 
     @Column(name = "address")
-    private String Address;
+    private String address;
 
     @Column(name = "email", nullable = false, unique = true)
-    private String Email;
+    private String email;
 
-    @Column(name = "status", columnDefinition = "Active")
-    private String Status;
+    @Column(name = "status")
+    private String status = "Active";
 
-    @Column(name = "role", columnDefinition = "Client")
-    private String Role;
+    @Column(name = "role")
+    private String role = "Client";
 
     @Column(name = "citizen_id")
-    private String CitizenID ;
+    private String citizenId;
 
 
-    public Integer getID() {
-        return ID;
+    public Integer getId() {
+        return id;
     }
 
-    public void setID(Integer ID) {
-        this.ID = ID;
+    public void setId(Integer ID) {
+        this.id = ID;
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public String getGender() {
-        return Gender;
+        return gender;
     }
 
     public void setGender(String gender) {
-        Gender = gender;
+        this.gender = gender;
     }
 
-    public String getDOB() {
-        return DOB;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDOB(String DOB) {
-        this.DOB = DOB;
+    public void setDateOfBirth(String DOB) {
+        this.dateOfBirth = DOB;
     }
 
     public int getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(int phoneNumber) {
-        PhoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 
     public String getRole() {
-        return Role;
+        return role;
     }
 
     public void setRole(String role) {
-        Role = role;
+        this.role = role;
     }
 
-    public String getCitizenID() {
-        return CitizenID;
+    public String getCitizenId() {
+        return citizenId;
     }
 
-    public void setCitizenID(String citizenID) {
-        CitizenID = citizenID;
+    public void setCitizenId(String citizenID) {
+        this.citizenId = citizenID;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "ID=" + ID +
-                ", Username='" + Username + '\'' +
-                ", Password='" + Password + '\'' +
-                ", Gender='" + Gender + '\'' +
-                ", DOB='" + DOB + '\'' +
-                ", PhoneNumber=" + PhoneNumber +
-                ", Address='" + Address + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Status='" + Status + '\'' +
-                ", Role='" + Role + '\'' +
-                ", CitizenID='" + CitizenID + '\'' +
+                "ID=" + id +
+                ", Username='" + username + '\'' +
+                ", Password='" + password + '\'' +
+                ", Gender='" + gender + '\'' +
+                ", DOB='" + dateOfBirth + '\'' +
+                ", PhoneNumber=" + phoneNumber +
+                ", Address='" + address + '\'' +
+                ", Email='" + email + '\'' +
+                ", Status='" + status + '\'' +
+                ", Role='" + role + '\'' +
+                ", CitizenID='" + citizenId + '\'' +
                 '}';
     }
 }

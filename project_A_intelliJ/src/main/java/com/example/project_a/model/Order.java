@@ -82,7 +82,7 @@ public class Order {
         builder.append(", formOfPayment=");
         builder.append(formOfPayment);
         builder.append(", client id=");
-        builder.append(user.getID());
+        builder.append(user.getId());
         builder.append(", paymentStatus=");
         builder.append(paymentStatus);
         builder.append(", orderDate=");

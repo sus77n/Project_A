@@ -19,21 +19,21 @@ public class UserRepositoryTests {
     @Test
     public void AddNewUser() {
         User user = new User();
-        user.setID(34);
+        user.setId(34);
         user.setUsername("New6");
         user.setPassword("456789");
         user.setGender("Meo");
-        user.setDOB("5/5/2005");
+        user.setDateOfBirth("5/5/2005");
         user.setPhoneNumber(923654787);
         user.setAddress("KhuOChuot Dinh Hoa");
         user.setEmail("absdsac@gmail.com");
         user.setStatus("Active");
         user.setRole("Admin");
-        user.setCitizenID("1465131");
+        user.setCitizenId("1465131");
 
         User savedUser = repo.save(user);
         Assertions.assertNotNull(savedUser);
-        Assertions.assertTrue(savedUser.getID() > 0, "User ID should be greater than 0");
+        Assertions.assertTrue(savedUser.getId() > 0, "User ID should be greater than 0");
 
 
     }

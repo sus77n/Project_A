@@ -58,9 +58,6 @@ public class MainController {
     @GetMapping("/login")
     public String ShowPageLogin() {return "shop/login";}
 
-    @GetMapping("/register")
-    public String ShowPageRegister() {return "shop/register";}
-
     @GetMapping("/wishlist")
     public String ShowPageWishlist() {return "shop/wishlist";}
 
@@ -100,4 +97,15 @@ public class MainController {
         return "admin/pages-profile";
     }
 
+    @GetMapping("/admin/customer/list")
+    public  String ShowPageAdminCustomerList(Model model) {
+        model.addAttribute("pageTitle", "Customer" );
+        return "admin/customer-list";
+    }
+
+    @GetMapping("/admin/customer/details")
+    public String ShowPageAdminCustomerDetail(Model model) {
+        model.addAttribute("pageTitle", "Customer Details" );
+        return "admin/customer-details";
+    }
 }
