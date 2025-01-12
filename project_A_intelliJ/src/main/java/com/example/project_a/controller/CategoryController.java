@@ -76,8 +76,8 @@ public class CategoryController {
         return "shop/shop-list";
     }
 
-    @GetMapping("admin/category/status/change/{id}")
-    public String changeCategoryStatus(@PathVariable("id") String id, RedirectAttributes redirectAttributes) {
+    @GetMapping("admin/category/status/change")
+    public String changeCategoryStatus(@RequestParam("id") String id, RedirectAttributes redirectAttributes) {
         try {
             // Find the category by ID
             Category category = service.findCategoryById(Integer.parseInt(id));
