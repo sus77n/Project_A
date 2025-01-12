@@ -54,4 +54,15 @@ public class Media {
     public void setAlt(String alter) {
         this.alt = alter;
     }
+
+    @Override
+    public String toString() {
+        return "Media{" +
+                "id=" + id +
+                ", product=" + product +
+                ", imageURL='" + imageURL + '\'' +
+                ", name='" + name + '\'' +
+                ", alt='" + alt + '\'' +
+                '}';
+    }
 }
