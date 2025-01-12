@@ -158,18 +158,19 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
+                                        <tr  th:each="order: ${orders}">
                                             <td>
-                                                #583488/80
+                                                <span th:text="${order.ID}"></span>
                                             </td>
-                                            <td>Apr 23 , 2024</td>
+                                            <td><span th:text="${order.orderDate}"></span></td>
                                             <td>
-                                                <a href="#!" class="link-primary fw-medium">Gail C. Anderson</a>
+<!--                                            <a href="#!" class="link-primary fw-medium">Gail C. Anderson</a>-->
+                                                <span th:text="${order.user.username}"></span>
                                             </td>
-                                            <td> $1,230.00</td>
-                                            <td> 4</td>
-                                            <td><span class="badge bg-light text-dark  px-2 py-1 fs-13">Unpaid</span></td>
-                                            <td>Cash</td>
+                                            <td> $<span th:text="${order.ID}"></span></td>
+                                            <td><span th:text="${order.getNumeberOfItems()}"></span></td>
+                                            <td><span class="badge bg-light text-dark  px-2 py-1 fs-13" th:text="${order.paymentStatus}"></span></td>
+                                            <td><span th:text="${order.formOfPayment}"></span></td>
                                             <td>
                                                 <div class="d-flex gap-2">
 <!--                                                    <a href="#!" class="btn btn-light btn-sm">-->
