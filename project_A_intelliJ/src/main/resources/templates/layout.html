@@ -47,7 +47,6 @@
                     <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 col-5">
                         <div class="logo">
                             <a th:href="@{/home}"><img th:src="@{/assets/img/logo/logo.png}" alt="outstride"></a>
-
                         </div>
                     </div>
                     <!-- Logo End Here -->
@@ -63,10 +62,7 @@
                                             <!--  Mega-Menu Start -->
                                                 <ul class="ht-dropdown megamenu-three d-flex">
                                                     <!-- Single Column Start -->
-                                                    <li th:each="category : ${categories}">
-                                                        <ul>
-                                                            <li class="menu-title" th:text="${category.categoryname}"></li>
-                                                        </ul>
+                                                    <li th:each="category : ${categories}" th:text="${category.categoryname}">
                                                     </li>
                                                     <!-- Single Column End -->
                                                 </ul>
