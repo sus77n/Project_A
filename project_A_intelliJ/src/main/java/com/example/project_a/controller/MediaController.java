@@ -33,7 +33,7 @@ public class MediaController {
     @PostMapping("/upload")
     public ResponseEntity<?> uploadFile(
             @RequestParam("file") MultipartFile file,
-            @RequestParam(value = "alt", required = false) String alt,
+            @RequestParam("alt") String alt,
             Model model
     ) {
         if (file.isEmpty()) {
@@ -63,6 +63,7 @@ public class MediaController {
             model.addAttribute("media", media);
 
             System.out.println("this is fileName: " + fileName);
+            System.out.println("this is media: " + media.toString());
             return ResponseEntity.ok(media);
         } catch (IOException e) {
             e.printStackTrace();
