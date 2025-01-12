@@ -15,16 +15,13 @@ public class Media {
     private Product product;
 
     @Column(name = "image_url", nullable = false)
-    private String ImageURL;
+    private String imageURL;
 
     @Column(name = "name")
-    private String Name;
+    private String name;
 
-    @Column(name = "description")
-    private String Description;
-
-    @Column()
-    private String Alter;
+    @Column(name = "alt")
+    private String alt;
 
     public int getId() {
         return id;
@@ -35,34 +32,26 @@ public class Media {
     }
 
     public String getImageURL() {
-        return ImageURL;
+        return imageURL;
     }
 
     public void setImageURL(String imageURL) {
-        ImageURL = imageURL;
+        this.imageURL = imageURL;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
-    public String getDescription() {
-        return Description;
+    public String getAlt() {
+        return alt;
     }
 
-    public void setDescription(String description) {
-        Description = description;
-    }
-
-    public String getAlter() {
-        return Alter;
-    }
-
-    public void setAlter(String alter) {
-        Alter = alter;
+    public void setAlt(String alter) {
+        this.alt = alter;
     }
 }

@@ -28,8 +28,8 @@ public class CategoryController {
         return "redirect:/admin/category/list";
     }
 
-    @GetMapping("/admin/category/delete/{id}")
-    public String deleteCategory(@PathVariable("id") String id , RedirectAttributes ra) {
+    @GetMapping("/admin/category/delete")
+    public String deleteCategory(@RequestParam("id") String id , RedirectAttributes ra) {
         service.deleteCategoryById(Integer.parseInt(id));
         ra.addFlashAttribute("message", "The category has been deleted successfully.");
         return "redirect:/admin/category/list";
@@ -40,8 +40,6 @@ public class CategoryController {
         List<Category> categories = service.getAllCategories();
         model.addAttribute("categories", categories);
         model.addAttribute("pageTitle", "Category");
-        String idCate = "1";
-        model.addAttribute("categoryID", idCate);
         return "admin/category-list";
     }
 

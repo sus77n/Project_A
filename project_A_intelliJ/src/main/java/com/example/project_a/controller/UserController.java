@@ -42,6 +42,7 @@ public class UserController {
     public String showCustomer(Model model) {
         List<User> users = service.getAllUsers();
         model.addAttribute("users", users);
+        model.addAttribute("pageTitle", "Customer List");
         return "admin/customer-list";
     }
 
