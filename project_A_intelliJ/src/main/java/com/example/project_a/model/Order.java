@@ -33,6 +33,10 @@ public class Order {
     public Integer getID() {
         return ID;
     }
+    public Integer getNumeberOfItems() {
+        return 15;
+    }
+
 
     public void setID(Integer ID) {
         this.ID = ID;

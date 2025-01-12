@@ -76,4 +76,18 @@ public class CategoryController {
         return "shop/shop-list";
     }
 
+    @GetMapping("admin/category/status/change/{id}")
+    public String changeCategoryStatus(@PathVariable("id") String id, RedirectAttributes redirectAttributes) {
+        try {
+            // Find the category by ID
+            Category category = service.findCategoryById(Integer.parseInt(id));
+            category.setStatus(category.getStatus().equals("Active") ? "Inactive" : "Active");
+            service.save(category);
+
+            redirectAttributes.addFlashAttribute("successMessage", "Category status changed successfully!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Error changing category status: " + e.getMessage());
+        }
+        return "redirect:/admin/category/list";
+    }
 }
