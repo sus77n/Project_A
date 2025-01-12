@@ -39,7 +39,7 @@ public class CategoryService {
                 .orElseThrow(() -> new IllegalArgumentException("Category not found with ID: " + id));
 
         // Update the fields of the existing category
-        category.setCategoryname(updatedCategory.getCategoryname());
+        category.setCategoryName(updatedCategory.getCategoryName());
         category.setDescription(updatedCategory.getDescription());
         category.setStatus(updatedCategory.getStatus());
 

@@ -21,10 +21,9 @@ public class CategoryController {
         return "admin/category-add";
     }
 
-    @PostMapping("/category/save")
+    @PostMapping("/admin/category/save")
     public String saveCategory(Category category, RedirectAttributes ra) {
         service.save(category);
-
         ra.addFlashAttribute("message", "The category has been saved successfully.");
         return "redirect:/admin/category/list";
     }

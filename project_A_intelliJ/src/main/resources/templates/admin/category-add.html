@@ -16,11 +16,11 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <form th:action="@{/category/save}" method="post" th:object="${category}" class="row">
+                                <form th:action="@{/admin/category/save}" method="post" th:object="${category}" class="row">
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label for="category-title" class="form-label">Category Name</label>
-                                            <input th:field="*{categoryname}" type="text" id="category-title"
+                                            <input th:field="*{categoryName}" type="text" id="category-title"
                                                    class="form-control" placeholder="Enter Category Name">
                                         </div>
                                     </div>
