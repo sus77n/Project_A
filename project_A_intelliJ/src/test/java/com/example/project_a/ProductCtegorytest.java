@@ -55,10 +55,10 @@ public class ProductCtegorytest {
             category = categoryForEach;
         }
         product.setCategory(category);
-
+        System.out.println(category);
         Product savedProduct = repo.save(product);
         Assertions.assertNotNull(savedProduct);
-        Assertions.assertTrue(savedProduct.getProduct_id() > 0, "User ID should be greater than 0");
+        Assertions.assertTrue(savedProduct.getId() > 0, "User ID should be greater than 0");
 
     }
 

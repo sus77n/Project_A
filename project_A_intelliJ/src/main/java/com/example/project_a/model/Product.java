@@ -1,11 +1,17 @@
 package com.example.project_a.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name ="products")
+@ToString(exclude = {"thumbnail", "orderDetails"})
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,74 +52,6 @@ public class Product {
 
     // Getters and Setters
 
-    public Integer getProduct_id() {
-        return id;
-    }
-
-    public void setProduct_id(Integer product_id) {
-        this.id = product_id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public Integer getInStock() {
-        return inStock;
-    }
-
-    public void setInStock(Integer inStock) {
-        this.inStock = inStock;
-    }
-
-    public Double getPrice() {
-
-        return price;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public List<OrderDetail> getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void setOrderDetails(List<OrderDetail> orderDetails) {
-        this.orderDetails = orderDetails;
-    }
 
     public void setPrice(Double price) {
         this.price = price;

@@ -11,7 +11,8 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
-    @Autowired private ProductRepository productRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
     public List<Product> getAllProducts() {
         return (List<Product>) productRepository.findAll();
@@ -34,4 +35,18 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
+    public void updateProduct(Product newProduct) {
+        Product product = productRepository.findById(newProduct.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Product not found with ID: " + newProduct.getId()));
+
+        product.setName(newProduct.getName());
+        product.setPrice(newProduct.getPrice());
+        product.setDescription(newProduct.getDescription());
+        product.setInStock(newProduct.getInStock());
+        product.setStatus(newProduct.getStatus());
+        product.setCategory(newProduct.getCategory());
+        product.setSummary(newProduct.getSummary());
+
+        productRepository.save(product);
+    }
 }
