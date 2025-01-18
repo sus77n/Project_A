@@ -76,8 +76,6 @@ public class MainController {
         return "admin/index";
     }
 
-
-
     @GetMapping("/admin/order/details")
     public String ShowPageAdminOrderDetail(Model model) {
         model.addAttribute("pageTitle", "Order Details" );

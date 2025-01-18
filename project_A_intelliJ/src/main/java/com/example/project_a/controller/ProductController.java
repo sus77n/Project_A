@@ -90,4 +90,12 @@ public class ProductController {
         return "redirect:/admin/product/list";
     }
 
+    @GetMapping("/shop")
+    public String showProductPage(Model model) {
+        List<Category> categories = categoryService.getAllCategories();
+        List<Product> products = service.getAllProducts();
+        model.addAttribute("categories", categories);
+        model.addAttribute("products", products);
+        return "shop/shop-list";
+    }
 }
