@@ -1,6 +1,8 @@
 package com.example.project_a.model;
 
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name ="users")
@@ -39,6 +41,13 @@ public class User {
 
     @Column(name = "citizen_id")
     private String citizenId;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Cart> carts;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Order> orders;
+
 
 
     public Integer getId() {

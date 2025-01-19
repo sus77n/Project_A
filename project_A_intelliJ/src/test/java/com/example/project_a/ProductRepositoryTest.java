@@ -25,7 +25,7 @@ public class ProductRepositoryTest {
     @Test
     public void AddNewProduct() {
         Product pro = new Product();
-        pro.setName("ShoeCu3");
+        pro.setName("ShoeCu5");
         pro.setSummary("ShoeFe");
         pro.setDescription("ShoeFe");
         pro.setPrice(7.0);

@@ -11,13 +11,13 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "order_id" ,nullable = false, unique = true)
-    private Integer ID;
+    private Integer id;
 
     @OneToMany(mappedBy = "order",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetail> details;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "id")
     private User user;
 
     @Column(name = "form_of_payment", length = 15)
@@ -31,7 +31,7 @@ public class Order {
     private Date orderDate;
 
     public Integer getID() {
-        return ID;
+        return id;
     }
     public Integer getNumeberOfItems() {
         return 15;
@@ -39,7 +39,7 @@ public class Order {
 
 
     public void setID(Integer ID) {
-        this.ID = ID;
+        this.id = ID;
     }
 
     public User getUser() {
@@ -82,7 +82,7 @@ public class Order {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("Order [ID=");
-        builder.append(ID);
+        builder.append(id);
         builder.append(", formOfPayment=");
         builder.append(formOfPayment);
         builder.append(", client id=");

@@ -38,45 +38,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr th:each="cart : ${carts}">
                                             <td class="product-thumbnail">
                                                 <a href="#"><img src="assets/img/products/p3.jpg" alt="cart-image" /></a>
                                             </td>
-                                            <td class="product-name"><a th:href="@{/product-detail}">summer dress</a></td>
-                                            <td class="product-price"><span class="amount">£165.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£165.00</td>
-                                            <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="assets/img/products/p6.jpg" alt="cart-image" /></a>
-                                            </td>
-                                            <td class="product-name"><a th:href="@{/product-detail}">Printed Winter collection</a></td>
-                                            <td class="product-price"><span class="amount">£50.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£50.00</td>
-                                            <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="assets/img/products/p2.jpg" alt="cart-image" /></a>
-                                            </td>
-                                            <td class="product-name"><a th:href="@{/product-detail}">awesome bag</a></td>
-                                            <td class="product-price"><span class="amount">£165.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£165.00</td>
-                                            <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="assets/img/products/p1.jpg" alt="cart-image" /></a>
-                                            </td>
-                                            <td class="product-name"><a th:href="@{/product-detail}">trolley bags</a></td>
-                                            <td class="product-price"><span class="amount">£50.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£50.00</td>
-                                            <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+                                            <td class="product-name"><a th:href="@{/product-detail}"><span  th:text="${cart.product.name}"></span></a></td>
+                                            <td class="product-price"> <span  th:text="'£' + ${cart.product.price}"></span></td>
+                                            <td class="product-quantity"><input type="number" th:value="${cart.quantity}" /> </td>
+                                            <td class="product-subtotal"><span  th:text="'£' + ${cart.GetTotal()}"></span></td>
+                                            <td class="product-remove"> <a th:href="@{/cart/delete(id=${cart.id})}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -100,18 +70,18 @@
                                             <tbody>
                                                 <tr class="cart-subtotal">
                                                     <th>Subtotal</th>
-                                                    <td><span class="amount">$215.00</span></td>
+                                                    <td><span class="amount" th:text="'$' + ${total}"></span></td>
                                                 </tr>
                                                 <tr class="order-total">
                                                     <th>Total</th>
                                                     <td>
-                                                        <strong><span class="amount">$215.00</span></strong>
+                                                        <strong><span class="amount"  th:text="'$' + ${total}"></span></strong>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                         <div class="wc-proceed-to-checkout">
-                                            <a href="#">Proceed to Checkout</a>
+                                            <a th:href="@{/checkout}">Proceed to Checkout</a>
                                         </div>
                                     </div>
                                 </div>

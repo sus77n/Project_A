@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name ="products")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id", nullable = false, unique = true)
     private Integer id;
 
@@ -44,7 +44,20 @@ public class Product {
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Media thumbnail;
 
+
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Cart> carts;
+
     // Getters and Setters
+
+    public List<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<Cart> carts) {
+        this.carts = carts;
+    }
 
     public Integer getProduct_id() {
         return id;
