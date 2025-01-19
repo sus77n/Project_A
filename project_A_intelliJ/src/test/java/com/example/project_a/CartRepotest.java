@@ -46,47 +46,10 @@ public class CartRepotest {
 
         Cart savedCart = repo.save(cart);
         Assertions.assertNotNull(savedCart);
-        System.out.println(product.getProduct_id());
+        System.out.println(product.getId());
         System.out.println(product.getName());
 
 
     }
-
-//    @Test
-//    public void testListAllCategories() {
-//        Iterable<Category> categories = repo.findAll();
-//        Assertions.assertTrue(categories.iterator().hasNext(), "Users collection should contain at least one user");
-//
-//        for (Category category : categories) {
-//            System.out.println(category);
-//        }
-//    }
-
-//    @Test
-//    public void testUdateCategory() {
-//        Integer CategoryID = 1;
-//        Optional<Category> optionalCategory = repo.findById(CategoryID);
-//        Category category = optionalCategory.get();
-//        category.setStatus("Disable");
-//
-//        repo.save(category);
-//    }
-//    @Test
-//    public void testGetCategory() {
-//        Integer CategoryID = 2;
-//        Optional<Category> optionalCategory = repo.findById(CategoryID);
-//        Assertions.assertTrue(optionalCategory.isPresent(), "Category should be present");
-//        Category category = optionalCategory.get();
-//        System.out.println(category.getId());
-//        System.out.println(category.getCategoryName());
-//    }
-
-//    @Test
-//    public void testDeleteCategory() {
-//        Integer CategoryID = 1;
-//        repo.deleteById(CategoryID);
-//        Optional deletedUser = repo.findById(CategoryID);
-//        Assertions.assertFalse(deletedUser.isPresent() , "User should be null");
-//    }
 
 }

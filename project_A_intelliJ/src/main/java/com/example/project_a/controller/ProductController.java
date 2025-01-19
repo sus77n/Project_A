@@ -1,8 +1,10 @@
 package com.example.project_a.controller;
 
 import com.example.project_a.model.Category;
+import com.example.project_a.model.Media;
 import com.example.project_a.model.Product;
 import com.example.project_a.service.CategoryService;
+import com.example.project_a.service.MediaService;
 import com.example.project_a.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,6 +23,8 @@ public class ProductController {
     private ProductService service;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private MediaService mediaService;
 
     @GetMapping("/admin/product/list")
     public String ShowPageAdminProduct(Model model) {
@@ -47,7 +51,7 @@ public class ProductController {
     }
 
     @GetMapping("/admin/product/edit")
-    public String editCategory(@RequestParam String productId, Model model) {
+    public String editProduct(@RequestParam String productId, Model model) {
         Product product = service.findProductById(Integer.parseInt(productId));
         List<Category> categories = categoryService.getAllCategories();
         categories.remove(product.getCategory());
@@ -58,22 +62,36 @@ public class ProductController {
     }
 
     @PostMapping("/admin/product/save")
-    public String saveCategory(Product product, @RequestParam String categoryId, RedirectAttributes ra) {
+    public String saveProduct(Product product, @RequestParam String categoryId,
+                              @RequestParam("thumbnailName") String thumbnailName,
+                              @RequestParam("mediaAlt") String mediaAlt,
+                              @RequestParam("mediaAlt") String mediaName,
+                              RedirectAttributes ra) {
+        Media media = new Media();
+        media.setName(mediaName);
+        media.setAlt(mediaAlt);
+        media.setImageURL(mediaService.getFileUrl(thumbnailName));
+        mediaService.save(media);
+
         Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
         product.setCategory(category);
+        product.setThumbnail(media);
         service.save(product);
+
+
+
         ra.addFlashAttribute("message", "The product has been saved successfully.");
         return "redirect:/admin/product/list";
     }
 
     @PostMapping("/admin/product/delete")
-    public String deleteCategory(@RequestParam String productId, RedirectAttributes ra) {
+    public String deleteProduct(@RequestParam String productId, RedirectAttributes ra) {
         service.deleteProductById(Integer.parseInt(productId));
         return "redirect:/admin/product/list";
     }
 
     @PostMapping("/admin/product/edit")
-    public String editProduct(@RequestParam Integer categoryId ,Product product, RedirectAttributes ra) {
+    public String editProduct(@RequestParam Integer categoryId, Product product, RedirectAttributes ra) {
         Category category = categoryService.findCategoryById(categoryId);
         product.setCategory(category);
         service.updateProduct(product);

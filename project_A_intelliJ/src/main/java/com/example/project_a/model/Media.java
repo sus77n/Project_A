@@ -1,7 +1,11 @@
 package com.example.project_a.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "media")
 public class Media {
@@ -10,8 +14,7 @@ public class Media {
     @Column(nullable = false, unique = true)
     private int id;
 
-    @OneToOne
-    @JoinColumn(name ="product_id")
+    @OneToOne(mappedBy = "thumbnail", optional = false)
     private Product product;
 
     @Column(name = "image_url", nullable = false)
@@ -22,38 +25,6 @@ public class Media {
 
     @Column(name = "alt")
     private String alt;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getImageURL() {
-        return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAlt() {
-        return alt;
-    }
-
-    public void setAlt(String alter) {
-        this.alt = alter;
-    }
 
     @Override
     public String toString() {

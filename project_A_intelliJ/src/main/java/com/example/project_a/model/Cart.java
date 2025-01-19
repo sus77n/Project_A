@@ -12,7 +12,7 @@ public class Cart {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name ="id")
+    @JoinColumn(name ="user_id")
     private User user;
 
     @ManyToOne(cascade = CascadeType.ALL)
