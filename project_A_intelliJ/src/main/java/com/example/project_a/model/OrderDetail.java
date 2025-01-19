@@ -58,15 +58,4 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("OrderDetail [ID=");
-        builder.append(ID);
-        builder.append(", orderID=");
-        builder.append(order.getID());
-        builder.append(", productID=");
-        builder.append(product.getProduct_id());
-        return builder.toString();
-    }
 }

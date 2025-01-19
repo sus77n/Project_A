@@ -1,11 +1,17 @@
 package com.example.project_a.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name ="products")
+@ToString(exclude = {"thumbnail", "orderDetails"})
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,6 +56,7 @@ public class Product {
     private List<Cart> carts;
 
     // Getters and Setters
+
 
     public List<Cart> getCarts() {
         return carts;
@@ -127,6 +134,7 @@ public class Product {
     public void setOrderDetails(List<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
     }
+
 
     public void setPrice(Double price) {
         this.price = price;

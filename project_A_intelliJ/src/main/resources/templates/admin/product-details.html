@@ -54,11 +54,11 @@
                           <div class="card">
                                <div class="card-body">
                                     <p class="mb-1">
-                                         <a href="#!" class="fs-24 text-dark fw-medium">Men Black Slim Fit T-shirt</a>
+                                         <a href="#!" class="fs-24 text-dark fw-medium" th:text="${product.name}"></a>
                                     </p>
-                                    <h2 class="fw-medium my-3">$80.00 </h2>
+                                    <h2 class="fw-medium my-3" th:text="'$' + ${product.price}"></h2>
                                     <div class="quantity mt-4">
-                                         <h4 class="text-dark fw-medium mt-3">In stock : 100</h4>
+                                         <h4 class="text-dark fw-medium mt-3" th:text="'In stock: ' + ${product.inStock}"></h4>
                                     </div>
                                     <ul class="d-flex flex-column gap-2 list-unstyled fs-15 my-3">
                                          <li>
@@ -66,9 +66,9 @@
                                          </li>
                                     </ul>
                                     <h4 class="text-dark fw-medium">Description :</h4>
-                                    <p class="text-muted">Top in sweatshirt fabric made from a cotton blend with a soft brushed inside. Relaxed fit with dropped shoulders, long sleeves and ribbing around the neckline, cuffs and hem. Small metal text applique. ith dropped shoulders, long sleeves and ribbing around the neckline, cuffs and hem. Small metal text applique.</p>
+                                    <p class="text-muted" th:text="${product.description}"></p>
                                     <h4 class="text-dark fw-medium">Summary :</h4>
-                                    <p class="text-muted">Top in sweatshirt fabric made from a cotton blend with a soft brushed sSmall metal text applique. ith dropped shoulders, long sleeves and ribbing around the neckline, cuffs and hem. Small metal text applique.</p>
+                                    <p class="text-muted" th:text="${product.summary}"></p>
                                </div>
                           </div>
                      </div>

@@ -12,9 +12,6 @@ public class MainController {
 
     @GetMapping("/home")
     public String showIndexPage() {return "shop/index-2";}
-    
-//    @GetMapping("/shop")
-//    public String showProductPage() {return "shop/shop-list";}
 
     @GetMapping("/blog")
     public String showBlogPage() {return "shop/blog";}
@@ -76,8 +73,6 @@ public class MainController {
         model.addAttribute("pageTitle", "Welcome" );
         return "admin/index";
     }
-
-
 
     @GetMapping("/admin/order/details")
     public String ShowPageAdminOrderDetail(Model model) {

@@ -42,7 +42,12 @@
                                     <tr th:each="category, stat : ${categories}">
                                         <td th:text="${category.categoryName}"></td>
                                         <td th:text="${category.id}"></td>
-                                        <td th:text="${category.status}"></td>
+                                        <td>
+                                            <span class="badge p-1 fs-12 me-1"
+                                                  th:classappend="${category.status} == 'Active' ? 'text-success bg-success-subtle' : 'text-danger bg-danger-subtle'"
+                                                  th:text="${category.status}"
+                                            ></span>
+                                        </td>
                                         <td th:text="${category.description}"></td>
                                         <td>
                                             <div class="d-flex gap-2">
@@ -91,7 +96,7 @@
                                                                 <!-- Conditional Button Text and Link -->
                                                                 <a th:href="@{/admin/category/status/change(id=${category.id})}"
                                                                    id="confirmStatusChangeButton"
-                                                                   th:classappend="${category.getStatus().equals('Active') ? 'btn-danger' : 'btn-success'}"
+                                                                   th:classappend="${category.getStatus().equals('Active') ? 'btn btn-danger' : 'btn btn-success'}"
                                                                    th:text="${category.getStatus().equals('Active') ? 'Yes, Make Inactive' : 'Yes, Make Active'}">
                                                                 </a>
                                                             </div>

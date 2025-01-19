@@ -16,10 +16,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests()
-                .anyRequest().permitAll() // Allow unrestricted access to all endpoints
-                .and()
-                .csrf().disable(); // Disable CSRF for unrestricted POST requests
+                .csrf().disable() // Disable CSRF (not recommended for production apps)
+                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
 
         return http.build();
     }

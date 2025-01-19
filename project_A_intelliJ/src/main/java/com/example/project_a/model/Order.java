@@ -30,6 +30,12 @@ public class Order {
     @Temporal(TemporalType.DATE)
     private Date orderDate;
 
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Column(name = "address")
+    private String address;
+
     public Integer getID() {
         return id;
     }
