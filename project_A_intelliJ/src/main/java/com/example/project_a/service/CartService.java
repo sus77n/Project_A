@@ -44,8 +44,33 @@ public class CartService {
         repo.save(cart);
     }
 
-    public List<Cart> getCartItemsByProductAndUser(Integer productId, Integer userId) {
-        return repo.findCartItemsByProductAndUser(productId, userId);
+    public Cart getCartByProductAndUser(Integer productId, Integer userId) {
+        return repo.findCartItemByProductAndUser(productId, userId);
+    }
+    public List<Cart> getCartsByUserId(Integer userId) {
+        return repo.findCartItemsByUser(userId);
+    }
+    public double calculateTotal(Integer userId) {
+        List<Cart> carts = getCartsByUserId(userId);
+        double total = 0.0;
+        for (Cart cart : carts) {
+            total += cart.getTotal();
+        }
+        return total;
     }
 
+    public boolean isProductExist(Integer productId, Integer userId) {
+       if (getCartByProductAndUser(productId, userId) != null) {
+           return true;
+       }else {
+           return false;
+       }
+    }
+
+    public void clear(int userId) {
+        List<Cart> carts =getCartsByUserId(userId);
+        for (Cart cart : carts) {
+            repo.deleteById(cart.getId());
+        }
+    }
 }

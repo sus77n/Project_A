@@ -90,8 +90,8 @@ public class User {
         this.dateOfBirth = DOB;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public String getPhoneNumber() {
+        return ""+phoneNumber;
     }
 
     public void setPhoneNumber(int phoneNumber) {

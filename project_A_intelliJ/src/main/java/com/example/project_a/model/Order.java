@@ -1,8 +1,11 @@
 package com.example.project_a.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,8 +16,10 @@ public class Order {
     @Column(name = "order_id" ,nullable = false, unique = true)
     private Integer id;
 
+
+
     @OneToMany(mappedBy = "order",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderDetail> details;
+    private List<OrderDetail> details = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "id")
@@ -30,19 +35,27 @@ public class Order {
     @Temporal(TemporalType.DATE)
     private Date orderDate;
 
+    @Getter
+    @Setter
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Getter
+    @Setter
     @Column(name = "address")
     private String address;
 
     public Integer getID() {
         return id;
     }
-    public Integer getNumeberOfItems() {
-        return 15;
-    }
 
+    public Integer getNumeberOfItems() {
+        int count = 0;
+        for (OrderDetail detail : details) {
+            count += detail.getQuantity();
+        }
+        return count;
+    }
 
     public void setID(Integer ID) {
         this.id = ID;
@@ -82,6 +95,17 @@ public class Order {
     public void setOrderDate() {
         Date currentDate = new Date(5);
         this.orderDate = currentDate;
+    }
+    public List<OrderDetail> getDetails() {
+        return details = new ArrayList<>();
+    }
+
+    public void setDetails(List<OrderDetail> details) {
+        this.details = details;
+    }
+    public void addDetail(OrderDetail detail) {
+        details.add(detail);
+        detail.setOrder(this);
     }
 
     @Override

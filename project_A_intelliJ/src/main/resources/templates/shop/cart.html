@@ -45,7 +45,7 @@
                                             <td class="product-name"><a th:href="@{/product-detail}"><span  th:text="${cart.product.name}"></span></a></td>
                                             <td class="product-price"> <span  th:text="'£' + ${cart.product.price}"></span></td>
                                             <td class="product-quantity"><input type="number" th:value="${cart.quantity}" /> </td>
-                                            <td class="product-subtotal"><span  th:text="'£' + ${cart.GetTotal()}"></span></td>
+                                            <td class="product-subtotal"><span  th:text="'£' + ${cart.getTotal()}"></span></td>
                                             <td class="product-remove"> <a th:href="@{/cart/delete(id=${cart.id})}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                                         </tr>
                                     </tbody>

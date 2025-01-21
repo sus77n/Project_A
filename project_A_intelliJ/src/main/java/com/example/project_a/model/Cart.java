@@ -12,17 +12,17 @@ public class Cart {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name ="id")
+    @JoinColumn(name ="user_id")
     private User user;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "product_id")
     private Product product;
 
     @Column(name = "quantity")
     private int quantity;
 
-    public int GetTotal() {
+    public int getTotal() {
        return (int) (quantity*this.product.getPrice());
     }
 
@@ -47,7 +47,19 @@ public class Cart {
     }
 
     public void setProduct(Product product) {
-        this.product = product;
+        if (this.product != null) {
+            if (product.getProduct_id() == this.product.getProduct_id()) {
+                this.product = product;
+                this.quantity++;
+            }else {
+                this.product = product;
+                this.quantity = 1;
+            }
+        }else {
+            this.product = product;
+            this.quantity = 1;
+        }
+
     }
 
     public int getQuantity() {

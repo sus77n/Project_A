@@ -135,10 +135,11 @@ public class Product {
         this.orderDetails = orderDetails;
     }
 
-
     public void setPrice(Double price) {
         this.price = price;
     }
+
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

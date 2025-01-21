@@ -32,5 +32,17 @@ public class OrderService {
         }
         repo.deleteById(id);
     }
+    public boolean isExits(Integer id) {
+        if (findOrderById(id) == null) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 
+    public void update(Order Updatedorder) {
+        Order order = findOrderById(Updatedorder.getID());
+        order = Updatedorder;
+        repo.save(order);
+    }
 }
