@@ -17,7 +17,9 @@
                         </div>
                         <div class="card-body">
                             <form class="dropzone dz-remove-upload dz-remove"
-                                  enctype="multipart/form-data">
+                                 id="thumbnail-dropzone"
+                                 enctype="multipart/form-data">
+                                <input type="hidden" id="thumbnailFileName" name="thumbnailFileName">
                                 <div class="dz-message needsclick">
                                     <i class="bx bx-cloud-upload fs-48 text-primary"></i>
                                     <p>Drag & drop thumbnail here, or click to select</p>
@@ -30,6 +32,9 @@
                 <div class="col-lg-8 ">
                     <form th:action="@{/admin/product/save}" method="post" th:object="${product}">
                         <input type="hidden" th:field="*{id}">
+                        <input type="hidden" name="mediaName" value="Thumbnail">
+                        <input type="hidden" name="mediaAlt" value="Thumbnail of product">
+                        <input type="hidden" name="thumbnailName" id="thumbnailName">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Product Information</h4>
@@ -40,8 +45,7 @@
                                         <div class="mb-3">
                                             <label for="product-name" class="form-label">Product Name</label>
                                             <input type="text" id="product-name" class="form-control"
-                                                   placeholder="Product Name" th:field="*{name}" required
-                                                   minlength="8" maxlength="45">
+                                                   placeholder="Product Name" th:field="*{name}" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -49,7 +53,7 @@
                                         <select class="form-control" id="product-categories" data-choices
                                                 data-choices-groups data-placeholder="Select Categories"
                                                 name="choices-single-groups" th:name="categoryId">
-                                            <option value="" selected>Choose a category</option>
+                                            <option value="" disabled>Choose a category</option>
                                             <option th:each="category : ${categories}"
                                                     th:value="${category.id}"
                                                     th:text="${category.categoryName}"
@@ -107,7 +111,7 @@
                                         <select class="form-control" id="product-status" data-choices
                                                 data-choices-groups data-placeholder="Select status"
                                                 name="choices-single-groups" th:field="*{status}">
-                                            <option value="">Choose status</option>
+                                            <option value="" disabled>Choose status</option>
                                             <option
                                                     th:value="Active">Active
                                             </option>
@@ -137,48 +141,48 @@
 </div>
 <div th:replace="admin_layout::required_script"></div>
 <script>
-    Dropzone.autoDiscover = false; // Disable automatic discovery if other Dropzone forms exist
+    Dropzone.autoDiscover = false;
 
-    const dropzone = new Dropzone(".dropzone", {
-        url: "/media/upload", // Endpoint for the upload
-        method: "post",
-        paramName: "file", // Must match @RequestParam("file")
+    const thumbnailDropzone = new Dropzone("#thumbnail-dropzone", {
+        url: "/media/upload",
+        maxFiles: 1,
         acceptedFiles: "image/*",
-        maxFiles: 1, // Allow multiple files
         addRemoveLinks: true,
-        init: function () {
-            this.on("success", function (file, response) {
-                console.log("Upload successful:", response);
+        dictRemoveFile: "Remove Thumbnail",
+        dictDefaultMessage: "Drop or click to upload thumbnail",
 
-            });
-            this.on("error", function (file, errorMessage) {
-                console.error("Upload failed:", errorMessage);
-            });
-        }
-    });
+        success: function (file, response) {
+            // Save the uploaded file's name in a hidden input field
+            document.getElementById("thumbnailFileName").value = response.fileName;
+            document.getElementById("thumbnailName").value = response.fileName;
+            file.uploadedFileName = response.fileName; // Store the server filename in the file object
+        },
 
-    this.on("removedfile", function (file) {
-        if (file.serverId) {
-            // Make AJAX call to delete the file from the server
-            fetch(`/media/delete/${file.serverId}`, {
-                method: "DELETE",
-            })
-                .then((response) => {
+        removedfile: function (file) {
+            // Remove the file element from the DOM
+            if (file.previewElement) {
+                file.previewElement.parentNode.removeChild(file.previewElement);
+            }
+
+            // Call backend API to delete the file
+            if (file.uploadedFileName) {
+                fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
+                    method: "DELETE"
+                }).then(response => {
                     if (response.ok) {
-                        console.log("File deleted successfully");
-                        // Remove hidden input if it exists
-                        const hiddenInput = document.getElementById(`input-${file.serverId}`);
-                        if (hiddenInput) {
-                            hiddenInput.remove();
-                        }
+                        console.log("File deleted successfully.");
                     } else {
-                        console.error("Failed to delete file");
+                        console.error("Failed to delete file.");
                     }
-                })
-                .catch((error) => console.error("Error deleting file:", error));
+                }).catch(error => {
+                    console.error("Error deleting file:", error);
+                });
+            }
+
+            document.getElementById("thumbnailFileName").value = "";
+            document.getElementById("thumbnailName").value = "";
         }
     });
-
 </script>
 </body>
 </html>

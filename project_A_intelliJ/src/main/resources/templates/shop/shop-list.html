@@ -69,9 +69,11 @@
                                         <!-- Single Product Start -->
                                         <div class="single-aboss-product mb-3">
                                             <div class="pro-img">
-                                                <a th:href="@{/product-details}"><img
-                                                        th:src="@{/assets/img/products/p1.jpg}"
-                                                        alt=""></a>
+                                                <a th:href="@{/product-details}">
+                                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                                         alt="Product Image">
+
+                                                </a>
                                                 <div class="pro-actions">
                                                     <a data-toggle="modal" data-target="#product-window"
                                                        class="quick-view" href="#"><i class="icon-zoom"></i></a>
@@ -146,7 +148,8 @@
                     <div class="shop-breadcrumb-area border-default mt-40">
                         <div class="row">
                             <div class="col-lg-4 col-md-6 col-sm-5">
-                                <span class="show-items" th:text="'Showing 1-12 of ' + ${products.size()} + ' item(s) '">
+                                <span class="show-items"
+                                      th:text="'Showing 1-12 of ' + ${products.size()} + ' item(s) '">
                                 </span>
                             </div>
                             <div class="col-lg-8 col-md-6 col-sm-7">
@@ -182,8 +185,10 @@
                             <h3 class="sidebar-title">categories</h3>
                             <ul class="sidbar-style" th:each="category, stat : ${categories}">
                                 <li class="form-check mb-10">
-                                    <input class="form-check-input" value="#" th:id="'category-' + ${category.id}" type="checkbox">
-                                    <label class="form-check-label" th:for="'category-' + ${category.id}" th:text="${category.categoryName} "></label>
+                                    <input class="form-check-input" value="#" th:id="'category-' + ${category.id}"
+                                           type="checkbox">
+                                    <label class="form-check-label" th:for="'category-' + ${category.id}"
+                                           th:text="${category.categoryName} "></label>
                                 </li>
                             </ul>
                         </div>

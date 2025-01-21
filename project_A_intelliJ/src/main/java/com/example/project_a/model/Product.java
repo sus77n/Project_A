@@ -28,7 +28,6 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetail> orderDetails;
 
-    // Other fields and their annotations
     @Column(name = "description")
     private String description;
 
@@ -47,14 +46,12 @@ public class Product {
     @Column(name = "product_slider")
     private String productSlider;
 
-    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "thumbnail", referencedColumnName = "id")
     private Media thumbnail;
-
-
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cart> carts;
-
     // Getters and Setters
 
 
