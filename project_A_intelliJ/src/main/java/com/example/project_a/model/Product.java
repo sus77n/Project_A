@@ -137,29 +137,6 @@ public class Product {
     }
 
 
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Product [product_id=");
-        builder.append(id);
-        builder.append(", name=");
-        builder.append(name);
-        builder.append(", category=");
-        builder.append(category.getCategoryName());
-        builder.append(", description=");
-        builder.append(description);
-        builder.append(", summary=");
-        builder.append(summary);
-        builder.append(", inStock=");
-        builder.append(inStock);
-        builder.append(", price=");
-        builder.append(price);
-        builder.append(", URL=");
-        builder.append("\n");
-        builder.append("]");
-
-        return builder.toString();
-    }
 }
 
 

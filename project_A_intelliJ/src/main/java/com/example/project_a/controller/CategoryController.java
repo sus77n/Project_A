@@ -7,12 +7,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.HtmlUtils;
+
 import java.util.List;
 
 @Controller
 public class CategoryController {
     @Autowired
     private CategoryService service;
+
+    @GetMapping("/admin/category/list")
+    public String listAllCategories(Model model) {
+        List<Category> categories = service.getAllCategories();
+        model.addAttribute("categories", categories);
+        model.addAttribute("pageTitle", "Category");
+
+        if (model.containsAttribute("message")) {
+            System.out.println("Flash message: " + model.getAttribute("message"));
+        }
+
+        return "admin/category-list";
+    }
 
     @GetMapping("/admin/category/add")
     public String showCategoryForm(Model model) {
@@ -24,7 +39,7 @@ public class CategoryController {
     @PostMapping("/admin/category/save")
     public String saveCategory(Category category, RedirectAttributes ra) {
         service.save(category);
-        ra.addFlashAttribute("message", "The category has been saved successfully.");
+        ra.addFlashAttribute("message",  "The category has been saved successfully.");
         return "redirect:/admin/category/list";
     }
 
@@ -33,14 +48,6 @@ public class CategoryController {
         service.deleteCategoryById(Integer.parseInt(id));
         ra.addFlashAttribute("message", "The category has been deleted successfully.");
         return "redirect:/admin/category/list";
-    }
-
-    @GetMapping("/admin/category/list")
-    public String listAllCategories(Model model) {
-        List<Category> categories = service.getAllCategories();
-        model.addAttribute("categories", categories);
-        model.addAttribute("pageTitle", "Category");
-        return "admin/category-list";
     }
 
     @GetMapping("/admin/category/edit")
@@ -56,7 +63,7 @@ public class CategoryController {
     }
 
     // Method to handle the update of the category
-    @PostMapping("/admin/Category/update/{id}")
+    @PostMapping("/admin/category/update/{id}")
     public String updateCategory(@PathVariable("id") String id,
                                  @ModelAttribute Category category,
                                  RedirectAttributes ra) {
@@ -64,7 +71,7 @@ public class CategoryController {
             service.updateCategory(id, category);
             ra.addFlashAttribute("message", "Category updated successfully!");
         } catch (Exception e) {
-            ra.addFlashAttribute("error", "Failed to update category: " + e.getMessage());
+            ra.addFlashAttribute("massage", "Failed to update category: " + e.getMessage());
         }
         return "redirect:/admin/category/list";
     }
@@ -77,9 +84,9 @@ public class CategoryController {
             category.setStatus(category.getStatus().equals("Active") ? "Inactive" : "Active");
             service.save(category);
 
-            redirectAttributes.addFlashAttribute("successMessage", "Category status changed successfully!");
+            redirectAttributes.addFlashAttribute("message", "Category status changed successfully!");
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Error changing category status: " + e.getMessage());
+            redirectAttributes.addFlashAttribute("message", "Error changing category status: " + e.getMessage());
         }
         return "redirect:/admin/category/list";
     }

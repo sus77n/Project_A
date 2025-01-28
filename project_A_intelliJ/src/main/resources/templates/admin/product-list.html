@@ -29,8 +29,17 @@
                         <div>
                             <div class="table-responsive">
                                 <table class="table align-middle mb-0 table-hover table-centered">
+                                    <colgroup>
+                                        <col width="5%" />
+                                        <col width="25%" />
+                                        <col width="10%" />
+                                        <col width="10%" />
+                                        <col width="20%" />
+                                        <col width="10%" />
+                                        <col width="20%" />
+                                    </colgroup>
                                     <thead class="bg-light-subtle">
-                                    <tr>
+                                    <tr class="text-center">
                                         <th style="width: 20px;">
                                             <div class="form-check ms-1">
                                                 <input type="checkbox" class="form-check-input" id="customCheck1">
@@ -55,29 +64,21 @@
                                                 <label class="form-check-label" th:for="${product.id}">&nbsp;</label>
                                             </div>
                                         </td>
-                                        <td th:text="${product.name}"></td>
-                                        <td th:text="${product.price}">$</td>
-                                        <td>
+                                        <td class="text-center" th:text="${product.name}"></td>
+                                        <td class="text-end" th:text="${product.price}">$</td>
+                                        <td class="text-end">
                                             <p class="mb-1 text-muted"><span class="text-dark fw-medium"
                                                                              th:text="${product.inStock} "></span></p>
                                         </td>
-                                        <td th:text="${product.category.categoryName}"></td>
-                                        <td>
+                                        <td class="text-center" th:text="${product.category.categoryName}"></td>
+                                        <td class="text-center">
                                             <span class="badge p-1 fs-12 me-1"
                                                   th:classappend="${product.status} == 'Active' ? 'text-success bg-success-subtle' : 'text-danger bg-danger-subtle'"
                                                   th:text="${product.status}"
                                             ></span>
                                         </td>
-                                        <td>
-                                            <div class="d-flex gap-2">
-                                                <form th:action="@{/admin/product/details}" th:method="get">
-                                                    <input type="hidden" name="productId"
-                                                           th:value="${product.id}"/>
-                                                    <button type="submit" class="btn btn-light btn-sm">
-                                                        <iconify-icon icon="solar:eye-broken"
-                                                                      class="align-middle fs-18"></iconify-icon>
-                                                    </button>
-                                                </form>
+                                        <td class="text-center">
+                                            <div class="d-flex gap-2 justify-content-center">
                                                 <form th:action="@{/admin/product/edit}" th:method="get">
                                                     <input type="hidden" name="productId"
                                                            th:value="${product.id}"/>
@@ -104,7 +105,7 @@
                                                             <div class="modal-header">
                                                                 <h5 th:id="'statusChangeModalLabel-' + ${product.id}"
                                                                     class="modal-title">
-                                                                    Confirm Status Change
+                                                                    Confirm
                                                                 </h5>
                                                                 <button type="button" class="btn-close"
                                                                         data-bs-dismiss="modal"
@@ -113,13 +114,13 @@
                                                             <div class="modal-body">
                                                                 <!-- Conditional Modal Content -->
                                                                 <p th:text="${product.getStatus().equals('Active')
-                                ? 'Are you sure you want to change the status of this product to inactive?'
-                                : 'Are you sure you want to change the status of this product to active?'}"></p>
+                                ? 'Change to Inactive?'
+                                : 'Change to Active?'}"></p>
                                                             </div>
                                                             <form th:action="@{/admin/product/status/change}"
                                                                   th:method="post">
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
+                                                                    <button type="button" class="btn btn-soft-primary"
                                                                             data-bs-dismiss="modal">Cancel
                                                                     </button>
                                                                     <!-- Conditional Button Text and Link -->
@@ -127,8 +128,8 @@
                                                                            th:value="${product.id}"/>
                                                                     <button type="submit"
                                                                             id="confirmStatusChangeButton"
-                                                                            th:classappend="${product.getStatus().equals('Active') ? 'btn btn-danger' : 'btn btn-success'}"
-                                                                            th:text="${product.getStatus().equals('Active') ? 'Yes, Make Inactive' : 'Yes, Make Active'}">
+                                                                            class="btn btn-primary">
+                                                                        Yes
                                                                     </button>
                                                                 </div>
                                                             </form>

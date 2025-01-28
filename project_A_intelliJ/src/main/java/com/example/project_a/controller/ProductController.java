@@ -67,6 +67,7 @@ public class ProductController {
                               @RequestParam("mediaAlt") String mediaAlt,
                               @RequestParam("mediaAlt") String mediaName,
                               RedirectAttributes ra) {
+
         Media media = new Media();
         media.setName(mediaName);
         media.setAlt(mediaAlt);
@@ -77,8 +78,6 @@ public class ProductController {
         product.setCategory(category);
         product.setThumbnail(media);
         service.save(product);
-
-
 
         ra.addFlashAttribute("message", "The product has been saved successfully.");
         return "redirect:/admin/product/list";
