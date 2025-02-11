@@ -1,8 +1,11 @@
 package com.example.project_a.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,13 +14,15 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "order_id" ,nullable = false, unique = true)
-    private Integer ID;
+    private Integer id;
+
+
 
     @OneToMany(mappedBy = "order",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderDetail> details;
+    private List<OrderDetail> details = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "id")
     private User user;
 
     @Column(name = "form_of_payment", length = 15)
@@ -30,16 +35,30 @@ public class Order {
     @Temporal(TemporalType.DATE)
     private Date orderDate;
 
+    @Getter
+    @Setter
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Getter
+    @Setter
+    @Column(name = "address")
+    private String address;
+
     public Integer getID() {
-        return ID;
-    }
-    public Integer getNumeberOfItems() {
-        return 15;
+        return id;
     }
 
+    public Integer getNumeberOfItems() {
+        int count = 0;
+        for (OrderDetail detail : details) {
+            count += detail.getQuantity();
+        }
+        return count;
+    }
 
     public void setID(Integer ID) {
-        this.ID = ID;
+        this.id = ID;
     }
 
     public User getUser() {
@@ -77,12 +96,23 @@ public class Order {
         Date currentDate = new Date(5);
         this.orderDate = currentDate;
     }
+    public List<OrderDetail> getDetails() {
+        return details = new ArrayList<>();
+    }
+
+    public void setDetails(List<OrderDetail> details) {
+        this.details = details;
+    }
+    public void addDetail(OrderDetail detail) {
+        details.add(detail);
+        detail.setOrder(this);
+    }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("Order [ID=");
-        builder.append(ID);
+        builder.append(id);
         builder.append(", formOfPayment=");
         builder.append(formOfPayment);
         builder.append(", client id=");

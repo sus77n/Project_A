@@ -12,9 +12,6 @@ public class MainController {
 
     @GetMapping("/home")
     public String showIndexPage() {return "shop/index-2";}
-    
-//    @GetMapping("/shop")
-//    public String showProductPage() {return "shop/shop-list";}
 
     @GetMapping("/blog")
     public String showBlogPage() {return "shop/blog";}
@@ -43,11 +40,9 @@ public class MainController {
     @GetMapping("/blog-details-blockquote")
     public String showblogdetailsblockquote() {return "shop/blog-details-blockquote";}
 
-    @GetMapping("/cart")
-    public String showCart() {return "shop/cart";}
 
-    @GetMapping("/checkout")
-    public String showCheckout() {return "shop/checkout";}
+
+
 
     @GetMapping("/compare")
     public String showCompare() {return "shop/compare";}
@@ -78,8 +73,6 @@ public class MainController {
         model.addAttribute("pageTitle", "Welcome" );
         return "admin/index";
     }
-
-
 
     @GetMapping("/admin/order/details")
     public String ShowPageAdminOrderDetail(Model model) {

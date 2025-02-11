@@ -20,86 +20,92 @@
 
                         </div>
                         <div>
-                            <div class="table-responsive">
+                            <div class="table-responsive text-center">
                                 <table class="table align-middle mb-0 table-hover table-centered">
                                     <colgroup>
                                         <col style="width:20%">
-                                        <col style="width:10%">
-                                        <col style="width:10%">
+                                        <col style="width:20%">
                                         <col style="width:40%">
                                         <col style="width:20%">
                                     </colgroup>
                                     <thead class="bg-light-subtle">
                                     <tr>
                                         <th>Name</th>
-                                        <th>ID</th>
                                         <th>Status</th>
                                         <th>Description</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="category, stat : ${categories}">
-                                        <td th:text="${category.categoryName}"></td>
-                                        <td th:text="${category.id}"></td>
-                                        <td th:text="${category.status}"></td>
-                                        <td th:text="${category.description}"></td>
-                                        <td>
-                                            <div class="d-flex gap-2">
-                                                <!-- Edit Button -->
-                                                <a th:href="@{/admin/category/edit(id=${category.id})}"
-                                                   class="btn btn-soft-dark btn-sm">
-                                                    <iconify-icon icon="solar:pen-2-broken"
-                                                                  class="align-middle fs-18"></iconify-icon>
-                                                </a>
+                                    <tr th:each="category : ${categories}">
+                                        <a th:href="@{/admin/category/edit(id=${category.id})}"
+                                           class="d-block text-decoration-none">
+                                            <td th:text="${category.categoryName}"></td>
+                                            <td>
+                                            <span class="badge p-1 fs-12 me-1"
+                                                  th:classappend="${category.status} == 'Active' ? 'text-success bg-success-subtle' : 'text-danger bg-danger-subtle'"
+                                                  th:text="${category.status}"
+                                            ></span>
+                                            </td>
+                                            <td th:text="${category.description}"></td>
+                                            <td>
+                                                <div class="d-flex gap-2 justify-content-center">
+                                                    <!-- Edit Button -->
+                                                    <a th:href="@{/admin/category/edit(id=${category.id})}"
+                                                       class="btn btn-soft-primary btn-sm">
+                                                        <iconify-icon icon="solar:pen-2-broken"
+                                                                      class="align-middle fs-18"></iconify-icon>
+                                                    </a>
 
-                                                <!-- Status Change Button -->
-                                                <a th:class="${category.getStatus().equals('Active') ? 'btn btn-soft-danger btn-sm' : 'btn btn-soft-green btn-sm'}"
-                                                   th:attr="data-bs-target='#statusChangeModal-' + ${category.id}"
-                                                   data-bs-toggle="modal">
-                                                    <iconify-icon
-                                                            th:attr="icon=${category.getStatus().equals('Active') ? 'solar:close-circle-broken' : 'solar:check-circle-broken'}"
-                                                            class="align-middle fs-18"></iconify-icon>
-                                                </a>
+                                                    <!-- Status Change Button -->
+                                                    <a th:class="${category.getStatus().equals('Active') ? 'btn btn-soft-danger btn-sm' : 'btn btn-soft-green btn-sm'}"
+                                                       th:attr="data-bs-target='#statusChangeModal-' + ${category.id}"
+                                                       data-bs-toggle="modal">
+                                                        <iconify-icon
+                                                                th:attr="icon=${category.getStatus().equals('Active') ? 'solar:close-circle-broken' : 'solar:check-circle-broken'}"
+                                                                class="align-middle fs-18"></iconify-icon>
+                                                    </a>
 
-                                                <!-- Change Status Confirmation Modal -->
-                                                <div class="modal fade" th:id="'statusChangeModal-' + ${category.id}"
-                                                     tabindex="-1"
-                                                     th:attr="aria-labelledby='statusChangeModalLabel-' + ${category.id}"
-                                                     aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 th:id="'statusChangeModalLabel-' + ${category.id}"
-                                                                    class="modal-title">
-                                                                    Confirm Status Change
-                                                                </h5>
-                                                                <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <!-- Conditional Modal Content -->
-                                                                <p th:text="${category.getStatus().equals('Active')
-                                ? 'Are you sure you want to change the status of this category to inactive?'
-                                : 'Are you sure you want to change the status of this category to active?'}"></p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Cancel
-                                                                </button>
-                                                                <!-- Conditional Button Text and Link -->
-                                                                <a th:href="@{/admin/category/status/change(id=${category.id})}"
-                                                                   id="confirmStatusChangeButton"
-                                                                   th:classappend="${category.getStatus().equals('Active') ? 'btn-danger' : 'btn-success'}"
-                                                                   th:text="${category.getStatus().equals('Active') ? 'Yes, Make Inactive' : 'Yes, Make Active'}">
-                                                                </a>
+                                                    <!-- Change Status Confirmation Modal -->
+                                                    <div class="modal fade"
+                                                         th:id="'statusChangeModal-' + ${category.id}"
+                                                         tabindex="-1"
+                                                         th:attr="aria-labelledby='statusChangeModalLabel-' + ${category.id}"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 th:id="'statusChangeModalLabel-' + ${category.id}"
+                                                                        class="modal-title">
+                                                                        Confirm
+                                                                    </h5>
+                                                                    <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <!-- Conditional Modal Content -->
+                                                                    <p th:text="${category.getStatus().equals('Active')
+                                                                                 ? 'Change to Inactive?'
+                                                                                 : 'Change to Active?'}"></p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-soft-primary"
+                                                                            data-bs-dismiss="modal">Cancel
+                                                                    </button>
+                                                                    <!-- Conditional Button Text and Link -->
+                                                                    <a th:href="@{/admin/category/status/change(id=${category.id})}"
+                                                                       id="confirmStatusChangeButton"
+                                                                       class="btn btn-primary">
+                                                                        Yes
+                                                                    </a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
+                                            </td>
+                                        </a>
                                     </tr>
                                     </tbody>
 
@@ -128,6 +134,7 @@
     </div>
 
     <div th:replace="admin_layout::required_script"></div>
+
 </div>
 </body>
 </html>

@@ -25,7 +25,7 @@ public class ProductRepositoryTest {
     @Test
     public void AddNewProduct() {
         Product pro = new Product();
-        pro.setName("ShoeCu3");
+        pro.setName("ShoeCu5");
         pro.setSummary("ShoeFe");
         pro.setDescription("ShoeFe");
         pro.setPrice(7.0);
@@ -37,7 +37,7 @@ public class ProductRepositoryTest {
         pro.setCategory(optionalCategory.get());
         Product savedProduct = repo.save(pro);
         Assertions.assertNotNull(savedProduct);
-        Assertions.assertTrue(savedProduct.getProduct_id() > 0, "Product ID should be greater than 0");
+        Assertions.assertTrue(savedProduct.getId() > 0, "Product ID should be greater than 0");
     }
 
     @Test

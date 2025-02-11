@@ -1,14 +1,20 @@
 package com.example.project_a.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name ="products")
+@ToString(exclude = {"thumbnail", "orderDetails"})
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id", nullable = false, unique = true)
     private Integer id;
 
@@ -22,7 +28,6 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetail> orderDetails;
 
-    // Other fields and their annotations
     @Column(name = "description")
     private String description;
 
@@ -41,10 +46,22 @@ public class Product {
     @Column(name = "product_slider")
     private String productSlider;
 
-    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "thumbnail", referencedColumnName = "id")
     private Media thumbnail;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Cart> carts;
     // Getters and Setters
+
+
+    public List<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<Cart> carts) {
+        this.carts = carts;
+    }
 
     public Integer getProduct_id() {
         return id;
@@ -118,29 +135,8 @@ public class Product {
     public void setPrice(Double price) {
         this.price = price;
     }
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Product [product_id=");
-        builder.append(id);
-        builder.append(", name=");
-        builder.append(name);
-        builder.append(", category=");
-        builder.append(category.getCategoryName());
-        builder.append(", description=");
-        builder.append(description);
-        builder.append(", summary=");
-        builder.append(summary);
-        builder.append(", inStock=");
-        builder.append(inStock);
-        builder.append(", price=");
-        builder.append(price);
-        builder.append(", URL=");
-        builder.append("\n");
-        builder.append("]");
 
-        return builder.toString();
-    }
+
 }
 
 

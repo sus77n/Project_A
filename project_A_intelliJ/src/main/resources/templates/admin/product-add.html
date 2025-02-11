@@ -12,81 +12,29 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Thumbnail</h4>
+                        </div>
                         <div class="card-body">
-                            <!-- Crossfade -->
-                            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                                <div class="carousel-inner" role="listbox">
-                                    <div class="carousel-item active">
-                                        <img src="../../assets/images/product/p-1.png" alt="Product Image 1"
-                                             class="img-fluid bg-light rounded">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="../../assets/images/product/p-10.png" alt="Product Image 2"
-                                             class="img-fluid bg-light rounded">
-                                    </div>
-                                    <!--                                    <div class="carousel-item">-->
-                                    <!--                                        <img src="../../assets/images/product/p-13.png" alt="Product Image 3"-->
-                                    <!--                                             class="img-fluid bg-light rounded">-->
-                                    <!--                                    </div>-->
-                                    <!--                                    <div class="carousel-item">-->
-                                    <!--                                        <img src="../../assets/images/product/p-12.png" alt="Product Image 4"-->
-                                    <!--                                             class="img-fluid bg-light rounded">-->
-                                    <!--                                    </div>-->
-                                    <!--                                    <div class="carousel-item">-->
-                                    <!--                                        <img src="../../assets/images/product/p-11.png" alt="Product Image 5"-->
-                                    <!--                                             class="img-fluid bg-light rounded">-->
-                                    <!--                                    </div>-->
+                            <form class="dropzone dz-remove-upload dz-remove"
+                                 id="thumbnail-dropzone"
+                                 enctype="multipart/form-data">
+                                <input type="hidden" id="thumbnailFileName" name="thumbnailFileName">
+                                <div class="dz-message needsclick">
+                                    <i class="bx bx-cloud-upload fs-48 text-primary"></i>
+                                    <p>Drag & drop thumbnail here, or click to select</p>
                                 </div>
-
-                                <div class="carousel-indicators m-0 mt-2 d-lg-flex d-none position-static h-100 row">
-                                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0"
-                                            aria-current="true" aria-label="Slide 1"
-                                            class="w-auto h-auto rounded bg-light active col-4">
-                                        <img src="../../assets/images/product/p-1.png" class="d-block avatar-xl"
-                                             alt="Thumbnail for Product 1">
-                                    </button>
-                                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1"
-                                            aria-label="Slide 2" class="w-auto h-auto rounded bg-light col-4">
-                                        <img src="../../assets/images/product/p-10.png" class="d-block avatar-xl"
-                                             alt="Thumbnail for Product 2">
-                                    </button>
-                                    <!--                                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2"-->
-                                    <!--                                            aria-label="Slide 3" class="w-auto h-auto rounded bg-light col-4">-->
-                                    <!--                                        <img src="../../assets/images/product/p-13.png" class="d-block avatar-xl"-->
-                                    <!--                                             alt="Thumbnail for Product 3">-->
-                                    <!--                                    </button>-->
-                                    <!--                                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="3"-->
-                                    <!--                                            aria-label="Slide 4" class="w-auto h-auto rounded bg-light col-4">-->
-                                    <!--                                        <img src="../../assets/images/product/p-12.png" class="d-block avatar-xl"-->
-                                    <!--                                             alt="Thumbnail for Product 3">-->
-                                    <!--                                    </button>-->
-                                    <!--                                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="4"-->
-                                    <!--                                            aria-label="Slide 5" class="w-auto h-auto rounded bg-light col-4">-->
-                                    <!--                                        <img src="../../assets/images/product/p-11.png" class="d-block avatar-xl"-->
-                                    <!--                                             alt="Thumbnail for Product 3">-->
-                                    <!--                                    </button>-->
-                                    <div class="col-4">
-                                        <form th:action="@{/media/upload}" method="post" class="dropzone"
-                                              enctype="multipart/form-data">
-                                            <div class="fallback">
-                                                <input th:name="file" type="file" accept="image/*" multiple/>
-                                                <input th:name="alt" type="text" value="slider" hidden/>
-                                            </div>
-                                            <div class="dz-message needsclick">
-                                                <i class="bx bx-cloud-upload fs-48 text-primary"></i>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
+                            </form>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-8 ">
-                    <form th:action="@{/product/save}" method="post" th:object="${product}">
-                        <input type="hidden" th:field="*{product_id}">
+                    <form th:action="@{/admin/product/save}" method="post" th:object="${product}">
+                        <input type="hidden" th:field="*{id}">
+                        <input type="hidden" name="mediaName" value="Thumbnail">
+                        <input type="hidden" name="mediaAlt" value="Thumbnail of product">
+                        <input type="hidden" name="thumbnailName" id="thumbnailName">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Product Information</h4>
@@ -94,23 +42,22 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="product-name" class="form-label">Product Name</label>
-                                                <input type="text" id="product-name" class="form-control"
-                                                       placeholder="Product Name" th:field="*{name}" required
-                                                       minlength="8" maxlength="45">
-                                            </div>
+                                        <div class="mb-3">
+                                            <label for="product-name" class="form-label">Product Name</label>
+                                            <input type="text" id="product-name" class="form-control"
+                                                   placeholder="Product Name" th:field="*{name}" required>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <label for="product-categories" class="form-label">Product Category</label>
                                         <select class="form-control" id="product-categories" data-choices
                                                 data-choices-groups data-placeholder="Select Categories"
-                                                name="choices-single-groups">
-                                            <option value="">Choose a category</option>
+                                                name="choices-single-groups" th:name="categoryId">
+                                            <option value="" disabled>Choose a category</option>
                                             <option th:each="category : ${categories}"
                                                     th:value="${category.id}"
                                                     th:text="${category.categoryName}"
-                                                    th:field="*{category}">
+                                            >
                                             </option>
                                         </select>
                                     </div>
@@ -163,15 +110,13 @@
                                         <label for="product-status" class="form-label">Status</label>
                                         <select class="form-control" id="product-status" data-choices
                                                 data-choices-groups data-placeholder="Select status"
-                                                name="choices-single-groups">
-                                            <option value="">Choose status</option>
+                                                name="choices-single-groups" th:field="*{status}">
+                                            <option value="" disabled>Choose status</option>
                                             <option
-                                                    th:value="Active"
-                                                    th:field="*{status}">Active
+                                                    th:value="Active">Active
                                             </option>
                                             <option
-                                                    th:value="Inactie"
-                                                    th:field="*{status}">Inactive
+                                                    th:value="Inactive">Inactive
                                             </option>
                                         </select>
                                     </div>
@@ -194,93 +139,48 @@
         </div>
     </div>
 </div>
-<!--<div class="container-fluid">-->
-<!--    <form th:action="@{/product/save}" method="post" th:object="${product}"-->
-<!--          style="max-width: 500px; margin: 0 auto;">-->
-<!--        <input type="hidden" th:field="*{product_id}">-->
-<!--        <div class="border border-secondary rounded p-3">-->
-<!--            <div class="form-group row">-->
-<!--                <label class="col-sm-4 col-form-label">Product Name:</label>-->
-<!--                <div class="col-sm-8">-->
-<!--                    <input type="text" th:field="*{name}" class="form-control" required minlength="8" maxlength="45"/>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label class="col-sm-4 col-form-label">Description:</label>-->
-<!--                <div class="col-sm-8">-->
-<!--                    <input type="text" th:field="*{description}" class="form-control"/>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label class="col-sm-4 col-form-label">Summary:</label>-->
-<!--                <div class="col-sm-8">-->
-<!--                    <input type="text" th:field="*{summary}" class="form-control"  />-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label class="col-sm-4 col-form-label">Category:</label>-->
-<!--                <div class="col-sm-8">-->
-<!--                    <select name="category" class="form-control">-->
-<!--                        <option value="" disabled selected>Select a category</option>-->
-<!--                        <option th:each="category : ${categories}"-->
-<!--                                th:value="${category.ID}"-->
-<!--                                th:text="${category.categoryname}"-->
-<!--                                th:field="*{category}">-->
-
-<!--                        </option>-->
-<!--                    </select>-->
-<!--                    &lt;!&ndash;                    <input type="password" th:field="*{category}" class="form-control" />&ndash;&gt;-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label class="col-sm-4 col-form-label">In Stock:</label>-->
-<!--                <div class="col-sm-8">-->
-<!--                    <input type="text" th:field="*{inStock}" />-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label class="col-sm-4 col-form-label">Price:</label>-->
-<!--                <div class="col-sm-8">-->
-<!--                    <input type="text" th:field="*{price}" />-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label class="col-sm-4 col-form-label">Status:</label>-->
-<!--                <div class="col-sm-8">-->
-<!--                    <input type="text" th:field="*{status}" />-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="text-center">-->
-<!--                <button type="submit" class="btn btn-primary m-2">Save</button>-->
-<!--                <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--    </form>-->
-
-<!--</div>-->
-<!--<script type="text/javascript">-->
-<!--    function cancelForm() {-->
-<!--        window.location = "[[@{/users}]]";-->
-<!--    }-->
-<!--</script>-->
 <div th:replace="admin_layout::required_script"></div>
 <script>
-    Dropzone.autoDiscover = false; // Disable automatic discovery if other Dropzone forms exist
+    Dropzone.autoDiscover = false;
 
-    const dropzone = new Dropzone(".dropzone", {
-        url: "/media/upload", // Endpoint for the upload
-        method: "post",
-        paramName: "file", // Must match @RequestParam("file")
+    const thumbnailDropzone = new Dropzone("#thumbnail-dropzone", {
+        url: "/media/upload",
+        maxFiles: 1,
         acceptedFiles: "image/*",
-        maxFiles: 10, // Allow multiple files
-        init: function () {
-            this.on("success", function (file, response) {
-                console.log("Upload successful:", response);
-            });
-            this.on("error", function (file, errorMessage) {
-                console.error("Upload failed:", errorMessage);
-            });
+        addRemoveLinks: true,
+        dictRemoveFile: "Remove Thumbnail",
+        dictDefaultMessage: "Drop or click to upload thumbnail",
+
+        success: function (file, response) {
+            // Save the uploaded file's name in a hidden input field
+            document.getElementById("thumbnailFileName").value = response.fileName;
+            document.getElementById("thumbnailName").value = response.fileName;
+            file.uploadedFileName = response.fileName; // Store the server filename in the file object
+        },
+
+        removedfile: function (file) {
+            // Remove the file element from the DOM
+            if (file.previewElement) {
+                file.previewElement.parentNode.removeChild(file.previewElement);
+            }
+
+            // Call backend API to delete the file
+            if (file.uploadedFileName) {
+                fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
+                    method: "DELETE"
+                }).then(response => {
+                    if (response.ok) {
+                        console.log("File deleted successfully.");
+                    } else {
+                        console.error("Failed to delete file.");
+                    }
+                }).catch(error => {
+                    console.error("Error deleting file:", error);
+                });
+            }
+
+            document.getElementById("thumbnailFileName").value = "";
+            document.getElementById("thumbnailName").value = "";
         }
     });
 </script>

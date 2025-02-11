@@ -7,7 +7,7 @@
     <header class="header-sticky" th:replace="~{layout::page_header}"></header>
 
     <!-- Breadcrumb Area Start Here -->
-    <div class="breadcrumb-area pt-65 pb-70 bg-img" style="background-image:url(assets/img/bg-image/hop-brech-bg.jpg);">
+    <div class="breadcrumb-area pt-65 pb-70 bg-img">
         <div class="container">
             <div class="breadcrumb-wrap text-center">
                 <h3>Checkout</h3>
@@ -22,16 +22,20 @@
     <!-- checkout-area start -->
     <div class="checkout-area white-bg pb-80 mt-30">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="checkbox-form mb-sm-40">
-                        <h3>Billing Details</h3>
-                        <form>
+            <form th:action= "@{/order/save}" method="post" th:object="${order}">
+
+                <div class="row">
+                    <input type="hidden" th:field="*{user.id}" />
+                    <input type="hidden" th:field="*{paymentStatus}"/>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="checkbox-form mb-sm-40">
+                            <h3>Billing Details</h3>
                             <div class="row">
                                 <div class="col-md-12 mb-30">
                                     <div class="checkout-form-list mb-sm-30">
                                         <label>Name <span class="required">*</span></label>
-                                        <input type="text" value="Peter" disabled/>
+                                        <!-- <input type="text" value="Peter" disabled/> -->
+                                        <span  th:text="${order.user.getUsername()}"></span>
                                         <!--  Chỗ này dẫn đến tên người dùng, mặc định lấy từ user, không thay đổi được
                                                 Muốn thay đổi nhấn vào different address
                                         -->
@@ -40,21 +44,22 @@
                                 <div class="col-md-12 mb-30">
                                     <div class="checkout-form-list">
                                         <label>Address <span class="required">*</span></label>
-                                        <input type="text" value="123 NKKN, DINH HOA,TDM, BD" disabled/>
+                                        <input type="text" th:field="*{address}"/>
                                         <!--   Chỗ này dẫn đến địa chỉ người dùng-->
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-30">
                                         <label>Email Address <span class="required">*</span></label>
-                                        <input type="email" value="abc@email.com" disabled/>
+                                        <!--                                        <input type="email" value="abc@email.com" disabled/>-->
+                                        <span  th:text="${order.user.email}"></span>
                                         <!--   Chỗ này dẫn đến email người dùng-->
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-30">
                                         <label>Phone <span class="required">*</span></label>
-                                        <input type="text" value="0888888888"/>
+                                        <input type="text" th:field="*{phoneNumber}"/>
                                         <!--   Chỗ này dẫn đến phone người dùng-->
                                     </div>
                                 </div>
@@ -119,53 +124,57 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="your-order">
-                        <h3>Your order</h3>
-                        <div class="your-order-table table-responsive">
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th class="product-name">Product</th>
-                                    <th class="product-total">Total</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr class="cart_item">
-                                    <td class="product-name">
-                                        Vestibulum suscipit <span class="product-quantity"> × 1</span>
-                                    </td>
-                                    <td class="product-total">
-                                        <span class="amount">£165.00</span>
-                                    </td>
-                                </tr>
-                                </tbody>
-                                <tfoot>
-                                <tr class="order-total">
-                                    <th>Order Total</th>
-                                    <td><span class=" total amount">£215.00</span>
-                                    </td>
-                                </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                        <div class="payment-method mb-30">
-                            <label for="payment-method-select" style="display: block">Choose Payment Method:</label>
-                            <select class="wide" id="payment-method-select" name="paymentMethod">
-                                <option value="cash">Cash</option>
-                                <option value="credit-card">Credit Card</option>
-                                <option value="e-wallet">E-wallet</option>
-                            </select>
+                            <div class="payment-method mb-30">
+                                <label for="payment-method-select" style="display: block">Choose Payment Method:</label>
+                                <select class="wide" id="payment-method-select" name="paymentMethod" th:field="*{formOfPayment}">
+                                    <option value="cash">Cash</option>
+                                    <option value="credit-card">Credit Card</option>
+                                    <option value="e-wallet">E-wallet</option>
+                                </select>
+                            </div>
+                            <div class="send-email float-md-right">
+                                <input class="return-customer-btn" type="submit">
+                            </div>
+
                         </div>
                     </div>
-                    <div class="send-email float-md-right">
-                        <input class="return-customer-btn" type="submit">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="your-order">
+                            <h3>Your order</h3>
+                            <div class="your-order-table table-responsive">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-total">Total</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="cart_item" th:each="cart : ${carts}">
+                                        <td class="product-name">
+                                            <span class="product-quantity"  th:text="${cart.product.getName()}"></span> *
+                                            <span class="product-quantity" th:text="${cart.quantity}"></span>
+                                        </td>
+                                        <td class="product-total">
+                                            <span class="amount" th:text="${cart.getTotal()}"></span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr class="order-total">
+                                        <th>Order Total</th>
+                                        <td><span class=" total amount" th:text="'$' + ${total}" ></span>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <!-- checkout-area end -->
