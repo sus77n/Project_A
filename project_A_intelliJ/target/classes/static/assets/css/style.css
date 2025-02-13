@@ -376,6 +376,22 @@ ul {
 
 /* header style two for home2 css end */
 
+/*.sticky .primary-menu-list > li > a {*/
+/*    line-height: 80px;*/
+/*}*/
+/*.sticky .logo {*/
+/*    padding: 21px 0;*/
+/*}*/
+/*.sticky .search-cart-area > ul > li {*/
+/*    padding: 25px 0 25px 47px;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.sticky .search-cart-area > ul > li.search-mrg {*/
+/*    padding: 25px 0 25px 39px;*/
+/*}*/
+/*.sticky .search-cart-area > ul > li:first-child {*/
+/*    padding: 25px 0 25px 0px;*/
+/*}*/
 .primary-menu-list > li,
 .search-cart-area > ul > li,
 .search-cart-area > ul > li > a {

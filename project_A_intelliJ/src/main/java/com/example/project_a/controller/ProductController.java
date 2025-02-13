@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -114,5 +115,20 @@ public class ProductController {
         model.addAttribute("categories", categories);
         model.addAttribute("products", products);
         return "shop/shop-list";
+    }
+
+    @GetMapping("/home")
+    public String showIndexPage(Model model) {
+        List<Product> products = service.getAllProducts();
+        List<Product> limit4Products = products.size() > 4 ? products.subList(0, 4) : products;
+        List<Product> next4Products = products.size() > 8 ? products.subList(4, 8) :
+                products.size() > 4 ? products.subList(4, products.size()) : Collections.emptyList();
+        List<Product> limit8Products = products.size() > 8 ? products.subList(0, 8) :
+                products.size() > 8 ? products.subList(0, products.size()) : Collections.emptyList();
+        model.addAttribute("products", products);
+        model.addAttribute("limit4Products", limit4Products);
+        model.addAttribute("next4Products", next4Products);
+        model.addAttribute("limit8Products", limit8Products);
+        return "shop/index-2";
     }
 }
