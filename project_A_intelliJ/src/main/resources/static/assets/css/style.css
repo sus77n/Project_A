@@ -46,7 +46,7 @@ body {
     color: #333333;
     font-size: 14px;
     background: #fff;
-    line-height: 1.25em;
+    line-height: 10px;
 }
 a:hover {
     text-decoration: none;
@@ -409,14 +409,14 @@ ul {
 }
 .search-cart-area > ul > li {
     display: block;
-    padding: 25px 0 25px 47px;
+    padding:30px 0 25px 47px;
     width: 100%;
 }
 .search-cart-area > ul > li.search-mrg {
-    padding: 25px 0 25px 39px;
+    padding: 30px 0 25px 39px;
 }
 .search-cart-area > ul > li:first-child {
-    padding: 25px 0 25px 0px;
+    padding: 30px 0 25px 0px;
 }
 .logo {
     padding: 5px 0;
@@ -427,7 +427,7 @@ ul {
     display: block;
     font-size: 18px;
     font-weight: 500;
-    line-height: 75px;
+    line-height: 80px;
     margin-right: 77px;
     position: relative;
     height: 75px;
