@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ProductController {
@@ -118,18 +120,50 @@ public class ProductController {
     }
 
     @GetMapping("/filter-products")
-    public String filterProducts(@RequestParam(value = "categories", required = false) List<Long> categoryIds, Model model) {
-        List<Product> filteredProducts;
+    public String filterProducts(
+            @RequestParam(value = "categories", required = false) List<Long> categoryIds,
+            @RequestParam(value = "minPrice", required = false) Double minPrice,
+            @RequestParam(value = "maxPrice", required = false) Double maxPrice,
+            @RequestParam(value = "sort", required = false) String sort,
+            Model model) {
 
-        if (categoryIds == null || categoryIds.isEmpty()) {
-            filteredProducts = service.getAllProducts(); // Show all products if no filter
-        } else {
-            filteredProducts = service.getProductsByCategoryIds(categoryIds);// Fetch filtered products
+        List<Product> filteredProducts = service.getAllProducts();
+
+        if (categoryIds != null && !categoryIds.isEmpty()) {
+            filteredProducts = service.getProductsByCategoryIds(categoryIds);
+        }
+
+        if (minPrice != null && maxPrice != null) {
+            double finalMinPrice = minPrice;
+            double finalMaxPrice = maxPrice;
+            filteredProducts = filteredProducts.stream()
+                    .filter(p -> p.getPrice() >= finalMinPrice && p.getPrice() <= finalMaxPrice)
+                    .collect(Collectors.toList());
+        }
+
+        if (sort != null) {
+            switch (sort) {
+                case "nameAsc":
+                    filteredProducts.sort(Comparator.comparing(Product::getName));
+                    break;
+                case "nameDesc":
+                    filteredProducts.sort(Comparator.comparing(Product::getName).reversed());
+                    break;
+                case "priceAsc":
+                    filteredProducts.sort(Comparator.comparing(Product::getPrice));
+                    break;
+                case "priceDesc":
+                    filteredProducts.sort(Comparator.comparing(Product::getPrice).reversed());
+                    break;
+            }
         }
 
         model.addAttribute("products", filteredProducts);
-        return "shop/shop-list :: productList"; // This will return only the product list section
+        model.addAttribute("productsCount", filteredProducts.size());
+
+        return "shop/shop-list :: productList";
     }
+
 
     @GetMapping("/home")
     public String showIndexPage(Model model) {
