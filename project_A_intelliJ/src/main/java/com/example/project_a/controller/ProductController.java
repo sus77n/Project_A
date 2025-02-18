@@ -173,10 +173,14 @@ public class ProductController {
                 products.size() > 4 ? products.subList(4, products.size()) : Collections.emptyList();
         List<Product> limit8Products = products.size() > 8 ? products.subList(0, 8) :
                 products.size() > 8 ? products.subList(0, products.size()) : Collections.emptyList();
+        List<Category> categories = categoryService.getAllCategories();
+
         model.addAttribute("products", products);
         model.addAttribute("limit4Products", limit4Products);
         model.addAttribute("next4Products", next4Products);
         model.addAttribute("limit8Products", limit8Products);
+        model.addAttribute("categories", categories);
+
         return "shop/index-2";
     }
 }

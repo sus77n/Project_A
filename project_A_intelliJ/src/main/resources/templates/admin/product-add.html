@@ -66,9 +66,15 @@
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <label for="description" class="form-label">Description</label>
-                                            <textarea th:field="*{description}" class="form-control bg-light-subtle"
-                                                      id="description" rows="7"
-                                                      placeholder="Description about the product"></textarea>
+<!--                                            <textarea th:field="*{description}" class="form-control bg-light-subtle"-->
+<!--                                                      id="description" rows="7"-->
+<!--                                                      placeholder="Description about the product"></textarea>-->
+                                            <!-- Quill Editor -->
+                                            <div id="editor-container"></div>
+
+                                            <!-- Hidden Input to Store HTML -->
+                                            <textarea id="description" name="description" style="display: none;" th:field="*{description}"></textarea>
+
                                         </div>
                                     </div>
                                 </div>
@@ -181,6 +187,21 @@
 
             document.getElementById("thumbnailFileName").value = "";
             document.getElementById("thumbnailName").value = "";
+        }
+    });
+</script>
+<script>
+    // Richtext
+    var quill = new Quill('#editor-container', {
+        theme: 'snow',
+        placeholder: 'Description about the product...',
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, false] }],
+                ['bold', 'italic', 'underline'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                ['link']
+            ]
         }
     });
 </script>

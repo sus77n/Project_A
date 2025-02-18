@@ -502,7 +502,6 @@ ul {
     font-size: 14px;
     color: #292929;
     text-transform: uppercase;
-    margin-bottom: 15px;
 }
 .megamenu {
     width: 100%;
@@ -516,7 +515,7 @@ ul {
 .megamenu > li,
 .megamenu-two > li,
 .megamenu-three > li {
-    padding: 30px;
+    padding: 20px 30px;
 }
 .megamenu > li:not(:last-child),
 .megamenu-two > li:not(:last-child),
