@@ -75,9 +75,6 @@
                                                         th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
                                                         alt="Product Image"></a>
                                                 <div class="pro-actions">
-                                                    <a class="quick-view" th:attr="data-product-id=${product.id}">
-                                                        <i class="icon-zoom"></i>
-                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="pro-content">
@@ -107,8 +104,6 @@
                                                         th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
                                                         alt="Product Image"></a>
                                                 <div class="pro-actions">
-                                                    <a data-toggle="modal" data-target="#product-window"
-                                                       class="quick-view" href="#"><i class="icon-zoom"></i></a>
                                                 </div>
                                             </div>
                                             <div class="pro-content">
@@ -176,8 +171,6 @@
                                 th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
                                 alt="Product Image"></a>
                         <div class="pro-actions">
-                            <a data-toggle="modal" data-target="#product-window"
-                               class="quick-view" href="#"><i class="icon-zoom"></i></a>
                         </div>
                     </div>
                     <div class="pro-content">
@@ -233,8 +226,6 @@
                                 </a>
 
                                 <div class="pro-actions">
-                                    <a data-toggle="modal" data-target="#product-window"
-                                       class="quick-view" href="#"><i class="icon-zoom"></i></a>
                                 </div>
                             </div>
                             <div class="pro-content">
@@ -381,11 +372,7 @@
     </div>
 
     <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
-    <div class="main-product-thumbnail quick-thumb-content" th:replace="~{layout::quickViewProduct(product)}"></div>
 </div>
-<!-- Main Wrapper End Here -->
-<div id="quick-view-container"></div>
-
 
 <th:block th:replace="layout :: scripts"></th:block>
 </body>
