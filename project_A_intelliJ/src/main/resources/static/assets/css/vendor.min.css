@@ -6615,3 +6615,7 @@ body.swal2-toast-shown .swal2-container.swal2-bottom-end, body.swal2-toast-shown
 .ql-container.ql-snow {
     border: 1px solid #ccc
 }
+
+#editor-container {
+    height: 100px;
+}

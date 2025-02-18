@@ -1,7 +1,9 @@
 package com.example.project_a.service;
 
+import com.example.project_a.model.Category;
 import com.example.project_a.model.Media;
 import com.example.project_a.repository.MediaRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -12,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 
 @Service
 public class MediaService {
@@ -49,9 +52,8 @@ public class MediaService {
         }
     }
 
-    public Media findMediaById(int id) {
-        Media media = this.mediaRepository.getReferenceById(id);
-        return media;
+    public Media findMediaById(Integer id) {
+        return mediaRepository.findById(id).orElse(null);
     }
 
     public void save(Media media) {

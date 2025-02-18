@@ -24,8 +24,10 @@ import java.util.stream.Collectors;
 public class ProductController {
     @Autowired
     private ProductService service;
+
     @Autowired
     private CategoryService categoryService;
+
     @Autowired
     private MediaService mediaService;
 
@@ -59,7 +61,6 @@ public class ProductController {
         List<Category> categories = categoryService.getAllCategories();
         categories.remove(product.getCategory());
         Media thumbnail = product.getThumbnail();
-        System.out.println(thumbnail.getName());
         model.addAttribute("thumbnail", thumbnail);
         model.addAttribute("categories", categories);
         model.addAttribute("product", product);
@@ -69,11 +70,15 @@ public class ProductController {
 
     @PostMapping("/admin/product/save")
     public String saveProduct(Product product,
-                              @RequestParam String categoryId,
-                              @RequestParam String thumbnailId,
+                              @RequestParam("categoryId") String categoryId,
+                              @RequestParam("thumbnailId") String thumbnailId,
                               RedirectAttributes ra) {
         Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
+
+        System.out.println("Thumbnail ID: " + thumbnailId);
         Media thumbnail = mediaService.findMediaById(Integer.parseInt(thumbnailId));
+        System.out.println(thumbnail);
+
         product.setCategory(category);
         product.setThumbnail(thumbnail);
         service.save(product);
@@ -92,9 +97,6 @@ public class ProductController {
     public String editProduct(Product product, @RequestParam String categoryId,
                               @RequestParam("thumbnailName") String thumbnailName,
                               @RequestParam("mediaAlt") String mediaAlt, RedirectAttributes ra) {
-        System.out.println("check this");
-        System.out.println(thumbnailName);
-        System.out.println(mediaAlt);
 
         Media media = new Media();
         media.setName(mediaAlt);
