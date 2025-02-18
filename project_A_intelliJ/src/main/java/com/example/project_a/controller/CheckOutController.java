@@ -2,6 +2,7 @@ package com.example.project_a.controller;
 
 import com.example.project_a.model.*;
 import com.example.project_a.service.*;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,15 +25,16 @@ public class CheckOutController {
     private OrderDetailService orderDetailService;
 
 
-    @GetMapping("/checkout")
-    public String showCheckout(Model model) {
+    @PostMapping("/checkout")
+    public String showCheckout(Model model,  HttpSession session) {
         User user = userService.findUserById(1);
         Order order = new Order();
         order.setUser(user);
         order.setAddress(user.getAddress());
         order.setPhoneNumber(user.getPhoneNumber());
         order.setPaymentStatus("Unpaid");
-        List<Cart> carts = cartService.getCartsByUserId(user.getId());
+//        List<Cart> carts = cartService.getCartsByUserId(user.getId());
+        List<Cart> carts = (List<Cart>) session.getAttribute("cartList");
         int total = 0;
         for (Cart cart : carts) {
             total += cart.getTotal();

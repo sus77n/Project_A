@@ -33,97 +33,105 @@
                         <a th:href="@{/product-details}"><img th:src="@{/assets/img/banner/b9.jpg}"
                                                               alt="banner-img"></a>
                     </div>
-                    <!-- Grid & List View Start -->
-                    <div class="grid-list-top border-default universal-padding d-lg-flex justify-content-md-between align-items-center mb-30">
-                        <div class="grid-list-view d-flex align-items-center  mb-sm-15">
-                            <ul class="nav tabs-area d-flex align-items-center">
-                                <li><a class="active" data-toggle="tab" href="#grid-view"><i class="fa fa-th"></i></a>
-                                </li>
-                                <li><a data-toggle="tab" href="#list-view"><i class="fa fa-list-ul"></i></a></li>
-                            </ul>
-                            <span class="show-items" th:text="'There are ' + ${products.size()} + ' products.'"></span>
-                        </div>
-                        <!-- Toolbar Short Area Start -->
-                        <div class="main-toolbar-sorter clearfix">
-                            <div class="toolbar-sorter d-md-flex align-items-center">
-                                <label>Sort By:</label>
-                                <select class="sorter wide">
-                                    <option value="Position">Relevance</option>
-                                    <option value="Product Name">Name, A to Z</option>
-                                    <option value="Product Name">Name, Z to A</option>
-                                    <option value="Price">Price low to high</option>
-                                    <option value="Price">Price high to low</option>
-                                </select>
+                    <div id="product-container" th:fragment="productList">
+                        <!-- Grid & List View Start -->
+                        <div class="grid-list-top border-default universal-padding d-lg-flex justify-content-md-between align-items-center mb-30">
+                            <div class="grid-list-view d-flex align-items-center  mb-sm-15">
+                                <ul class="nav tabs-area d-flex align-items-center">
+                                    <li><a class="active" data-toggle="tab" href="#grid-view"><i
+                                            class="fa fa-th"></i></a>
+                                    </li>
+                                    <li><a data-toggle="tab" href="#list-view"><i class="fa fa-list-ul"></i></a></li>
+                                </ul>
+                                <span class="show-items"
+                                      th:text="'There are ' + ${products.size()} + ' products.'"></span>
                             </div>
-                        </div>
-                        <!-- Toolbar Short Area End -->
-                    </div>
-                    <!-- Grid & List View End -->
-                    <div class="shop-area mb-all-40">
-                        <!-- Grid & List Main Area End -->
-                        <div class="tab-content Products-area">
-                            <div id="grid-view" class="tab-pane fade show active">
-                                <div id="product-list" th:fragment="productList">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6 col-sm-6" th:each="product : ${products}">
-
-                                            <!-- Single Product Start -->
-                                            <div class="single-aboss-product mb-3">
-                                                <div class="pro-img">
-                                                    <a th:href="@{/product-details}">
-                                                        <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
-                                                             alt="Product Image">
-
-                                                    </a>
-                                                    <div class="pro-actions">
-                                                        <a data-toggle="modal" data-target="#product-window"
-                                                           class="quick-view" href="#"><i class="icon-zoom"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="pro-content">
-                                                    <h4><a th:href="@{/product-details}" th:text="${product.name}"></a>
-                                                    </h4>
-                                                    <div class="pro-price-cart">
-                                                        <div class="pro-home-price">
-                                                            <span th:text="'$' + ${product.price}"></span>
-                                                        </div>
-                                                        <div class="pro-cart">
-                                                            <a title="Add To Cart"
-                                                               th:href="@{/cart/add(id=${product.id})}"><i
-                                                                    class="icon-cart"></i></a>
-                                                            <!--                                                        <a title="Wishlist" href="#"><i class="icon-like"></i></a>-->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Single Product End -->
-                                        </div>
+                            <!-- Toolbar Short Area Start -->
+                            <div class="main-toolbar-sorter clearfix">
+                                <div class="toolbar-sorter d-md-flex align-items-center">
+                                    <label>Sort By:</label>
+                                    <div class="nice-select sorter wide" tabindex="0"><span
+                                            class="current">Relevance</span>
+                                        <ul class="list" id="sort-options">
+                                            <li data-value="relevance" class="option selected">Relevance</li>
+                                            <li data-value="nameAsc" class="option">Name, A to Z</li>
+                                            <li data-value="nameDesc" class="option">Name, Z to A</li>
+                                            <li data-value="priceAsc" class="option">Price low to high</li>
+                                            <li data-value="priceDesc" class="option">Price high to low</li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <!-- Row End -->
                             </div>
-                            <!-- #grid view End -->
+                            <!-- Toolbar Short Area End -->
+                        </div>
+                        <!-- Grid & List View End -->
+                        <div class="shop-area mb-all-40">
+                            <!-- Grid & List Main Area End -->
+                            <div class="tab-content Products-area">
+                                <div id="grid-view" class="tab-pane fade show active">
+                                    <div id="product-list">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-6 col-sm-6" th:each="product : ${products}">
 
+                                                <!-- Single Product Start -->
+                                                <div class="single-aboss-product mb-3">
+                                                    <div class="pro-img">
+                                                        <a th:href="@{/product-details}">
+                                                            <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                                                 alt="Product Image">
 
-                            <div id="list-view" class="tab-pane fade">
-                                <!-- Single Product Start -->
-                                <div id="product-list" th:fragment="productList">
-                                    <div class="single-aboss-product" th:each="product : ${products}">
-
-                                        <div class="pro-img">
-                                            <a th:href="@{/product-details}">
-                                                <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
-                                                     alt="Product Image">
-
-                                            </a>
-                                            <div class="pro-actions">
-                                                <a data-toggle="modal" data-target="#product-window" class="quick-view"
-                                                   href="#"><i class="icon-zoom"></i></a>
+                                                        </a>
+                                                        <div class="pro-actions">
+                                                            <a data-toggle="modal" data-target="#product-window"
+                                                               class="quick-view" href="#"><i class="icon-zoom"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pro-content">
+                                                        <h4><a th:href="@{/product-details}"
+                                                               th:text="${product.name}"></a>
+                                                        </h4>
+                                                        <div class="pro-price-cart">
+                                                            <div class="pro-home-price">
+                                                                <span th:text="'$' + ${product.price}"></span>
+                                                            </div>
+                                                            <div class="pro-cart">
+                                                                <a title="Add To Cart"
+                                                                   th:href="@{/cart/add(id=${product.id})}"><i
+                                                                        class="icon-cart"></i></a>
+                                                                <!--                                                        <a title="Wishlist" href="#"><i class="icon-like"></i></a>-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Single Product End -->
                                             </div>
                                         </div>
+                                    </div>
+                                    <!-- Row End -->
+                                </div>
+                                <!-- #grid view End -->
 
-                                        <div class="pro-content">
-                                            <h4><a th:href="@{/product-details}" th:text="${product.name}"></a></h4>
+
+                                <div id="list-view" class="tab-pane fade">
+                                    <!-- Single Product Start -->
+                                    <div id="product-list">
+                                        <div class="single-aboss-product" th:each="product : ${products}">
+
+                                            <div class="pro-img">
+                                                <a th:href="@{/product-details}">
+                                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                                         alt="Product Image">
+
+                                                </a>
+                                                <div class="pro-actions">
+                                                    <a data-toggle="modal" data-target="#product-window"
+                                                       class="quick-view"
+                                                       href="#"><i class="icon-zoom"></i></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="pro-content">
+                                                <h4><a th:href="@{/product-details}" th:text="${product.name}"></a></h4>
                                                 <div class="rating">
                                                     <i class="fa fa-star" aria-hidden="true"></i>
                                                     <i class="fa fa-star" aria-hidden="true"></i>
@@ -137,40 +145,44 @@
                                                 </p>
                                                 <p th:text="${product.description}"></p>
                                                 <div class="pro-cart">
-                                                    <a href="#" title="Add To Cart">
+                                                    <a  title="Add To Cart" href="javascript:void(0);" class="add-to-cart-btn" th:data-id="${product.id}">
                                                         <i class="icon-cart"></i>
                                                     </a>
-<!--                                                    <a href="#" title="Wishlist">-->
-<!--                                                        <i class="icon-like"></i>-->
-<!--                                                    </a>-->
-                                                </div>
-                                        </div>
+                                                   
 
+                                                    <!--                                                    <a href="#" title="Wishlist">-->
+                                                    <!--                                                        <i class="icon-like"></i>-->
+                                                    <!--                                                    </a>-->
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
+                                    <!-- Single Product End -->
                                 </div>
-                                <!-- Single Product End -->
+                                <!-- #list view End -->
                             </div>
-                            <!-- #list view End -->
+                            <!-- Grid & List Main Area End -->
                         </div>
-                        <!-- Grid & List Main Area End -->
-                    </div>
-                    <!-- Shop Breadcrumb Area Start -->
-                    <div class="shop-breadcrumb-area border-default mt-40">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-5">
+                        <!-- Shop Breadcrumb Area Start -->
+                        <div class="shop-breadcrumb-area border-default mt-40">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-5">
                                 <span class="show-items"
                                       th:text="'Showing 1-12 of ' + ${products.size()} + ' item(s) '">
                                 </span>
-                            </div>
-                            <div class="col-lg-8 col-md-6 col-sm-7">
-                                <ul class="pfolio-breadcrumb-list text-center">
-                                    <li class="float-left prev"><a href="#"><i class="fa fa-angle-left"
-                                                                               aria-hidden="true"></i>Previous</a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li class="float-right next"><a href="#">Next<i class="fa fa-angle-right"
-                                                                                    aria-hidden="true"></i></a></li>
-                                </ul>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-7">
+                                    <ul class="pfolio-breadcrumb-list text-center">
+                                        <li class="float-left prev"><a href="#"><i class="fa fa-angle-left"
+                                                                                   aria-hidden="true"></i>Previous</a>
+                                        </li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li class="float-right next"><a href="#">Next<i class="fa fa-angle-right"
+                                                                                        aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -231,112 +243,179 @@
         const gridView = document.getElementById("grid-view");
         const listView = document.getElementById("list-view");
 
-        // Handle category filter change
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener("change", function () {
-                let selectedCategories = [];
-
-                // Get selected category IDs
-                document.querySelectorAll(".category-filter:checked").forEach((cb) => {
-                    selectedCategories.push(cb.value); // Get the value (category ID) here
-                });
-
-                // Send AJAX request to backend
-                fetch('/filter-products?categories=' + selectedCategories.join(","), {
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/json'}
-                })
-                    .then(response => response.text()) // Convert response to text (Thymeleaf HTML fragment)
-                    .then(data => {
-                        // Update both grid and list views with the new product list
-                        document.querySelectorAll('.tab-content .tab-pane').forEach(tab => {
-                            tab.querySelector("#product-list").innerHTML = data;
-                        });
-
-                        // Show the correct view based on the active tab
-                        if (gridView.classList.contains("show active")) {
-                            listView.classList.remove("show active");
-                            gridView.classList.add("show active");
-                        } else {
-                            gridView.classList.remove("show active");
-                            listView.classList.add("show active");
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-                fetch('/filter-products?categories=' + selectedCategories.join(","), {
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/json'}
-                })
-                    .then(response => response.text()) // Convert response to text (Thymeleaf HTML fragment)
-                    .then(data => {
-                        // Update only the active product list
-                        const activeTab = document.querySelector('.tab-content .tab-pane.show.active');
-
-                        if (activeTab) {
-                            if (activeTab.id === "grid-view") {
-                                activeTab.querySelector("#grid-product-list").innerHTML = data;
-                            } else if (activeTab.id === "list-view") {
-                                activeTab.querySelector("#list-product-list").innerHTML = data;
-                            }
-                        }
-
-                        // Show the correct view based on the active tab
-                        if (gridView.classList.contains("show active")) {
-                            listView.classList.remove("show active");
-                            gridView.classList.add("show active");
-                        } else {
-                            gridView.classList.remove("show active");
-                            listView.classList.add("show active");
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-
-            });
+        // Initialize price range slider
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 1000,
+            values: [0, 1000],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            },
+            stop: function (event, ui) {
+                fetchFilteredProducts();
+            }
         });
 
-        // Handle view change (grid or list)
-        const viewSwitch = document.querySelectorAll('.nav.tabs-area li a');
-        viewSwitch.forEach(tab => {
-            tab.addEventListener("click", function (event) {
-                // Remove the "show" class from both views
-                gridView.classList.remove("show");
-                listView.classList.remove("show");
+        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+            " - $" + $("#slider-range").slider("values", 1));
 
-                // Add the "show" class to the selected view
-                if (tab.getAttribute('href') === "#grid-view") {
-                    gridView.classList.add("show");
-                } else {
-                    listView.classList.add("show");
+        function fetchFilteredProducts() {
+            let selectedCategories = [];
+            document.querySelectorAll(".category-filter:checked").forEach((cb) => {
+                selectedCategories.push(cb.value);
+            });
+
+            let minPrice = $("#slider-range").slider("values", 0);
+            let maxPrice = $("#slider-range").slider("values", 1);
+            let selectedSortElement = document.querySelector(".option.selected");
+            let selectedSort = selectedSortElement ? selectedSortElement.getAttribute("data-value") : "";
+
+            console.log("Fetching products with:", { selectedCategories, minPrice, maxPrice, selectedSort });
+
+            let queryParams = new URLSearchParams();
+            if (selectedCategories.length > 0) {
+                queryParams.append("categories", selectedCategories.join(","));
+            }
+            queryParams.append("minPrice", minPrice);
+            queryParams.append("maxPrice", maxPrice);
+            if (selectedSort) {
+                queryParams.append("sort", selectedSort);
+            }
+
+            fetch('/filter-products?' + queryParams.toString(), {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json'}
+            })
+                .then(response => response.text())
+                .then(data => {
+                    console.log("Response received, updating UI");
+                    document.getElementById("product-container").innerHTML = data;
+
+                    if (gridView.classList.contains("show")) {
+                        listView.classList.remove("show", "active");
+                        gridView.classList.add("show", "active");
+                    } else {
+                        gridView.classList.remove("show", "active");
+                        listView.classList.add("show", "active");
+                    }
+                })
+                .catch(error => console.error('Error fetching products:', error));
+        }
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", fetchFilteredProducts);
+        });
+
+        document.getElementById("sort-options").addEventListener("click", function (event) {
+            console.log("Sort option clicked:", event.target);
+
+            if (event.target.tagName === "LI") {
+                console.log("Clicked on:", event.target.getAttribute("data-value"));
+
+                // Remove 'selected' class from all options
+                document.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
+
+                // Add 'selected' class to the clicked option
+                event.target.classList.add("selected");
+
+                console.log("Sorting changed to:", event.target.getAttribute("data-value"));
+
+                // Fetch the filtered and sorted products
+                fetchFilteredProducts();
+            }
+        });
+
+
+    });
+</script>
+<!-- jquery 3.2.1 -->
+<th:block th:replace="layout :: scripts"></th:block>
+<script th:inline="javascript">
+    function showToast(message, type = "success") {
+        Toastify({
+            text: message,
+            duration: 2000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+            onClick: function(){} // Callback after click
+        }).showToast();
+    }
+    $(document).ready(function () {
+
+        $(document).on("click", ".add-to-cart-btn", function () {
+
+            let productId = $(this).attr("data-id"); // Ensure correct ID retrieval
+            $.ajax({
+                type: "POST",
+                url: "/cart/add", // Update with your backend API endpoint
+                contentType: "application/json",
+                data: JSON.stringify({ id: productId }),
+                success: function (response) {
+                    console.log("success");
+                    updateCartCount(response.cartSize); // Update cart count
+                    updateCartUI(response.cartItems); // Update cart UI
+                    showToast("Product added to cart!"); // Show success message
+                },
+                error: function () {
+                    showToast("Error adding product to cart!", "error");
                 }
             });
         });
+
+        function updateCartCount(count) {
+            $("#toi-muon-count").text(count); // Update cart count in navbar
+        }
+
+
+
+        function updateCartUI(cartItems) {
+            let cartContainer = $(".ht-dropdown-cart");
+            cartContainer.empty(); // Clear old items
+            cartItems.forEach((item) => {
+                let cartHtml = `
+                <li class="single-cart-box">
+                    <div class="cart-img">
+                        <a href="#"><img src="/uploads/p4.jpg" alt="cart-image"></a>
+                        <span class="pro-quantity">${item.quantity}</span>
+                    </div>
+                    <div class="cart-content">
+                        <h6><a href="/product-details">${item.productName}</a></h6>
+                        <span class="cart-price">${item.price}</span>
+                    </div>
+                    <a class="del-icon" href="#"><i class="ion-close"></i></a>
+                </li>
+            `;
+                cartContainer.append(cartHtml);
+            });
+
+            let footer = `
+                        <!-- Cart Footer Inner Start -->
+                        <li class="cart-footer">
+                           <ul class="price-content">
+                              <li>Total <span>$</span></li>
+                           </ul>
+                           <div class="cart-actions text-center">
+                              <a class="cart-checkout" id="view-cart-btn">View Cart</a>
+                           </div>
+                        </li>
+                        <!-- Cart Footer Inner End -->
+                        `;
+            cartContainer.append(footer);
+
+        }
+
+        // Handle "View Cart" button click
+        $(document).on("click", "#view-cart-btn", function () {
+            window.location.href = "/cart"; // Redirect to Thymeleaf cart page
+        });
     });
 
-
 </script>
-<!-- jquery 3.2.1 -->
-<script th:src="@{/assets/js/vendor/jquery-3.2.1.min.js}"></script>
-<!-- Countdown js -->
-<script th:src="@{/assets/js/jquery.countdown.min.js}"></script>
-<!-- Mobile menu js -->
-<script th:src="@{/assets/js/jquery.meanmenu.min.js}"></script>
-<!-- ScrollUp js -->
-<script th:src="@{/assets/js/jquery.scrollUp.js}"></script>
-<!-- Fancybox js -->
-<script th:src="@{/assets/js/jquery.fancybox.min.js}"></script>
-<!-- Jquery nice select js -->
-<script th:src="@{/assets/js/jquery.nice-select.min.js}"></script>
-<!-- Jquery ui price slider js -->
-<script th:src="@{/assets/js/jquery-ui.min.js}"></script>
-<!-- Owl carousel -->
-<script th:src="@{/assets/js/owl.carousel.min.js}"></script>
-<!-- Bootstrap popper js -->
-<script th:src="@{/assets/js/popper.min.js}"></script>
-<!-- Bootstrap js -->
-<script th:src="@{/assets/js/bootstrap.min.js}"></script>
-<!-- Plugin js -->
-<script th:src="@{/assets/js/plugins.js}"></script>
-<!-- Main activaion js -->
-<script th:src="@{/assets/js/main.js}"></script>
 </body>
 </html>
