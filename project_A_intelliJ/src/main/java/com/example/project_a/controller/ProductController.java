@@ -176,7 +176,6 @@ public class ProductController {
         return "shop/shop-list :: productList";
     }
 
-
     @GetMapping("/home")
     public String showIndexPage(Model model) {
         List<Product> products = service.getAllProducts();
@@ -194,5 +193,13 @@ public class ProductController {
         model.addAttribute("categories", categories);
 
         return "shop/index-2";
+    }
+
+
+    @GetMapping("/product-details")
+    public String showProductDetails(@RequestParam String productId, Model model) {
+        Product product = service.findProductById(Integer.parseInt(productId));
+        model.addAttribute("product", product);
+        return "shop/product-details";
     }
 }

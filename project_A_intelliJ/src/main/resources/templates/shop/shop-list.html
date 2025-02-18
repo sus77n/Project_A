@@ -30,7 +30,7 @@
                 <!-- Product Categorie List Start -->
                 <div class="col-lg-9 col-md-8">
                     <div class="shop-banner mb-40">
-                        <a th:href="@{/product-details}"><img th:src="@{/assets/img/banner/b9.jpg}"
+                        <a th:href="@{/shop}"><img th:src="@{/assets/img/banner/b9.jpg}"
                                                               alt="banner-img"></a>
                     </div>
                     <div id="product-container" th:fragment="productList">
@@ -76,7 +76,7 @@
                                                 <!-- Single Product Start -->
                                                 <div class="single-aboss-product mb-3">
                                                     <div class="pro-img">
-                                                        <a th:href="@{/product-details}">
+                                                        <a th:href="@{/product-details(productId=${product.getId()})}">
                                                             <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
                                                                  alt="Product Image">
 
@@ -87,7 +87,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="pro-content">
-                                                        <h4><a th:href="@{/product-details}"
+                                                        <h4><a th:href="@{/product-details(productId=${product.getId()})}"
                                                                th:text="${product.name}"></a>
                                                         </h4>
                                                         <div class="pro-price-cart">
@@ -118,7 +118,7 @@
                                         <div class="single-aboss-product" th:each="product : ${products}">
 
                                             <div class="pro-img">
-                                                <a th:href="@{/product-details}">
+                                                <a th:href="@{/product-details(productId=${product.getId()})}">
                                                     <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
                                                          alt="Product Image">
 
@@ -131,7 +131,7 @@
                                             </div>
 
                                             <div class="pro-content">
-                                                <h4><a th:href="@{/product-details}" th:text="${product.name}"></a></h4>
+                                                <h4><a th:href="@{/product-details(productId=${product.getId()})}" th:text="${product.name}"></a></h4>
                                                 <div class="rating">
                                                     <i class="fa fa-star" aria-hidden="true"></i>
                                                     <i class="fa fa-star" aria-hidden="true"></i>

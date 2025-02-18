@@ -7,7 +7,7 @@
     <div class="slider-area slider-2">
         <div class="slider-activation owl-dot-style owl-carousel">
             <div class="single-slider pt-215 pb-257 bg-img"
-                 style="background-image:url(/../../assets/img/slider/slider-bg-2.jpg);">
+                 style="background-image:url(/assets/img/slider/slider-bg-2.jpg);">
                 <div class="container">
                     <div class="slider-content slider-animated-1">
                         <h1 class="first-h1 animated">New Exprience</h1>
@@ -15,14 +15,14 @@
                         <h1 class="third-h1 animated">Places.</h1>
                         <h3 class="animated">360.00 <span>Full Package </span></h3>
                         <div class="slider-btn mt-75">
-                            <a class="animated" th:href="@{/product-details}">Shop Now <i
+                            <a class="animated" th:href="@{/shop}">Shop Now <i
                                     class="animated icon-right-arrow"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="single-slider pt-215 pb-257 bg-img"
-                 style="background-image:url(/../../assets/img/slider/slider-bg-3.jpg);">
+                 style="background-image:url(/assets/img/slider/slider-bg-3.jpg);">
                 <div class="container">
                     <div class="slider-content slider-animated-2">
                         <h1 class="first-h1 animated">New Exprience</h1>
@@ -30,7 +30,7 @@
                         <h1 class="third-h1 animated">Places.</h1>
                         <h3 class="animated">360.00 <span>Full Package </span></h3>
                         <div class="slider-btn mt-75">
-                            <a class="animated" th:href="@{/product-details}">Shop Now <i
+                            <a class="animated" th:href="@{/shop}">Shop Now <i
                                     class="animated icon-right-arrow"></i></a>
                         </div>
                     </div>
@@ -71,16 +71,18 @@
                                     <div class="col-md-3 col-sm-2" th:each="product : ${limit4Products}">
                                         <div class="single-aboss-product">
                                             <div class="pro-img">
-                                                <a th:href="@{/product-details}"><img
+                                                <a th:href="@{/product-details(productId=${product.getId()})}"><img
                                                         th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
                                                         alt="Product Image"></a>
                                                 <div class="pro-actions">
-                                                    <a data-toggle="modal" data-target="#product-window"
-                                                       class="quick-view" href="#"><i class="icon-zoom"></i></a>
+                                                    <a class="quick-view" th:attr="data-product-id=${product.id}">
+                                                        <i class="icon-zoom"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="pro-content">
-                                                <h4><a th:href="@{/product-details}" th:text="${product.name}"></a></h4>
+                                                <h4><a th:href="@{/product-details(productId=${product.getId()})}"
+                                                       th:text="${product.name}"></a></h4>
                                                 <div class="pro-price-cart">
                                                     <div class="pro-home-price">
                                                         <span th:text="'$' + ${product.price}"></span>
@@ -101,7 +103,7 @@
                                     <div class="col-md-3 col-sm-2" th:each="product : ${next4Products}">
                                         <div class="single-aboss-product">
                                             <div class="pro-img">
-                                                <a th:href="@{/product-details}"><img
+                                                <a th:href="@{/product-details(productId=${product.getId()})}"><img
                                                         th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
                                                         alt="Product Image"></a>
                                                 <div class="pro-actions">
@@ -110,7 +112,8 @@
                                                 </div>
                                             </div>
                                             <div class="pro-content">
-                                                <h4><a th:href="@{/product-details}" th:text="${product.name}"></a></h4>
+                                                <h4><a th:href="@{/product-details(productId=${product.getId()})}"
+                                                       th:text="${product.name}"></a></h4>
                                                 <div class="pro-price-cart">
                                                     <div class="pro-home-price">
                                                         <span th:text="'$' + ${product.price}"></span>
@@ -169,7 +172,7 @@
             <div class="best-seller-active owl-carousel">
                 <div class="single-aboss-product" th:each="product : ${limit4Products}">
                     <div class="pro-img">
-                        <a th:href="@{/product-details}"><img
+                        <a th:href="@{/product-details(productId=${product.getId()})}"><img
                                 th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
                                 alt="Product Image"></a>
                         <div class="pro-actions">
@@ -178,7 +181,8 @@
                         </div>
                     </div>
                     <div class="pro-content">
-                        <h4><a th:href="@{/product-details}" th:text="${product.name}"></a></h4>
+                        <h4><a th:href="@{/product-details(productId=${product.getId()})}"
+                               th:text="${product.name}"></a></h4>
                         <div class="pro-price-cart">
                             <div class="pro-home-price">
                                 <span th:text="'$' + ${product.price}"></span>
@@ -195,7 +199,7 @@
         </div>
     </div>
     <div class="overview-area bg-img pt-155 pb-135"
-         style="background-image:url(/../../assets/img/banner/hop-banner-5.jpg);">
+         style="background-image:url(/assets/img/banner/hop-banner-5.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -223,16 +227,19 @@
                         <!-- Single Product Start -->
                         <div class="single-aboss-product mb-10">
                             <div class="pro-img">
-                                <a th:href="@{/product-details}"><img
-                                        th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
-                                        alt="Product Image"></a>
+                                <a th:href="@{/product-details(productId=${product.getId()})}">
+                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                         alt="Product Image">
+                                </a>
+
                                 <div class="pro-actions">
                                     <a data-toggle="modal" data-target="#product-window"
                                        class="quick-view" href="#"><i class="icon-zoom"></i></a>
                                 </div>
                             </div>
                             <div class="pro-content">
-                                <h4><a th:href="@{/product-details}" th:text="${product.name}"></a></h4>
+                                <h4><a th:href="@{/product-details(productId=${product.getId()})}"
+                                       th:text="${product.name}"></a></h4>
                                 <div class="pro-price-cart">
                                     <div class="pro-home-price">
                                         <span th:text="'$' + ${product.price}"></span>
@@ -339,7 +346,7 @@
 
     <!-- Bradn Area End  Here -->
     <div class="newsletter-area bg-img pt-132 pb-165"
-         style="background-image:url(/../../assets/img/banner/hop-banner-6.jpg);">
+         style="background-image:url(/assets/img/banner/hop-banner-6.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 col-md-5">
@@ -374,11 +381,12 @@
     </div>
 
     <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
-    <div class="main-product-thumbnail quick-thumb-content" th:replace="~{layout::quickViewProduct}"></div>
+    <div class="main-product-thumbnail quick-thumb-content" th:replace="~{layout::quickViewProduct(product)}"></div>
 </div>
 <!-- Main Wrapper End Here -->
+<div id="quick-view-container"></div>
+
 
 <th:block th:replace="layout :: scripts"></th:block>
-
 </body>
 </html>

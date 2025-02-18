@@ -1491,6 +1491,9 @@ ul {
 .best-seller-active .single-aboss-product {
     margin-bottom: 1px;
 }
+.best-seller-active .owlCarousel .owl-stage-outer .owl-item{
+    loop: false
+}
 .pro-img {
     position: relative;
 }
@@ -1605,6 +1608,7 @@ ul {
     transform: scale(0);
     transition: all 0.3s ease 0s;
     width: 61px;
+    cursor: pointer;
 }
 .single-aboss-product:hover .quick-view {
     transform: scale(1);
