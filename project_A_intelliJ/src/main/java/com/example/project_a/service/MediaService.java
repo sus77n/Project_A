@@ -39,13 +39,19 @@ public class MediaService {
         return "/uploads/" + fileName;
     }
 
-    public boolean delete(String fileName) throws Exception {
+    public boolean removeFromStorage(String fileName) throws Exception {
         try {
             Path filePath = storageLocation.resolve(fileName);
+
             return Files.deleteIfExists(filePath);
         } catch (IOException e) {
             throw new Exception("Failed to delete file " + fileName, e);
         }
+    }
+
+    public Media findMediaById(int id) {
+        Media media = this.mediaRepository.getReferenceById(id);
+        return media;
     }
 
     public void save(Media media) {
