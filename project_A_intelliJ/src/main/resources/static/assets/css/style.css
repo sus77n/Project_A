@@ -502,6 +502,8 @@ ul {
     font-size: 14px;
     color: #292929;
     text-transform: uppercase;
+    pointer-events: auto;
+    cursor: pointer;
 }
 .megamenu {
     width: 100%;

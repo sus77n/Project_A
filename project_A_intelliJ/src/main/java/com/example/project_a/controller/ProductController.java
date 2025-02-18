@@ -111,13 +111,25 @@ public class ProductController {
     }
 
     @GetMapping("/shop")
-    public String showProductPage(Model model) {
+    public String showProductPage(
+            @RequestParam(value = "categories", required = false) List<Long> categoryIds,
+            Model model) {
+
         List<Category> categories = categoryService.getAllCategories();
-        List<Product> products = service.getAllProducts();
+        List<Product> products;
+
+        if (categoryIds != null && !categoryIds.isEmpty()) {
+            products = service.getProductsByCategoryIds(categoryIds);
+        } else {
+            products = service.getAllProducts();
+        }
+
         model.addAttribute("categories", categories);
         model.addAttribute("products", products);
+
         return "shop/shop-list";
     }
+
 
     @GetMapping("/filter-products")
     public String filterProducts(

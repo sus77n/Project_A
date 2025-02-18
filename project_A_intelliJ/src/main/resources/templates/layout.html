@@ -65,9 +65,13 @@
                                                     <!-- Single Column Start -->
                                                     <li th:each="category : ${categories}">
                                                         <ul>
-                                                            <li class="menu-title" th:text="${category.categoryName}"></li>
+                                                            <li class="menu-title"
+                                                                th:text="${category.categoryName}"
+                                                                th:data-id="${category.id}">
+                                                            </li>
                                                         </ul>
                                                     </li>
+
                                                     <!-- Single Column End -->
                                                 </ul>
                                             <!-- Mega-Menu End -->
@@ -452,31 +456,47 @@
         </div>
     </footer>
 </div>
-<script th:src="@{assets/js/vendor/modernizr-3.5.0.min.js}"></script>
-<script th:src="@{assets/js/vendor/jquery-3.2.1.min.js}"></script>
-<!-- Countdown js -->
-<script th:src="@{assets/js/jquery.countdown.min.js}"></script>
-<!-- Mobile menu js -->
-<script th:src="@{assets/js/jquery.meanmenu.min.js}"></script>
-<!-- ScrollUp js -->
-<script th:src="@{assets/js/jquery.scrollUp.js}"></script>
-<!-- Fancybox js -->
-<script th:src="@{assets/js/jquery.fancybox.min.js}"></script>
-<!-- Jquery nice select js -->
-<script th:src="@{assets/js/jquery.nice-select.min.js}"></script>
-<!-- Jquery ui price slider js -->
-<script th:src="@{assets/js/jquery-ui.min.js}"></script>
-<!-- Owl carousel -->
-<script th:src="@{assets/js/owl.carousel.min.js}"></script>
-<!-- Bootstrap popper js -->
-<script th:src="@{assets/js/popper.min.js}"></script>
-<!-- Bootstrap js -->
-<script th:src="@{assets/js/bootstrap.min.js}"></script>
-<!-- Plugin js -->
-<script th:src="@{assets/js/plugins.js}"></script>
-<!-- Main activaion js -->
-<script th:src="@{assets/js/main.js}"></script>
-<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+<th:block th:fragment="scripts">
+    <script>
+        document.addEventListener("click", function (event) {
+            if (event.target.classList.contains("menu-title")) {
+                let categoryId = event.target.getAttribute("data-id");
+                console.log("Delegated Click, Category ID:", categoryId);
+
+                if (categoryId) {
+                    window.location.href = `/shop?categories=${categoryId}`;
+                }
+            }
+        });
+    </script>
+    <script th:src="@{assets/js/vendor/modernizr-3.5.0.min.js}"></script>
+    <script th:src="@{assets/js/vendor/jquery-3.2.1.min.js}"></script>
+    <!-- Countdown js -->
+    <script th:src="@{assets/js/jquery.countdown.min.js}"></script>
+    <!-- Mobile menu js -->
+    <script th:src="@{assets/js/jquery.meanmenu.min.js}"></script>
+    <!-- ScrollUp js -->
+    <script th:src="@{assets/js/jquery.scrollUp.js}"></script>
+    <!-- Fancybox js -->
+    <script th:src="@{assets/js/jquery.fancybox.min.js}"></script>
+    <!-- Jquery nice select js -->
+    <script th:src="@{assets/js/jquery.nice-select.min.js}"></script>
+    <!-- Jquery ui price slider js -->
+    <script th:src="@{assets/js/jquery-ui.min.js}"></script>
+    <!-- Owl carousel -->
+    <script th:src="@{assets/js/owl.carousel.min.js}"></script>
+    <!-- Bootstrap popper js -->
+    <script th:src="@{assets/js/popper.min.js}"></script>
+    <!-- Bootstrap js -->
+    <script th:src="@{assets/js/bootstrap.min.js}"></script>
+    <!-- Plugin js -->
+    <script th:src="@{assets/js/plugins.js}"></script>
+    <!-- Main activation js -->
+    <script th:src="@{assets/js/main.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script th:src="@{/assets/js/locationInVietnam.js}"></script>
+</th:block>
 
 </body>
 </html>
