@@ -5012,3 +5012,8 @@ a.shipping-calculator-button:hover {
     max-width: fit-content;
     max-width: -moz-fit-content;
 }
+
+.show-all{
+    display: flex;
+    justify-content: flex-end;
+}
