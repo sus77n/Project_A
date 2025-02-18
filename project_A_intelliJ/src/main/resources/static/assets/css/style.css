@@ -3170,10 +3170,10 @@ ul {
 }
 .product-header {
     color: #2e2e2e;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 500;
     line-height: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     text-transform: capitalize;
 }
 .rating-pro i,
@@ -3217,8 +3217,8 @@ ul {
     margin-right: 15px;
 }
 .pro-price .price {
-    color: #292929;
-    font-size: 18px;
+    color: #9db5d9;
+    font-size: 22px;
     font-weight: 500;
 }
 .pro-price .prev-price {
