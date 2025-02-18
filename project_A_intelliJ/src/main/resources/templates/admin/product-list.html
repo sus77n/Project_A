@@ -64,13 +64,13 @@
                                                 <label class="form-check-label" th:for="${product.id}">&nbsp;</label>
                                             </div>
                                         </td>
-                                        <td class="text-center" th:text="${product.name}"></td>
-                                        <td class="text-end" th:text="${product.price}">$</td>
-                                        <td class="text-end">
+                                        <td class="text-left" th:text="${product.name}"></td>
+                                        <td class="text-center" th:text="${product.price}">$</td>
+                                        <td class="text-center">
                                             <p class="mb-1 text-muted"><span class="text-dark fw-medium"
                                                                              th:text="${product.inStock} "></span></p>
                                         </td>
-                                        <td class="text-center" th:text="${product.category.categoryName}"></td>
+                                        <td class="text-left" th:text="${product.category.categoryName}"></td>
                                         <td class="text-center">
                                             <span class="badge p-1 fs-12 me-1"
                                                   th:classappend="${product.status} == 'Active' ? 'text-success bg-success-subtle' : 'text-danger bg-danger-subtle'"
@@ -153,8 +153,8 @@
                                     </li>
                                     <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a>
                                     </li>
-                                    <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+<!--                                    <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>-->
+<!--                                    <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>-->
                                     <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
                                 </ul>
                             </nav>

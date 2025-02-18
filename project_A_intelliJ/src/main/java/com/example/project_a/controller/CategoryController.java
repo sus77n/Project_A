@@ -1,6 +1,7 @@
 package com.example.project_a.controller;
 
 import com.example.project_a.model.Category;
+import com.example.project_a.model.CategoryDTO;
 import com.example.project_a.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ public class CategoryController {
 
     @GetMapping("/admin/category/list")
     public String listAllCategories(Model model) {
-        List<Category> categories = service.getAllCategories();
+        List<CategoryDTO> categories = service.getAllCategoriesWithProductCount();
         model.addAttribute("categories", categories);
         model.addAttribute("pageTitle", "Category");
 
