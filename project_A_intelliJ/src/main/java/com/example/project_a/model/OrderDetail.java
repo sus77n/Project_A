@@ -8,7 +8,7 @@ import java.sql.Date;
 @Table(name ="ordersDetails")
 public class OrderDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_detail_id" ,nullable = false, unique = true)
     private Integer ID;
 
