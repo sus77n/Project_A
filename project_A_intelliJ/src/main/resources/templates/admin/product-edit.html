@@ -69,8 +69,8 @@
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <label for="description" class="form-label">Description</label>
-                                            <textarea class="form-control bg-light-subtle" id="description" rows="7"
-                                                      th:field="*{description}"></textarea>
+                                            <textarea id="description" name="description" style="display: none;" th:field="*{description}"></textarea>
+                                            <div id="editor-container"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -205,6 +205,33 @@
             }
         });
     });
+</script>
+<script>
+    var quill = new Quill('#editor-container', {
+        theme: 'snow'
+    });
+
+    // Load the existing description into Quill
+    var savedContent = document.getElementById('description').value;
+    if (savedContent) {
+        quill.root.innerHTML = savedContent; // Set Quill content
+    }
+
+    // Ensure Quill content is updated before form submission
+    document.querySelector('#mainForm').onsubmit = function () {
+        document.getElementById('description').value = quill.root.innerHTML;
+    };
+</script>
+<script>
+    var quill = new Quill('#editor-container', {
+        theme: 'snow'
+    });
+
+    // Sync Quill content to the hidden input before submitting
+    document.querySelector('#mainForm').onsubmit = function () {
+        document.getElementById('description').value = quill.root.innerHTML;
+        console.log("Qui des" + quill.root.innerHTML);
+    };
 </script>
 
 </body>
