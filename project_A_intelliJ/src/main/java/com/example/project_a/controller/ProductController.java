@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ProductController {
@@ -108,11 +111,88 @@ public class ProductController {
     }
 
     @GetMapping("/shop")
-    public String showProductPage(Model model) {
+    public String showProductPage(
+            @RequestParam(value = "categories", required = false) List<Long> categoryIds,
+            Model model) {
+
         List<Category> categories = categoryService.getAllCategories();
-        List<Product> products = service.getAllProducts();
+        List<Product> products;
+
+        if (categoryIds != null && !categoryIds.isEmpty()) {
+            products = service.getProductsByCategoryIds(categoryIds);
+        } else {
+            products = service.getAllProducts();
+        }
+
         model.addAttribute("categories", categories);
         model.addAttribute("products", products);
+
         return "shop/shop-list";
+    }
+
+
+    @GetMapping("/filter-products")
+    public String filterProducts(
+            @RequestParam(value = "categories", required = false) List<Long> categoryIds,
+            @RequestParam(value = "minPrice", required = false) Double minPrice,
+            @RequestParam(value = "maxPrice", required = false) Double maxPrice,
+            @RequestParam(value = "sort", required = false) String sort,
+            Model model) {
+
+        List<Product> filteredProducts = service.getAllProducts();
+
+        if (categoryIds != null && !categoryIds.isEmpty()) {
+            filteredProducts = service.getProductsByCategoryIds(categoryIds);
+        }
+
+        if (minPrice != null && maxPrice != null) {
+            double finalMinPrice = minPrice;
+            double finalMaxPrice = maxPrice;
+            filteredProducts = filteredProducts.stream()
+                    .filter(p -> p.getPrice() >= finalMinPrice && p.getPrice() <= finalMaxPrice)
+                    .collect(Collectors.toList());
+        }
+
+        if (sort != null) {
+            switch (sort) {
+                case "nameAsc":
+                    filteredProducts.sort(Comparator.comparing(Product::getName));
+                    break;
+                case "nameDesc":
+                    filteredProducts.sort(Comparator.comparing(Product::getName).reversed());
+                    break;
+                case "priceAsc":
+                    filteredProducts.sort(Comparator.comparing(Product::getPrice));
+                    break;
+                case "priceDesc":
+                    filteredProducts.sort(Comparator.comparing(Product::getPrice).reversed());
+                    break;
+            }
+        }
+
+        model.addAttribute("products", filteredProducts);
+        model.addAttribute("productsCount", filteredProducts.size());
+
+        return "shop/shop-list :: productList";
+    }
+
+
+    @GetMapping("/home")
+    public String showIndexPage(Model model) {
+        List<Product> products = service.getAllProducts();
+        List<Product> limit4Products = products.size() > 4 ? products.subList(0, 4) : products;
+        List<Product> next4Products = products.size() > 8 ? products.subList(4, 8) :
+                products.size() > 4 ? products.subList(4, products.size()) : Collections.emptyList();
+        List<Product> limit8Products = products.size() > 8 ? products.subList(0, 8) :
+                products.size() > 8 ? products.subList(0, products.size()) : Collections.emptyList();
+        List<Category> categories = categoryService.getAllCategories();
+
+        model.addAttribute("products", products);
+        model.addAttribute("limit4Products", limit4Products);
+        model.addAttribute("next4Products", next4Products);
+        model.addAttribute("limit8Products", limit8Products);
+        model.addAttribute("categories", categories);
+
+        return "shop/index-2";
     }
 }

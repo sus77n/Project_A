@@ -46,7 +46,7 @@ body {
     color: #333333;
     font-size: 14px;
     background: #fff;
-    line-height: 1.25em;
+    line-height: 10px;
 }
 a:hover {
     text-decoration: none;
@@ -376,22 +376,22 @@ ul {
 
 /* header style two for home2 css end */
 
-.sticky .primary-menu-list > li > a {
-    line-height: 128px;
-}
-.sticky .logo {
-    padding: 21px 0;
-}
-.sticky .search-cart-area > ul > li {
-    padding: 54px 0 31px 47px;
-    cursor: pointer;
-}
-.sticky .search-cart-area > ul > li.search-mrg {
-    padding: 54px 0 31px 39px;
-}
-.sticky .search-cart-area > ul > li:first-child {
-    padding: 54px 0 31px 0px;
-}
+/*.sticky .primary-menu-list > li > a {*/
+/*    line-height: 80px;*/
+/*}*/
+/*.sticky .logo {*/
+/*    padding: 21px 0;*/
+/*}*/
+/*.sticky .search-cart-area > ul > li {*/
+/*    padding: 25px 0 25px 47px;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.sticky .search-cart-area > ul > li.search-mrg {*/
+/*    padding: 25px 0 25px 39px;*/
+/*}*/
+/*.sticky .search-cart-area > ul > li:first-child {*/
+/*    padding: 25px 0 25px 0px;*/
+/*}*/
 .primary-menu-list > li,
 .search-cart-area > ul > li,
 .search-cart-area > ul > li > a {
@@ -409,17 +409,17 @@ ul {
 }
 .search-cart-area > ul > li {
     display: block;
-    padding: 54px 0 34px 47px;
+    padding:30px 0 25px 47px;
     width: 100%;
 }
 .search-cart-area > ul > li.search-mrg {
-    padding: 54px 0 31px 39px;
+    padding: 30px 0 25px 39px;
 }
 .search-cart-area > ul > li:first-child {
-    padding: 54px 0 31px 0px;
+    padding: 30px 0 25px 0px;
 }
 .logo {
-    padding: 21px 0;
+    padding: 5px 0;
 }
 
 .primary-menu-list > li > a {
@@ -427,10 +427,10 @@ ul {
     display: block;
     font-size: 18px;
     font-weight: 500;
-    line-height: 128px;
+    line-height: 80px;
     margin-right: 77px;
     position: relative;
-    height: 128px;
+    height: 75px;
     align-items: center;
 }
 .primary-menu-list > li:hover > a {
@@ -502,7 +502,8 @@ ul {
     font-size: 14px;
     color: #292929;
     text-transform: uppercase;
-    margin-bottom: 15px;
+    pointer-events: auto;
+    cursor: pointer;
 }
 .megamenu {
     width: 100%;
@@ -516,7 +517,7 @@ ul {
 .megamenu > li,
 .megamenu-two > li,
 .megamenu-three > li {
-    padding: 30px;
+    padding: 20px 30px;
 }
 .megamenu > li:not(:last-child),
 .megamenu-two > li:not(:last-child),

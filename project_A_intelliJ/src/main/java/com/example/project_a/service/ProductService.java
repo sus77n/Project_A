@@ -49,4 +49,8 @@ public class ProductService {
 
         productRepository.save(product);
     }
+
+    public List<Product> getProductsByCategoryIds(List<Long> categoryIds) {
+        return productRepository.findByCategoryIdIn(categoryIds);
+    }
 }
