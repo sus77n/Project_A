@@ -58,6 +58,9 @@ public class ProductController {
         Product product = service.findProductById(Integer.parseInt(productId));
         List<Category> categories = categoryService.getAllCategories();
         categories.remove(product.getCategory());
+        Media thumbnail = product.getThumbnail();
+        System.out.println(thumbnail.getName());
+        model.addAttribute("thumbnail", thumbnail);
         model.addAttribute("categories", categories);
         model.addAttribute("product", product);
         model.addAttribute("pageTitle", "Product Edit");
@@ -65,21 +68,14 @@ public class ProductController {
     }
 
     @PostMapping("/admin/product/save")
-    public String saveProduct(Product product, @RequestParam String categoryId,
-                              @RequestParam("thumbnailName") String thumbnailName,
-                              @RequestParam("mediaAlt") String mediaAlt,
-                              @RequestParam("mediaAlt") String mediaName,
+    public String saveProduct(Product product,
+                              @RequestParam String categoryId,
+                              @RequestParam String thumbnailId,
                               RedirectAttributes ra) {
-
-        Media media = new Media();
-        media.setName(mediaName);
-        media.setAlt(mediaAlt);
-        media.setImageURL(mediaService.getFileUrl(thumbnailName));
-        mediaService.save(media);
-
         Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
+        Media thumbnail = mediaService.findMediaById(Integer.parseInt(thumbnailId));
         product.setCategory(category);
-        product.setThumbnail(media);
+        product.setThumbnail(thumbnail);
         service.save(product);
 
         ra.addFlashAttribute("message", "The product has been saved successfully.");
@@ -92,9 +88,21 @@ public class ProductController {
         return "redirect:/admin/product/list";
     }
 
-    @PostMapping("/admin/product/edit")
-    public String editProduct(@RequestParam Integer categoryId, Product product, RedirectAttributes ra) {
-        Category category = categoryService.findCategoryById(categoryId);
+    @PostMapping("/admin/product/update")
+    public String editProduct(Product product, @RequestParam String categoryId,
+                              @RequestParam("thumbnailName") String thumbnailName,
+                              @RequestParam("mediaAlt") String mediaAlt, RedirectAttributes ra) {
+        System.out.println("check this");
+        System.out.println(thumbnailName);
+        System.out.println(mediaAlt);
+
+        Media media = new Media();
+        media.setName(mediaAlt);
+        media.setAlt(mediaAlt);
+        media.setImageURL(mediaService.getFileUrl(thumbnailName));
+        mediaService.save(media);
+
+        Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
         product.setCategory(category);
         service.updateProduct(product);
         ra.addFlashAttribute("message", "The product has been edited successfully.");
@@ -176,7 +184,6 @@ public class ProductController {
         return "shop/shop-list :: productList";
     }
 
-
     @GetMapping("/home")
     public String showIndexPage(Model model) {
         List<Product> products = service.getAllProducts();
@@ -194,5 +201,13 @@ public class ProductController {
         model.addAttribute("categories", categories);
 
         return "shop/index-2";
+    }
+
+
+    @GetMapping("/product-details")
+    public String showProductDetails(@RequestParam String productId, Model model) {
+        Product product = service.findProductById(Integer.parseInt(productId));
+        model.addAttribute("product", product);
+        return "shop/product-details";
     }
 }

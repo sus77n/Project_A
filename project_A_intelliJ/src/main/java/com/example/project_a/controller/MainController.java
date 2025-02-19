@@ -19,9 +19,6 @@ public class MainController {
     @GetMapping("/about")
     public String showAboutUsPage() {return "shop/about";}
 
-    @GetMapping("/product-details")
-    public String showProductDetails() {return "shop/product-details";}
-
     @GetMapping("/404")
     public String showPageNotFound() {return "shop/404";}
 

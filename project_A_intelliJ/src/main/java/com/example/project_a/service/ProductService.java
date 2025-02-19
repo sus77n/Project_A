@@ -46,6 +46,7 @@ public class ProductService {
         product.setStatus(newProduct.getStatus());
         product.setCategory(newProduct.getCategory());
         product.setSummary(newProduct.getSummary());
+        product.setThumbnail(newProduct.getThumbnail());
 
         productRepository.save(product);
     }

@@ -19,7 +19,8 @@
                             <form class="dropzone dz-remove-upload dz-remove"
                                  id="thumbnail-dropzone"
                                  enctype="multipart/form-data">
-                                <input type="hidden" id="thumbnailFileName" name="thumbnailFileName">
+                                <input type="hidden" name="mediaName" value="Thumbnail">
+                                <input type="hidden" name="mediaAlt" value="Thumbnail of product">
                                 <div class="dz-message needsclick">
                                     <i class="bx bx-cloud-upload fs-48 text-primary"></i>
                                     <p>Drag & drop thumbnail here, or click to select</p>
@@ -32,9 +33,7 @@
                 <div class="col-lg-8 ">
                     <form th:action="@{/admin/product/save}" method="post" th:object="${product}">
                         <input type="hidden" th:field="*{id}">
-                        <input type="hidden" name="mediaName" value="Thumbnail">
-                        <input type="hidden" name="mediaAlt" value="Thumbnail of product">
-                        <input type="hidden" name="thumbnailName" id="thumbnailName">
+                        <input type="hidden" name="thumbnaiId" id="thumbnailId">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Product Information</h4>
@@ -159,8 +158,7 @@
 
         success: function (file, response) {
             // Save the uploaded file's name in a hidden input field
-            document.getElementById("thumbnailFileName").value = response.fileName;
-            document.getElementById("thumbnailName").value = response.fileName;
+            document.getElementById("thumbnailId").value = response.fileName;
             file.uploadedFileName = response.fileName; // Store the server filename in the file object
         },
 
@@ -185,7 +183,6 @@
                 });
             }
 
-            document.getElementById("thumbnailFileName").value = "";
             document.getElementById("thumbnailName").value = "";
         }
     });
