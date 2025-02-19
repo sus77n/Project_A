@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <!-- Form Start -->
-                        <form action="#">
+                        <form th:action="@{/checkout}" method="post">
                             <!-- Table Content Start -->
                             <div class="table-content table-responsive mb-45">
                                 <table>
@@ -81,7 +81,8 @@
                                             </tbody>
                                         </table>
                                         <div class="wc-proceed-to-checkout">
-                                            <a th:href="@{/checkout}">Proceed to Checkout</a>
+<!--                                            <a th:href="@{/checkout}">Proceed to Checkout</a>-->
+                                            <button type="submit" class="wc-proceed-to-checkout">Proceed to Checkout</button>
                                         </div>
                                     </div>
                                 </div>
