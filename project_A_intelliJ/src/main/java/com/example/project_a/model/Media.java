@@ -14,14 +14,14 @@ public class Media {
     @Column(nullable = false, unique = true)
     private Integer id;
 
-    @OneToOne(mappedBy = "thumbnail", optional = false)
+    @OneToOne(mappedBy = "thumbnail", optional = true)
     private Product product;
 
     @Column(name = "image_url", nullable = false)
     private String imageURL;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "type")
+    private String type;
 
     @Column(name = "alt")
     private String alt;
@@ -32,7 +32,7 @@ public class Media {
                 "id=" + id +
                 ", product=" + product +
                 ", imageURL='" + imageURL + '\'' +
-                ", name='" + name + '\'' +
+                ", name='" + type + '\'' +
                 ", alt='" + alt + '\'' +
                 '}';
     }

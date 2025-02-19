@@ -19,7 +19,7 @@
                             <form class="dropzone dz-remove-upload dz-remove dz-success-mark"
                                   id="thumbnail-dropzone"
                                   enctype="multipart/form-data">
-                                <input type="hidden" name="thumbnailName" value="Thumbnail">
+                                <input type="hidden" name="mediaType" value="Thumbnail">
                                 <input type="hidden" name="mediaAlt" value="Thumbnail of product">
                                 <div class="dz-message needsclick">
                                     <i class="bx bx-cloud-upload fs-48 text-primary"></i>
@@ -94,7 +94,7 @@
                                             <span class="input-group-text fs-20"><i class='bx bx-dollar'></i></span>
                                             <input th:field="*{price}" step="any" type="number" id="product-price"
                                                    class="form-control"
-                                                   placeholder="000">
+                                                   placeholder="0.0">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -103,7 +103,7 @@
                                             <span class="input-group-text fs-20"><i class='bx bx-cart-add'></i></span>
                                             <input th:field="*{inStock}" type="number" id="product-stock"
                                                    class="form-control"
-                                                   placeholder="000">
+                                                   placeholder="0">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -179,7 +179,7 @@
                 });
             }
 
-            document.getElementById("thumbnailName").value = "";
+            document.getElementById("mediaType").value = "";
         }
     });
 </script>

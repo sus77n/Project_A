@@ -20,8 +20,8 @@
                             <form class="dropzone dz-remove-upload dz-remove dz-max-files-reached"
                                   id="thumbnail-dropzone"
                                   enctype="multipart/form-data">
-                                <input type="hidden" id="thumbnailFileName" name="thumbnailFileName"
-                                       th:value="${thumbnail != null ? thumbnail.name : ''}">
+                                <input type="hidden" name="type" th:value="${thumbnail.type}">
+                                <input type="hidden" name="mediaAlt" th:value="${thumbnail.alt}">
                                 <div class="dz-message needsclick">
                                     <i class="bx bx-cloud-upload fs-48 text-primary"></i>
                                     <p>Drag & drop thumbnail here, or click to select</p>
@@ -34,8 +34,7 @@
                 <div class="col-lg-8 ">
                     <form th:object="${product}" th:action="@{/admin/product/update}" th:method="post">
                         <input type="hidden" th:field="*{id}">
-                        <input type="hidden" name="mediaName" th:value="${thumbnail != null ? thumbnail.name : ''}">
-                        <input type="hidden" name="mediaAlt" th:value="${thumbnail != null ? thumbnail.name : ''}">
+                        <input type="hidden" name="thumbnailId" id="thumbnailId" th:value="${thumbnail.id}">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Product Information</h4>
@@ -68,18 +67,18 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mb-3">
-                                            <label for="description" class="form-label">Description</label>
-                                            <textarea id="description" name="description" style="display: none;" th:field="*{description}"></textarea>
-                                            <div id="editor-container"></div>
+                                            <label for="summary" class="form-label">Summary</label>
+                                            <textarea class="form-control bg-light-subtle" id="summary" rows="3"
+                                                      th:field="*{summary}"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mb-3">
-                                            <label for="summary" class="form-label">Summary</label>
-                                            <textarea class="form-control bg-light-subtle" id="summary" rows="3"
-                                                      th:field="*{summary}"></textarea>
+                                            <label for="description" class="form-label">Description</label>
+                                            <textarea id="description" name="description" style="display: none;" th:field="*{description}"></textarea>
+                                            <div id="editor-container"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -154,19 +153,19 @@
 
             init: function () {
                 let existingThumbnailUrl = /*[[${thumbnail?.imageURL}]]*/ '';
-                let existingThumbnailName = /*[[${thumbnail?.name}]]*/ '';
+                let existingMediaType = /*[[${thumbnail?.type}]]*/ '';
 
                 console.log("Thumbnail URL:", existingThumbnailUrl);
-                console.log("Thumbnail Name:", existingThumbnailName);
+                console.log("Thumbnail Name:", existingMediaType);
 
                 if (existingThumbnailUrl) {
-                    let mockFile = { name: existingThumbnailName, size: 100, uploadedFileName: existingThumbnailName };
+                    let mockFile = { name: existingMediaType, size: 100, uploadedFileName: existingMediaType };
                     this.emit("addedfile", mockFile);
                     this.emit("thumbnail", mockFile, existingThumbnailUrl);
                     mockFile.previewElement.classList.add("dz-success", "dz-complete");
 
-                    document.getElementById("thumbnailFileName").value = existingThumbnailName;
-                    document.getElementById("thumbnailName").value = existingThumbnailName;
+                    document.getElementById("thumbnailFileName").value = existingMediaType;
+                    document.getElementById("mediaType").value = existingMediaType;
                 }
 
                 this.on("removedfile", function (file) {
@@ -185,12 +184,12 @@
                     }
 
                     document.getElementById("thumbnailFileName").value = "";
-                    document.getElementById("thumbnailName").value = "";
+                    document.getElementById("mediaType").value = "";
                 });
 
                 this.on("success", function (file, response) {
                     document.getElementById("thumbnailFileName").value = response.fileName;
-                    document.getElementById("thumbnailName").value = response.fileName;
+                    document.getElementById("mediaType").value = response.fileName;
                     file.uploadedFileName = response.fileName;
                 });
 
@@ -222,17 +221,5 @@
         document.getElementById('description').value = quill.root.innerHTML;
     };
 </script>
-<script>
-    var quill = new Quill('#editor-container', {
-        theme: 'snow'
-    });
-
-    // Sync Quill content to the hidden input before submitting
-    document.querySelector('#mainForm').onsubmit = function () {
-        document.getElementById('description').value = quill.root.innerHTML;
-        console.log("Qui des" + quill.root.innerHTML);
-    };
-</script>
-
 </body>
 </html>
