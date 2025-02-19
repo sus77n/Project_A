@@ -1,5 +1,7 @@
 <!doctype html>
 <html class="no-js}" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <!--<head th:replace="~{layout::page_head}"></head>-->
 <head th:replace="~{layout::page_head}"></head>
 
@@ -95,9 +97,9 @@
                                                                 <span th:text="'$' + ${product.price}"></span>
                                                             </div>
                                                             <div class="pro-cart">
-                                                                <a title="Add To Cart"
-                                                                   th:href="@{/cart/add(id=${product.id})}"><i
-                                                                        class="icon-cart"></i></a>
+                                                                <a  title="Add To Cart" href="javascript:void(0);" class="add-to-cart-btn" th:data-id="${product.id}">
+                                                                    <i class="icon-cart"></i>
+                                                                </a>
                                                                 <!--                                                        <a title="Wishlist" href="#"><i class="icon-like"></i></a>-->
                                                             </div>
                                                         </div>
@@ -148,7 +150,7 @@
                                                     <a  title="Add To Cart" href="javascript:void(0);" class="add-to-cart-btn" th:data-id="${product.id}">
                                                         <i class="icon-cart"></i>
                                                     </a>
-                                                   
+
 
                                                     <!--                                                    <a href="#" title="Wishlist">-->
                                                     <!--                                                        <i class="icon-like"></i>-->
@@ -330,7 +332,7 @@
     });
 </script>
 <!-- jquery 3.2.1 -->
-<th:block th:replace="layout :: scripts"></th:block>
+
 <script th:inline="javascript">
     function showToast(message, type = "success") {
         Toastify({
@@ -349,7 +351,7 @@
     $(document).ready(function () {
 
         $(document).on("click", ".add-to-cart-btn", function () {
-
+            console.log("addCartFunc")
             let productId = $(this).attr("data-id"); // Ensure correct ID retrieval
             $.ajax({
                 type: "POST",
@@ -417,5 +419,7 @@
     });
 
 </script>
+
+<th:block th:replace="layout :: scripts"></th:block>
 </body>
 </html>
