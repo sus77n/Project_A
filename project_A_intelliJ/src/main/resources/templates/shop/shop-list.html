@@ -145,9 +145,11 @@
                                                 </p>
                                                 <p th:text="${product.description}"></p>
                                                 <div class="pro-cart">
-                                                    <a href="#" title="Add To Cart">
+                                                    <a  title="Add To Cart" href="javascript:void(0);" class="add-to-cart-btn" th:data-id="${product.id}">
                                                         <i class="icon-cart"></i>
                                                     </a>
+                                                   
+
                                                     <!--                                                    <a href="#" title="Wishlist">-->
                                                     <!--                                                        <i class="icon-like"></i>-->
                                                     <!--                                                    </a>-->
