@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -24,8 +25,10 @@ import java.util.stream.Collectors;
 public class ProductController {
     @Autowired
     private ProductService service;
+
     @Autowired
     private CategoryService categoryService;
+
     @Autowired
     private MediaService mediaService;
 
@@ -59,7 +62,6 @@ public class ProductController {
         List<Category> categories = categoryService.getAllCategories();
         categories.remove(product.getCategory());
         Media thumbnail = product.getThumbnail();
-        System.out.println(thumbnail.getName());
         model.addAttribute("thumbnail", thumbnail);
         model.addAttribute("categories", categories);
         model.addAttribute("product", product);
@@ -69,10 +71,11 @@ public class ProductController {
 
     @PostMapping("/admin/product/save")
     public String saveProduct(Product product,
-                              @RequestParam String categoryId,
-                              @RequestParam String thumbnailId,
+                              @RequestParam("categoryId") String categoryId,
+                              @RequestParam("thumbnailId") String thumbnailId,
                               RedirectAttributes ra) {
         Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
+
         Media thumbnail = mediaService.findMediaById(Integer.parseInt(thumbnailId));
         product.setCategory(category);
         product.setThumbnail(thumbnail);
@@ -90,14 +93,11 @@ public class ProductController {
 
     @PostMapping("/admin/product/update")
     public String editProduct(Product product, @RequestParam String categoryId,
-                              @RequestParam("thumbnailName") String thumbnailName,
+                              @RequestParam("mediaType") String thumbnailName,
                               @RequestParam("mediaAlt") String mediaAlt, RedirectAttributes ra) {
-        System.out.println("check this");
-        System.out.println(thumbnailName);
-        System.out.println(mediaAlt);
 
         Media media = new Media();
-        media.setName(mediaAlt);
+        media.setType(mediaAlt);
         media.setAlt(mediaAlt);
         media.setImageURL(mediaService.getFileUrl(thumbnailName));
         mediaService.save(media);
@@ -190,24 +190,99 @@ public class ProductController {
         List<Product> limit4Products = products.size() > 4 ? products.subList(0, 4) : products;
         List<Product> next4Products = products.size() > 8 ? products.subList(4, 8) :
                 products.size() > 4 ? products.subList(4, products.size()) : Collections.emptyList();
-        List<Product> limit8Products = products.size() > 8 ? products.subList(0, 8) :
-                products.size() > 8 ? products.subList(0, products.size()) : Collections.emptyList();
         List<Category> categories = categoryService.getAllCategories();
+
+        List<Product> firstProducts = service.getAllProducts();
+        firstProducts = service.getProductsByCategoryIds(new ArrayList<>() {
+            {
+                add(Long.parseLong("1"));
+            }
+        });
+        System.out.println("firstProducts: " + firstProducts);
+
+        List<Product> secondProducts = service.getAllProducts();
+        secondProducts = service.getProductsByCategoryIds(new ArrayList<>() {
+            {
+                add(Long.parseLong("2"));
+            }
+        });
+
+        List<Product> thirdProducts = service.getAllProducts();
+        thirdProducts = service.getProductsByCategoryIds(new ArrayList<>() {
+            {
+                add(Long.parseLong("3"));
+            }
+        });
 
         model.addAttribute("products", products);
         model.addAttribute("limit4Products", limit4Products);
         model.addAttribute("next4Products", next4Products);
-        model.addAttribute("limit8Products", limit8Products);
+        model.addAttribute("firstProducts", firstProducts);
+        model.addAttribute("secondProducts", secondProducts);
+        model.addAttribute("thirdProducts", thirdProducts);
+        model.addAttribute("categories", categories);
+
+        return "shop/index-2";
+    }
+
+    @GetMapping("")
+    public String showHomePage(Model model) {
+        List<Product> products = service.getAllProducts();
+        List<Product> limit4Products = products.size() > 4 ? products.subList(0, 4) : products;
+        List<Product> next4Products = products.size() > 8 ? products.subList(4, 8) :
+                products.size() > 4 ? products.subList(4, products.size()) : Collections.emptyList();
+        List<Category> categories = categoryService.getAllCategories();
+
+        List<Product> firstProducts = service.getAllProducts();
+        firstProducts = service.getProductsByCategoryIds(new ArrayList<>() {
+            {
+                add(Long.parseLong("1"));
+            }
+        });
+        System.out.println("firstProducts: " + firstProducts);
+
+        List<Product> secondProducts = service.getAllProducts();
+        secondProducts = service.getProductsByCategoryIds(new ArrayList<>() {
+            {
+                add(Long.parseLong("2"));
+            }
+        });
+
+        List<Product> thirdProducts = service.getAllProducts();
+        thirdProducts = service.getProductsByCategoryIds(new ArrayList<>() {
+            {
+                add(Long.parseLong("3"));
+            }
+        });
+
+        model.addAttribute("products", products);
+        model.addAttribute("limit4Products", limit4Products);
+        model.addAttribute("next4Products", next4Products);
+        model.addAttribute("firstProducts", firstProducts);
+        model.addAttribute("secondProducts", secondProducts);
+        model.addAttribute("thirdProducts", thirdProducts);
         model.addAttribute("categories", categories);
 
         return "shop/index-2";
     }
 
 
+
     @GetMapping("/product-details")
     public String showProductDetails(@RequestParam String productId, Model model) {
         Product product = service.findProductById(Integer.parseInt(productId));
+        List<Product> thisCateProducts = service.getAllProducts();
+        Long cateID = Long.valueOf(product.getCategory().getId());
+
+        thisCateProducts = service.getProductsByCategoryIds(new ArrayList<>() {
+            {
+                add(cateID);
+            }
+        });
+        thisCateProducts = thisCateProducts.subList(Math.max(thisCateProducts.size()-4, 0), thisCateProducts.size());
+
         model.addAttribute("product", product);
+        model.addAttribute("thisCateProducts", thisCateProducts);
         return "shop/product-details";
     }
 }

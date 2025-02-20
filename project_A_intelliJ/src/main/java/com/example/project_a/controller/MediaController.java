@@ -22,19 +22,24 @@ public class MediaController {
     @ResponseBody
     public ResponseEntity<Map<String, String>> uploadMedia(@RequestParam("file") MultipartFile file,
                                                            @RequestParam("mediaAlt") String mediaAlt,
-                                                           @RequestParam("thumbnailName") String thumbnailName) {
+                                                           @RequestParam("mediaType") String mediaType) {
         try {
             String fileName = mediaService.store(file);
 
             Media media = new Media();
-            media.setName(fileName);
+            media.setType(mediaType);
             media.setAlt(mediaAlt);
-            media.setImageURL(mediaService.getFileUrl(thumbnailName));
+            media.setImageURL(mediaService.getFileUrl(fileName));
             mediaService.save(media);
+
+            Media thumbnail = mediaService.findMediaById(media.getId());
 
             Map<String, String> response = new HashMap<>();
             response.put("mediaId", String.valueOf(media.getId()));
+            response.put("fileName", fileName);
+            response.put("thumbnail", thumbnail.getType());
             return ResponseEntity.ok(response);
+
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(Map.of("error", "Failed to upload file: " + e.getMessage()));

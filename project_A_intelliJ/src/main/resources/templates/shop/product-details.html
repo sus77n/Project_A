@@ -59,15 +59,15 @@
                 <div class="col-lg-7 col-md-6">
                     <div class="thubnail-desc fix">
                         <h3 class="product-header" th:text="${product.name}"></h3>
-                        <ul class="rating-summary">
-                            <li class="rating-pro">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </li>
-                        </ul>
+<!--                        <ul class="rating-summary">-->
+<!--                            <li class="rating-pro">-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star-o"></i>-->
+<!--                                <i class="fa fa-star-o"></i>-->
+<!--                                <i class="fa fa-star-o"></i>-->
+<!--                            </li>-->
+<!--                        </ul>-->
                         <div class="pro-price mt-10">
                             <p class="d-flex align-items-center">
 <!--                                <span class="prev-price">16.51</span>-->
@@ -98,8 +98,11 @@
                         <!--                                </ul>-->
                         <!--                            </div>-->
                         <div class="quatity-stock mb-30">
+                            <div class="pro-ref mb-30">
+                                <p><span class="in-stock" th:text="'In stock:  ' + ${product.inStock}"></span></p>
+                            </div>
                             <label>Quantity</label>
-                            <ul class="d-flex flex-wrap  align-items-center">
+                            <ul class="d-flex flex-wrap  align-items-center mt-30">
                                 <li class="box-quantity">
                                     <form action="#">
                                         <input class="quantity" type="number" min="1" value="1">
@@ -107,9 +110,6 @@
                                 </li>
                                 <li>
                                     <button class="pro-cart">add to cart</button>
-                                </li>
-                                <li class="pro-ref">
-                                    <p><span class="in-stock"><i class="ion-checkmark-round"></i> in stock</span></p>
                                 </li>
                             </ul>
                         </div>
@@ -144,7 +144,7 @@
                         <!-- Product Thumbnail Tab Content Start -->
                         <div class="tab-content thumb-content">
                             <div id="dtail" class="tab-pane fade show active">
-                                <p th:text="${product.description}"></p>
+                                <p th:utext="${product.description}"></p>
                             </div>
                             <div id="review" class="tab-pane fade">
                                 <!-- Reviews Start -->
@@ -268,23 +268,22 @@
                 <h2>Related product</h2>
             </div>
             <div class="best-seller-active owl-carousel">
-                <div class="single-aboss-product">
+                <div class="single-aboss-product" th:each="product:${thisCateProducts}">
                     <div class="pro-img">
-                        <a th:href="@{/product-detail}"><img src="assets/img/products/p1.jpg" alt="product-img"></a>
+                        <a th:href="@{/product-details(productId=${product.getId()})}"><img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}" alt="product-img"></a>
                         <div class="pro-actions">
-                            <a data-toggle="modal" data-target="#product-window" class="quick-view" href="#"><i
-                                    class="icon-search"></i></a>
+<!--                            <a data-toggle="modal" data-target="#product-window" class="quick-view" href="#"><i-->
+<!--                                    class="icon-search"></i></a>-->
                         </div>
                     </div>
                     <div class="pro-content">
-                        <h4><a th:href="@{/product-detail}">Dorji bari East Long Style</a></h4>
+                        <h4 th:text="${product.name}"><a th:href="@{/product-details(productId=${product.getId()})}"></a></h4>
                         <div class="pro-price-cart">
                             <div class="pro-home-price">
-                                <span>$199.99</span>
+                                <span th:text="'$' + ${product.price}"></span>
                             </div>
                             <div class="pro-cart">
                                 <a title="Add To Cart" href="#"><i class="icon-cart"></i></a>
-                                <a title="Wishlist" href="#"><i class="icon-like"></i></a>
                             </div>
                         </div>
                     </div>
@@ -293,7 +292,6 @@
         </div>
     </div>
     <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
-    <div class="main-product-thumbnail quick-thumb-content" th:replace="~{layout::quickViewProduct}"></div>
 </div>
 <th:block th:replace="layout :: scripts"></th:block>
 </body>

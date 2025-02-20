@@ -28,7 +28,8 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetail> orderDetails;
 
-    @Column(name = "description")
+    @Lob
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     @Column(name = "summary")

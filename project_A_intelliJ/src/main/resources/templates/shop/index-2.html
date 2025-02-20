@@ -75,9 +75,6 @@
                                                         th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
                                                         alt="Product Image"></a>
                                                 <div class="pro-actions">
-                                                    <a class="quick-view" th:attr="data-product-id=${product.id}">
-                                                        <i class="icon-zoom"></i>
-                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="pro-content">
@@ -107,8 +104,6 @@
                                                         th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
                                                         alt="Product Image"></a>
                                                 <div class="pro-actions">
-                                                    <a data-toggle="modal" data-target="#product-window"
-                                                       class="quick-view" href="#"><i class="icon-zoom"></i></a>
                                                 </div>
                                             </div>
                                             <div class="pro-content">
@@ -176,8 +171,6 @@
                                 th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
                                 alt="Product Image"></a>
                         <div class="pro-actions">
-                            <a data-toggle="modal" data-target="#product-window"
-                               class="quick-view" href="#"><i class="icon-zoom"></i></a>
                         </div>
                     </div>
                     <div class="pro-content">
@@ -217,13 +210,16 @@
         <div class="container">
             <!-- Section Title Start -->
             <div class="section-title text-center mb-45">
-                <h2>GEAR LIST</h2>
+                <h2>Adventure starts here - gear up with the best!</h2>
             </div>
             <!-- Section Title End -->
             <!-- Second Featured Product Activation Start -->
             <div class="Products-area">
+                <div class="section-title text-center mb-45">
+                    <h3 th:text="${categories.get(0).categoryName}"> </h3>
+                </div>
                 <div class="row">
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-40" th:each="product: ${limit8Products}">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-40" th:each="product: ${firstProducts}">
                         <!-- Single Product Start -->
                         <div class="single-aboss-product mb-10">
                             <div class="pro-img">
@@ -233,8 +229,6 @@
                                 </a>
 
                                 <div class="pro-actions">
-                                    <a data-toggle="modal" data-target="#product-window"
-                                       class="quick-view" href="#"><i class="icon-zoom"></i></a>
                                 </div>
                             </div>
                             <div class="pro-content">
@@ -254,6 +248,81 @@
                         </div>
                         <!-- Single Product End -->
                     </div>
+                </div>
+
+                <div class="section-title text-center mb-45">
+                    <h3 th:text="${categories.get(1).categoryName}"> </h3>
+                </div>
+                <div class="row">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-40" th:each="product: ${secondProducts}">
+                        <!-- Single Product Start -->
+                        <div class="single-aboss-product mb-10">
+                            <div class="pro-img">
+                                <a th:href="@{/product-details(productId=${product.getId()})}">
+                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                         alt="Product Image">
+                                </a>
+
+                                <div class="pro-actions">
+                                </div>
+                            </div>
+                            <div class="pro-content">
+                                <h4><a th:href="@{/product-details(productId=${product.getId()})}"
+                                       th:text="${product.name}"></a></h4>
+                                <div class="pro-price-cart">
+                                    <div class="pro-home-price">
+                                        <span th:text="'$' + ${product.price}"></span>
+                                    </div>
+                                    <div class="pro-cart">
+                                        <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}"><i
+                                                class="icon-cart"></i></a>
+                                        <!--                                                        <a title="Wishlist" href="#"><i class="icon-like"></i></a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Product End -->
+                    </div>
+                </div>
+
+                <div class="section-title text-center mb-45">
+                    <h3 th:text="${categories.get(2).categoryName}"> </h3>
+                </div>
+                <div class="row">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-40" th:each="product: ${thirdProducts}">
+                        <!-- Single Product Start -->
+                        <div class="single-aboss-product mb-10">
+                            <div class="pro-img">
+                                <a th:href="@{/product-details(productId=${product.getId()})}">
+                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                         alt="Product Image">
+                                </a>
+
+                                <div class="pro-actions">
+                                </div>
+                            </div>
+                            <div class="pro-content">
+                                <h4><a th:href="@{/product-details(productId=${product.getId()})}"
+                                       th:text="${product.name}"></a></h4>
+                                <div class="pro-price-cart">
+                                    <div class="pro-home-price">
+                                        <span th:text="'$' + ${product.price}"></span>
+                                    </div>
+                                    <div class="pro-cart">
+                                        <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}"><i
+                                                class="icon-cart"></i></a>
+                                        <!--                                                        <a title="Wishlist" href="#"><i class="icon-like"></i></a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Product End -->
+                    </div>
+                </div>
+
+                <div class="slider-btn mt-75 show-all">
+                    <a class="animated" th:href="@{/shop}">See all products <i
+                            class="animated icon-right-arrow"></i></a>
                 </div>
             </div>
             <!-- Second Featured Product Activation End -->
@@ -381,11 +450,7 @@
     </div>
 
     <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
-    <div class="main-product-thumbnail quick-thumb-content" th:replace="~{layout::quickViewProduct(product)}"></div>
 </div>
-<!-- Main Wrapper End Here -->
-<div id="quick-view-container"></div>
-
 
 <th:block th:replace="layout :: scripts"></th:block>
 </body>

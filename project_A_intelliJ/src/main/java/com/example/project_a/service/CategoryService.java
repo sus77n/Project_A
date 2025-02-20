@@ -1,16 +1,21 @@
 package com.example.project_a.service;
 import com.example.project_a.model.Category;
+import com.example.project_a.model.CategoryDTO;
+import com.example.project_a.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.project_a.repository.CategoryRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 
 public class CategoryService {
     @Autowired private CategoryRepository categoryRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
     public List<Category> getAllCategories() {
         return (List<Category>) categoryRepository.findAll();
@@ -45,6 +50,15 @@ public class CategoryService {
 
         // Save the updated category
         categoryRepository.save(category);
+    }
+
+    public List<CategoryDTO> getAllCategoriesWithProductCount() {
+        List<Category> categories = categoryRepository.findAll();
+
+        return categories.stream().map(category -> {
+            long productCount = productRepository.countProductsByCategory(category.getId());
+            return new CategoryDTO(category, productCount);
+        }).collect(Collectors.toList());
     }
 
 }
