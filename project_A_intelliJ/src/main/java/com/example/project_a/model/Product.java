@@ -46,7 +46,7 @@ public class Product {
     @Column(name = "product_slider")
     private String productSlider;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "thumbnail", referencedColumnName = "id")
     private Media thumbnail;
 

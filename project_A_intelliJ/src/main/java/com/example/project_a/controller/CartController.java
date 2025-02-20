@@ -41,7 +41,11 @@ public class CartController {
         }
 
         int total = cartList.stream().mapToInt(Cart::getTotal).sum();
-
+        for (Cart cart : cartList) {
+            if(cart.getId() == null) {
+                service.save(cart);
+            }
+        }
         model.addAttribute("carts", cartList);
         model.addAttribute("total", total);
 
@@ -49,8 +53,12 @@ public class CartController {
     }
 
     @GetMapping("/cart/delete")
-    public String deleteCart(@RequestParam("id") String id , RedirectAttributes ra) {
+    public String deleteCart(@RequestParam("id") String id , RedirectAttributes ra, HttpSession session) {
+        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
         service.deleteCartById(Integer.parseInt(id));
+        cartList.removeIf(item -> item.getId().equals(Integer.parseInt(id)));
+
+        session.setAttribute("cartList", cartList);
         ra.addFlashAttribute("message", "The Cart has been deleted successfully.");
         return "redirect:/cart";
     }
@@ -101,14 +109,11 @@ public class CartController {
                     Map<String, Object> itemMap = new HashMap<>();
                     itemMap.put("productName", cartItem.getProduct().getName());  // Add the name property
                     itemMap.put("quantity", cartItem.getQuantity());
-                    itemMap.put("price", cartItem.getQuantity() * cartItem.getQuantity());
+                    itemMap.put("price", cartItem.getQuantity() * cartItem.getProduct().getPrice());
+                    itemMap.put("thumbNail", cartItem.getProduct().getThumbnail().getImageURL());
                     return itemMap;
                 })
                 .collect(Collectors.toList()));  // Convert to a list of maps containing properties
-
-        for (Cart cartItem : cartList) {
-            System.out.println(cartItem.getProduct().getId());
-        }
         return response;
     }
 

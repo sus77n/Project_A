@@ -375,33 +375,35 @@
             $("#toi-muon-count").text(count); // Update cart count in navbar
         }
 
-
-
         function updateCartUI(cartItems) {
             let cartContainer = $(".ht-dropdown-cart");
-            cartContainer.empty(); // Clear old items
+            cartContainer.empty();
+            let totalPrice = 0;// Clear old items
             cartItems.forEach((item) => {
                 let cartHtml = `
                 <li class="single-cart-box">
                     <div class="cart-img">
-                        <a href="#"><img src="/uploads/p4.jpg" alt="cart-image"></a>
+                         <a href="#"><img src="${item.thumbNail}" alt="cart-image"></a>
                         <span class="pro-quantity">${item.quantity}</span>
                     </div>
                     <div class="cart-content">
                         <h6><a href="/product-details">${item.productName}</a></h6>
-                        <span class="cart-price">${item.price}</span>
+                        <span class="cart-price">$ ${item.price}</span>
                     </div>
                     <a class="del-icon" href="#"><i class="ion-close"></i></a>
                 </li>
             `;
                 cartContainer.append(cartHtml);
+                totalPrice += item.price*item.quantity;
             });
+
+
 
             let footer = `
                         <!-- Cart Footer Inner Start -->
                         <li class="cart-footer">
                            <ul class="price-content">
-                              <li>Total <span>$</span></li>
+                              <li>Total <span>$ ${totalPrice}</span></li>
                            </ul>
                            <div class="cart-actions text-center">
                               <a class="cart-checkout" id="view-cart-btn">View Cart</a>
@@ -412,6 +414,7 @@
             cartContainer.append(footer);
 
         }
+
 
         // Handle "View Cart" button click
         $(document).on("click", "#view-cart-btn", function () {

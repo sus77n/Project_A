@@ -40,7 +40,7 @@
                                     <tbody>
                                         <tr th:each="cart : ${carts}">
                                             <td class="product-thumbnail">
-                                                <a href="#"><img src="assets/img/products/p3.jpg" alt="cart-image" /></a>
+                                                <a href="#"><img th:src="${cart.product.getThumbnail().getImageURL()}" th:alt="${cart.product.getThumbnail().getAlt()}" /></a>
                                             </td>
                                             <td class="product-name"><a th:href="@{/product-detail}"><span  th:text="${cart.product.name}"></span></a></td>
                                             <td class="product-price"> <span  th:text="'£' + ${cart.product.price}"></span></td>
