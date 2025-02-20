@@ -38,13 +38,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="cart : ${carts}">
-                                            <td class="product-thumbnail">
+                                    <tr th:each="cart : ${carts}" th:data-cart-id="${cart.id}">
+                                    <td class="product-thumbnail">
                                                 <a href="#"><img th:src="${cart.product.getThumbnail().getImageURL()}" th:alt="${cart.product.getThumbnail().getAlt()}" /></a>
                                             </td>
                                             <td class="product-name"><a th:href="@{/product-detail}"><span  th:text="${cart.product.name}"></span></a></td>
                                             <td class="product-price"> <span  th:text="'£' + ${cart.product.price}"></span></td>
-                                            <td class="product-quantity"><input type="number" th:value="${cart.quantity}" /> </td>
+                                            <td class="product-quantity">
+                                                <input type="number" class="qty-input" th:data-id="${cart.id}" th:value="${cart.quantity}" min="1" />
+                                            </td>
                                             <td class="product-subtotal"><span  th:text="'£' + ${cart.getTotal()}"></span></td>
                                             <td class="product-remove"> <a th:href="@{/cart/delete(id=${cart.id})}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                                         </tr>
@@ -56,7 +58,8 @@
                                <!-- Cart Button Start -->
                                 <div class="col-md-8 col-sm-12">
                                     <div class="buttons-cart">
-                                        <input type="submit" value="Update Cart" />
+                                        <input type="button" id="update-cart-btn" value="Update Cart" />
+
                                         <a href="#">Continue Shopping</a>
                                     </div>
                                 </div>
@@ -103,5 +106,56 @@
 
     <th:block th:replace="layout :: scripts"></th:block>
 
+<script th:inline="javascript">
+    $(document).ready(function () {
+        $(".qty-input").on("change", function () {
+            let cartId = $(this).data("id");
+            let newQuantity = $(this).val();
+
+            $.ajax({
+                url: "/cart/update",
+                type: "POST",
+                data: { id: cartId, quantity: newQuantity },
+                success: function (response) {
+                    // Update subtotal for this item
+                    $(`tr[data-cart-id='${cartId}'] .product-subtotal span`).text('£' + response.subtotal);
+
+                    // Update overall total
+                    $(".cart_totals .amount").text('$' + response.total);
+                },
+                error: function () {
+                    alert("Error updating cart. Please try again.");
+                }
+            });
+        });
+    });
+
+</script>
+<script>
+    $("#update-cart-btn").on("click", function () {
+    let cartData = [];
+    console.log("Da vao ham update");
+    $(".qty-input").each(function () {
+        cartData.push({
+            id: Number($(this).data("id")),  // Convert ID to Integer
+            quantity: Number($(this).val())  // Convert Quantity to Integer
+        });
+    });
+
+    $.ajax({
+        url: "/cart/update-all",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(cartData),
+        success: function (response) {
+            $(".cart_totals .amount").text('$' + response.total);
+            alert("Cart updated successfully!");
+        },
+        error: function () {
+            alert("Error updating cart. Please try again.");
+        }
+    });
+});
+</script>
 </body>
 </html>

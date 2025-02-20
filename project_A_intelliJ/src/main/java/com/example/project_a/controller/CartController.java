@@ -117,6 +117,62 @@ public class CartController {
         return response;
     }
 
+    @PostMapping("/cart/update")
+    @ResponseBody
+    public Map<String, Object> updateCart(@RequestParam("id") Integer cartId, @RequestParam("quantity") Integer quantity, HttpSession session) {
+        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+
+        if (cartList != null) {
+            for (Cart cart : cartList) {
+                if (cart.getId().equals(cartId)) {
+                    cart.setQuantity(quantity);
+                    break;
+                }
+            }
+        }
+
+        session.setAttribute("cartList", cartList);
+
+        int total = cartList.stream().mapToInt(Cart::getTotal).sum();
+        int subtotal = cartList.stream()
+                .filter(cart -> cart.getId().equals(cartId))
+                .findFirst()
+                .map(Cart::getTotal)
+                .orElse(0);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("subtotal", subtotal);
+        response.put("total", total);
+        return response;
+    }
+
+    @PostMapping("/cart/update-all")
+    @ResponseBody
+    public Map<String, Object> updateAllCart(@RequestBody List<Map<String, Object>> cartUpdates, HttpSession session) {
+        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+        System.out.println("inUppAll");
+        for (Map<String, Object> request : cartUpdates) {
+            Integer cartId = (Integer) request.get("id");
+            Integer quantity = (Integer) request.get("quantity");
+
+            for (Cart cart : cartList) {
+                if (cart.getId().equals(cartId)) {
+                    cart.setQuantity(quantity);
+                }
+                System.out.println(cart.getQuantity());
+            }
+        }
+
+        session.setAttribute("cartList", cartList);
+
+        int total = cartList.stream().mapToInt(Cart::getTotal).sum();
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("total", total);
+        return response;
+    }
+
+
 
 
 
