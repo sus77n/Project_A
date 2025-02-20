@@ -47,10 +47,11 @@ public class CheckOutController {
     }
 
     @PostMapping("/order/save")
-    public String saveOrder(Order order, RedirectAttributes ra) {
+    public String saveOrder(Order order, RedirectAttributes ra, HttpSession session) {
         service.save(order);
         int userId = order.getUser().getId();
-        List<Cart> carts = cartService.getCartsByUserId(userId);
+//        List<Cart> carts = cartService.getCartsByUserId(userId);
+        List<Cart> carts = (List<Cart>) session.getAttribute("cartList");
         for (Cart cart : carts) {
             OrderDetail orderDetail = new OrderDetail();
             orderDetail.setProduct(cart.getProduct());
@@ -58,7 +59,7 @@ public class CheckOutController {
             order.addDetail(orderDetail);
             orderDetailService.save(orderDetail);
         }
-        cartService.clear(userId);
+//        cartService.clear(userId);
         ra.addFlashAttribute("message", "The Order has been saved successfully.");
         return "redirect:/shop";
     }

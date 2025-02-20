@@ -183,5 +183,35 @@
 <!-- Main Wrapper End Here -->
 
 <th:block th:replace="layout :: scripts"></th:block>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const shipBox = document.getElementById("ship-box");
+        const newAddressField = document.querySelector("#ship-box-info input[type='text']");
+        const originalAddressField = document.querySelector("input[name='address']");
+
+        // Store the user's original address
+        const userAddress = originalAddressField.value;
+
+        // Hide the shipping address form by default
+        document.getElementById("ship-box-info").style.display = "none";
+
+        shipBox.addEventListener("change", function () {
+            if (shipBox.checked) {
+                // Show new address input and use its value
+                document.getElementById("ship-box-info").style.display = "block";
+                originalAddressField.value = newAddressField.value; // Sync value on change
+                newAddressField.addEventListener("input", function () {
+                    originalAddressField.value = newAddressField.value;
+                });
+            } else {
+                // Hide shipping address form and revert to default address
+                document.getElementById("ship-box-info").style.display = "none";
+                originalAddressField.value = userAddress;
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
