@@ -10,13 +10,13 @@
         <div class="container-xxl">
 
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Thumbnail</h4>
                         </div>
                         <div class="card-body">
-                            <form class="dropzone dz-remove-upload dz-remove dz-success-mark"
+                            <form class="dropzone dz-remove-upload dz-clickable"
                                   id="thumbnail-dropzone"
                                   enctype="multipart/form-data">
                                 <input type="hidden" name="mediaType" value="Thumbnail">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-8 ">
+                <div class="col-lg-9">
                     <form id="mainForm" th:action="@{/admin/product/save}" method="post" th:object="${product}">
                         <input type="hidden" th:field="*{id}">
                         <input type="hidden" name="thumbnailId" id="thumbnailId">
@@ -156,6 +156,8 @@
             // Save the uploaded file's name in a hidden input field
             document.getElementById("thumbnailId").value = response.mediaId;
             file.uploadedFileName = response.fileName; // Store the server filename in the file object
+            this.disable();
+            this.element.classList.remove("dz-message", "needsclick");
         },
 
         removedfile: function (file) {
@@ -179,7 +181,8 @@
                 });
             }
 
-            document.getElementById("mediaType").value = "";
+            document.getElementById("thumbnailId").value = "";
+            this.enable();
         }
     });
 </script>

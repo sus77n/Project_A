@@ -75,7 +75,6 @@ public class ProductController {
                               @RequestParam("thumbnailId") String thumbnailId,
                               RedirectAttributes ra) {
         Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
-
         Media thumbnail = mediaService.findMediaById(Integer.parseInt(thumbnailId));
         product.setCategory(category);
         product.setThumbnail(thumbnail);
@@ -93,17 +92,11 @@ public class ProductController {
 
     @PostMapping("/admin/product/update")
     public String editProduct(Product product, @RequestParam String categoryId,
-                              @RequestParam("mediaType") String thumbnailName,
-                              @RequestParam("mediaAlt") String mediaAlt, RedirectAttributes ra) {
-
-        Media media = new Media();
-        media.setType(mediaAlt);
-        media.setAlt(mediaAlt);
-        media.setImageURL(mediaService.getFileUrl(thumbnailName));
-        mediaService.save(media);
-
+                              @RequestParam("thumbnailId") String thumbnailId, RedirectAttributes ra) {
+        Media media = mediaService.findMediaById(Integer.parseInt(thumbnailId));
         Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
         product.setCategory(category);
+        product.setThumbnail(media);
         service.updateProduct(product);
         ra.addFlashAttribute("message", "The product has been edited successfully.");
         return "redirect:/admin/product/list";
