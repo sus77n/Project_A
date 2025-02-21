@@ -32,7 +32,8 @@ public class Product {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "summary")
+    @Lob
+    @Column(name = "summary", columnDefinition = "TEXT")
     private String summary;
 
     @Column(name = "in_stock")
