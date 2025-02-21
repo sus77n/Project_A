@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -45,8 +46,8 @@ public class Product {
     @Column(name = "status")
     private String status;
 
-    @Column(name = "product_slider")
-    private String productSlider;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ProductSlider> productSliders = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "thumbnail", referencedColumnName = "id")
@@ -138,6 +139,13 @@ public class Product {
         this.price = price;
     }
 
+    public List<ProductSlider> getProductSliders() {
+        return productSliders;
+    }
+
+    public void setProductSliders(List<ProductSlider> productSliders) {
+        this.productSliders = productSliders;
+    }
 
 }
 

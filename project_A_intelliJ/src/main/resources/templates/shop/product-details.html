@@ -31,14 +31,16 @@
                             <a data-fancybox="images" th:href="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"><img
                                     th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}" alt="product-view"></a>
                         </div>
-                        <div id="thumb2" class="tab-pane fade">
-                            <a data-fancybox="images" href="assets/img/products/p5.jpg"><img
-                                    src="assets/img/products/p5.jpg" alt="product-view"></a>
+                        <div th:each="productSlider, iterStat : ${product.productSliders}" th:id="'thumb' + ${iterStat.index + 2}" class="tab-pane fade">
+                            <a data-toggle="tab" th:href="'#thumb' + ${iterStat.index + 2}">
+                                <img th:src="${productSlider.media.imageURL}" th:alt="${productSlider.media.alt}">
+                            </a>
                         </div>
-                        <div id="thumb3" class="tab-pane fade">
-                            <a data-fancybox="images" href="assets/img/products/p3.jpg"><img
-                                    src="assets/img/products/p3.jpg" alt="product-view"></a>
-                        </div>
+
+<!--                        <div id="thumb3" class="tab-pane fade">-->
+<!--                            <a data-fancybox="images" href="assets/img/products/p3.jpg"><img-->
+<!--                                    src="assets/img/products/p3.jpg" alt="product-view"></a>-->
+<!--                        </div>-->
                     </div>
                     <!-- Thumbnail Large Image End -->
                     <!-- Thumbnail Image End -->
@@ -46,10 +48,13 @@
                         <div class="thumb-menu owl-carousel nav tabs-area nav-style" role="tablist">
                             <a class="active" data-toggle="tab" href="#thumb1"><img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
                                                                                     alt="product-thumbnail"></a>
-                            <a data-toggle="tab" href="#thumb2"><img src="assets/img/products/p5.jpg"
-                                                                     alt="product-thumbnail"></a>
-                            <a data-toggle="tab" href="#thumb3"><img src="assets/img/products/p3.jpg"
-                                                                     alt="product-thumbnail"></a>
+                            <a th:each="media, iterStat : ${product.productSliders}"
+                               data-toggle="tab"
+                               th:href="'#thumb' + ${iterStat.index + 2}">
+                                <img th:src="${media.media.imageURL}" th:alt="${media.media.alt}">
+                            </a>
+<!--                            <a data-toggle="tab" href="#thumb3"><img src="assets/img/products/p3.jpg"-->
+<!--                                                                     alt="product-thumbnail"></a>-->
                         </div>
                     </div>
                     <!-- Thumbnail image end -->
