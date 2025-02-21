@@ -462,7 +462,7 @@ ul {
     top: 115%;
     -webkiit-transform: scaleY(0);
     -webkit-transform: scaleY(0);
-    transform: translateX(-40%);
+    /*transform: translateX(-40%);*/
     -webkit-transform-origin: 0 0 0;
     transform-origin: 0 0 0;
     width: 180px;
@@ -489,7 +489,7 @@ ul {
     visibility: visible;
     -webkiit-transform: scaleY(1);
     -webkit-transform: scaleY(1);
-    transform: translateX(-40%);;
+    /*transform: translateX(-40%);*/
 }
 .primary-menu-list > li > ul.ht-dropdown > li a {
     color: #292929;
@@ -519,7 +519,7 @@ ul {
     width: 675px
 }
 .megamenu-three {
-    width: 800%;
+    width: 400%;
 }
 .megamenu > li,
 .megamenu-two > li,
@@ -1803,7 +1803,9 @@ ul {
 /*----------------------------------------------*/
 /* 5. New Products & Best Seller & Brand Logo CSS
 /*---------------------------------------------*/
-
+.Products-area-wrapper .single-aboss-product {
+    height: 420px;
+}
 .newpro-bestseller .container,
 .online-support .container {
     padding: 80px 30px;
@@ -4887,6 +4889,7 @@ a.shipping-calculator-button:hover {
     position: relative;
     background-color: white;
     border-radius: 20px;
+    height: 344px;
 }
 
 .flash-sale .single-aboss-product img{

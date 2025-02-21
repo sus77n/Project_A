@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -180,41 +177,25 @@ public class ProductController {
     @GetMapping("/home")
     public String showIndexPage(Model model) {
         List<Product> products = service.getAllProducts();
-        List<Product> limit4Products = products.size() > 4 ? products.subList(0, 4) : products;
-        List<Product> next4Products = products.size() > 8 ? products.subList(4, 8) :
-                products.size() > 4 ? products.subList(4, products.size()) : Collections.emptyList();
+        List<Product> firstGroup = products.stream().limit(4).toList();
+        List<Product> secondGroup = products.size() > 4 ? products.stream().skip(4).limit(4).toList() : Collections.emptyList();
         List<Category> categories = categoryService.getAllCategories();
+        List<Category> displayedCategories = categories.stream().limit(3).toList();
 
-        List<Product> firstProducts = service.getAllProducts();
-        firstProducts = service.getProductsByCategoryIds(new ArrayList<>() {
-            {
-                add(Long.parseLong("1"));
-            }
-        });
-        System.out.println("firstProducts: " + firstProducts);
-
-        List<Product> secondProducts = service.getAllProducts();
-        secondProducts = service.getProductsByCategoryIds(new ArrayList<>() {
-            {
-                add(Long.parseLong("2"));
-            }
-        });
-
-        List<Product> thirdProducts = service.getAllProducts();
-        thirdProducts = service.getProductsByCategoryIds(new ArrayList<>() {
-            {
-                add(Long.parseLong("3"));
-            }
-        });
+        Map<Category, List<Product>> categoryProducts = new LinkedHashMap<>();
+        for (Category category : displayedCategories) {
+            List<Product> categoryProductsList = service.getProductsByCategoryIds(Collections.singletonList(category.getId().longValue())
+                    )
+                    .stream().limit(4).toList();
+            categoryProducts.put(category, categoryProductsList);
+        }
 
         model.addAttribute("products", products);
-        model.addAttribute("limit4Products", limit4Products);
-        model.addAttribute("next4Products", next4Products);
-        model.addAttribute("firstProducts", firstProducts);
-        model.addAttribute("secondProducts", secondProducts);
-        model.addAttribute("thirdProducts", thirdProducts);
+        model.addAttribute("firstGroup", firstGroup);
+        model.addAttribute("secondGroup", secondGroup);
+        model.addAttribute("categoryProducts", categoryProducts);  // Map<Category, List<Product>>
         model.addAttribute("categories", categories);
-
+        model.addAttribute("displayedCategories", displayedCategories);
         return "shop/index-2";
     }
 

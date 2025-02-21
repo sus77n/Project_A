@@ -66,57 +66,29 @@
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         </ol>
                         <div class="carousel-inner">
+                            <!-- First carousel item (Always exists) -->
                             <div class="carousel-item active">
                                 <div class="row">
-                                    <div class="col-md-3 col-sm-2" th:each="product : ${limit4Products}">
+                                    <div class="col-md-3 col-sm-6" th:each="product : ${firstGroup}">
                                         <div class="single-aboss-product">
                                             <div class="pro-img">
-                                                <a th:href="@{/product-details(productId=${product.getId()})}"><img
-                                                        th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
-                                                        alt="Product Image"></a>
+                                                <a th:href="@{/product-details(productId=${product.id})}">
+                                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                                         alt="Product Image">
+                                                </a>
                                                 <div class="pro-actions">
                                                 </div>
                                             </div>
                                             <div class="pro-content">
-                                                <h4><a th:href="@{/product-details(productId=${product.getId()})}"
-                                                       th:text="${product.name}"></a></h4>
+                                                <h4><a th:href="@{/product-details(productId=${product.id})}" th:text="${product.name}"></a></h4>
                                                 <div class="pro-price-cart">
                                                     <div class="pro-home-price">
                                                         <span th:text="'$' + ${product.price}"></span>
                                                     </div>
                                                     <div class="pro-cart">
-                                                        <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}"><i
-                                                                class="icon-cart"></i></a>
-                                                        <!--                                                        <a title="Wishlist" href="#"><i class="icon-like"></i></a>-->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-2" th:each="product : ${next4Products}">
-                                        <div class="single-aboss-product">
-                                            <div class="pro-img">
-                                                <a th:href="@{/product-details(productId=${product.getId()})}"><img
-                                                        th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
-                                                        alt="Product Image"></a>
-                                                <div class="pro-actions">
-                                                </div>
-                                            </div>
-                                            <div class="pro-content">
-                                                <h4><a th:href="@{/product-details(productId=${product.getId()})}"
-                                                       th:text="${product.name}"></a></h4>
-                                                <div class="pro-price-cart">
-                                                    <div class="pro-home-price">
-                                                        <span th:text="'$' + ${product.price}"></span>
-                                                    </div>
-                                                    <div class="pro-cart">
-                                                        <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}"><i
-                                                                class="icon-cart"></i></a>
-                                                        <!--                                                        <a title="Wishlist" href="#"><i class="icon-like"></i></a>-->
+                                                        <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}">
+                                                            <i class="icon-cart"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,6 +97,34 @@
                                 </div>
                             </div>
 
+                            <!-- Second carousel item (Only exists if there are more than 4 products) -->
+                            <div class="carousel-item" th:if="${not #lists.isEmpty(secondGroup)}">
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-6" th:each="product : ${secondGroup}">
+                                        <div class="single-aboss-product">
+                                            <div class="pro-img">
+                                                <a th:href="@{/product-details(productId=${product.id})}">
+                                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                                         alt="Product Image">
+                                                </a>
+                                            </div>
+                                            <div class="pro-content">
+                                                <h4><a th:href="@{/product-details(productId=${product.id})}" th:text="${product.name}"></a></h4>
+                                                <div class="pro-price-cart">
+                                                    <div class="pro-home-price">
+                                                        <span th:text="'$' + ${product.price}"></span>
+                                                    </div>
+                                                    <div class="pro-cart">
+                                                        <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}">
+                                                            <i class="icon-cart"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -165,7 +165,7 @@
                                                                                          aria-hidden="true"></i></h2>
             </div>
             <div class="best-seller-active owl-carousel">
-                <div class="single-aboss-product" th:each="product : ${limit4Products}">
+                <div class="single-aboss-product" th:each="product : ${firstGroup}">
                     <div class="pro-img">
                         <a th:href="@{/product-details(productId=${product.getId()})}"><img
                                 th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
@@ -215,114 +215,40 @@
             <!-- Section Title End -->
             <!-- Second Featured Product Activation Start -->
             <div class="Products-area">
-                <div class="section-title text-center mb-45">
-                    <h3 th:text="${categories.get(0).categoryName}"> </h3>
-                </div>
-                <div class="row">
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-40" th:each="product: ${firstProducts}">
-                        <!-- Single Product Start -->
-                        <div class="single-aboss-product mb-10">
-                            <div class="pro-img">
-                                <a th:href="@{/product-details(productId=${product.getId()})}">
-                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
-                                         alt="Product Image">
-                                </a>
-
-                                <div class="pro-actions">
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a th:href="@{/product-details(productId=${product.getId()})}"
-                                       th:text="${product.name}"></a></h4>
-                                <div class="pro-price-cart">
-                                    <div class="pro-home-price">
-                                        <span th:text="'$' + ${product.price}"></span>
-                                    </div>
-                                    <div class="pro-cart">
-                                        <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}"><i
-                                                class="icon-cart"></i></a>
-                                        <!--                                                        <a title="Wishlist" href="#"><i class="icon-like"></i></a>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Product End -->
+                <div th:each="category : ${categoryProducts}">
+                    <div class="section-title text-center mb-45">
+                        <h3 th:text="${category.key.categoryName}" class="mb-10"></h3>
+                        <p th:text="${category.key.description}"></p>
                     </div>
-                </div>
-
-                <div class="section-title text-center mb-45">
-                    <h3 th:text="${categories.get(1).categoryName}"> </h3>
-                </div>
-                <div class="row">
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-40" th:each="product: ${secondProducts}">
-                        <!-- Single Product Start -->
-                        <div class="single-aboss-product mb-10">
-                            <div class="pro-img">
-                                <a th:href="@{/product-details(productId=${product.getId()})}">
-                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
-                                         alt="Product Image">
-                                </a>
-
-                                <div class="pro-actions">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-40" th:each="product: ${category.value}">
+                            <!-- Single Product Start -->
+                            <div class="single-aboss-product mb-10">
+                                <div class="pro-img">
+                                    <a th:href="@{/product-details(productId=${product.id})}">
+                                        <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                             alt="Product Image">
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a th:href="@{/product-details(productId=${product.getId()})}"
-                                       th:text="${product.name}"></a></h4>
-                                <div class="pro-price-cart">
-                                    <div class="pro-home-price">
-                                        <span th:text="'$' + ${product.price}"></span>
-                                    </div>
-                                    <div class="pro-cart">
-                                        <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}"><i
-                                                class="icon-cart"></i></a>
-                                        <!--                                                        <a title="Wishlist" href="#"><i class="icon-like"></i></a>-->
+                                <div class="pro-content">
+                                    <h4><a th:href="@{/product-details(productId=${product.id})}" th:text="${product.name}"></a></h4>
+                                    <div class="pro-price-cart">
+                                        <div class="pro-home-price">
+                                            <span th:text="'$' + ${product.price}"></span>
+                                        </div>
+                                        <div class="pro-cart">
+                                            <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}"><i class="icon-cart"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Single Product End -->
                         </div>
-                        <!-- Single Product End -->
-                    </div>
-                </div>
-
-                <div class="section-title text-center mb-45">
-                    <h3 th:text="${categories.get(2).categoryName}"> </h3>
-                </div>
-                <div class="row">
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-40" th:each="product: ${thirdProducts}">
-                        <!-- Single Product Start -->
-                        <div class="single-aboss-product mb-10">
-                            <div class="pro-img">
-                                <a th:href="@{/product-details(productId=${product.getId()})}">
-                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
-                                         alt="Product Image">
-                                </a>
-
-                                <div class="pro-actions">
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a th:href="@{/product-details(productId=${product.getId()})}"
-                                       th:text="${product.name}"></a></h4>
-                                <div class="pro-price-cart">
-                                    <div class="pro-home-price">
-                                        <span th:text="'$' + ${product.price}"></span>
-                                    </div>
-                                    <div class="pro-cart">
-                                        <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}"><i
-                                                class="icon-cart"></i></a>
-                                        <!--                                                        <a title="Wishlist" href="#"><i class="icon-like"></i></a>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Product End -->
                     </div>
                 </div>
 
                 <div class="slider-btn mt-75 show-all">
-                    <a class="animated" th:href="@{/shop}">See all products <i
-                            class="animated icon-right-arrow"></i></a>
+                    <a class="animated" th:href="@{/shop}">See all products <i class="animated icon-right-arrow"></i></a>
                 </div>
             </div>
             <!-- Second Featured Product Activation End -->

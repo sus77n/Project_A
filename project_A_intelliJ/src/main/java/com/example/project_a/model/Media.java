@@ -17,6 +17,9 @@ public class Media {
     @OneToOne(mappedBy = "thumbnail", optional = true)
     private Product product;
 
+    @OneToOne(mappedBy = "media")
+    private ProductSlider productSlider;
+
     @Column(name = "image_url", nullable = false)
     private String imageURL;
 
