@@ -169,6 +169,7 @@ public class CartController {
 
         Map<String, Object> response = new HashMap<>();
         response.put("total", total);
+        response.put("message", "Your Cart updated successfully!");
         return response;
     }
 

@@ -18,11 +18,11 @@
                         </div>
                         <div class="card-body">
                             <form th:object="${thumbnail}"
-                                  class="dropzone dz-clickable"
+                                  class="dropzone"
                                   id="thumbnail-dropzone"
                                   enctype="multipart/form-data">
-                                <input type="hidden" name="mediaType" id="mediaType" value="Thumbnail">
-                                <input type="hidden" name="mediaAlt" value="Thumbnail of product">
+                                <input type="hidden" name="mediaType" id="mediaType" value="thumbnail">
+                                <input type="hidden" name="mediaAlt" value="Product thumbnail">
                                 <div class="dz-message needsclick">
                                     <i class="bx bx-cloud-upload fs-48 text-primary"></i>
                                     <p>Drag & drop thumbnail here, or click to select</p>
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="col-lg-9">
-                    <form th:object="${product}" th:action="@{/admin/product/update}" th:method="post">
+                    <form id="mainForm" th:object="${product}" th:action="@{/admin/product/update}" th:method="post">
                         <input type="hidden" th:field="*{id}">
                         <input type="hidden" name="thumbnailId" id="thumbnailId"
                                th:value="${thumbnail != null ? thumbnail.id : ''}">
@@ -230,20 +230,23 @@
     });
 </script>
 <script>
-    var quill = new Quill('#editor-container', {
-        theme: 'snow'
+    document.addEventListener("DOMContentLoaded", function () {
+        var quill = new Quill('#editor-container', { theme: 'snow' });
+
+        var descriptionField = document.getElementById('description');
+
+        // Load existing content
+        if (descriptionField.value) {
+            quill.root.innerHTML = descriptionField.value;
+        }
+
+        // Ensure Quill data is saved before submission
+        document.querySelector('#mainForm').addEventListener("submit", function (e) {
+            descriptionField.value = quill.root.innerHTML; // Save HTML content
+        });
     });
 
-    // Load the existing description into Quill
-    var savedContent = document.getElementById('description').value;
-    if (savedContent) {
-        quill.root.innerHTML = savedContent; // Set Quill content
-    }
-
-    // Ensure Quill content is updated before form submission
-    document.querySelector('#mainForm').onsubmit = function () {
-        document.getElementById('description').value = quill.root.innerHTML;
-    };
 </script>
+
 </body>
 </html>

@@ -19,6 +19,9 @@ public class ProductSlider {
     private Media media;
 
     // Getter and Setter
+    public Integer getId() {
+        return id;
+    }
     public Product getProduct() {
         return product;
     }

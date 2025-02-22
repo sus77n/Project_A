@@ -669,7 +669,7 @@ ul {
 }
 .cart-checkout {
     background: #f26667 none repeat scroll 0 0;
-    color: #ffffff;
+    color: #ffffff !important;
 }
 .cart-checkout:hover {
     background-color: #9db5d9;
@@ -1482,6 +1482,10 @@ ul {
 .single-aboss-product img {
     width: 100%;
 }
+
+.single-aboss-product .pro-img{
+    padding: 10px;
+}
 .Products-area .row {
     margin-left: -1.5px;
     margin-right: -1.5px;
@@ -1494,6 +1498,7 @@ ul {
     position: relative;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     margin: 5px;
+    height: 55vh;
 }
 .best-seller-active .single-aboss-product {
     margin-bottom: 1px;
@@ -1803,9 +1808,6 @@ ul {
 /*----------------------------------------------*/
 /* 5. New Products & Best Seller & Brand Logo CSS
 /*---------------------------------------------*/
-.Products-area-wrapper .single-aboss-product {
-    height: 420px;
-}
 .newpro-bestseller .container,
 .online-support .container {
     padding: 80px 30px;
@@ -2977,11 +2979,11 @@ ul {
 }
 
 /* shop page css */
-
 .border-default {
     padding: 15px;
     border: 1px solid #ebebeb;
 }
+
 .single-aboss-product.border-none {
     border-right: none!important;
 }
@@ -4509,6 +4511,15 @@ a.shipping-calculator-button:hover {
     width: 240px;
 }
 
+.button-checkout{
+    background-color: #303030;
+    color: #f0f0f0;
+    padding: 15px 25px;
+    border: none;
+    font-weight: 600;
+    font-size: 13px;
+}
+
 /*----------------------------------------*/
 /* 20. About us CSS
 /*----------------------------------------*/
@@ -4889,13 +4900,7 @@ a.shipping-calculator-button:hover {
     position: relative;
     background-color: white;
     border-radius: 20px;
-    height: 344px;
-}
-
-.flash-sale .single-aboss-product img{
-    width: 200px;
-    margin-left: 25px;
-    margin-top: 2px;
+    height: 50vh;
 }
 
 .flash-sale .carousel-control-prev{
@@ -5033,3 +5038,5 @@ a.shipping-calculator-button:hover {
     display: flex;
     justify-content: flex-end;
 }
+
+

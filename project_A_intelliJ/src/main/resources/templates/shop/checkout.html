@@ -35,7 +35,7 @@
                                     <div class="checkout-form-list mb-sm-30">
                                         <label>Name <span class="required">*</span></label>
                                         <!-- <input type="text" value="Peter" disabled/> -->
-                                        <span  th:text="${order.user.getUsername()}"></span>
+                                        <span  id="originalName"  th:text="${order.user.getUsername()}"></span>
                                         <!--  Chỗ này dẫn đến tên người dùng, mặc định lấy từ user, không thay đổi được
                                                 Muốn thay đổi nhấn vào different address
                                         -->
@@ -52,7 +52,7 @@
                                     <div class="checkout-form-list mb-30">
                                         <label>Email Address <span class="required">*</span></label>
                                         <!--                                        <input type="email" value="abc@email.com" disabled/>-->
-                                        <span  th:text="${order.user.email}"></span>
+                                        <span id="originalEmail"  th:text="${order.user.email}"></span>
                                         <!--   Chỗ này dẫn đến email người dùng-->
                                     </div>
                                 </div>
@@ -187,31 +187,68 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const shipBox = document.getElementById("ship-box");
-        const newAddressField = document.querySelector("#ship-box-info input[type='text']");
+        const shipBoxInfo = document.getElementById("ship-box-info");
+
+        // Original fields
         const originalAddressField = document.querySelector("input[name='address']");
+        const originalNameField = document.getElementById("originalName");
+        const originalEmailField = document.getElementById("originalEmail");
+        const originalPhoneField = document.querySelector("input[name='phoneNumber']");
 
-        // Store the user's original address
-        const userAddress = originalAddressField.value;
+        // New address fields
+        const newAddressField = shipBoxInfo.querySelector("input[placeholder='Street address']");
+        const newNameField = shipBoxInfo.querySelector("input[placeholder='']");
+        const newEmailField = shipBoxInfo.querySelector("input[type='email']");
+        const newPhoneField = shipBoxInfo.querySelector("input[placeholder='Phone']");
 
-        // Hide the shipping address form by default
-        document.getElementById("ship-box-info").style.display = "none";
+        // Store original values (Check if elements exist to avoid errors)
+        const userAddress = originalAddressField ? originalAddressField.value : "";
+        const userName = originalNameField ? originalNameField.textContent : "";
+        const userEmail = originalEmailField ? originalEmailField.textContent : "";
+        const userPhone = originalPhoneField ? originalPhoneField.value : "";
+
+        // Hide the shipping fields initially
+        shipBoxInfo.style.display = "none";
 
         shipBox.addEventListener("change", function () {
             if (shipBox.checked) {
-                // Show new address input and use its value
-                document.getElementById("ship-box-info").style.display = "block";
-                originalAddressField.value = newAddressField.value; // Sync value on change
-                newAddressField.addEventListener("input", function () {
-                    originalAddressField.value = newAddressField.value;
-                });
+                // Show shipping address fields
+                shipBoxInfo.style.display = "block";
+
+                syncInput(newAddressField, originalAddressField);
+                if (originalNameField) syncInput(newNameField, originalNameField, "textContent");
+                if (originalEmailField) syncInput(newEmailField, originalEmailField, "textContent");
+                syncInput(newPhoneField, originalPhoneField);
+
+                // Auto-focus on the first field
+                newAddressField.focus();
             } else {
-                // Hide shipping address form and revert to default address
-                document.getElementById("ship-box-info").style.display = "none";
-                originalAddressField.value = userAddress;
+                // Hide shipping address section and revert values
+                shipBoxInfo.style.display = "none";
+                revertValue(originalAddressField, userAddress);
+                if (originalNameField) revertValue(originalNameField, userName, "textContent");
+                if (originalEmailField) revertValue(originalEmailField, userEmail, "textContent");
+                revertValue(originalPhoneField, userPhone);
             }
         });
+
+        function syncInput(newField, originalField, property = "value") {
+            if (newField && originalField) {
+                newField.addEventListener("input", function () {
+                    if (newField.value.trim() !== "") {
+                        originalField[property] = newField.value;
+                    }
+                });
+            }
+        }
+
+        function revertValue(field, originalValue, property = "value") {
+            if (field) field[property] = originalValue;
+        }
     });
+
 </script>
+
 
 </body>
 </html>
