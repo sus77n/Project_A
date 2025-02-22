@@ -669,7 +669,7 @@ ul {
 }
 .cart-checkout {
     background: #f26667 none repeat scroll 0 0;
-    color: #ffffff;
+    color: #ffffff !important;
 }
 .cart-checkout:hover {
     background-color: #9db5d9;
@@ -4509,6 +4509,15 @@ a.shipping-calculator-button:hover {
 }
 .cart-main-area.wish-list td.product-add-to-cart {
     width: 240px;
+}
+
+.button-checkout{
+    background-color: #303030;
+    color: #f0f0f0;
+    padding: 15px 25px;
+    border: none;
+    font-weight: 600;
+    font-size: 13px;
 }
 
 /*----------------------------------------*/
