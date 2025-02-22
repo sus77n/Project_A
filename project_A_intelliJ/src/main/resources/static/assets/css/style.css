@@ -459,10 +459,10 @@ ul {
     left: 0;
     opacity: 0;
     position: absolute;
-    top: 100%;
+    top: 115%;
     -webkiit-transform: scaleY(0);
     -webkit-transform: scaleY(0);
-    transform: scaleY(0);
+    /*transform: translateX(-40%);*/
     -webkit-transform-origin: 0 0 0;
     transform-origin: 0 0 0;
     width: 180px;
@@ -474,6 +474,13 @@ ul {
     -ms-box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
 }
+
+.ht-dropdown .menu-title{
+    line-height: 20px;
+}
+.ht-dropdown .menu-title:hover {
+    color: #9db5d9;
+}
 .ht-dropdown.single-dropdown.blog-dropdown {
     width: 215px;
 }
@@ -482,7 +489,7 @@ ul {
     visibility: visible;
     -webkiit-transform: scaleY(1);
     -webkit-transform: scaleY(1);
-    transform: scaleY(1);
+    /*transform: translateX(-40%);*/
 }
 .primary-menu-list > li > ul.ht-dropdown > li a {
     color: #292929;
@@ -512,7 +519,7 @@ ul {
     width: 675px
 }
 .megamenu-three {
-    width: 800px;
+    width: 400%;
 }
 .megamenu > li,
 .megamenu-two > li,
@@ -1796,7 +1803,9 @@ ul {
 /*----------------------------------------------*/
 /* 5. New Products & Best Seller & Brand Logo CSS
 /*---------------------------------------------*/
-
+.Products-area-wrapper .single-aboss-product {
+    height: 420px;
+}
 .newpro-bestseller .container,
 .online-support .container {
     padding: 80px 30px;
@@ -2853,7 +2862,7 @@ ul {
 }
 .sidbar-style .form-check label {
     cursor: pointer;
-    font-size: 17px;
+    font-size: 15px;
     color: #333;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -4880,6 +4889,7 @@ a.shipping-calculator-button:hover {
     position: relative;
     background-color: white;
     border-radius: 20px;
+    height: 344px;
 }
 
 .flash-sale .single-aboss-product img{

@@ -11,17 +11,18 @@
         <div class="container-xxl">
 
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Thumbnail</h4>
                         </div>
                         <div class="card-body">
-                            <form class="dropzone dz-remove-upload dz-remove dz-max-files-reached"
+                            <form th:object="${thumbnail}"
+                                  class="dropzone dz-clickable"
                                   id="thumbnail-dropzone"
                                   enctype="multipart/form-data">
-                                <input type="hidden" name="type" th:value="${thumbnail.type}">
-                                <input type="hidden" name="mediaAlt" th:value="${thumbnail.alt}">
+                                <input type="hidden" name="mediaType" id="mediaType" value="Thumbnail">
+                                <input type="hidden" name="mediaAlt" value="Thumbnail of product">
                                 <div class="dz-message needsclick">
                                     <i class="bx bx-cloud-upload fs-48 text-primary"></i>
                                     <p>Drag & drop thumbnail here, or click to select</p>
@@ -31,10 +32,11 @@
                     </div>
                 </div>
 
-                <div class="col-lg-8 ">
+                <div class="col-lg-9">
                     <form th:object="${product}" th:action="@{/admin/product/update}" th:method="post">
                         <input type="hidden" th:field="*{id}">
-                        <input type="hidden" name="thumbnailId" id="thumbnailId" th:value="${thumbnail.id}">
+                        <input type="hidden" name="thumbnailId" id="thumbnailId"
+                               th:value="${thumbnail != null ? thumbnail.id : ''}">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Product Information</h4>
@@ -77,7 +79,8 @@
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <label for="description" class="form-label">Description</label>
-                                            <textarea id="description" name="description" style="display: none;" th:field="*{description}"></textarea>
+                                            <textarea id="description" name="description" style="display: none;"
+                                                      th:field="*{description}"></textarea>
                                             <div id="editor-container"></div>
                                         </div>
                                     </div>
@@ -144,65 +147,86 @@
 
     document.addEventListener("DOMContentLoaded", function () {
         const thumbnailDropzone = new Dropzone("#thumbnail-dropzone", {
-            url: "/media/upload",
-            maxFiles: 1,
-            acceptedFiles: "image/*",
-            addRemoveLinks: true,
-            dictRemoveFile: "Remove Thumbnail",
-            dictDefaultMessage: "Drop or click to upload thumbnail",
+                    url: "/media/upload",
+                    type: "POST",
+                    maxFiles: 1,
+                    acceptedFiles: "image/*",
+                    addRemoveLinks: true,
+                    dictRemoveFile: "Remove Thumbnail",
+                    dictDefaultMessage: "Drop or click to upload thumbnail",
 
-            init: function () {
-                let existingThumbnailUrl = /*[[${thumbnail?.imageURL}]]*/ '';
-                let existingMediaType = /*[[${thumbnail?.type}]]*/ '';
+                    init: function () {
+                        let existingThumbnailId = document.getElementById("thumbnailId").value;
 
-                console.log("Thumbnail URL:", existingThumbnailUrl);
-                console.log("Thumbnail Name:", existingMediaType);
 
-                if (existingThumbnailUrl) {
-                    let mockFile = { name: existingMediaType, size: 100, uploadedFileName: existingMediaType };
-                    this.emit("addedfile", mockFile);
-                    this.emit("thumbnail", mockFile, existingThumbnailUrl);
-                    mockFile.previewElement.classList.add("dz-success", "dz-complete");
+                        if (existingThumbnailId) {
+                            fetch(`/media/get/${existingThumbnailId}`)
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error("Failed to fetch media.");
+                                    }
+                                    return response.json();
+                                })
+                                .then(media => {
+                                    if (!media.url) return;
+                                    console.log(media);
+                                    let mockFile = {
+                                        name: "thumbnail.jpg", // Placeholder name
+                                        size: 12345, // Placeholder size
+                                        uploadedFileName: media.url
+                                    };
 
-                    document.getElementById("thumbnailFileName").value = existingMediaType;
-                    document.getElementById("mediaType").value = existingMediaType;
+                                    this.emit("addedfile", mockFile);
+                                    this.emit("thumbnail", mockFile, media.url);
+                                    mockFile.previewElement.classList.add("dz-success", "dz-complete");
+                                })
+                                .catch(error => console.error("Error fetching existing thumbnail:", error));
+                            this.disable();
+                            this.element.classList.add("dz-disabled");
+                        }
+                    },
+
+                    removedfile: function (file) {
+                        if (file.previewElement) {
+                            file.previewElement.parentNode.removeChild(file.previewElement);
+                        }
+
+                        if (file.uploadedFileName) {
+                            fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
+                                method: "DELETE"
+                            }).then(response => {
+                                if (response.ok) {
+                                    console.log("File deleted successfully.");
+                                } else {
+                                    console.error("Failed to delete file.");
+                                }
+                            }).catch(error => {
+                                console.error("Error deleting file:", error);
+                            });
+                            document.getElementById("thumbnailId").value = "";
+                            this.enable();
+                            this.element.classList.remove("dz-disabled");
+                        }
+                    },
+
+                    success: function (file, response) {
+                        document.getElementById("thumbnailId").value = response.mediaId;
+                        file.uploadedFileName = response.fileName;
+                        file.previewElement.classList.add("dz-success");
+                    },
+
+                    thumbnail: function (file, fileUrl) {
+                        let imgElement = file.previewElement.querySelector("img");
+                        if (imgElement) {
+                            imgElement.style.width = "100%";
+                            imgElement.style.height = "100%";
+                            imgElement.style.objectFit = "inline-size";
+                            imgElement.src = fileUrl;
+                        }
+                    },
                 }
-
-                this.on("removedfile", function (file) {
-                    if (file.uploadedFileName) {
-                        fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
-                            method: "DELETE"
-                        }).then(response => {
-                            if (response.ok) {
-                                console.log("File deleted successfully.");
-                            } else {
-                                console.error("Failed to delete file.");
-                            }
-                        }).catch(error => {
-                            console.error("Error deleting file:", error);
-                        });
-                    }
-
-                    document.getElementById("thumbnailFileName").value = "";
-                    document.getElementById("mediaType").value = "";
-                });
-
-                this.on("success", function (file, response) {
-                    document.getElementById("thumbnailFileName").value = response.fileName;
-                    document.getElementById("mediaType").value = response.fileName;
-                    file.uploadedFileName = response.fileName;
-                });
-
-                this.on("thumbnail", function(file, dataUrl) {
-                    let imgElement = file.previewElement.querySelector("img");
-                    if (imgElement) {
-                        imgElement.style.width = "100%";
-                        imgElement.style.height = "auto";
-                        imgElement.style.objectFit = "contain";
-                    }
-                });
-            }
-        });
+            )
+        ;
     });
 </script>
 <script>

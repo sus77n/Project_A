@@ -60,4 +60,20 @@ public class MediaController {
                     .body(Map.of("error", "Failed to delete file: " + e.getMessage()));
         }
     }
+
+    @GetMapping("/get/{id}")
+    @ResponseBody
+    public ResponseEntity<Map<String, String>> getMedia(@PathVariable Integer id) {
+        Media media = mediaService.findMediaById(id);
+
+        if (media == null || media.getImageURL() == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Map<String, String> response = new HashMap<>();
+        response.put("mediaId", String.valueOf(media.getId()));
+        response.put("url", media.getImageURL());
+
+        return ResponseEntity.ok(response); // Return the stored image URL
+    }
 }

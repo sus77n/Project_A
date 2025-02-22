@@ -246,6 +246,14 @@
     text-align: center;
 }
 
+.dropzone.dz-disabled {
+    cursor: not-allowed !important;
+}
+
+.dropzone.dz-disabled .dz-message {
+    cursor: not-allowed !important;
+}
+
 .dropzone .dz-message .dz-button {
     background: 0 0;
     color: inherit;
@@ -260,7 +268,7 @@
     position: relative;
     display: inline-block;
     vertical-align: top;
-    margin: 16px;
+    margin: ;
     min-height: 100px
 }
 
