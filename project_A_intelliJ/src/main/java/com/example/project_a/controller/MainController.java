@@ -31,9 +31,8 @@ public class MainController {
     @GetMapping("/blog-details-blockquote")
     public String showblogdetailsblockquote() {return "shop/blog-details-blockquote";}
 
-
-
-
+    @GetMapping("/orderDetail")
+    public String showOrderDetail() {return "shop/order-cart";}
 
     @GetMapping("/compare")
     public String showCompare() {return "shop/compare";}
