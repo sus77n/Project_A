@@ -19,8 +19,8 @@
                             <form class="dropzone dz-remove-upload dz-clickable"
                                   id="thumbnail-dropzone"
                                   enctype="multipart/form-data">
-                                <input type="hidden" name="mediaType" value="Thumbnail">
-                                <input type="hidden" name="mediaAlt" value="Thumbnail of product">
+                                <input type="hidden" name="mediaType" value="thumbnail">
+                                <input type="hidden" name="mediaAlt" value="Product thumbnail">
                                 <div class="dz-message needsclick">
                                     <i class="bx bx-cloud-upload fs-48 text-primary"></i>
                                     <p>Drag & drop thumbnail here, or click to select</p>
@@ -28,6 +28,23 @@
                             </form>
                         </div>
                     </div>
+<!--                    <div class="card">-->
+<!--                        <div class="card-header">-->
+<!--                            <h4 class="card-title">Slider</h4>-->
+<!--                        </div>-->
+<!--                        <div class="card-body">-->
+<!--                            <form class="dropzone dz-remove-upload dz-clickable"-->
+<!--                                  id="product-slider-dropzone"-->
+<!--                                  enctype="multipart/form-data">-->
+<!--                                <input type="hidden" name="mediaType" value="Slider">-->
+<!--                                <input type="hidden" name="mediaAlt" value="Product slider images">-->
+<!--                                <div class="dz-message needsclick">-->
+<!--                                    <i class="bx bx-cloud-upload fs-48 text-primary"></i>-->
+<!--                                    <p>Drag & drop slider images here, or click to select (Max: 2 images)</p>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
 
                 <div class="col-lg-9">
@@ -147,6 +164,8 @@
         url: "/media/upload",
         type: "POST",
         maxFiles: 1,
+        thumbnailWidth: null,  // Allow full-size thumbnails
+        thumbnailHeight: null,
         acceptedFiles: "image/*",
         addRemoveLinks: true,
         dictRemoveFile: "Remove Thumbnail",
@@ -183,6 +202,40 @@
 
             document.getElementById("thumbnailId").value = "";
             this.enable();
+        }
+    });
+
+    const productSliderDropzone = new Dropzone("#product-slider-dropzone", {
+        url: "/media/upload",
+        type: "POST",
+        maxFiles: 2,
+        acceptedFiles: "image/*",
+        addRemoveLinks: true,
+        dictRemoveFile: "Remove Image",
+        dictDefaultMessage: "Drop or click to upload slider images (Max: 2)",
+
+        success: function (file, response) {
+            file.uploadedFileName = response.fileName;
+        },
+
+        removedfile: function (file) {
+            if (file.previewElement) {
+                file.previewElement.parentNode.removeChild(file.previewElement);
+            }
+
+            if (file.uploadedFileName) {
+                fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
+                    method: "DELETE"
+                }).then(response => {
+                    if (response.ok) {
+                        console.log("File deleted successfully.");
+                    } else {
+                        console.error("Failed to delete file.");
+                    }
+                }).catch(error => {
+                    console.error("Error deleting file:", error);
+                });
+            }
         }
     });
 </script>
