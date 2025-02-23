@@ -5,6 +5,7 @@ import com.example.project_a.model.Media;
 import com.example.project_a.repository.MediaRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,7 +22,8 @@ public class MediaService {
     @Autowired
     private MediaRepository mediaRepository;
 
-    private final Path storageLocation = Paths.get("src/main/resources/static/uploads/");
+    @Value("${uploads.location}")
+    private Path storageLocation;
 
     public String store(MultipartFile file) throws Exception {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());

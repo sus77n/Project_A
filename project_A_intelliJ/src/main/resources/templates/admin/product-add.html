@@ -177,6 +177,8 @@
             file.uploadedFileName = response.fileName; // Store the server filename in the file object
             this.disable();
             this.element.classList.remove("dz-message", "needsclick");
+            this.element.classList.add("dz-disabled");
+
         },
 
         removedfile: function (file) {
@@ -202,6 +204,8 @@
 
             document.getElementById("thumbnailId").value = "";
             this.enable();
+            this.element.classList.remove("dz-disabled");
+
         }
     });
 
