@@ -95,7 +95,7 @@ public class Order {
         this.orderDate = currentDate;
     }
     public List<OrderDetail> getDetails() {
-        return details = new ArrayList<>();
+        return details;
     }
 
     public void setDetails(List<OrderDetail> details) {

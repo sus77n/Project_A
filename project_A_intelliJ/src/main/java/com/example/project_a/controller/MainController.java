@@ -19,8 +19,6 @@ public class MainController {
     @GetMapping("/404")
     public String showPageNotFound() {return "shop/404";}
 
-    @GetMapping("/account")
-    public String showAccount() {return "shop/account";}
 
     @GetMapping("/blog-details-audio")
     public String showBlogDetailsAudio() {return "shop/blog-details-audio";}
@@ -30,9 +28,6 @@ public class MainController {
 
     @GetMapping("/blog-details-blockquote")
     public String showblogdetailsblockquote() {return "shop/blog-details-blockquote";}
-
-    @GetMapping("/orderDetail")
-    public String showOrderDetail() {return "shop/order-cart";}
 
     @GetMapping("/compare")
     public String showCompare() {return "shop/compare";}
