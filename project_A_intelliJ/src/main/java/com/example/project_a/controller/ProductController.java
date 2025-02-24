@@ -3,16 +3,21 @@ package com.example.project_a.controller;
 import com.example.project_a.model.Category;
 import com.example.project_a.model.Media;
 import com.example.project_a.model.Product;
+import com.example.project_a.model.ProductSlider;
 import com.example.project_a.service.CategoryService;
 import com.example.project_a.service.MediaService;
 import com.example.project_a.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.*;
