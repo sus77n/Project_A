@@ -265,12 +265,6 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Hide unnecessary icons (checkmark & X) */
-.dz-preview .dz-success-mark,
-.dz-preview .dz-error-mark {
-    display: none !important;
-}
-
 /* Remove Thumbnail Link - Keep it subtle */
 .dz-preview .dz-remove {
     font-size: 14px;

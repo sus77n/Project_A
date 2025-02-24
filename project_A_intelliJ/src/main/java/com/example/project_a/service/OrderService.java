@@ -5,6 +5,7 @@ import com.example.project_a.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +25,19 @@ public class OrderService {
     public Order findOrderById(Integer id) {
         Optional<Order> order = repo.findById(id);
         return order.orElse(null);
+    }
+
+    public List<Order> findOrdersByUserId(Integer id) {
+        List<Order> orderList = repo.findAll();
+        List<Order> orders = new ArrayList<>();
+        if (!orderList.isEmpty()) {
+           for (Order existOrder : orderList) {
+                if(existOrder.getUser().getId().equals(id)){
+                    orders.add(existOrder);
+                }
+           }
+        }
+        return orders;
     }
 
     public void deleteOrderById(Integer id) {
