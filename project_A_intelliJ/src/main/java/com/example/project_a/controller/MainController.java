@@ -18,16 +18,16 @@ public class MainController {
     @GetMapping("/about")
     public String showAboutUsPage() {return "shop/about";}
 
-    @GetMapping("/account")
-    public String showAccount(@AuthenticationPrincipal User user, Model model) {
-        if (user != null) {
-            model.addAttribute("user", user);
-            System.out.println("User is logged in: " + user.getUsername());
-        } else {
-            System.out.println("No authenticated user");
-        }
-        return "shop/account";
-    }
+//    @GetMapping("/account")
+//    public String showAccount(@AuthenticationPrincipal User user, Model model) {
+//        if (user != null) {
+//            model.addAttribute("user", user);
+//            System.out.println("User is logged in: " + user.getUsername());
+//        } else {
+//            System.out.println("No authenticated user");
+//        }
+//        return "shop/account";
+//    }
 
     @GetMapping("/blog-details-audio")
     public String showBlogDetailsAudio() {return "shop/blog-details-audio";}
