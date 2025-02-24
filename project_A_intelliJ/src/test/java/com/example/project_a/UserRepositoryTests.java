@@ -23,8 +23,8 @@ public class UserRepositoryTests {
         user.setUsername("New6");
         user.setPassword("456789");
         user.setGender("Meo");
-        user.setDateOfBirth("5/5/2005");
-        user.setPhoneNumber(923654787);
+//        user.setDateOfBirth("5/5/2005");
+        user.setPhoneNumber("923654787");
         user.setAddress("KhuOChuot Dinh Hoa");
         user.setEmail("absdsac@gmail.com");
         user.setStatus("Active");

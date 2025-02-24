@@ -7,7 +7,7 @@
         <header class="header-sticky" th:replace="~{layout::page_header}"></header>
         <!-- Main Header Area End Here -->
         <!-- Breadcrumb Area Start Here -->
-        <div class="breadcrumb-area pt-65 pb-70 bg-img" style="background-image:url(assets/img/bg-image/hop-brech-bg.jpg);">
+        <div class="breadcrumb-area pt-65 pb-70 bg-img" style="background-image:url(/assets/img/bg-image/hop-brech-bg.jpg);">
             <div class="container">
                 <div class="breadcrumb-wrap text-center">
                     <h3>Login</h3>
@@ -27,17 +27,17 @@
                <div class="row">
                    <div class="col-lg-6 offset-lg-3">
                         <div class="login-form">
-                            <form >
+                            <form th:action="@{/login}" method="post">
                                 <div class="form-group row">
-                                    <label for="email" class="col-sm-3 col-form-label">Email</label>
+                                    <label for="email" class="col-sm-3 col-form-label">Username</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" id="email" placeholder="Email">
+                                        <input type="text" class="form-control" id="email" name="username" placeholder="Username">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
                                     <div class="col-sm-7">
-                                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
                                         <button class="btn show-btn" type="button">Show</button>
                                     </div>
                                 </div>
@@ -60,6 +60,5 @@
     <!-- Main Wrapper End Here -->
 
     <th:block th:replace="layout :: scripts"></th:block>
-
 </body>
 </html>

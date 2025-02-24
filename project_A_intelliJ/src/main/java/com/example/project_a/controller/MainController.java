@@ -1,5 +1,7 @@
 package com.example.project_a.controller;
 
+import com.example.project_a.model.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +18,16 @@ public class MainController {
     @GetMapping("/about")
     public String showAboutUsPage() {return "shop/about";}
 
-    @GetMapping("/404")
-    public String showPageNotFound() {return "shop/404";}
-
     @GetMapping("/account")
-    public String showAccount() {return "shop/account";}
+    public String showAccount(@AuthenticationPrincipal User user, Model model) {
+        if (user != null) {
+            model.addAttribute("user", user);
+            System.out.println("User is logged in: " + user.getUsername());
+        } else {
+            System.out.println("No authenticated user");
+        }
+        return "shop/account";
+    }
 
     @GetMapping("/blog-details-audio")
     public String showBlogDetailsAudio() {return "shop/blog-details-audio";}
@@ -45,10 +52,6 @@ public class MainController {
 
     @GetMapping("/wishlist")
     public String ShowPageWishlist() {return "shop/wishlist";}
-
-    @GetMapping("/quickview")
-    public String ShowPageQuickreview() {return "shop/quickviewProduct";}
-
 
 
 //   ------------------------------Admin mapping----------------------------------------

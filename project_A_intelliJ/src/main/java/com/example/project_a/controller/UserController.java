@@ -3,14 +3,17 @@ package com.example.project_a.controller;
 import com.example.project_a.model.User;
 import com.example.project_a.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -30,13 +33,18 @@ public class UserController {
         return "shop/register";
     }
 
-
+    @ResponseBody
     @PostMapping("/users/save")
-    public String saveUser(User user, RedirectAttributes ra) {
-        service.save(user);
-        ra.addFlashAttribute("message", "The user has been saved successfully.");
-        return "redirect:/register";
+    public ResponseEntity<String> saveUser(User user) {
+        try {
+            service.save(user);
+            System.out.println("saved user: " + user);
+            return ResponseEntity.ok("User registration successful");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Registration failed");
+        }
     }
+
 
     @GetMapping("/admin/customer/list")
     public String showCustomer(Model model) {
@@ -59,4 +67,21 @@ public class UserController {
 
     private BCryptPasswordEncoder passwordEncoder;
 
+    @GetMapping("/users/check/email")
+    @ResponseBody
+    public Map<String, Boolean> checkEmailExists(@RequestParam String email) {
+        boolean exists = service.existsByEmail(email);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("exists", exists);
+        return response;
+    }
+
+    @GetMapping("/users/check/username")
+    @ResponseBody
+    public Map<String, Boolean> checkUsernameExists(@RequestParam String username) {
+        boolean exists = service.existsByUsername(username);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("exists", exists);
+        return response;
+    }
 }
