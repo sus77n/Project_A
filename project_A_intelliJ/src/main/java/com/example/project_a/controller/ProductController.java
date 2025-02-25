@@ -3,21 +3,18 @@ package com.example.project_a.controller;
 import com.example.project_a.model.Category;
 import com.example.project_a.model.Media;
 import com.example.project_a.model.Product;
-import com.example.project_a.model.ProductSlider;
 import com.example.project_a.service.CategoryService;
 import com.example.project_a.service.MediaService;
 import com.example.project_a.service.ProductService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.*;
@@ -50,6 +47,27 @@ public class ProductController {
         return "admin/product-add";
     }
 
+    @PostMapping("/admin/product/save")
+    public String saveProduct(Product product,
+                              @RequestParam String categoryId,
+                              @RequestParam String thumbnailName,
+                              RedirectAttributes ra) {
+
+        Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
+        product.setCategory(category);
+
+        Media thumbnail = null;
+        if (!thumbnailName.isEmpty()) {
+            thumbnail = mediaService.constructMedia(mediaService.getFileUrl(thumbnailName), "Product thumbnail", "Thumbnail");
+            product.setThumbnail(thumbnail);
+        }
+
+        service.save(product);
+
+        ra.addFlashAttribute("message", "The product has been saved successfully.");
+        return "redirect:/admin/product/list";
+    }
+
     @GetMapping("/admin/product/details")
     public String ShowPageAdminProductDetails(@RequestParam String productId, Model model) {
         Product product = service.findProductById(Integer.parseInt(productId));
@@ -60,49 +78,63 @@ public class ProductController {
 
     @GetMapping("/admin/product/edit")
     public String editProduct(@RequestParam String productId, Model model) {
+
         Product product = service.findProductById(Integer.parseInt(productId));
         List<Category> categories = categoryService.getAllCategories();
-        categories.remove(product.getCategory());
+
         Media thumbnail = product.getThumbnail();
+        List<String> sliderImagePaths = product.getProductSliders()
+                .stream()
+                .map(Media::getFilePath)
+                .collect(Collectors.toList());
+
+        // Convert list to JSON string
+        ObjectMapper objectMapper = new ObjectMapper();
+        String sliderImagesJson = "[]"; // Default empty array
+
+        try {
+            sliderImagesJson = objectMapper.writeValueAsString(sliderImagePaths);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace(); // Handle error properly
+        }
+
+        model.addAttribute("sliders", sliderImagesJson);
         model.addAttribute("thumbnail", thumbnail);
         model.addAttribute("categories", categories);
         model.addAttribute("product", product);
         model.addAttribute("pageTitle", "Product Edit");
+
         return "admin/product-edit";
     }
 
-    @PostMapping("/admin/product/save")
-    public String saveProduct(Product product,
-                              @RequestParam("categoryId") String categoryId,
-                              @RequestParam("thumbnailId") String thumbnailId,
+    @PostMapping("/admin/product/update")
+    public String editProduct(Product product,
+                              @RequestParam String categoryId,
+                              @RequestParam String thumbnailId,
+                              @RequestParam String thumbnailName,
                               RedirectAttributes ra) {
+        Media thumbnail = null;
+        if (!thumbnailName.isEmpty()) {
+            thumbnail = mediaService.constructMedia(mediaService.getFileUrl(thumbnailName), "Product thumbnail", "Thumbnail");
+        } else if (!thumbnailId.isEmpty()) {
+            thumbnail = mediaService.findMediaById(Integer.parseInt(thumbnailId));
+        }
+
         Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
-        Media thumbnail = mediaService.findMediaById(Integer.parseInt(thumbnailId));
+
         product.setCategory(category);
         product.setThumbnail(thumbnail);
-        service.save(product);
-
-        ra.addFlashAttribute("message", "The product has been saved successfully.");
-        return "redirect:/admin/product/list";
-    }
-
-    @PostMapping("/admin/product/delete")
-    public String deleteProduct(@RequestParam String productId, RedirectAttributes ra) {
-        service.deleteProductById(Integer.parseInt(productId));
-        return "redirect:/admin/product/list";
-    }
-
-    @PostMapping("/admin/product/update")
-    public String editProduct(Product product, @RequestParam String categoryId,
-                              @RequestParam("thumbnailId") String thumbnailId, RedirectAttributes ra) {
-        Media media = mediaService.findMediaById(Integer.parseInt(thumbnailId));
-        Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
-        product.setCategory(category);
-        product.setThumbnail(media);
         service.updateProduct(product);
+
         ra.addFlashAttribute("message", "The product has been edited successfully.");
         return "redirect:/admin/product/list";
     }
+
+//    @PostMapping("/admin/product/delete")
+//    public String deleteProduct(@RequestParam String productId, RedirectAttributes ra) {
+//        service.deleteProductById(Integer.parseInt(productId));
+//        return "redirect:/admin/product/list";
+//    }
 
     @PostMapping("/admin/product/status/change")
     public String changeStatus(@RequestParam String productId, RedirectAttributes ra) {
@@ -207,44 +239,27 @@ public class ProductController {
     @GetMapping("")
     public String showHomePage(Model model) {
         List<Product> products = service.getAllProducts();
-        List<Product> limit4Products = products.size() > 4 ? products.subList(0, 4) : products;
-        List<Product> next4Products = products.size() > 8 ? products.subList(4, 8) :
-                products.size() > 4 ? products.subList(4, products.size()) : Collections.emptyList();
+        List<Product> firstGroup = products.stream().limit(4).toList();
+        List<Product> secondGroup = products.size() > 4 ? products.stream().skip(4).limit(4).toList() : Collections.emptyList();
         List<Category> categories = categoryService.getAllCategories();
+        List<Category> displayedCategories = categories.stream().limit(3).toList();
 
-        List<Product> firstProducts = service.getAllProducts();
-        firstProducts = service.getProductsByCategoryIds(new ArrayList<>() {
-            {
-                add(Long.parseLong("1"));
-            }
-        });
-        System.out.println("firstProducts: " + firstProducts);
-
-        List<Product> secondProducts = service.getAllProducts();
-        secondProducts = service.getProductsByCategoryIds(new ArrayList<>() {
-            {
-                add(Long.parseLong("2"));
-            }
-        });
-
-        List<Product> thirdProducts = service.getAllProducts();
-        thirdProducts = service.getProductsByCategoryIds(new ArrayList<>() {
-            {
-                add(Long.parseLong("3"));
-            }
-        });
+        Map<Category, List<Product>> categoryProducts = new LinkedHashMap<>();
+        for (Category category : displayedCategories) {
+            List<Product> categoryProductsList = service.getProductsByCategoryIds(Collections.singletonList(category.getId().longValue())
+                    )
+                    .stream().limit(4).toList();
+            categoryProducts.put(category, categoryProductsList);
+        }
 
         model.addAttribute("products", products);
-        model.addAttribute("limit4Products", limit4Products);
-        model.addAttribute("next4Products", next4Products);
-        model.addAttribute("firstProducts", firstProducts);
-        model.addAttribute("secondProducts", secondProducts);
-        model.addAttribute("thirdProducts", thirdProducts);
+        model.addAttribute("firstGroup", firstGroup);
+        model.addAttribute("secondGroup", secondGroup);
+        model.addAttribute("categoryProducts", categoryProducts);  // Map<Category, List<Product>>
         model.addAttribute("categories", categories);
-
+        model.addAttribute("displayedCategories", displayedCategories);
         return "shop/index-2";
     }
-
 
 
     @GetMapping("/product-details")
@@ -258,7 +273,7 @@ public class ProductController {
                 add(cateID);
             }
         });
-        thisCateProducts = thisCateProducts.subList(Math.max(thisCateProducts.size()-4, 0), thisCateProducts.size());
+        thisCateProducts = thisCateProducts.subList(Math.max(thisCateProducts.size() - 4, 0), thisCateProducts.size());
 
         model.addAttribute("product", product);
         model.addAttribute("thisCateProducts", thisCateProducts);

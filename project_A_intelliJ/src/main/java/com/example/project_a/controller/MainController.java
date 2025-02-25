@@ -19,7 +19,6 @@ public class MainController {
     @GetMapping("/404")
     public String showPageNotFound() {return "shop/404";}
 
-
     @GetMapping("/blog-details-audio")
     public String showBlogDetailsAudio() {return "shop/blog-details-audio";}
 
@@ -76,4 +75,8 @@ public class MainController {
         model.addAttribute("pageTitle", "Customer Details" );
         return "admin/customer-detail";
     }
+
+    @GetMapping("/error")
+    public String showErrorPage() {return "admin/pages-404";}
+
 }

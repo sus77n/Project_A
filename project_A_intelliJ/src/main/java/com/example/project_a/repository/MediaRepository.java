@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MediaRepository extends JpaRepository<Media, Integer> {
-
+    void deleteByFilePath(String fileName);
 }

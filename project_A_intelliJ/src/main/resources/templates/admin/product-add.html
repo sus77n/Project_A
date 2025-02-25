@@ -9,150 +9,149 @@
     <div class="page-content">
         <div class="container-xxl">
 
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Thumbnail</h4>
-                        </div>
-                        <div class="card-body">
-                            <form class="dropzone dz-remove-upload dz-clickable"
-                                  id="thumbnail-dropzone"
-                                  enctype="multipart/form-data">
-                                <input type="hidden" name="mediaType" value="thumbnail">
-                                <input type="hidden" name="mediaAlt" value="Product thumbnail">
-                                <div class="dz-message needsclick">
-                                    <i class="bx bx-cloud-upload fs-48 text-primary"></i>
-                                    <p>Drag & drop thumbnail here, or click to select</p>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-<!--                    <div class="card">-->
-<!--                        <div class="card-header">-->
-<!--                            <h4 class="card-title">Slider</h4>-->
-<!--                        </div>-->
-<!--                        <div class="card-body">-->
-<!--                            <form class="dropzone dz-remove-upload dz-clickable"-->
-<!--                                  id="product-slider-dropzone"-->
-<!--                                  enctype="multipart/form-data">-->
-<!--                                <input type="hidden" name="mediaType" value="Slider">-->
-<!--                                <input type="hidden" name="mediaAlt" value="Product slider images">-->
-<!--                                <div class="dz-message needsclick">-->
-<!--                                    <i class="bx bx-cloud-upload fs-48 text-primary"></i>-->
-<!--                                    <p>Drag & drop slider images here, or click to select (Max: 2 images)</p>-->
-<!--                                </div>-->
-<!--                            </form>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                </div>
-
-                <div class="col-lg-9">
-                    <form id="mainForm" th:action="@{/admin/product/save}" method="post" th:object="${product}">
-                        <input type="hidden" th:field="*{id}">
-                        <input type="hidden" name="thumbnailId" id="thumbnailId">
+            <form th:action="@{/admin/product/save}" th:object="${product}" method="post">
+                <div class="row">
+                    <div class="col-lg-3">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Product Information</h4>
+                                <h4 class="card-title">Thumbnail</h4>
                             </div>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="product-name" class="form-label">Product Name</label>
-                                            <input type="text" id="product-name" class="form-control"
-                                                   placeholder="Product Name" th:field="*{name}" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label for="product-categories" class="form-label">Product Category</label>
-                                        <select class="form-control" id="product-categories" data-choices
-                                                data-choices-groups data-placeholder="Select Categories"
-                                                name="choices-single-groups" th:name="categoryId">
-                                            <option value="" disabled>Choose a category</option>
-                                            <option th:each="category : ${categories}"
-                                                    th:value="${category.id}"
-                                                    th:text="${category.categoryName}"
-                                            >
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <label for="summary" class="form-label">Summary</label>
-                                            <textarea th:field="*{summary}" class="form-control bg-light-subtle"
-                                                      id="summary" rows="3"
-                                                      placeholder="Short summary about the product"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <label for="description" class="form-label">Description</label>
-                                            <!-- Quill Editor -->
-                                            <textarea id="description" name="description" style="display: none;"
-                                                      th:field="*{description}"></textarea>
-                                            <div id="editor-container"></div>
-
-                                        </div>
+                                <div class="dropzone dz-remove-upload dz-clickable"
+                                     id="thumbnail-dropzone"
+                                     enctype="multipart/form-data">
+                                    <input type="hidden" name="thumbnailName" id="thumbnailName">
+                                    <div class="dz-message needsclick">
+                                        <i class="bx bx-cloud-upload fs-48 text-primary"></i>
+                                        <p>Drag & drop thumbnail here, or click to select</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Slider</h4>
+                            </div>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <label for="product-price" class="form-label">Price</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text fs-20"><i class='bx bx-dollar'></i></span>
-                                            <input th:field="*{price}" step="any" type="number" id="product-price"
-                                                   class="form-control"
-                                                   placeholder="0.0">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label for="product-stock" class="form-label">In stock</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text fs-20"><i class='bx bx-cart-add'></i></span>
-                                            <input th:field="*{inStock}" type="number" id="product-stock"
-                                                   class="form-control"
-                                                   placeholder="0">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label for="product-status" class="form-label">Status</label>
-                                        <select class="form-control" id="product-status" data-choices
-                                                data-choices-groups data-placeholder="Select status"
-                                                name="choices-single-groups" th:field="*{status}">
-                                            <option value="" disabled>Choose status</option>
-                                            <option
-                                                    th:value="Active">Active
-                                            </option>
-                                            <option
-                                                    th:value="Inactive">Inactive
-                                            </option>
-                                        </select>
+                                <div class="dropzone dz-remove-upload dz-clickable"
+                                     id="product-slider-dropzone"
+                                     enctype="multipart/form-data">
+                                    <div class="dz-message needsclick">
+                                        <i class="bx bx-cloud-upload fs-48 text-primary"></i>
+                                        <p>Drag & drop slider images here, or click to select (Max: 2 images)</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-3 bg-light mb-3 rounded">
-                            <div class="row justify-content-end g-2">
-                                <div class="col-lg-2">
-                                    <button type="reset" class="btn btn-outline-secondary w-100">Reset</button>
+                    </div>
+
+                    <div class="col-lg-9">
+                        <div id="mainForm">
+                            <input type="hidden" th:field="*{id}">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Product Information</h4>
                                 </div>
-                                <div class="col-lg-2">
-                                    <button type="submit" class="btn btn-primary w-100">Save</button>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="product-name" class="form-label">Product Name</label>
+                                                <input type="text" id="product-name" class="form-control"
+                                                       placeholder="Product Name" th:field="*{name}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="product-categories" class="form-label">Product Category</label>
+                                            <select class="form-control" id="product-categories" data-choices
+                                                    data-choices-groups data-placeholder="Select Categories"
+                                                    name="choices-single-groups" th:name="categoryId">
+                                                <option value="" disabled>Choose a category</option>
+                                                <option th:each="category : ${categories}"
+                                                        th:value="${category.id}"
+                                                        th:text="${category.categoryName}"
+                                                >
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <label for="summary" class="form-label">Summary</label>
+                                                <textarea th:field="*{summary}" class="form-control bg-light-subtle"
+                                                          id="summary" rows="3"
+                                                          placeholder="Short summary about the product"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <label for="description" class="form-label">Description</label>
+                                                <!-- Quill Editor -->
+                                                <textarea id="description" name="description" style="display: none;"
+                                                          th:field="*{description}"></textarea>
+                                                <div id="editor-container"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <label for="product-price" class="form-label">Price</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text fs-20"><i class='bx bx-dollar'></i></span>
+                                                <input th:field="*{price}" step="any" type="number" id="product-price"
+                                                       class="form-control"
+                                                       placeholder="0.0">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="product-stock" class="form-label">In stock</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text fs-20"><i
+                                                        class='bx bx-cart-add'></i></span>
+                                                <input th:field="*{inStock}" type="number" id="product-stock"
+                                                       class="form-control"
+                                                       placeholder="0">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="product-status" class="form-label">Status</label>
+                                            <select class="form-control" id="product-status" data-choices
+                                                    data-choices-groups data-placeholder="Select status"
+                                                    name="choices-single-groups" th:field="*{status}">
+                                                <option value="" disabled>Choose status</option>
+                                                <option
+                                                        th:value="Active">Active
+                                                </option>
+                                                <option
+                                                        th:value="Inactive">Inactive
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-3 bg-light mb-3 rounded">
+                                <div class="row justify-content-end g-2">
+                                    <div class="col-lg-2">
+                                        <button type="reset" class="btn btn-outline-secondary w-100">Reset</button>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <button type="submit" class="btn btn-primary w-100">Save</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -164,21 +163,17 @@
         url: "/media/upload",
         type: "POST",
         maxFiles: 1,
-        thumbnailWidth: null,  // Allow full-size thumbnails
-        thumbnailHeight: null,
         acceptedFiles: "image/*",
         addRemoveLinks: true,
-        dictRemoveFile: "Remove Thumbnail",
+        dictRemoveFile: "✖",
         dictDefaultMessage: "Drop or click to upload thumbnail",
 
         success: function (file, response) {
             // Save the uploaded file's name in a hidden input field
-            document.getElementById("thumbnailId").value = response.mediaId;
+            document.getElementById("thumbnailName").value = response.fileName;
             file.uploadedFileName = response.fileName; // Store the server filename in the file object
             this.disable();
-            this.element.classList.remove("dz-message", "needsclick");
             this.element.classList.add("dz-disabled");
-
         },
 
         removedfile: function (file) {
@@ -202,46 +197,104 @@
                 });
             }
 
-            document.getElementById("thumbnailId").value = "";
+            document.getElementById("thumbnailName").value = "";
             this.enable();
             this.element.classList.remove("dz-disabled");
 
         }
     });
 
+    Dropzone.autoDiscover = false;
+
+    const maxSliderImages = 2;
+    let alertShown = false;
+
     const productSliderDropzone = new Dropzone("#product-slider-dropzone", {
         url: "/media/upload",
-        type: "POST",
-        maxFiles: 2,
+        method: "POST",
         acceptedFiles: "image/*",
         addRemoveLinks: true,
-        dictRemoveFile: "Remove Image",
-        dictDefaultMessage: "Drop or click to upload slider images (Max: 2)",
+        dictRemoveFile: "✖", // Fixes issue where X button shows "Cancel upload"
+        dictDefaultMessage: `Drop or click to upload slider images (Max: 3)`,
+        parallelUploads: 2,
+        autoProcessQueue: true,
+        maxFiles: 2,
 
-        success: function (file, response) {
-            file.uploadedFileName = response.fileName;
-        },
+        init: function () {
+            let dropzoneInstance = this;
+            let imagePathsInput = document.createElement("input");
+            imagePathsInput.type = "hidden";
+            imagePathsInput.name = "sliderImages";
+            imagePathsInput.id = "sliderImages";
+            document.querySelector("#product-slider-dropzone").appendChild(imagePathsInput);
 
-        removedfile: function (file) {
-            if (file.previewElement) {
-                file.previewElement.parentNode.removeChild(file.previewElement);
-            }
+            this.on("success", function (file, response) {
+                file.uploadedFileName = response.fileName; // Ensure file name is stored
+                file.status = Dropzone.SUCCESS; // Mark as successfully uploaded
+                this.emit("complete", file); // Ensures progress bar disappears
 
-            if (file.uploadedFileName) {
-                fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
-                    method: "DELETE"
-                }).then(response => {
-                    if (response.ok) {
-                        console.log("File deleted successfully.");
-                    } else {
-                        console.error("Failed to delete file.");
+                let currentPaths = imagePathsInput.value ? JSON.parse(imagePathsInput.value) : [];
+
+                currentPaths.push(response.fileName);
+                imagePathsInput.value = JSON.stringify(currentPaths);
+
+                if (this.files.length >= maxSliderImages) {
+                    this.hiddenFileInput.disabled = true; // Disable file input when max is reached
+                    this.element.classList.add("dz-disabled");
+                }
+            });
+
+            this.on("removedfile", function (file) {
+                if (file.uploadedFileName) {
+                    fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
+                        method: "DELETE"
+                    }).then(response => {
+                        if (response.ok) {
+                            let currentPaths = imagePathsInput.value ? JSON.parse(imagePathsInput.value) : [];
+                            imagePathsInput.value = JSON.stringify(currentPaths.filter(
+                                p => p !== file.uploadedFileName));
+                            console.log("File deleted successfully.");
+                        } else {
+                            console.error("Failed to delete file.");
+                        }
+                    }).catch(error => {
+                        console.error("Error deleting file:", error);
+                    });
+                }
+
+                if (file.previewElement) {
+                    file.previewElement.remove(); // Properly removes the file preview
+                }
+
+                if (this.files.length < maxSliderImages) {
+                    alertShown = false;
+                    this.hiddenFileInput.disabled = false; // Enable input again when below max
+                    this.element.classList.remove("dz-disabled");
+                }
+            });
+
+            this.on("addedfile", function (file) {
+                if (this.files.length > maxSliderImages) {
+                    this.removeFile(file);
+
+                    if (!alertShown) {
+                        Toastify({
+                            text: `You can only upload up to ${maxSliderImages} images.`,
+                            duration: 3000, // 3 seconds
+                            gravity: "top", // Position: top or bottom
+                            position: "center", // left, center, or right
+                            backgroundColor: "#FF5733", // Custom color
+                            stopOnFocus: true // Stop hiding on focus
+                        }).showToast();
+
+                        alertShown = true; // Set flag to prevent multiple alerts
                     }
-                }).catch(error => {
-                    console.error("Error deleting file:", error);
-                });
-            }
+                }
+            });
         }
     });
+
+
 </script>
 <script>
     var quill = new Quill('#editor-container', {

@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -20,29 +22,47 @@ public class MediaController {
 
     @PostMapping("/upload")
     @ResponseBody
-    public ResponseEntity<Map<String, String>> uploadMedia(@RequestParam("file") MultipartFile file,
-                                                           @RequestParam("mediaAlt") String mediaAlt,
-                                                           @RequestParam("mediaType") String mediaType) {
+    public ResponseEntity<Map<String, String>> uploadMedia(@RequestParam("file") MultipartFile file) {
         try {
             String fileName = mediaService.store(file);
-
-            Media media = new Media();
-            media.setType(mediaType);
-            media.setAlt(mediaAlt);
-            media.setImageURL(mediaService.getFileUrl(fileName));
-            mediaService.save(media);
-
-            Media thumbnail = mediaService.findMediaById(media.getId());
+            String filePath = mediaService.getFileUrl(fileName);
 
             Map<String, String> response = new HashMap<>();
-            response.put("mediaId", String.valueOf(media.getId()));
             response.put("fileName", fileName);
-            response.put("thumbnail", thumbnail.getType());
+            response.put("filePath", filePath);
+
             return ResponseEntity.ok(response);
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(Map.of("error", "Failed to upload file: " + e.getMessage()));
+        }
+    }
+
+    @PostMapping("/upload-multiple")
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> uploadMedias(@RequestParam("file") MultipartFile[] files) {
+        List<String> fileNames = new ArrayList<>();
+        List<String> filePaths = new ArrayList<>();
+
+        try {
+            for (MultipartFile file : files) {
+                String fileName = mediaService.store(file);
+                String filePath = mediaService.getFileUrl(fileName);
+
+                fileNames.add(fileName);
+                filePaths.add(filePath);
+            }
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("fileNames", fileNames);
+            response.put("filePaths", filePaths);
+
+            return ResponseEntity.ok(response);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("error", "Failed to upload files: " + e.getMessage()));
         }
     }
 
@@ -63,16 +83,16 @@ public class MediaController {
 
     @GetMapping("/get/{id}")
     @ResponseBody
-    public ResponseEntity<Map<String, String>> getMedia(@PathVariable Integer id) {
+    public ResponseEntity<Map<String, String>> getMediaByPath(@PathVariable Integer id) {
         Media media = mediaService.findMediaById(id);
 
-        if (media == null || media.getImageURL() == null) {
+        if (media == null) {
             return ResponseEntity.notFound().build();
         }
 
         Map<String, String> response = new HashMap<>();
-        response.put("mediaId", String.valueOf(media.getId()));
-        response.put("url", media.getImageURL());
+        response.put("filePath", media.getFilePath());
+        response.put("fileName", mediaService.getFileName(media.getFilePath()));
 
         return ResponseEntity.ok(response); // Return the stored image URL
     }

@@ -10,132 +10,150 @@
     <div class="page-content">
         <div class="container-xxl">
 
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Thumbnail</h4>
-                        </div>
-                        <div class="card-body">
-                            <form th:object="${thumbnail}"
-                                  class="dropzone"
-                                  id="thumbnail-dropzone"
-                                  enctype="multipart/form-data">
-                                <input type="hidden" name="mediaType" id="mediaType" value="thumbnail">
-                                <input type="hidden" name="mediaAlt" value="Product thumbnail">
-                                <div class="dz-message needsclick">
-                                    <i class="bx bx-cloud-upload fs-48 text-primary"></i>
-                                    <p>Drag & drop thumbnail here, or click to select</p>
+            <form th:object="${product}" th:action="@{/admin/product/update}" th:method="post">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Thumbnail</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="dropzone"
+                                     id="thumbnail-dropzone"
+                                     enctype="multipart/form-data">
+                                    <input type="hidden" name="thumbnailPath" id="thumbnailPath"
+                                           th:value="${thumbnail != null ? thumbnail.filePath : ''}">
+                                    <input type="hidden" name="thumbnailId" id="thumbnailId"
+                                           th:value="${thumbnail != null ? thumbnail.id : ''}">
+                                    <div class="dz-message needsclick">
+                                        <i class="bx bx-cloud-upload fs-48 text-primary"></i>
+                                        <p>Drag & drop thumbnail here, or click to select</p>
+                                    </div>
                                 </div>
-                            </form>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Slider</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="dropzone dz-remove-upload dz-clickable"
+                                     id="product-slider-dropzone"
+                                     enctype="multipart/form-data">
+                                    <input type="hidden" id="sliderImages" th:value="${sliderImagesJson}">
+                                    <div class="dz-message needsclick">
+                                        <i class="bx bx-cloud-upload fs-48 text-primary"></i>
+                                        <p>Drag & drop slider images here, or click to select (Max: 2 images)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-9">
+                        <div id="mainForm">
+                            <input type="hidden" th:field="*{id}">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Product Information</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="product-name" class="form-label">Product Name</label>
+                                                <input type="text" id="product-name" class="form-control"
+                                                       th:field="*{name}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="product-categories" class="form-label">Product
+                                                Categories</label>
+                                            <select class="form-control" id="product-categories" data-choices
+                                                    data-choices-groups data-placeholder="Select Categories"
+                                                    name="choices-single-groups" th:name="categoryId">
+                                                <option th:value="${product.category.id}"
+                                                        th:text="${product.category.categoryName}" selected></option>
+                                                <option th:each="category : ${categories}"
+                                                        th:value="${category.id}"
+                                                        th:text="${category.categoryName}"
+                                                >
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <label for="summary" class="form-label">Summary</label>
+                                                <textarea class="form-control bg-light-subtle" id="summary" rows="3"
+                                                          th:field="*{summary}"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <label for="description" class="form-label">Description</label>
+                                                <textarea id="description" name="description" style="display: none;"
+                                                          th:field="*{description}"></textarea>
+                                                <div id="editor-container"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <label for="product-price" class="form-label">Price</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text fs-20"><i class='bx bx-dollar'></i></span>
+                                                <input type="number" step="any" id="product-price" class="form-control"
+                                                       th:field="*{price}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="product-stock" class="form-label">In stock</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text fs-20"><i
+                                                        class='bx bx-cart-add'></i></span>
+                                                <input type="number" id="product-stock" class="form-control"
+                                                       th:field="*{inStock}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="product-status" class="form-label">Status</label>
+                                            <select class="form-control" id="product-status"
+                                                    data-choices data-choices-groups
+                                                    th:field="*{status}">"
+                                                >
+                                                <option value="">Choose status</option>
+                                                <option value="Active">Active</option>
+                                                <option value="Inactive">Inactive</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-3 bg-light mb-3 rounded">
+                                <div class="row justify-content-end g-2">
+                                    <div class="col-lg-2">
+                                        <button type="reset" class="btn btn-outline-secondary w-100">Reset</button>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <button type="submit" class="btn btn-primary w-100">Save</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-9">
-                    <form id="mainForm" th:object="${product}" th:action="@{/admin/product/update}" th:method="post">
-                        <input type="hidden" th:field="*{id}">
-                        <input type="hidden" name="thumbnailId" id="thumbnailId"
-                               th:value="${thumbnail != null ? thumbnail.id : ''}">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Product Information</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="product-name" class="form-label">Product Name</label>
-                                            <input type="text" id="product-name" class="form-control"
-                                                   th:field="*{name}">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label for="product-categories" class="form-label">Product
-                                            Categories</label>
-                                        <select class="form-control" id="product-categories" data-choices
-                                                data-choices-groups data-placeholder="Select Categories"
-                                                name="choices-single-groups" th:name="categoryId">
-                                            <option th:value="${product.category.id}"
-                                                    th:text="${product.category.categoryName}" selected></option>
-                                            <option th:each="category : ${categories}"
-                                                    th:value="${category.id}"
-                                                    th:text="${category.categoryName}"
-                                            >
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <label for="summary" class="form-label">Summary</label>
-                                            <textarea class="form-control bg-light-subtle" id="summary" rows="3"
-                                                      th:field="*{summary}"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <label for="description" class="form-label">Description</label>
-                                            <textarea id="description" name="description" style="display: none;"
-                                                      th:field="*{description}"></textarea>
-                                            <div id="editor-container"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <label for="product-price" class="form-label">Price</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text fs-20"><i class='bx bx-dollar'></i></span>
-                                            <input type="number" step="any" id="product-price" class="form-control"
-                                                   th:field="*{price}">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label for="product-stock" class="form-label">In stock</label>
-                                        <div class="input-group mb-3">
-                                                <span class="input-group-text fs-20"><i
-                                                        class='bx bx-cart-add'></i></span>
-                                            <input type="number" id="product-stock" class="form-control"
-                                                   th:field="*{inStock}">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label for="product-status" class="form-label">Status</label>
-                                        <select class="form-control" id="product-status" data-choices
-                                                data-choices-groups
-                                                name="choices-single-groups"
-                                                th:field="*{status}">"
-                                            >
-                                            <option value="">Choose status</option>
-                                            <option value="Active">Active</option>
-                                            <option value="Inactive">Inactive</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3 bg-light mb-3 rounded">
-                            <div class="row justify-content-end g-2">
-                                <div class="col-lg-2">
-                                    <button type="reset" class="btn btn-outline-secondary w-100">Reset</button>
-                                </div>
-                                <div class="col-lg-2">
-                                    <button type="submit" class="btn btn-primary w-100">Save</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -152,43 +170,54 @@
                     maxFiles: 1,
                     acceptedFiles: "image/*",
                     addRemoveLinks: true,
-                    dictRemoveFile: "Remove Thumbnail",
+                    dictRemoveFile: "✖",
                     dictDefaultMessage: "Drop or click to upload thumbnail",
 
-                    init: function () {
-                        let existingThumbnailId = document.getElementById("thumbnailId").value;
+                init: function () {
+                    let existingThumbnailId = document.getElementById("thumbnailId").value;
+                    let dropzoneInstance = this;
 
+                    if (existingThumbnailId) {
+                        fetch(`/media/get/${existingThumbnailId}`)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error("Failed to fetch media.");
+                                }
+                                return response.json();
+                            })
+                            .then(media => {
+                                if (!media.filePath) return;
 
-                        if (existingThumbnailId) {
-                            fetch(`/media/get/${existingThumbnailId}`)
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error("Failed to fetch media.");
-                                    }
-                                    return response.json();
-                                })
-                                .then(media => {
-                                    if (!media.url) return;
-                                    console.log(media);
-                                    let mockFile = {
-                                        name: "thumbnail.jpg", // Placeholder name
-                                        size: 12345, // Placeholder size
-                                        uploadedFileName: media.url
-                                    };
+                                // Fetch the actual file as a Blob
+                                fetch(media.filePath)
+                                    .then(res => res.blob())
+                                    .then(blob => {
+                                        let file = new File([blob], media.fileName, { type: blob.type });
 
-                                    this.emit("addedfile", mockFile);
-                                    this.emit("thumbnail", mockFile, media.url);
-                                    mockFile.previewElement.classList.add("dz-success", "dz-complete");
-                                })
-                                .catch(error => console.error("Error fetching existing thumbnail:", error));
-                            this.disable();
-                            this.element.classList.add("dz-disabled");
-                        }
-                    },
+                                        // Simulate a real Dropzone upload process
+                                        dropzoneInstance.files.push(file);
+                                        dropzoneInstance.emit("addedfile", file);
+                                        dropzoneInstance.emit("thumbnail", file, media.filePath);
+                                        dropzoneInstance.emit("complete", file);
 
-                    removedfile: function (file) {
+                                        // Ensure Dropzone treats it like an uploaded file
+                                        file.status = Dropzone.SUCCESS;
+                                        file.uploadedFileName = media.fileName;
+
+                                        // Disable Dropzone if a file exists
+                                        dropzoneInstance.disable();
+                                        dropzoneInstance.element.classList.add("dz-disabled");
+                                    })
+                                    .catch(error => console.error("Error loading existing file:", error));
+                            })
+                            .catch(error => console.error("Error fetching existing thumbnail:", error));
+                    }
+                },
+
+                removedfile: function (file) {
                         if (file.previewElement) {
                             file.previewElement.parentNode.removeChild(file.previewElement);
+                            document.getElementById("thumbnailId").value = "";
                         }
 
                         if (file.uploadedFileName) {
@@ -203,16 +232,20 @@
                             }).catch(error => {
                                 console.error("Error deleting file:", error);
                             });
-                            document.getElementById("thumbnailId").value = "";
+                            document.getElementById("thumbnailPath").value = "";
                             this.enable();
                             this.element.classList.remove("dz-disabled");
                         }
+
                     },
 
                     success: function (file, response) {
-                        document.getElementById("thumbnailId").value = response.mediaId;
-                        file.uploadedFileName = response.fileName;
-                        file.previewElement.classList.add("dz-success");
+                        document.getElementById("thumbnailPath").value = response.filePath;
+                        file.uploadedFileName = response.fileName; // Store the server filename in the file object
+                        this.disable();
+                        this.element.classList.remove("dz-message", "needsclick");
+                        this.element.classList.add("dz-disabled");
+                        console.log("sucssec", file);
                     },
 
                     thumbnail: function (file, fileUrl) {
@@ -220,7 +253,7 @@
                         if (imgElement) {
                             imgElement.style.width = "100%";
                             imgElement.style.height = "100%";
-                            imgElement.style.objectFit = "inline-size";
+                            imgElement.style.objectFit = "cover";
                             imgElement.src = fileUrl;
                         }
                     },
@@ -229,9 +262,103 @@
         ;
     });
 </script>
+
+<script>
+    Dropzone.autoDiscover = false;
+
+    const maxSliderImages = 2;
+    let alertShown = false;
+
+    const productSliderDropzone = new Dropzone("#product-slider-dropzone", {
+        url: "/media/upload",
+        method: "POST",
+        acceptedFiles: "image/*",
+        addRemoveLinks: true,
+        dictRemoveFile: "✖", // Fixes issue where X button shows "Cancel upload"
+        dictDefaultMessage: `Drop or click to upload slider images (Max: 3)`,
+        parallelUploads: 2,
+        autoProcessQueue: true,
+        maxFiles: 2,
+
+        init: function () {
+            let dropzoneInstance = this;
+            let imagePathsInput = document.createElement("input");
+            imagePathsInput.type = "hidden";
+            imagePathsInput.name = "sliderImages";
+            imagePathsInput.id = "sliderImages";
+            document.querySelector("#product-slider-dropzone").appendChild(imagePathsInput);
+
+            this.on("success", function (file, response) {
+                file.uploadedFileName = response.fileName; // Ensure file name is stored
+                file.status = Dropzone.SUCCESS; // Mark as successfully uploaded
+                this.emit("complete", file); // Ensures progress bar disappears
+
+                let currentPaths = imagePathsInput.value ? JSON.parse(imagePathsInput.value) : [];
+
+                currentPaths.push(response.fileName);
+                imagePathsInput.value = JSON.stringify(currentPaths);
+
+                if (this.files.length >= maxSliderImages) {
+                    this.hiddenFileInput.disabled = true; // Disable file input when max is reached
+                    this.element.classList.add("dz-disabled");
+                }
+            });
+
+            this.on("removedfile", function (file) {
+                if (file.uploadedFileName) {
+                    fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
+                        method: "DELETE"
+                    }).then(response => {
+                        if (response.ok) {
+                            let currentPaths = imagePathsInput.value ? JSON.parse(imagePathsInput.value) : [];
+                            imagePathsInput.value = JSON.stringify(currentPaths.filter(
+                                p => p !== file.uploadedFileName));
+                            console.log("File deleted successfully.");
+                        } else {
+                            console.error("Failed to delete file.");
+                        }
+                    }).catch(error => {
+                        console.error("Error deleting file:", error);
+                    });
+                }
+
+                if (file.previewElement) {
+                    file.previewElement.remove(); // Properly removes the file preview
+                }
+
+                if (this.files.length < maxSliderImages) {
+                    alertShown = false;
+                    this.hiddenFileInput.disabled = false; // Enable input again when below max
+                    this.element.classList.remove("dz-disabled");
+                }
+            });
+
+            this.on("addedfile", function (file) {
+                if (this.files.length > maxSliderImages) {
+                    this.removeFile(file);
+
+                    if (!alertShown) {
+                        Toastify({
+                            text: `You can only upload up to ${maxSliderImages} images.`,
+                            duration: 3000, // 3 seconds
+                            gravity: "top", // Position: top or bottom
+                            position: "center", // left, center, or right
+                            backgroundColor: "#FF5733", // Custom color
+                            stopOnFocus: true // Stop hiding on focus
+                        }).showToast();
+
+                        alertShown = true; // Set flag to prevent multiple alerts
+                    }
+                }
+            });
+        }
+    });
+
+</script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var quill = new Quill('#editor-container', { theme: 'snow' });
+        var quill = new Quill('#editor-container', {theme: 'snow'});
 
         var descriptionField = document.getElementById('description');
 

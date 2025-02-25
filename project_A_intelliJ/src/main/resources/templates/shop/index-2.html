@@ -73,7 +73,7 @@
                                         <div class="single-aboss-product">
                                             <div class="pro-img">
                                                 <a th:href="@{/product-details(productId=${product.id})}">
-                                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                                    <img th:src="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}"
                                                          alt="Product Image">
                                                 </a>
                                                 <div class="pro-actions">
@@ -104,7 +104,7 @@
                                         <div class="single-aboss-product">
                                             <div class="pro-img">
                                                 <a th:href="@{/product-details(productId=${product.id})}">
-                                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                                    <img th:src="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}"
                                                          alt="Product Image">
                                                 </a>
                                             </div>
@@ -168,7 +168,7 @@
                 <div class="single-aboss-product" th:each="product : ${firstGroup}">
                     <div class="pro-img">
                         <a th:href="@{/product-details(productId=${product.getId()})}"><img
-                                th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                th:src="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}"
                                 alt="Product Image"></a>
                         <div class="pro-actions">
                         </div>
@@ -226,7 +226,7 @@
                             <div class="single-aboss-product mb-10">
                                 <div class="pro-img">
                                     <a th:href="@{/product-details(productId=${product.id})}">
-                                        <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                        <img th:src="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}"
                                              alt="Product Image">
                                     </a>
                                 </div>
