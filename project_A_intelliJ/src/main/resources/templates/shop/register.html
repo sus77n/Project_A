@@ -220,44 +220,5 @@
 
     </script>
     <script th:src="@{assets/js/locationInVietnam.js}"></script>
-    <script th:inline="javascript">
-        $(document).ready(function () {
-            $("#registerForm").submit(function (event) {
-                event.preventDefault(); // Prevent default form submission
-
-                let formData = $(this).serialize(); // Serialize form data
-
-                $.ajax({
-                    type: "POST",
-                    url: $(this).attr("action"),
-                    data: formData,
-                    success: function (response) {
-                        showToast("Registration successful!", "success");
-
-                        setTimeout(function () {
-                            window.location.href = "/login"; // Redirect after success
-                        }, 2000);
-                    },
-                    error: function () {
-                        showToast("Registration failed. Please try again!", "error");
-                    }
-                });
-            });
-
-            function showToast(message, type = "success") {
-                let bgColor = type === "success" ? "linear-gradient(to right, #00b09b, #96c93d)" : "linear-gradient(to right, #e74c3c, #c0392b)";
-
-                Toastify({
-                    text: message,
-                    duration: 2000,
-                    close: true,
-                    gravity: "top",
-                    position: "center",
-                    stopOnFocus: true,
-                    style: { background: bgColor }
-                }).showToast();
-            }
-        });
-    </script>
 </body>
 </html>

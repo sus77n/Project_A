@@ -51,10 +51,21 @@ public class ProductController {
     public String saveProduct(Product product,
                               @RequestParam String categoryId,
                               @RequestParam String thumbnailName,
+                              @RequestParam String sliderImages,
                               RedirectAttributes ra) {
 
         Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
         product.setCategory(category);
+
+        List<String> imagePaths = mediaService.getListOfMediaByJson(sliderImages);
+
+        // Convert image paths to Media objects and associate them with the product
+        for (String imagePath : imagePaths) {
+            Media media = new Media();
+            media.setFilePath(imagePath);
+            media.setProduct(product); // Set product reference
+            product.getProductSliders().add(media);
+        }
 
         Media thumbnail = null;
         if (!thumbnailName.isEmpty()) {
@@ -88,6 +99,8 @@ public class ProductController {
                 .map(Media::getFilePath)
                 .collect(Collectors.toList());
 
+        product.setProductSliders(null);
+
         // Convert list to JSON string
         ObjectMapper objectMapper = new ObjectMapper();
         String sliderImagesJson = "[]"; // Default empty array
@@ -98,8 +111,8 @@ public class ProductController {
             e.printStackTrace(); // Handle error properly
         }
 
-        model.addAttribute("sliders", sliderImagesJson);
-        model.addAttribute("thumbnail", thumbnail);
+        model.addAttribute("sliderImagesJson", sliderImagesJson);
+        model.addAttribute("thumbnail", mediaService.getFileName(thumbnail.getFilePath()));
         model.addAttribute("categories", categories);
         model.addAttribute("product", product);
         model.addAttribute("pageTitle", "Product Edit");
@@ -110,20 +123,29 @@ public class ProductController {
     @PostMapping("/admin/product/update")
     public String editProduct(Product product,
                               @RequestParam String categoryId,
-                              @RequestParam String thumbnailId,
                               @RequestParam String thumbnailName,
+                              @RequestParam String sliderImages,
                               RedirectAttributes ra) {
         Media thumbnail = null;
         if (!thumbnailName.isEmpty()) {
             thumbnail = mediaService.constructMedia(mediaService.getFileUrl(thumbnailName), "Product thumbnail", "Thumbnail");
-        } else if (!thumbnailId.isEmpty()) {
-            thumbnail = mediaService.findMediaById(Integer.parseInt(thumbnailId));
+        }
+
+        List<String> imagePaths = mediaService.getListOfMediaByJson(sliderImages);
+
+        // Convert image paths to Media objects and associate them with the product
+        for (String imagePath : imagePaths) {
+            Media media = new Media();
+            media.setFilePath(imagePath);
+            media.setProduct(product); // Set product reference
+            product.getProductSliders().add(media);
         }
 
         Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
 
         product.setCategory(category);
         product.setThumbnail(thumbnail);
+
         service.updateProduct(product);
 
         ra.addFlashAttribute("message", "The product has been edited successfully.");

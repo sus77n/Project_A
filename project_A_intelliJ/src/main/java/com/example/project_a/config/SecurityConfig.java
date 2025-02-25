@@ -76,12 +76,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/assets/**", "/uploads/**", "/shop", "/home", "/about",
                                 "/blog", "/contact", "/login", "/product-details", "/register",
-                                "/users/save","/","/filter-products",
-                                "/shop/register","/users/check/email","/users/check/username", "/users/check/**" )
-                                .permitAll()
+                                "/users/save", "/", "/filter-products",
+                                "/shop/register", "/users/check/email", "/users/check/username", "/users/check/**",
+                                "/media/**")
+                        .permitAll()
 
-
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/admin/**","/**").hasRole("ADMIN")
                         .anyRequest().hasRole("CLIENT")
                 )
 

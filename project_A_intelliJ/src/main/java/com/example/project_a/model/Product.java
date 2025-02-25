@@ -50,7 +50,7 @@ public class Product {
     private List<Media> productSliders = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "thumbnail_id", referencedColumnName = "id")
+    @JoinColumn(name = "thumbnail", referencedColumnName = "id")
     private Media thumbnail;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)

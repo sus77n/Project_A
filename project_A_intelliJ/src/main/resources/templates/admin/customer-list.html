@@ -100,25 +100,25 @@
                                                 <label class="form-check-label" for="customCheck1"></label>
                                             </div>
                                         </th>
-                                        <th>Customer Name</th>
-                                        <th>Email</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th class="text-start">Customer Name</th>
+                                        <th class="text-start">Email</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr th:each="user : ${users}">
-                                        <td>
+                                        <td class="text-center">
                                             <div class="form-check">
                                                 <input type="checkbox" class="form-check-input" id="customCheck2">
                                                 <label class="form-check-label" for="customCheck2"></label>
                                             </div>
                                         </td>
-                                        <td class="text-left" th:text="${user.username}"></td>
-                                        <td class="text-left" th:text="${user.email}"></td>
+                                        <td class="text-start" th:text="${user.username}"></td>
+                                        <td class="text-start" th:text="${user.email}"></td>
                                         <td class="text-center"><span class="badge bg-success-subtle text-success py-1 px-2"
                                                   th:text="${user.status}"></span></td>
-                                        <td>
+                                        <td class="text-center">
                                             <div class="d-flex gap-2 justify-content-center">
                                                 <a href="#!" class="btn btn-light btn-sm">
                                                     <iconify-icon icon="solar:eye-broken"

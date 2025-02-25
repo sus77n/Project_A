@@ -39,19 +39,19 @@
                                         <col width="20%" />
                                     </colgroup>
                                     <thead class="bg-light-subtle">
-                                    <tr class="text-center">
+                                    <tr>
                                         <th style="width: 20px;">
                                             <div class="form-check ms-1">
                                                 <input type="checkbox" class="form-check-input" id="customCheck1">
                                                 <label class="form-check-label" for="customCheck1"></label>
                                             </div>
                                         </th>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Stock</th>
-                                        <th>Category</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th class="text-start">Name</th>
+                                        <th class="text-end">Price</th>
+                                        <th class="text-end">Stock</th>
+                                        <th class="text-start">Category</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -64,13 +64,13 @@
                                                 <label class="form-check-label" th:for="${product.id}">&nbsp;</label>
                                             </div>
                                         </td>
-                                        <td class="text-left" th:text="${product.name}"></td>
-                                        <td class="text-center" th:text="${product.price}">$</td>
-                                        <td class="text-center">
+                                        <td class="text-start" th:text="${product.name}"></td>
+                                        <td class="text-end" th:text="${product.price}">$</td>
+                                        <td class="text-end">
                                             <p class="mb-1 text-muted"><span class="text-dark fw-medium"
                                                                              th:text="${product.inStock} "></span></p>
                                         </td>
-                                        <td class="text-left" th:text="${product.category.categoryName}"></td>
+                                        <td class="text-start" th:text="${product.category.categoryName}"></td>
                                         <td class="text-center">
                                             <span class="badge p-1 fs-12 me-1"
                                                   th:classappend="${product.status} == 'Active' ? 'text-success bg-success-subtle' : 'text-danger bg-danger-subtle'"

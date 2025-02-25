@@ -36,6 +36,7 @@
                                 <div class="dropzone dz-remove-upload dz-clickable"
                                      id="product-slider-dropzone"
                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="sliderImages" id="sliderImages">
                                     <div class="dz-message needsclick">
                                         <i class="bx bx-cloud-upload fs-48 text-primary"></i>
                                         <p>Drag & drop slider images here, or click to select (Max: 2 images)</p>
@@ -168,39 +169,42 @@
         dictRemoveFile: "✖",
         dictDefaultMessage: "Drop or click to upload thumbnail",
 
-        success: function (file, response) {
-            // Save the uploaded file's name in a hidden input field
-            document.getElementById("thumbnailName").value = response.fileName;
-            file.uploadedFileName = response.fileName; // Store the server filename in the file object
-            this.disable();
-            this.element.classList.add("dz-disabled");
-        },
+        init: function () {
 
-        removedfile: function (file) {
-            // Remove the file element from the DOM
-            if (file.previewElement) {
-                file.previewElement.parentNode.removeChild(file.previewElement);
-            }
+            this.on("success", function (file, response) {
+                // Save the uploaded file's name in a hidden input field
+                document.getElementById("thumbnailName").value = response.fileName;
+                file.uploadedFileName = response.fileName; // Store the server filename in the file object
+                this.disable();
+                this.element.classList.add("dz-disabled");
+            })
 
-            // Call backend API to delete the file
-            if (file.uploadedFileName) {
-                fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
-                    method: "DELETE"
-                }).then(response => {
-                    if (response.ok) {
-                        console.log("File deleted successfully.");
-                    } else {
-                        console.error("Failed to delete file.");
-                    }
-                }).catch(error => {
-                    console.error("Error deleting file:", error);
-                });
-            }
+            this.on("removedfile", function (file) {
+                // Remove the file element from the DOM
+                if (file.previewElement) {
+                    file.previewElement.parentNode.removeChild(file.previewElement);
+                }
 
-            document.getElementById("thumbnailName").value = "";
-            this.enable();
-            this.element.classList.remove("dz-disabled");
+                // Call backend API to delete the file
+                if (file.uploadedFileName) {
+                    fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
+                        method: "DELETE"
+                    }).then(response => {
+                        if (response.ok) {
+                            console.log("File deleted successfully.");
+                        } else {
+                            console.error("Failed to delete file.");
+                        }
+                    }).catch(error => {
+                        console.error("Error deleting file:", error);
+                    });
+                }
 
+                document.getElementById("thumbnailName").value = "";
+                this.enable();
+                this.element.classList.remove("dz-disabled");
+
+            })
         }
     });
 
@@ -222,11 +226,7 @@
 
         init: function () {
             let dropzoneInstance = this;
-            let imagePathsInput = document.createElement("input");
-            imagePathsInput.type = "hidden";
-            imagePathsInput.name = "sliderImages";
-            imagePathsInput.id = "sliderImages";
-            document.querySelector("#product-slider-dropzone").appendChild(imagePathsInput);
+            let imagePathsInput = document.getElementById("sliderImages");
 
             this.on("success", function (file, response) {
                 file.uploadedFileName = response.fileName; // Ensure file name is stored

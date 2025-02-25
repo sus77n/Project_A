@@ -2,6 +2,9 @@ package com.example.project_a.service;
 
 import com.example.project_a.model.Media;
 import com.example.project_a.repository.MediaRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -13,6 +16,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class MediaService {
@@ -30,21 +36,30 @@ public class MediaService {
         // Extract file extension
         int lastDotIndex = originalFileName.lastIndexOf(".");
         if (lastDotIndex > 0) {
-            fileExtension = originalFileName.substring(lastDotIndex);
-            fileBaseName = originalFileName.substring(0, lastDotIndex);
+            fileExtension = originalFileName.substring(lastDotIndex); // Get extension (e.g., .jpg)
+            fileBaseName = originalFileName.substring(0, lastDotIndex); // Get filename without extension
+        }
+
+        // Pattern to check if filename already has a number at the end (e.g., "image(1).jpg")
+        Pattern pattern = Pattern.compile("^(.*)\\((\\d+)\\)$");
+        Matcher matcher = pattern.matcher(fileBaseName);
+
+        int count = 1;
+        if (matcher.matches()) {
+            fileBaseName = matcher.group(1); // Get base name without number
+            count = Integer.parseInt(matcher.group(2)) + 1; // Extract and increment existing number
         }
 
         Path targetPath = this.storageLocation.resolve(originalFileName);
-        int count = 1;
 
-        // Check if the file exists and append a number if necessary
+        // Find the next available file name
         while (Files.exists(targetPath)) {
             String newFileName = String.format("%s(%d)%s", fileBaseName, count, fileExtension);
             targetPath = this.storageLocation.resolve(newFileName);
             count++;
         }
 
-        // Create directories if they don't exist
+        // Ensure storage directory exists
         if (!Files.exists(storageLocation)) {
             Files.createDirectories(storageLocation);
         }
@@ -55,6 +70,7 @@ public class MediaService {
         } catch (IOException e) {
             throw new Exception("Failed to store file " + originalFileName, e);
         }
+
     }
 
     public String getFileUrl(String fileName) {
@@ -97,5 +113,19 @@ public class MediaService {
     public void removeMediaById(Integer id) {
         this.mediaRepository.deleteById(id);
     }
+
+    public List<String> getListOfMediaByJson(String sliderImages) {
+        // Convert JSON string to List<String>
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<String> imagePaths = null;
+        try {
+            imagePaths = objectMapper.readValue(sliderImages, new TypeReference<List<String>>() {
+            });
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        return imagePaths;
+    }
+
 
 }
