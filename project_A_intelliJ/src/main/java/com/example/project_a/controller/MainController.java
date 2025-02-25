@@ -1,5 +1,7 @@
 package com.example.project_a.controller;
 
+import com.example.project_a.model.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +30,9 @@ public class MainController {
     @GetMapping("/blog-details-blockquote")
     public String showblogdetailsblockquote() {return "shop/blog-details-blockquote";}
 
+    @GetMapping("/orderDetail")
+    public String showOrderDetail() {return "shop/order-cart";}
+
     @GetMapping("/compare")
     public String showCompare() {return "shop/compare";}
 
@@ -39,10 +44,6 @@ public class MainController {
 
     @GetMapping("/wishlist")
     public String ShowPageWishlist() {return "shop/wishlist";}
-
-    @GetMapping("/quickview")
-    public String ShowPageQuickreview() {return "shop/quickviewProduct";}
-
 
 
 //   ------------------------------Admin mapping----------------------------------------
