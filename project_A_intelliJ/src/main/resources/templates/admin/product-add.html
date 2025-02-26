@@ -182,7 +182,7 @@
             this.on("removedfile", function (file) {
                 // Remove the file element from the DOM
                 if (file.previewElement) {
-                    file.previewElement.parentNode.removeChild(file.previewElement);
+                    file.previewElement.remove();
                 }
 
                 // Call backend API to delete the file
@@ -219,7 +219,7 @@
         acceptedFiles: "image/*",
         addRemoveLinks: true,
         dictRemoveFile: "✖", // Fixes issue where X button shows "Cancel upload"
-        dictDefaultMessage: `Drop or click to upload slider images (Max: 3)`,
+        dictDefaultMessage: `Drop or click to upload slider images (Max: 2)`,
         parallelUploads: 2,
         autoProcessQueue: true,
         maxFiles: 2,
