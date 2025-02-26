@@ -39,7 +39,7 @@
                                     <input type="hidden" name="sliderImages" id="sliderImages">
                                     <div class="dz-message needsclick">
                                         <i class="bx bx-cloud-upload fs-48 text-primary"></i>
-                                        <p>Drag & drop slider images here, or click to select (Max: 2 images)</p>
+                                        <p>Drag & drop slider images here, or click to select (Max: 9 images)</p>
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +210,7 @@
 
     Dropzone.autoDiscover = false;
 
-    const maxSliderImages = 2;
+    const maxSliderImages = 9;
     let alertShown = false;
 
     const productSliderDropzone = new Dropzone("#product-slider-dropzone", {
@@ -219,10 +219,10 @@
         acceptedFiles: "image/*",
         addRemoveLinks: true,
         dictRemoveFile: "✖", // Fixes issue where X button shows "Cancel upload"
-        dictDefaultMessage: `Drop or click to upload slider images (Max: 2)`,
-        parallelUploads: 2,
+        dictDefaultMessage: `Drop or click to upload slider images (Max: 9)`,
+        parallelUploads: 9,
         autoProcessQueue: true,
-        maxFiles: 2,
+        maxFiles: maxSliderImages,
 
         init: function () {
             let dropzoneInstance = this;

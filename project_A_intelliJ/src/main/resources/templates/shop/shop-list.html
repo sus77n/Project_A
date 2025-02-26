@@ -80,7 +80,7 @@
                                                 <div class="single-aboss-product mb-3">
                                                     <div class="pro-img">
                                                         <a th:href="@{/product-details(productId=${product.getId()})}">
-                                                            <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                                            <img th:src="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}"
                                                                  alt="Product Image">
 
                                                         </a>
@@ -120,7 +120,7 @@
 
                                             <div class="pro-img">
                                                 <a th:href="@{/product-details(productId=${product.getId()})}">
-                                                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                                                    <img th:src="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}"
                                                          alt="Product Image">
 
                                                 </a>

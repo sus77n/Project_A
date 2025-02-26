@@ -28,12 +28,12 @@
                     <!-- Thumbnail Large Image start -->
                     <div class="tab-content">
                         <div id="thumb1" class="tab-pane fade show active">
-                            <a data-fancybox="images" th:href="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"><img
-                                    th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}" alt="product-view"></a>
+                            <a data-fancybox="images" th:href="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}"><img
+                                    th:src="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}" alt="product-view"></a>
                         </div>
                         <div th:each="productSlider, iterStat : ${product.productSliders}" th:id="'thumb' + ${iterStat.index + 2}" class="tab-pane fade">
                             <a data-toggle="tab" th:href="'#thumb' + ${iterStat.index + 2}">
-                                <img th:src="${productSlider.media.imageURL}" th:alt="${productSlider.media.alt}">
+                                <img th:src="${productSlider.media.filePath}" th:alt="${productSlider.media.alt}">
                             </a>
                         </div>
 
@@ -46,12 +46,12 @@
                     <!-- Thumbnail Image End -->
                     <div class="product-thumbnail">
                         <div class="thumb-menu owl-carousel nav tabs-area nav-style" role="tablist">
-                            <a class="active" data-toggle="tab" href="#thumb1"><img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}"
+                            <a class="active" data-toggle="tab" href="#thumb1"><img th:src="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}"
                                                                                     alt="product-thumbnail"></a>
                             <a th:each="media, iterStat : ${product.productSliders}"
                                data-toggle="tab"
                                th:href="'#thumb' + ${iterStat.index + 2}">
-                                <img th:src="${media.media.imageURL}" th:alt="${media.media.alt}">
+                                <img th:src="${media.media.filePath}" th:alt="${media.media.alt}">
                             </a>
 <!--                            <a data-toggle="tab" href="#thumb3"><img src="assets/img/products/p3.jpg"-->
 <!--                                                                     alt="product-thumbnail"></a>-->
@@ -275,7 +275,7 @@
             <div class="best-seller-active owl-carousel">
                 <div class="single-aboss-product" th:each="product:${thisCateProducts}">
                     <div class="pro-img">
-                        <a th:href="@{/product-details(productId=${product.getId()})}"><img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : 'default-image.jpg'}" alt="product-img"></a>
+                        <a th:href="@{/product-details(productId=${product.getId()})}"><img th:src="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}" alt="product-img"></a>
                         <div class="pro-actions">
 <!--                            <a data-toggle="modal" data-target="#product-window" class="quick-view" href="#"><i-->
 <!--                                    class="icon-search"></i></a>-->
