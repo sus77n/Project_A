@@ -6,7 +6,7 @@
     <div class="wrapper">
         <header class="header-sticky" th:replace="~{layout::page_header}"></header>
         <!-- Breadcrumb Area Start Here -->
-        <div class="breadcrumb-area pt-65 pb-70 bg-img" style="background-image:url(assets/img/bg-image/hop-brech-bg.jpg);">
+        <div class="breadcrumb-area pt-65 pb-70 bg-img" style="background-image:url(/assets/img/bg-image/hop-brech-bg.jpg);">
             <div class="container">
                 <div class="breadcrumb-wrap text-center">
                     <h3>Register</h3>
@@ -25,32 +25,88 @@
             <div class="row">
               <div class="offset-xl-2 col-xl-10">
                 <div class="register-form login-form clearfix">
-                    <form th:action="@{/users/save}" method="post" th:object="${user}">
-                        <p>Already have an account? <a th:href="@{/login}">Log in instead!</a></p>
+                    <form id="registerForm" method="post" th:object="${user}">
                         <div class="form-group row align-items-center">
-                            <label class="col-lg-3 col-md-3 col-form-label">Social title</label>
+                            <label class="col-lg-3 col-md-3 col-form-label">Social title <span class="required">*</span></label>
                             <div class="col-lg-6 col-md-6">
                                 <span class="custom-radio"><input name="id_gender" value="male" type="radio" th:field="*{gender}"> Male</span>
                                 <span class="custom-radio"><input name="id_gender" value="female" type="radio" th:field="*{gender}"> Female</span>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-lg-3 col-md-3 col-form-label">Email</label>
+                            <label for="email" class="col-lg-3 col-md-3 col-form-label">Email <span class="required">*</span></label>
                             <div class="col-lg-6 col-md-6">
-                                <input type="email" class="form-control" th:field="*{email}" id="email">
+                                <input type="email" class="form-control" th:field="*{email}" id="email" onblur="checkEmailExists()" required>
+                                <small id="emailError" class="text-danger"></small>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="username" class="col-lg-3 col-md-3 col-form-label">Username</label>
+                            <label for="username" class="col-lg-3 col-md-3 col-form-label">Username <span class="required">*</span></label>
                             <div class="col-lg-6 col-md-6">
-                                <input type="text" id="username" class="form-control" pattern="[^#$%^!&*-+=\|'<>,./?]{5}" th:field="*{username}">
+                                <input type="text" id="username" class="form-control" pattern="[^#$%^!&*-+=\|'<>,./?]{5}" th:field="*{username}" onblur="checkUsernameExists()" required>
+                                <small id="usernameError" class="text-danger"></small>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputPassword" class="col-lg-3 col-md-3 col-form-label">Password</label>
+                            <label for="inputPassword" class="col-lg-3 col-md-3 col-form-label">Password <span class="required">*</span></label>
                             <div class="col-lg-6 col-md-6">
-                                <input type="password" class="form-control" id="inputPassword" th:field="*{password}">
+                                <input type="password" class="form-control" id="inputPassword" th:field="*{password}" required>
                                 <button class="btn show-btn" id="showPassWordBtn" type="button">Show</button>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="birthdate" class="col-lg-3 col-md-3 col-form-label">
+                                Birthdate <span class="required">*</span>
+                            </label>
+                            <div class="col-lg-6 col-md-6">
+                                <input type="date" id="birthdate" class="form-control" th:field="*{dateOfBirth}" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-md-3 col-form-label">Province/ City <span class="required">*</span></label>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="country-select clearfix">
+                                    <select class="wide" id="provinces" name="province" onchange="getProvinces(event)" required>
+                                        <option value="">Select</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-md-3 col-form-label">District <span class="required">*</span></label>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="country-select clearfix">
+                                    <select class="wide" id="districts" name="district" onchange="getDistricts(event)" required>
+                                        <option value="">Select</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-md-3 col-form-label">Ward <span class="required">*</span></label>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="country-select clearfix">
+                                    <select class="wide" id="wards" name="ward" onchange="updateAddress()" required>
+                                        <option value="">Select</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="detailAddr" class="col-lg-3 col-md-3 col-form-label">Detail Address <span class="required">*</span></label>
+                            <div class="col-lg-6 col-md-6">
+                                <input type="text" id="detailAddr" class="form-control" pattern="[^#$%^!&*-+=\|'<>,./?]{5}" oninput="updateAddress()" required>
+                            </div>
+                        </div>
+                        <input type="hidden" id="fullAddress" th:field="*{address}">
+
+                        <div class="form-group row">
+                            <label for="phone" class="col-lg-3 col-md-3 col-form-label">Phone Number <span class="required">*</span></label>
+                            <div class="col-lg-6 col-md-6">
+                                <input type="tel" id="phone" class="form-control" pattern="[^#$%^!&*-+=\|'<>,./?]{5}" th:field="*{phoneNumber}" required>
                             </div>
                         </div>
                         <div class="register-box mt-40">
@@ -81,6 +137,88 @@
     showPassWordBtn.addEventListener("mousedown", togglePassword, false);
     showPassWordBtn.addEventListener("mouseup", togglePassword, false);
 </script>
+    <script type="text/javascript">
+        let emailExists = false;
+        let usernameExists = false;
 
+        async function checkEmailExists() {
+            let email = document.getElementById("email").value;
+            if (email) {
+                try {
+                    let response = await fetch(`/users/check/email?email=${email}`);
+                    let data = await response.json();
+                    emailExists = data.exists;
+                    document.getElementById("emailError").innerText = emailExists ? "Email already in use!" : "";
+                } catch (error) {
+                    console.error("Error checking email:", error);
+                }
+            }
+        }
+
+        async function checkUsernameExists() {
+            let username = document.getElementById("username").value;
+            if (username) {
+                try {
+                    let response = await fetch(`/users/check/username?username=${username}`);
+                    let data = await response.json();
+                    usernameExists = data.exists;
+                    document.getElementById("usernameError").innerText = usernameExists ? "Username already taken!" : "";
+                } catch (error) {
+                    console.error("Error checking username:", error);
+                }
+            }
+        }
+
+        $(document).ready(function () {
+            $("#registerForm").submit(async function (event) {
+                event.preventDefault();
+
+                await checkEmailExists();
+                await checkUsernameExists();
+
+                if (emailExists || usernameExists) {
+                    if (emailExists) {
+                        alert("Email already in use!");
+                    }
+                    if (usernameExists) {
+                        alert("Username already taken!");
+                    }
+                    return;
+                }
+
+                let formData = $(this).serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/users/save",
+                    data: formData,
+                    success: function (response) {
+                        showToast("Registration successful!", "success");
+
+                        setTimeout(function () {
+                            window.location.href = "/login"; // Redirect after success
+                        }, 2000); // Redirect after 2 seconds
+                    },
+                    error: function () {
+                        showToast("Registration failed. Please try again!", "error");
+                    }
+                });
+            });
+
+            function showToast(message, type = "success") {
+                let bgColor = type === "success" ? "linear-gradient(to right, #00b09b, #96c93d)" : "linear-gradient(to right, #e74c3c, #c0392b)";
+                Toastify({
+                    text: message,
+                    duration: 2000,
+                    close: true,
+                    gravity: "top",
+                    position: "center",
+                    stopOnFocus: true,
+                    style: { background: bgColor }
+                }).showToast();
+            }
+        });
+
+    </script>
+    <script th:src="@{assets/js/locationInVietnam.js}"></script>
 </body>
 </html>

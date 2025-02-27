@@ -1,12 +1,18 @@
 package com.example.project_a.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "`media`")
 public class Media {
     @Id
@@ -14,14 +20,12 @@ public class Media {
     @Column(nullable = false, unique = true)
     private Integer id;
 
-    @OneToOne(mappedBy = "thumbnail", optional = true)
+    @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
-    @OneToOne(mappedBy = "media")
-    private ProductSlider productSlider;
-
-    @Column(name = "image_url", nullable = false)
-    private String imageURL;
+    @Column(name = "file_path", nullable = false)
+    private String filePath;
 
     @Column(name = "type")
     private String type;
@@ -34,7 +38,7 @@ public class Media {
         return "Media{" +
                 "id=" + id +
                 ", product=" + product +
-                ", imageURL='" + imageURL + '\'' +
+                ", imageURL='" + filePath + '\'' +
                 ", name='" + type + '\'' +
                 ", alt='" + alt + '\'' +
                 '}';

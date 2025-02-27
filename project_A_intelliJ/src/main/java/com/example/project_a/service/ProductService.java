@@ -48,6 +48,9 @@ public class ProductService {
         product.setSummary(newProduct.getSummary());
         product.setThumbnail(newProduct.getThumbnail());
 
+        product.getProductSliders().clear();
+        product.getProductSliders().addAll(newProduct.getProductSliders());
+
         productRepository.save(product);
     }
 

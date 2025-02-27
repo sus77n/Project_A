@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+>
+
 <head th:fragment="page_head">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -34,6 +36,12 @@
     <!-- Modernizer js -->
     <script th:src="@{assets/js/vendor/modernizr-3.5.0.min.js}"></script>
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <!-- Add Toastify JS -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 </head>
 
@@ -111,11 +119,20 @@
                                     <ul class="ht-dropdown-currency ht-dropdown-mbl cart-box-width currency-selector">
                                         <li>
                                             <ul>
-                                                <!--                                                    <li><a th:href="@{/account}">My Account</a></li>-->
-                                                <!--                                                    <li><a th:href="@{/ checkout}">Check out</a></li>-->
-                                                <!--                                                    <li><a th:href="@{/login}">Log out</a></li>-->
-                                                <li><a th:href="@{/login}">Log in</a></li>
-                                                <li><a th:href="@{/register}">Sign up</a></li>
+                                                <li sec:authorize="!isAuthenticated()">
+                                                    <a th:href="@{/login}">Log in</a>
+                                                </li>
+                                                <li sec:authorize="!isAuthenticated()">
+                                                    <a th:href="@{/register}">Sign up</a>
+                                                </li>
+
+                                                <!-- Show when logged in -->
+                                                <li sec:authorize="isAuthenticated()">
+                                                    <a th:href="@{/account}">My Account</a>
+                                                </li>
+                                                <li sec:authorize="isAuthenticated()">
+                                                    <a th:href="@{/logout}">Log out</a>
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -187,126 +204,6 @@
             </div>
         </div>
     </header>
-    <div class="main-product-thumbnail quick-thumb-content" th:fragment="quickViewProduct">
-        <div class="container">
-            <!-- The Modal -->
-            <div class="modal fade" id="product-window">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <div class="row">
-                                <!-- Main Thumbnail Image Start -->
-                                <div class="col-lg-6 col-md-6 mb-all-40">
-                                    <!-- Thumbnail Large Image start -->
-                                    <div class="tab-content">
-                                        <div id="pro-1" class="tab-pane fade show active">
-                                            <a data-fancybox="images" href="assets/img/products/p3.jpg"><img src="assets/img/products/p3.jpg" alt="product-view"></a>
-                                        </div>
-                                        <div id="pro-2" class="tab-pane fade">
-                                            <a data-fancybox="images" href="assets/img/products/p5.jpg"><img src="assets/img/products/p5.jpg" alt="product-view"></a>
-                                        </div>
-                                        <div id="pro-3" class="tab-pane fade">
-                                            <a data-fancybox="images" href="assets/img/products/p7.jpg"><img src="assets/img/products/p7.jpg" alt="product-view"></a>
-                                        </div>
-                                        <div id="pro-4" class="tab-pane fade">
-                                            <a data-fancybox="images" href="assets/img/products/p2.jpg"><img src="assets/img/products/p2.jpg" alt="product-view"></a>
-                                        </div>
-                                    </div>
-                                    <!-- Thumbnail Large Image End -->
-                                    <!-- Thumbnail Image End -->
-                                    <div class="product-thumbnail">
-                                        <div class="thumb-menu owl-carousel nav nav-style tabs-area" role="tablist">
-                                            <a class="active" data-toggle="tab" href="#pro-1"><img src="assets/img/thumbail/t1.jpg" alt="product-thumbnail"></a>
-                                            <a data-toggle="tab" href="#pro-2"><img src="assets/img/thumbail/t2.jpg" alt="product-thumbnail"></a>
-                                            <a data-toggle="tab" href="#pro-3"><img src="assets/img/thumbail/t3.jpg" alt="product-thumbnail"></a>
-                                            <a data-toggle="tab" href="#pro-4"><img src="assets/img/thumbail/t4.jpg" alt="product-thumbnail"></a>
-                                        </div>
-                                    </div>
-                                    <!-- Thumbnail image end -->
-                                </div>
-                                <!-- Main Thumbnail Image End -->
-                                <!-- Thumbnail Description Start -->
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="thubnail-desc fix">
-                                        <h3 class="product-header">Faded Short Sleeves T-shirt</h3>
-                                        <ul class="rating-summary">
-                                            <li class="rating-pro">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </li>
-                                            <li class="read-review"><a href="#">read reviews (1)</a></li>
-                                            <li class="write-review"><a href="#">write review</a></li>
-                                        </ul>
-                                        <div class="pro-price mt-10">
-                                            <p class="d-flex align-items-center"><span class="prev-price">16.51</span><span class="price">$15.19</span><span class="saving-price">-5%</span></p>
-                                        </div>
-                                        <p class="pro-desc-details">Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessor- ize with a straw hat and you're ready for summer!</p>
-                                        <div class="product-size mtb-30 clearfix">
-                                            <label>Size</label>
-                                            <select class="">
-                                                <option>S</option>
-                                                <option>M</option>
-                                                <option>L</option>
-                                            </select>
-                                        </div>
-                                        <div class="color clearfix mb-30">
-                                            <label>color</label>
-                                            <ul class="color-list">
-                                                <li>
-                                                    <a class="white" href="#"></a>
-                                                </li>
-                                                <li>
-                                                    <a class="orange active" href="#"></a>
-                                                </li>
-                                                <li>
-                                                    <a class="paste" href="#"></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="quatity-stock">
-                                            <label>Quantity</label>
-                                            <ul class="d-flex flex-wrap  align-items-center">
-                                                <li class="box-quantity">
-                                                    <form action="#">
-                                                        <input class="quantity" type="number" min="1" value="1">
-                                                    </form>
-                                                </li>
-                                                <li>
-                                                    <button class="pro-cart">add to cart</button>
-                                                </li>
-                                                <li class="pro-ref">
-                                                    <p><span class="in-stock"><i class="ion-checkmark-round"></i> in stock</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="social-sharing mt-30">
-                                            <ul>
-                                                <li><label>share</label></li>
-                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Thumbnail Description End -->
-                            </div>
-                        </div>
-                        <!-- Modal footer -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div th:fragment="product(product, viewType)">
         <div th:if="${viewType == 'grid'}" class="col-lg-4 col-md-6 col-sm-6">
@@ -495,6 +392,7 @@
     <script th:src="@{assets/js/plugins.js}"></script>
     <!-- Main activation js -->
     <script th:src="@{assets/js/main.js}"></script>
+<!--    <script th:src="@{assets/js/locationInVietnam.js}"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 </th:block>
 

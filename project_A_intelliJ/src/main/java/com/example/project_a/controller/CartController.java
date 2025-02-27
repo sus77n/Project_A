@@ -110,7 +110,7 @@ public class CartController {
                     itemMap.put("productName", cartItem.getProduct().getName());  // Add the name property
                     itemMap.put("quantity", cartItem.getQuantity());
                     itemMap.put("price", cartItem.getQuantity() * cartItem.getProduct().getPrice());
-                    itemMap.put("thumbNail", cartItem.getProduct().getThumbnail().getImageURL());
+                    itemMap.put("thumbNail", cartItem.getProduct().getThumbnail().getFilePath());
                     return itemMap;
                 })
                 .collect(Collectors.toList()));  // Convert to a list of maps containing properties

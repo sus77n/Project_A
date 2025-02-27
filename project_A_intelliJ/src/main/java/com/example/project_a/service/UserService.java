@@ -1,6 +1,7 @@
 package com.example.project_a.service;
 
 import com.example.project_a.model.User;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,6 +27,7 @@ public class UserService {
     public void save(User user) {
         String hashedPassword = hashingPassword(user.getPassword());
         user.setPassword(hashedPassword);
+        System.out.println("Saving user: " + user);
         userRepository.save(user);
     }
 
@@ -42,5 +44,14 @@ public class UserService {
     }
 
 
+    @Transactional()
+    public boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    @Transactional()
+    public boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
+    }
 
 }

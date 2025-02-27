@@ -48,7 +48,7 @@ public class Cart {
 
     public void setProduct(Product product) {
         if (this.product != null) {
-            if (product.getProduct_id() == this.product.getProduct_id()) {
+            if (product.getId() == this.product.getId()) {
                 this.product = product;
                 this.quantity++;
             }else {
