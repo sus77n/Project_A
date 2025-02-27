@@ -61,6 +61,6 @@ public class CheckOutController {
         }
 //        cartService.clear(userId);
         ra.addFlashAttribute("message", "The Order has been saved successfully.");
-        return "redirect:/shop";
+        return "redirect:/account";
     }
 }
