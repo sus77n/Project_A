@@ -41,14 +41,14 @@
 <!--                            </div>-->
 <!--                        </div>-->
                         <div class="form-group row">
-                            <label for="username" class="col-lg-3 col-md-3 col-form-label">Username <span class="required">*</span></label>
+                            <label for="username" class="col-lg-3 col-md-3 col-form-label">Username </label>
                             <div class="col-lg-6 col-md-6">
                                 <input type="text" id="username" class="form-control" pattern="[^#$%^!&*-+=\|'<>,./?]{5}" th:field="*{username}" onblur="checkUsernameExists()" required>
                                 <small id="usernameError" class="text-danger"></small>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputPassword" class="col-lg-3 col-md-3 col-form-label">Password <span class="required">*</span></label>
+                            <label for="inputPassword" class="col-lg-3 col-md-3 col-form-label">Password</label>
                             <div class="col-lg-6 col-md-6">
                                 <input type="password" class="form-control" id="inputPassword" th:field="*{password}" required>
                                 <button class="btn show-btn" id="showPassWordBtn" type="button">Show</button>
@@ -104,7 +104,7 @@
 <!--                        <input type="hidden" id="fullAddress" th:field="*{address}">-->
 
                         <div class="form-group row">
-                            <label for="phone" class="col-lg-3 col-md-3 col-form-label">Phone Number <span class="required">*</span></label>
+                            <label for="phone" class="col-lg-3 col-md-3 col-form-label">Phone Number</label>
                             <div class="col-lg-6 col-md-6">
                                 <input type="tel" id="phone" class="form-control" pattern="[^#$%^!&*-+=\|'<>,./?]{5}" th:field="*{phoneNumber}" required>
                             </div>

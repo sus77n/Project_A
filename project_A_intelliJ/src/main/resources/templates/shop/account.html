@@ -6,156 +6,244 @@
 <head th:replace="~{layout::page_head}"></head>
 
 <body>
-    <div class="wrapper">
-        <header class="header-sticky" th:replace="~{layout::page_header}"></header>
-        <!-- Breadcrumb Area Start Here -->
-        <div class="breadcrumb-area pt-65 pb-70 bg-img" style="background-image:url(assets/img/bg-image/hop-brech-bg.jpg);">
-            <div class="container">
-                <div class="breadcrumb-wrap text-center">
-                    <h3>My Account</h3>
-                    <ol class="breadcrumb breadcrumb-list">
-                        <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
-                        <li class="breadcrumb-item active">My Account</li>
-                    </ol>
-                </div>
+<div class="wrapper">
+    <header class="header-sticky" th:replace="~{layout::page_header}"></header>
+    <!-- Breadcrumb Area Start Here -->
+    <div class="breadcrumb-area pt-65 pb-70 bg-img" style="background-image:url(assets/img/bg-image/hop-brech-bg.jpg);">
+        <div class="container">
+            <div class="breadcrumb-wrap text-center">
+                <h3>My Account</h3>
+                <ol class="breadcrumb breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                    <li class="breadcrumb-item active">My Account</li>
+                </ol>
             </div>
         </div>
-        <!-- Breadcrumb Area End Here -->
-        <!-- My Account Page Start Here -->
-        <div class="my-account white-bg ptb-80">
-            <div class="container">
-                <div class="account-dashboard">
-                    <div class="row">
-                        <div class="col-lg-2">
-                            <!-- Nav tabs -->
-                            <ul class="nav flex-column dashboard-list" role="tablist">
-                                <li><a class="nav-link active" data-toggle="tab" href="#account-details" th:text="${user.username}"></a></li>
-                                <li> <a class="nav-link" data-toggle="tab" href="#orders">Orders</a></li>
-                                <li><a class="nav-link" data-toggle="tab" href="#address">Addresses</a></li>
-                                <li><a class="nav-link" th:href="@{/home}">logout</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-10">
-                            <!-- Tab panes -->
-                            <div class="tab-content dashboard-content mt-all-40">
-                                <div id="orders" class="tab-pane fade">
-                                    <h3>Orders</h3>
-                                    <div th:each="order : ${orders}" class="order-summary border p-3">
-                                        <div class="shop-header d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <button class="btn btn-sm btn-outline-danger">Yêu thích</button>
-                                                <strong th:text="${order.ID}"></strong>
+    </div>
+    <!-- Breadcrumb Area End Here -->
+    <!-- My Account Page Start Here -->
+    <div class="my-account white-bg ptb-80">
+        <div class="container">
+            <div class="account-dashboard">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <!-- Nav tabs -->
+                        <ul class="nav flex-column dashboard-list" role="tablist">
+                            <li><a class="nav-link active" data-toggle="tab" href="#account-details" >Account Details</a></li>
+                            <li><a class="nav-link" data-toggle="tab" href="#orders">Orders</a></li>
+                            <li><a class="nav-link" data-toggle="tab" href="#address">Addresses</a></li>
+                            <li><a class="nav-link" data-toggle="tab" href="#password">Password</a></li>
+                            <li><a class="nav-link" th:href="@{/logout}">logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-10">
+                        <!-- Tab panes -->
+                        <div class="tab-content dashboard-content mt-all-40">
+                            <div id="account-details" class="tab-pane fade show active">
+                                <h3>Account details </h3>
+                                <div class="register-form login-form clearfix">
+                                    <form action="#">
+                                        <div class="form-group row align-items-center">
+                                            <label class="col-lg-3 col-md-4 col-form-label">Social title</label>
+                                            <div class="col-lg-6 col-md-8">
+                                                <span class="custom-radio"><input name="id_gender" value="1"
+                                                                                  type="radio"> Mr.</span>
+                                                <span class="custom-radio"><input name="id_gender" value="1"
+                                                                                  type="radio"> Mrs.</span>
                                             </div>
-                                            <div>
-                                                <button class="btn btn-sm btn-danger">Chat</button>
-                                                <button class="btn btn-sm btn-outline-secondary">Xem Shop</button>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="username"
+                                                   class="col-lg-3 col-md-4 col-form-label">Username</label>
+                                            <div class="col-lg-6 col-md-8">
+                                                <input type="text" class="form-control" id="username">
+                                            </div>
+                                        </div>
+                                        <!--                                            <div class="form-group row">-->
+                                        <!--                                                <label for="f-name" class="col-lg-3 col-md-4 col-form-label">First Name</label>-->
+                                        <!--                                                <div class="col-lg-6 col-md-8">-->
+                                        <!--                                                    <input type="text" class="form-control" id="f-name">-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+                                        <!--                                            <div class="form-group row">-->
+                                        <!--                                                <label for="l-name" class="col-lg-3 col-md-4 col-form-label">Last Name</label>-->
+                                        <!--                                                <div class="col-lg-6 col-md-8">-->
+                                        <!--                                                    <input type="text" class="form-control" id="l-name">-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+                                        <!--                                            <div class="form-group row">-->
+                                        <!--                                                <label for="email" class="col-lg-3 col-md-4 col-form-label">Email address</label>-->
+                                        <!--                                                <div class="col-lg-6 col-md-8">-->
+                                        <!--                                                    <input type="text" class="form-control" id="email">-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+
+                                        <!--                                            <div class="form-group row">-->
+                                        <!--                                                <label for="c-password" class="col-lg-3 col-md-4 col-form-label">Confirm password</label>-->
+                                        <!--                                                <div class="col-lg-6 col-md-8">-->
+                                        <!--                                                    <input type="password" class="form-control" id="c-password">-->
+                                        <!--                                                    <button class="btn show-btn" type="button">Show</button>-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+                                        <div class="form-group row">
+                                            <label for="birth"
+                                                   class="col-lg-3 col-md-4 col-form-label">Birthdate</label>
+                                            <div class="col-lg-6 col-md-8">
+                                                <input type="date" class="form-control" id="birth"
+                                                       placeholder="MM/DD/YYYY">
                                             </div>
                                         </div>
 
-                                        <!-- Order Details List -->
-                                        <div class="order-items mt-3">
-                                            <div th:each="item : ${order.details}" class="order-item d-flex border-bottom pb-2 mb-2">
-                                                <img th:src="@{/images/{img}(img=${item.product.thumbnail.imageURL})}" alt="Product Image" class="img-thumbnail" width="80">
-                                                <div class="ms-3">
-                                                    <p class="mb-1" th:text="${item.product.name}"></p>
-                                                    <p class="text-muted mb-1" th:text="'Phân loại hàng: ' + ${item.product.category}"></p>
-                                                    <p class="mb-0" th:text="'x' + ${item.quantity}"></p>
-                                                </div>
-                                                <div class="ms-auto text-danger" th:text="'₫' + ${item.product.price}"></div>
-                                            </div>
-                                        </div>
 
-                                        <div class="order-footer mt-3">
-                                            <p class="text-end">Thành tiền: <strong class="text-danger" th:text="'₫' + ${order.orderDate}"></strong></p>
-                                            <div class="d-flex justify-content-end">
-                                                <button class="btn btn-danger me-2">Mua Lại</button>
-                                                <button class="btn btn-outline-secondary">Yêu Cầu Trả Hàng/Hoàn Tiền</button>
-                                            </div>
+                                        <!--                                            <div class="form-check row p-0 mt-20">-->
+                                        <!--                                                <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-4">-->
+                                        <!--                                                    <input class="form-check-input" value="#" id="offer" type="checkbox">-->
+                                        <!--                                                    <label class="form-check-label" for="offer">Receive offers from our partners</label>-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+                                        <!--                                            <div class="form-check row p-0 mt-20">-->
+                                        <!--                                                <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-4">-->
+                                        <!--                                                    <input class="form-check-input" value="#" id="subscribe" type="checkbox">-->
+                                        <!--                                                    <label class="form-check-label" for="subscribe">Sign up for our newsletter<br>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers..</label>-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+                                        <div class="register-box mt-40">
+                                            <button type="submit" class="return-customer-btn float-right">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="orders" class="tab-pane fade">
+                                <h3>Orders</h3>
+                                <div th:each="order : ${orders}" class="order-summary border p-3">
+                                    <div class="shop-header d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-danger">Yêu thích</button>
+                                            <strong th:text="${order.ID}"></strong>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-sm btn-danger">Chat</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Xem Shop</button>
                                         </div>
                                     </div>
 
-                                </div>
-
-
-                                <div id="address" class="tab-pane">
-                                   <p>The following addresses will be used on the checkout page by default.</p>
-                                    <h4 class="billing-address">Billing address</h4>
-                                    <a class="view" href="#">edit</a>
-                                    <p>Bayazid Hasan</p>
-                                    <p>Bangladesh</p>   
-                                </div>
-                                <div id="account-details" class="tab-pane fade show active">
-                                    <h3>Account details </h3>
-                                    <div class="register-form login-form clearfix">
-                                        <form action="#">
-                                            <div class="form-group row align-items-center">
-                                                <label class="col-lg-3 col-md-4 col-form-label">Social title</label>
-                                                <div class="col-lg-6 col-md-8">
-                                                    <span class="custom-radio"><input name="id_gender" value="1" type="radio"> Mr.</span>
-                                                    <span class="custom-radio"><input name="id_gender" value="1" type="radio"> Mrs.</span>
-                                                </div>
+                                    <!-- Order Details List -->
+                                    <div class="order-items mt-3">
+                                        <div th:each="item : ${order.details}"
+                                             class="order-item d-flex border-bottom pb-2 mb-2">
+                                            <img th:src="@{/images/{img}(img=${item.product.thumbnail.imageURL})}"
+                                                 alt="Product Image" class="img-thumbnail" width="80">
+                                            <div class="ms-3">
+                                                <p class="mb-1" th:text="${item.product.name}"></p>
+                                                <p class="text-muted mb-1"
+                                                   th:text="'Phân loại hàng: ' + ${item.product.category}"></p>
+                                                <p class="mb-0" th:text="'x' + ${item.quantity}"></p>
                                             </div>
-<!--                                            <div class="form-group row">-->
-<!--                                                <label for="f-name" class="col-lg-3 col-md-4 col-form-label">First Name</label>-->
-<!--                                                <div class="col-lg-6 col-md-8">-->
-<!--                                                    <input type="text" class="form-control" id="f-name">-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <div class="form-group row">-->
-<!--                                                <label for="l-name" class="col-lg-3 col-md-4 col-form-label">Last Name</label>-->
-<!--                                                <div class="col-lg-6 col-md-8">-->
-<!--                                                    <input type="text" class="form-control" id="l-name">-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <div class="form-group row">-->
-<!--                                                <label for="email" class="col-lg-3 col-md-4 col-form-label">Email address</label>-->
-<!--                                                <div class="col-lg-6 col-md-8">-->
-<!--                                                    <input type="text" class="form-control" id="email">-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-                                            <div class="form-group row">
-                                                <label for="inputpassword" class="col-lg-3 col-md-4 col-form-label">Current password</label>
-                                                <div class="col-lg-6 col-md-8">
-                                                    <input type="password" class="form-control" id="inputpassword">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="newpassword" class="col-lg-3 col-md-4 col-form-label">New password</label>
-                                                <div class="col-lg-6 col-md-8">
-                                                    <input type="password" class="form-control" id="newpassword">
-                                                    <button class="btn show-btn" type="button">Show</button>
-                                                </div>
-                                            </div>
-<!--                                            <div class="form-group row">-->
-<!--                                                <label for="c-password" class="col-lg-3 col-md-4 col-form-label">Confirm password</label>-->
-<!--                                                <div class="col-lg-6 col-md-8">-->
-<!--                                                    <input type="password" class="form-control" id="c-password">-->
-<!--                                                    <button class="btn show-btn" type="button">Show</button>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-                                            <div class="form-group row">
-                                                <label for="birth" class="col-lg-3 col-md-4 col-form-label">Birthdate</label>
-                                                <div class="col-lg-6 col-md-8">
-                                                    <input type="date" class="form-control" id="birth" placeholder="MM/DD/YYYY">
-                                                </div>
-                                            </div>
-<!--                                            <div class="form-check row p-0 mt-20">-->
-<!--                                                <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-4">-->
-<!--                                                    <input class="form-check-input" value="#" id="offer" type="checkbox">-->
-<!--                                                    <label class="form-check-label" for="offer">Receive offers from our partners</label>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <div class="form-check row p-0 mt-20">-->
-<!--                                                <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-4">-->
-<!--                                                    <input class="form-check-input" value="#" id="subscribe" type="checkbox">-->
-<!--                                                    <label class="form-check-label" for="subscribe">Sign up for our newsletter<br>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers..</label>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-                                            <div class="register-box mt-40">
-                                                <button type="submit" class="return-customer-btn float-right">Save</button>
-                                            </div>
-                                        </form>
+                                            <div class="ms-auto text-danger"
+                                                 th:text="'₫' + ${item.product.price}"></div>
+                                        </div>
                                     </div>
+
+                                    <div class="order-footer mt-3">
+                                        <p class="text-end">Thành tiền: <strong class="text-danger"
+                                                                                th:text="'₫' + ${order.orderDate}"></strong>
+                                        </p>
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn btn-danger me-2">Mua Lại</button>
+                                            <button class="btn btn-outline-secondary">Yêu Cầu Trả Hàng/Hoàn Tiền
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="address" class="tab-pane">
+                                <!--                                <p>The following addresses will be used on the checkout page by default.</p>-->
+                                <!--                                <h4 class="billing-address">Billing address</h4>-->
+                                <!--                                <a class="view" href="#">edit</a>-->
+                                <!--                                <p>Bayazid Hasan</p>-->
+                                <!--                                <p>Bangladesh</p>-->
+                                <h3>Address</h3>
+                                <p class="mb-30"><strong>Your current address: </strong><span th:text="${user.address} ?: 'You don\'t have an address'"></span></p>
+                                <div class="register-form login-form clearfix">
+                                    <h6 class="mb-30">If you want to change address, fill this form and save</h6>
+                                    <form>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-md-3 col-form-label">Province/ City </label>
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="country-select clearfix">
+                                                    <select class="wide" id="provinces" name="province"
+                                                            onchange="getProvinces(event)" required>
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-md-3 col-form-label">District </label>
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="country-select clearfix">
+                                                    <select class="wide" id="districts" name="district"
+                                                            onchange="getDistricts(event)" required>
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-md-3 col-form-label">Ward</label>
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="country-select clearfix">
+                                                    <select class="wide" id="wards" name="ward"
+                                                            onchange="updateAddress()" required>
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="detailAddr" class="col-lg-3 col-md-3 col-form-label">Detail
+                                                Address</label>
+                                            <div class="col-lg-6 col-md-6">
+                                                <input type="text" id="detailAddr" class="form-control"
+                                                       pattern="[^#$%^!&*-+=\|'<>,./?]{5}" oninput="updateAddress()"
+                                                       required>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="fullAddress" th:field="${user.address}">
+                                        <button type="submit" class="return-customer-btn float-right">Save</button>
+
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="password" class="tab-pane">
+                                <h3>Password</h3>
+                                <div class="register-form login-form clearfix">
+                                    <form>
+                                        <div class="form-group row">
+                                            <label for="inputpassword" class="col-lg-3 col-md-4 col-form-label">Current
+                                                password</label>
+                                            <div class="col-lg-6 col-md-8">
+                                                <input type="password" class="form-control" id="inputpassword">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="newpassword" class="col-lg-3 col-md-4 col-form-label">New
+                                                password</label>
+                                            <div class="col-lg-6 col-md-8">
+                                                <input type="password" class="form-control" id="newpassword">
+                                                <button class="btn show-btn" type="button">Show</button>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="return-customer-btn float-right">Save</button>
+
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -163,13 +251,14 @@
                 </div>
             </div>
         </div>
-        <!-- My Account Page End Here -->
-        <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
     </div>
-    <!-- Main Wrapper End Here -->
+    <!-- My Account Page End Here -->
+    <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
+</div>
+<!-- Main Wrapper End Here -->
 
-    <th:block th:replace="layout :: scripts"></th:block>
-    <script th:src="@{assets/js/locationInVietnam.js}"></script>
+<th:block th:replace="layout :: scripts"></th:block>
+<script th:src="@{assets/js/locationInVietnam.js}"></script>
 
 
 </body>
