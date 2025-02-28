@@ -9,7 +9,7 @@
     <div class="page-content">
         <div class="container-xxl">
 
-            <form th:action="@{/admin/product/save}" th:object="${product}" method="post">
+            <form th:action="@{/admin/product/save}" th:object="${product}" method="post" id="mainForm">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="card">
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="col-lg-9">
-                        <div id="mainForm">
+                        <div>
                             <input type="hidden" th:field="*{id}">
                             <div class="card">
                                 <div class="card-header">
@@ -141,9 +141,9 @@
                             </div>
                             <div class="p-3 bg-light mb-3 rounded">
                                 <div class="row justify-content-end g-2">
-                                    <div class="col-lg-2">
-                                        <button type="reset" class="btn btn-outline-secondary w-100">Reset</button>
-                                    </div>
+<!--                                    <div class="col-lg-2">-->
+<!--                                        <button type="reset" class="btn btn-outline-secondary w-100">Reset</button>-->
+<!--                                    </div>-->
                                     <div class="col-lg-2">
                                         <button type="submit" class="btn btn-primary w-100">Save</button>
                                     </div>
@@ -164,15 +164,15 @@
 
         var descriptionField = document.getElementById('description');
 
-        // Load existing content
-        if (descriptionField.value) {
+        // Load existing content on page load
+        if (descriptionField.value.trim() !== "") {
             quill.root.innerHTML = descriptionField.value;
         }
 
-        // Ensure Quill data is saved before submission
-        document.querySelector('#mainForm').addEventListener("submit", function (e) {
-            descriptionField.value = quill.root.innerHTML; // Save HTML content
-        });
+        // Listen for form submit event globally
+        document.forms["mainForm"].onsubmit = function () {
+            descriptionField.value = quill.root.innerHTML; // Set HTML content into textarea before submit
+        };
     });
 
 </script>
