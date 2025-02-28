@@ -32,7 +32,6 @@ public class SecurityConfig {
             if (existingAdmin.isEmpty()) {
                 User admin = new User();
                 admin.setUsername("admin");
-                admin.setEmail("admin@gmail.com");
                 admin.setPassword(passwordEncoder.encode("123")); // Set hashed password
                 admin.setRole("ADMIN"); // Ensure this matches Spring Security role
                 admin.setStatus("Active");
@@ -81,8 +80,8 @@ public class SecurityConfig {
                                 "/media/**")
                         .permitAll()
 
-                        .requestMatchers("/admin/**","/**").hasRole("ADMIN")
-                        .anyRequest().hasRole("CLIENT")
+                        .requestMatchers("/admin/**").hasRole("ADMIN") // Only "/admin/**" is for admins
+                        .anyRequest().hasRole("CLIENT") // Clients can access anything else
                 )
 
                 .formLogin(form -> form

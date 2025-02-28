@@ -44,10 +44,10 @@ public class UserService {
     }
 
 
-    @Transactional()
-    public boolean existsByEmail(String email) {
-        return userRepository.existsByEmail(email);
-    }
+//    @Transactional()
+//    public boolean existsByEmail(String email) {
+//        return userRepository.existsByEmail(email);
+//    }
 
     @Transactional()
     public boolean existsByUsername(String username) {

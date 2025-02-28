@@ -49,7 +49,7 @@
 <body>
 <div class="wrapper">
     <header class="header-sticky" th:fragment="page_header">
-        <div class="coustom-container">
+        <div class="container-fluid">
             <div class="main-header">
                 <div class="row">
                     <!-- Logo Start Here -->
@@ -60,7 +60,7 @@
                     </div>
                     <!-- Logo End Here -->
                     <!-- Header Menu & Cart Area Start Here -->
-                    <div class="col-xl-7 col-lg-6 d-none d-lg-block">
+                    <div class="col-xl-6 col-lg-6 d-none d-lg-block">
                         <div class="main-menu-area main-menu-area-three position-relative pl-155">
                             <!-- Primary Menu Start -->
                             <div class="primary-menu">
@@ -95,7 +95,7 @@
                     </div>
                     <!-- Header Menu & Cart Area End Here -->
                     <!-- Cart Box Start Here -->
-                    <div class="col-xl-2 col-lg-3 col-md-7 col-sm-6 col-7">
+                    <div class="col-xl-3 col-lg-3 col-md-7 col-sm-6 col-7">
                         <!-- Cart & Search Area Start -->
                         <div class="search-cart-area pr-all-50 float-right">
                             <ul class="d-flex">
@@ -113,8 +113,10 @@
                                     </ul>
                                     <!-- Search Area End -->
                                 </li>
-                                <li class="currency-drop"><a href="#"><i class="fa fa-user-o" aria-hidden="true"
-                                                                         id="icon-user"></i></a>
+                                <li class="currency-drop"><a href="#">
+                                    <i class="fa fa-user-o" aria-hidden="true" id="icon-user" sec:authorize="isAuthenticated()"></i>
+                                    <i class="fa fa-sign-in" aria-hidden="true" id="icon-user" sec:authorize="!isAuthenticated()"></i></a>
+
                                     <!-- Currency & Language Selection Start -->
                                     <ul class="ht-dropdown-currency ht-dropdown-mbl cart-box-width currency-selector">
                                         <li>
@@ -127,6 +129,9 @@
                                                 </li>
 
                                                 <!-- Show when logged in -->
+                                                <li class="mb-10" sec:authorize="isAuthenticated()">
+                                                    <span>Hello, <span th:text="${#authentication.name}"></span>!</span>
+                                                </li>
                                                 <li sec:authorize="isAuthenticated()">
                                                     <a th:href="@{/account}">My Account</a>
                                                 </li>
