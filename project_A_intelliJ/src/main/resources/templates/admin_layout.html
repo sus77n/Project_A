@@ -247,3 +247,221 @@
         });
     </script>
 </div>
+
+<div th:fragment="dropzone-script">
+    <script th:inline="javascript">
+        Dropzone.autoDiscover = false;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const thumbnailDropzone = new Dropzone("#thumbnail-dropzone", {
+                url: "/media/upload",
+                type: "POST",
+                maxFiles: 1,
+                acceptedFiles: "image/*",
+                addRemoveLinks: true,
+                dictRemoveFile: "✖",
+                dictDefaultMessage: "Drop or click to upload thumbnail",
+
+                init: function () {
+                    let existingThumbnailName = document.getElementById("thumbnailName").value;
+                    let existingThumbnailPath = "/uploads/" + existingThumbnailName;
+                    let dropzoneInstance = this;
+
+                    if (existingThumbnailName) {
+                        fetch(existingThumbnailPath)
+                            .then(res => res.blob())
+                            .then(blob => {
+                                let file = new File([blob], existingThumbnailName, {type: blob.type});
+
+                                // Simulate a real Dropzone upload process
+                                dropzoneInstance.files.push(file);
+                                dropzoneInstance.emit("addedfile", file);
+                                dropzoneInstance.emit("thumbnail", file, existingThumbnailPath);
+                                dropzoneInstance.emit("complete", file);
+
+                                // Ensure Dropzone treats it like an uploaded file
+                                file.status = Dropzone.SUCCESS;
+                                file.uploadedFileName = existingThumbnailName;
+
+                                // Disable Dropzone if a file exists
+                                dropzoneInstance.disable();
+                                dropzoneInstance.element.classList.add("dz-disabled");
+                            })
+                            .catch(error => console.error("Error loading existing file:", error));
+                    }
+
+                    this.on("removedfile", function (file) {
+                        if (file.uploadedFileName) {
+                            fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
+                                method: "DELETE"
+                            }).then(response => {
+                                if (response.ok) {
+                                    console.log("File deleted successfully.");
+                                    let thumbnailInput = document.getElementById("thumbnailName");
+                                    thumbnailInput.value = "";
+
+                                    dropzoneInstance.hiddenFileInput.disabled = false; // Enable file input
+                                    dropzoneInstance.enable();
+                                    dropzoneInstance.element.classList.remove("dz-disabled");
+                                } else {
+                                    console.error("Failed to delete file.");
+                                }
+                            }).catch(error => {
+                                console.error("Error deleting file:", error);
+                            });
+                        }
+                    });
+
+                    this.on("success", function (file, response) {
+                        document.getElementById("thumbnailName").value = response.fileName;
+                        file.uploadedFileName = response.fileName; // Store the server filename in the file object
+                        dropzoneInstance.disable();
+                        dropzoneInstance.element.classList.remove("dz-message", "needsclick");
+                        dropzoneInstance.element.classList.add("dz-disabled");
+                    });
+
+                    this.on("thumbnail", function (file, fileUrl) {
+                        let imgElement = file.previewElement.querySelector("img");
+                        if (imgElement) {
+                            imgElement.style.width = "100%";
+                            imgElement.style.height = "100%";
+                            imgElement.style.objectFit = "cover";
+                            imgElement.src = fileUrl;
+                        }
+                    });
+                }
+            })
+
+        });
+    </script>
+
+    <script th:inline="javascript">
+        Dropzone.autoDiscover = false;
+
+        const maxSliderImages = 6;
+        let alertShown = false;
+
+        const productSliderDropzone = new Dropzone("#product-slider-dropzone", {
+            url: "/media/upload",
+            method: "POST",
+            acceptedFiles: "image/*",
+            addRemoveLinks: true,
+            dictRemoveFile: "✖", // Fixes issue where X button shows "Cancel upload"
+            dictDefaultMessage: `Drop or click to upload slider images (Max: 6)`,
+            parallelUploads: 6,
+            autoProcessQueue: true,
+            maxFiles: maxSliderImages,
+
+            init: function () {
+                let dropzoneInstance = this;
+                let imagePathsInput = document.getElementById("sliderImages");
+
+                if (imagePathsInput.value) {
+                    let imageNames = JSON.parse(imagePathsInput.value);
+
+                    imageNames.forEach((imageName) => {
+                        let imagePath = "/uploads/" + imageName;
+                        fetch(imagePath)
+                            .then(res => res.blob())
+                            .then(blob => {
+                                let file = new File([blob], imageName, {type: blob.type});
+
+                                // Simulate a real Dropzone upload process
+                                dropzoneInstance.files.push(file);
+                                dropzoneInstance.emit("addedfile", file);
+                                dropzoneInstance.emit("slider", file, imagePath);
+                                dropzoneInstance.emit("complete", file);
+
+                                // Ensure Dropzone treats it like an uploaded file
+                                file.status = Dropzone.SUCCESS;
+                                file.uploadedFileName = imageName;
+
+                                // Disable Dropzone if a file exists
+                                if (dropzoneInstance.files.length >= maxSliderImages) {
+                                    dropzoneInstance.hiddenFileInput.disabled = true; // Disable file input when max is reached
+                                    dropzoneInstance.element.classList.add("dz-disabled");
+                                }
+                            })
+                            .catch(error => console.error("Error loading existing file:", error));
+                    })
+                }
+
+                this.on("success", function (file, response) {
+                    file.uploadedFileName = response.fileName; // Ensure file name is stored
+                    file.status = Dropzone.SUCCESS; // Mark as successfully uploaded
+                    this.emit("complete", file); // Ensures progress bar disappears
+
+                    let currentPaths = imagePathsInput.value ? JSON.parse(imagePathsInput.value) : [];
+
+                    currentPaths.push(response.fileName);
+                    imagePathsInput.value = JSON.stringify(currentPaths);
+
+                    if (dropzoneInstance.files.length >= maxSliderImages) {
+                        dropzoneInstance.hiddenFileInput.disabled = true; // Disable file input when max is reached
+                        dropzoneInstance.element.classList.add("dz-disabled");
+                    }
+                });
+
+                this.on("removedfile", function (file) {
+                    if (file.uploadedFileName) {
+                        fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
+                            method: "DELETE"
+                        }).then(response => {
+                            if (response.ok) {
+                                let currentPaths = imagePathsInput.value ? JSON.parse(imagePathsInput.value) : [];
+                                imagePathsInput.value = JSON.stringify(currentPaths.filter(
+                                    p => p !== file.uploadedFileName));
+                                console.log("File deleted successfully.");
+                            } else {
+                                console.error("Failed to delete file.");
+                            }
+                        }).catch(error => {
+                            console.error("Error deleting file:", error);
+                        });
+                    }
+
+                    if (file.previewElement) {
+                        file.previewElement.remove(); // Properly removes the file preview
+                    }
+
+                    if (this.files.length < maxSliderImages) {
+                        alertShown = false;
+                        dropzoneInstance.hiddenFileInput.disabled = false; // Enable input again when below max
+                        dropzoneInstance.element.classList.remove("dz-disabled");
+                    }
+                });
+
+                this.on("addedfile", function (file) {
+                    if (this.files.length > maxSliderImages) {
+                        this.removeFile(file);
+
+                        if (!alertShown) {
+                            Toastify({
+                                text: `You can only upload up to ${maxSliderImages} images.`,
+                                duration: 3000, // 3 seconds
+                                gravity: "top", // Position: top or bottom
+                                position: "center", // left, center, or right
+                                backgroundColor: "#FF5733", // Custom color
+                                stopOnFocus: true // Stop hiding on focus
+                            }).showToast();
+
+                            alertShown = true; // Set flag to prevent multiple alerts
+                        }
+                    }
+                });
+
+                this.on("slider", function (file, fileUrl) {
+                    let imgElement = file.previewElement.querySelector("img");
+                    if (imgElement) {
+                        imgElement.style.width = "100%";
+                        imgElement.style.height = "100%";
+                        imgElement.style.objectFit = "cover";
+                        imgElement.src = fileUrl;
+                    }
+                });
+            }
+        });
+
+    </script>
+
+</div>
