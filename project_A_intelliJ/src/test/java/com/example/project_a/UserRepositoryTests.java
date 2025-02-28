@@ -26,7 +26,7 @@ public class UserRepositoryTests {
 //        user.setDateOfBirth("5/5/2005");
         user.setPhoneNumber("923654787");
         user.setAddress("KhuOChuot Dinh Hoa");
-        user.setEmail("absdsac@gmail.com");
+//        user.setEmail("absdsac@gmail.com");
         user.setStatus("Active");
         user.setRole("Admin");
         user.setCitizenId("1465131");

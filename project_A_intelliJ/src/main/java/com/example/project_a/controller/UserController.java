@@ -41,6 +41,7 @@ public class UserController {
             System.out.println("saved user: " + user);
             return ResponseEntity.ok("User registration successful");
         } catch (Exception e) {
+            System.out.println("Error: " + e);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Registration failed");
         }
     }
@@ -67,14 +68,14 @@ public class UserController {
 
     private BCryptPasswordEncoder passwordEncoder;
 
-    @GetMapping("/users/check/email")
-    @ResponseBody
-    public Map<String, Boolean> checkEmailExists(@RequestParam String email) {
-        boolean exists = service.existsByEmail(email);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("exists", exists);
-        return response;
-    }
+//    @GetMapping("/users/check/email")
+//    @ResponseBody
+//    public Map<String, Boolean> checkEmailExists(@RequestParam String email) {
+//        boolean exists = service.existsByEmail(email);
+//        Map<String, Boolean> response = new HashMap<>();
+//        response.put("exists", exists);
+//        return response;
+//    }
 
     @GetMapping("/users/check/username")
     @ResponseBody
