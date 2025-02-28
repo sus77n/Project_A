@@ -53,17 +53,18 @@ public class ProductController {
                               @RequestParam String thumbnailName,
                               @RequestParam String sliderImages,
                               RedirectAttributes ra) {
-
+        service.save(product);
         Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
         product.setCategory(category);
 
-        List<String> imagePaths = mediaService.getListOfMediaInJson(sliderImages);
+        if (sliderImages != null && !sliderImages.isEmpty()) { // Check if sliderImages is not null or empty
+            List<String> imagePaths = mediaService.getListOfMediaInJson(sliderImages);
 
-        // Convert image paths to Media objects and associate them with the product
-        for (String imagePath : imagePaths) {
-            Media media = mediaService.constructMedia(mediaService.getFileUrl(imagePath), "Product slider", "Product slider");
-            media.setProduct(product);
-            product.getProductSliders().add(media);
+            for (String imagePath : imagePaths) {
+                Media media = mediaService.constructMedia(mediaService.getFileUrl(imagePath), "Product slider", "Product slider");
+                media.setProduct(product);
+                product.getProductSliders().add(media);
+            }
         }
 
         Media thumbnail = null;
@@ -93,26 +94,28 @@ public class ProductController {
         Product product = service.findProductById(Integer.parseInt(productId));
         List<Category> categories = categoryService.getAllCategories();
 
-        Media thumbnail = product.getThumbnail();
-        List<String> sliderImagePaths = product.getProductSliders()
-                .stream()
+        Media productMedia = product.getThumbnail();
+        String thumbnail = productMedia != null ? mediaService.getFileName(productMedia.getFilePath()) : "";
+        List<String> sliderImagePaths = product.getProductSliders() != null
+                ? product.getProductSliders().stream()
                 .map(slider -> mediaService.getFileName(slider.getFilePath()))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList())
+                : new ArrayList<>(); // Return empty list if null
 
-        product.setProductSliders(null);
+        product.setProductSliders(null); // Clear sliders to avoid unwanted binding
 
         // Convert list to JSON string
         ObjectMapper objectMapper = new ObjectMapper();
-        String sliderImagesJson = "[]"; // Default empty array
+        String sliderImagesJson = "[]"; // Default empty JSON array
 
         try {
             sliderImagesJson = objectMapper.writeValueAsString(sliderImagePaths);
         } catch (JsonProcessingException e) {
-            e.printStackTrace(); // Handle error properly
+            e.printStackTrace(); // Optional: Replace this with Logger later
         }
 
         model.addAttribute("sliderImagesJson", sliderImagesJson);
-        model.addAttribute("thumbnail", mediaService.getFileName(thumbnail.getFilePath()));
+        model.addAttribute("thumbnail", thumbnail);
         model.addAttribute("categories", categories);
         model.addAttribute("product", product);
         model.addAttribute("pageTitle", "Product Edit");
@@ -129,7 +132,7 @@ public class ProductController {
 
         Media thumbnail = null;
         if (!thumbnailName.isEmpty()) {
-            if (product.getThumbnail() != null){
+            if (product.getThumbnail() != null) {
                 mediaService.removeByName(mediaService.getFileName(product.getThumbnail().getFilePath()));
             }
             thumbnail = mediaService.constructMedia(mediaService.getFileUrl(thumbnailName), "Product thumbnail", "Thumbnail");

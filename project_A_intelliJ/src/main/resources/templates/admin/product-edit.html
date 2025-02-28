@@ -10,7 +10,7 @@
     <div class="page-content">
         <div class="container-xxl">
 
-            <form th:object="${product}" th:action="@{/admin/product/update}" th:method="post">
+            <form th:object="${product}" th:action="@{/admin/product/update}" th:method="post" id="mainForm">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="card">
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="col-lg-9">
-                        <div id="mainForm">
+                        <div>
                             <input type="hidden" th:field="*{id}">
                             <div class="card">
                                 <div class="card-header">
@@ -141,9 +141,9 @@
                             </div>
                             <div class="p-3 bg-light mb-3 rounded">
                                 <div class="row justify-content-end g-2">
-                                    <div class="col-lg-2">
-                                        <button type="reset" class="btn btn-outline-secondary w-100">Reset</button>
-                                    </div>
+<!--                                    <div class="col-lg-2">-->
+<!--                                        <button type="reset" class="btn btn-outline-secondary w-100">Reset</button>-->
+<!--                                    </div>-->
                                     <div class="col-lg-2">
                                         <button type="submit" class="btn btn-primary w-100">Save</button>
                                     </div>
@@ -158,223 +158,7 @@
 </div>
 
 <div th:replace="admin_layout::required_script"></div>
-
-<script th:inline="javascript">
-    Dropzone.autoDiscover = false;
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const thumbnailDropzone = new Dropzone("#thumbnail-dropzone", {
-            url: "/media/upload",
-            type: "POST",
-            maxFiles: 1,
-            acceptedFiles: "image/*",
-            addRemoveLinks: true,
-            dictRemoveFile: "✖",
-            dictDefaultMessage: "Drop or click to upload thumbnail",
-
-            init: function () {
-                let existingThumbnailName = document.getElementById("thumbnailName").value;
-                let existingThumbnailPath = "/uploads/" + existingThumbnailName;
-                let dropzoneInstance = this;
-
-                if (existingThumbnailName) {
-                    fetch(existingThumbnailPath)
-                        .then(res => res.blob())
-                        .then(blob => {
-                            let file = new File([blob], existingThumbnailName, {type: blob.type});
-
-                            // Simulate a real Dropzone upload process
-                            dropzoneInstance.files.push(file);
-                            dropzoneInstance.emit("addedfile", file);
-                            dropzoneInstance.emit("thumbnail", file, existingThumbnailPath);
-                            dropzoneInstance.emit("complete", file);
-
-                            // Ensure Dropzone treats it like an uploaded file
-                            file.status = Dropzone.SUCCESS;
-
-                            // Disable Dropzone if a file exists
-                            dropzoneInstance.disable();
-                            dropzoneInstance.element.classList.add("dz-disabled");
-                        })
-                        .catch(error => console.error("Error loading existing file:", error));
-                }
-
-                this.on("removedfile", function (file) {
-                    if (file.previewElement) {
-                        file.previewElement.parentNode.removeChild(file.previewElement);
-                    }
-
-                    if (file.uploadedFileName) {
-                        fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
-                            method: "DELETE"
-                        }).then(response => {
-                            if (response.ok) {
-                                console.log("File deleted successfully.");
-                            } else {
-                                console.error("Failed to delete file.");
-                            }
-                        }).catch(error => {
-                            console.error("Error deleting file:", error);
-                        });
-
-                        document.getElementById("thumbnailName").value = "";
-                        dropzoneInstance.enable();
-                        this.element.classList.remove("dz-disabled");
-                    }
-
-                });
-
-                this.on("success", function (file, response) {
-                    document.getElementById("thumbnailName").value = response.fileName;
-                    file.uploadedFileName = response.fileName; // Store the server filename in the file object
-                    this.disable();
-                    this.element.classList.remove("dz-message", "needsclick");
-                    this.element.classList.add("dz-disabled");
-                });
-
-                this.on("thumbnail", function (file, fileUrl) {
-                    let imgElement = file.previewElement.querySelector("img");
-                    if (imgElement) {
-                        imgElement.style.width = "100%";
-                        imgElement.style.height = "100%";
-                        imgElement.style.objectFit = "cover";
-                        imgElement.src = fileUrl;
-                    }
-                });
-            }
-        })
-
-    });
-</script>
-
-<script th:inline="javascript">
-    Dropzone.autoDiscover = false;
-
-    const maxSliderImages = 5;
-    let alertShown = false;
-
-    const productSliderDropzone = new Dropzone("#product-slider-dropzone", {
-        url: "/media/upload",
-        method: "POST",
-        acceptedFiles: "image/*",
-        addRemoveLinks: true,
-        dictRemoveFile: "✖", // Fixes issue where X button shows "Cancel upload"
-        dictDefaultMessage: `Drop or click to upload slider images (Max: 5)`,
-        parallelUploads: 5,
-        autoProcessQueue: true,
-        maxFiles: maxSliderImages,
-
-        init: function () {
-            let dropzoneInstance = this;
-            let imagePathsInput = document.getElementById("sliderImages");
-
-            if (imagePathsInput.value) {
-                let imageNames = JSON.parse(imagePathsInput.value);
-
-                imageNames.forEach((imageName) => {
-                    let imagePath = "/uploads/" + imageName;
-                    fetch(imagePath)
-                        .then(res => res.blob())
-                        .then(blob => {
-                            let file = new File([blob], imageName, {type: blob.type});
-
-                            // Simulate a real Dropzone upload process
-                            dropzoneInstance.files.push(file);
-                            dropzoneInstance.emit("addedfile", file);
-                            dropzoneInstance.emit("slider", file, imagePath);
-                            dropzoneInstance.emit("complete", file);
-
-                            // Ensure Dropzone treats it like an uploaded file
-                            file.status = Dropzone.SUCCESS;
-                            file.uploadedFileName = imageName;
-
-                            // Disable Dropzone if a file exists
-                            if (dropzoneInstance.files.length >= maxSliderImages) {
-                                dropzoneInstance.hiddenFileInput.disabled = true; // Disable file input when max is reached
-                                dropzoneInstance.element.classList.add("dz-disabled");
-                            }
-                        })
-                        .catch(error => console.error("Error loading existing file:", error));
-                })
-            }
-
-            this.on("success", function (file, response) {
-                file.uploadedFileName = response.fileName; // Ensure file name is stored
-                file.status = Dropzone.SUCCESS; // Mark as successfully uploaded
-                this.emit("complete", file); // Ensures progress bar disappears
-
-                let currentPaths = imagePathsInput.value ? JSON.parse(imagePathsInput.value) : [];
-
-                currentPaths.push(response.fileName);
-                imagePathsInput.value = JSON.stringify(currentPaths);
-
-                if (dropzoneInstance.files.length >= maxSliderImages) {
-                    dropzoneInstance.hiddenFileInput.disabled = true; // Disable file input when max is reached
-                    dropzoneInstance.element.classList.add("dz-disabled");
-                }
-            });
-
-            this.on("removedfile", function (file) {
-                if (file.uploadedFileName) {
-                    fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
-                        method: "DELETE"
-                    }).then(response => {
-                        if (response.ok) {
-                            let currentPaths = imagePathsInput.value ? JSON.parse(imagePathsInput.value) : [];
-                            imagePathsInput.value = JSON.stringify(currentPaths.filter(
-                                p => p !== file.uploadedFileName));
-                            console.log("File deleted successfully.");
-                        } else {
-                            console.error("Failed to delete file.");
-                        }
-                    }).catch(error => {
-                        console.error("Error deleting file:", error);
-                    });
-                }
-
-                if (file.previewElement) {
-                    file.previewElement.remove(); // Properly removes the file preview
-                }
-
-                if (this.files.length < maxSliderImages) {
-                    alertShown = false;
-                    dropzoneInstance.hiddenFileInput.disabled = false; // Enable input again when below max
-                    dropzoneInstance.element.classList.remove("dz-disabled");
-                }
-            });
-
-            this.on("addedfile", function (file) {
-                if (this.files.length > maxSliderImages) {
-                    this.removeFile(file);
-
-                    if (!alertShown) {
-                        Toastify({
-                            text: `You can only upload up to ${maxSliderImages} images.`,
-                            duration: 3000, // 3 seconds
-                            gravity: "top", // Position: top or bottom
-                            position: "center", // left, center, or right
-                            backgroundColor: "#FF5733", // Custom color
-                            stopOnFocus: true // Stop hiding on focus
-                        }).showToast();
-
-                        alertShown = true; // Set flag to prevent multiple alerts
-                    }
-                }
-            });
-
-            this.on("slider", function (file, fileUrl) {
-                let imgElement = file.previewElement.querySelector("img");
-                if (imgElement) {
-                    imgElement.style.width = "100%";
-                    imgElement.style.height = "100%";
-                    imgElement.style.objectFit = "cover";
-                    imgElement.src = fileUrl;
-                }
-            });
-        }
-    });
-
-</script>
+<div th:replace="admin_layout::dropzone-script"></div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -382,16 +166,17 @@
 
         var descriptionField = document.getElementById('description');
 
-        // Load existing content
-        if (descriptionField.value) {
+        // Load existing content on page load
+        if (descriptionField.value.trim() !== "") {
             quill.root.innerHTML = descriptionField.value;
         }
 
-        // Ensure Quill data is saved before submission
-        document.querySelector('#mainForm').addEventListener("submit", function (e) {
-            descriptionField.value = quill.root.innerHTML; // Save HTML content
-        });
+        // Listen for form submit event globally
+        document.forms["mainForm"].onsubmit = function () {
+            descriptionField.value = quill.root.innerHTML; // Set HTML content into textarea before submit
+        };
     });
+
 
 </script>
 
