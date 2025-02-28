@@ -59,6 +59,29 @@
                 </a>
             </li>
 
+
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/category/list}">
+                                   <span class="nav-icon">
+                                        <iconify-icon icon="solar:clipboard-list-bold-duotone"></iconify-icon>
+                                   </span>
+                    <span class="nav-text"> Category </span>
+                </a>
+                <div class="collapse" style="display: none" id="sidebarCategory">
+                    <ul class="nav sub-navbar-nav">
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" th:href="@{/admin/category/list}">List</a>
+                        </li>
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" th:href="@{/admin/category/edit}">Edit</a>
+                        </li>
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" th:href="@{/admin/category/add}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/admin/product/list}">
                                    <span class="nav-icon">
@@ -87,27 +110,6 @@
                 </div>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/admin/category/list}">
-                                   <span class="nav-icon">
-                                        <iconify-icon icon="solar:clipboard-list-bold-duotone"></iconify-icon>
-                                   </span>
-                    <span class="nav-text"> Category </span>
-                </a>
-                <div class="collapse" style="display: none" id="sidebarCategory">
-                    <ul class="nav sub-navbar-nav">
-                        <li class="sub-nav-item">
-                            <a class="sub-nav-link" th:href="@{/admin/category/list}">List</a>
-                        </li>
-                        <li class="sub-nav-item">
-                            <a class="sub-nav-link" th:href="@{/admin/category/edit}">Edit</a>
-                        </li>
-                        <li class="sub-nav-item">
-                            <a class="sub-nav-link" th:href="@{/admin/category/add}">Create</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/admin/order/list}">
                                    <span class="nav-icon">

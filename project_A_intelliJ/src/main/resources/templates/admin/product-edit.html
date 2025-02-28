@@ -22,7 +22,7 @@
                                      id="thumbnail-dropzone"
                                      enctype="multipart/form-data">
                                     <input type="hidden" name="thumbnailName" id="thumbnailName"
-                                           th:value="${thumbnail}">
+                                           th:value="${thumbnail != null ? thumbnail : ''}">
                                     <div class="dz-message needsclick">
                                         <i class="bx bx-cloud-upload fs-48 text-primary"></i>
                                         <p>Drag & drop thumbnail here, or click to select</p>
@@ -43,7 +43,7 @@
                                            th:value="${sliderImagesJson}">
                                     <div class="dz-message needsclick">
                                         <i class="bx bx-cloud-upload fs-48 text-primary"></i>
-                                        <p>Drag & drop slider images here, or click to select (Max: 9 images)</p>
+                                        <p>Drag & drop slider images here, or click to select (Max: 6 images)</p>
                                     </div>
                                 </div>
                             </div>
@@ -216,6 +216,7 @@
                         }).catch(error => {
                             console.error("Error deleting file:", error);
                         });
+
                         document.getElementById("thumbnailName").value = "";
                         dropzoneInstance.enable();
                         this.element.classList.remove("dz-disabled");
@@ -224,7 +225,7 @@
                 });
 
                 this.on("success", function (file, response) {
-                    document.getElementById("thumbnailName").value = response.filePath;
+                    document.getElementById("thumbnailName").value = response.fileName;
                     file.uploadedFileName = response.fileName; // Store the server filename in the file object
                     this.disable();
                     this.element.classList.remove("dz-message", "needsclick");
@@ -249,7 +250,7 @@
 <script th:inline="javascript">
     Dropzone.autoDiscover = false;
 
-    const maxSliderImages = 9;
+    const maxSliderImages = 5;
     let alertShown = false;
 
     const productSliderDropzone = new Dropzone("#product-slider-dropzone", {
@@ -258,8 +259,8 @@
         acceptedFiles: "image/*",
         addRemoveLinks: true,
         dictRemoveFile: "✖", // Fixes issue where X button shows "Cancel upload"
-        dictDefaultMessage: `Drop or click to upload slider images (Max: 9)`,
-        parallelUploads: 9,
+        dictDefaultMessage: `Drop or click to upload slider images (Max: 5)`,
+        parallelUploads: 5,
         autoProcessQueue: true,
         maxFiles: maxSliderImages,
 
