@@ -57,13 +57,12 @@ public class ProductController {
         Category category = categoryService.findCategoryById(Integer.parseInt(categoryId));
         product.setCategory(category);
 
-        List<String> imagePaths = mediaService.getListOfMediaByJson(sliderImages);
+        List<String> imagePaths = mediaService.getListOfMediaInJson(sliderImages);
 
         // Convert image paths to Media objects and associate them with the product
         for (String imagePath : imagePaths) {
-            Media media = new Media();
-            media.setFilePath(imagePath);
-            media.setProduct(product); // Set product reference
+            Media media = mediaService.constructMedia(mediaService.getFileUrl(imagePath), "Product slider", "Product slider");
+            media.setProduct(product);
             product.getProductSliders().add(media);
         }
 
@@ -73,6 +72,7 @@ public class ProductController {
             product.setThumbnail(thumbnail);
         }
 
+        product.setProductSliders(product.getProductSliders());
         service.save(product);
 
         ra.addFlashAttribute("message", "The product has been saved successfully.");
@@ -96,7 +96,7 @@ public class ProductController {
         Media thumbnail = product.getThumbnail();
         List<String> sliderImagePaths = product.getProductSliders()
                 .stream()
-                .map(Media::getFilePath)
+                .map(slider -> mediaService.getFileName(slider.getFilePath()))
                 .collect(Collectors.toList());
 
         product.setProductSliders(null);
@@ -126,18 +126,21 @@ public class ProductController {
                               @RequestParam String thumbnailName,
                               @RequestParam String sliderImages,
                               RedirectAttributes ra) {
+
         Media thumbnail = null;
         if (!thumbnailName.isEmpty()) {
+            if (product.getThumbnail() != null){
+                mediaService.removeByName(mediaService.getFileName(product.getThumbnail().getFilePath()));
+            }
             thumbnail = mediaService.constructMedia(mediaService.getFileUrl(thumbnailName), "Product thumbnail", "Thumbnail");
         }
 
-        List<String> imagePaths = mediaService.getListOfMediaByJson(sliderImages);
+        List<String> imagePaths = mediaService.getListOfMediaInJson(sliderImages);
 
         // Convert image paths to Media objects and associate them with the product
         for (String imagePath : imagePaths) {
-            Media media = new Media();
-            media.setFilePath(imagePath);
-            media.setProduct(product); // Set product reference
+            Media media = mediaService.constructMedia(mediaService.getFileUrl(imagePath), "Product slider", "Product slider");
+            media.setProduct(product);
             product.getProductSliders().add(media);
         }
 

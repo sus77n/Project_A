@@ -86,8 +86,13 @@ public class MediaService {
         }
     }
 
-    public void removeFromDatabase(String fileName) {
-        mediaRepository.deleteByFilePath(getFileUrl(fileName)); // Implement this in your repository
+    public void removeByName(String fileName) {
+        try {
+            removeFromStorage(fileName);
+            mediaRepository.deleteByFilePath(getFileUrl(fileName)); // Implement thi    s in your repository
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Media findMediaById(Integer id) {
@@ -114,7 +119,7 @@ public class MediaService {
         this.mediaRepository.deleteById(id);
     }
 
-    public List<String> getListOfMediaByJson(String sliderImages) {
+    public List<String> getListOfMediaInJson(String sliderImages) {
         // Convert JSON string to List<String>
         ObjectMapper objectMapper = new ObjectMapper();
         List<String> imagePaths = null;

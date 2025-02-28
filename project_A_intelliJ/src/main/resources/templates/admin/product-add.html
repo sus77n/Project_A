@@ -210,7 +210,7 @@
 
     Dropzone.autoDiscover = false;
 
-    const maxSliderImages = 9;
+    const maxSliderImages = 5;
     let alertShown = false;
 
     const productSliderDropzone = new Dropzone("#product-slider-dropzone", {
@@ -220,9 +220,9 @@
         addRemoveLinks: true,
         dictRemoveFile: "✖", // Fixes issue where X button shows "Cancel upload"
         dictDefaultMessage: `Drop or click to upload slider images (Max: 9)`,
-        parallelUploads: 9,
+        parallelUploads: 5,
         autoProcessQueue: true,
-        maxFiles: maxSliderImages,
+        maxFiles: 5,
 
         init: function () {
             let dropzoneInstance = this;

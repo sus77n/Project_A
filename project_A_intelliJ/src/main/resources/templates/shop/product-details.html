@@ -31,9 +31,9 @@
                             <a data-fancybox="images" th:href="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}"><img
                                     th:src="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}" alt="product-view"></a>
                         </div>
-                        <div th:each="productSlider, iterStat : ${product.productSliders}" th:id="'thumb' + ${iterStat.index + 2}" class="tab-pane fade">
+                        <div th:each="productSlider, iterStat : ${product.getProductSliders()}" th:id="'thumb' + ${iterStat.index + 2}" class="tab-pane fade">
                             <a data-toggle="tab" th:href="'#thumb' + ${iterStat.index + 2}">
-                                <img th:src="${productSlider.media.filePath}" th:alt="${productSlider.media.alt}">
+                                <img th:src="${productSlider.filePath}" th:alt="${productSlider.alt}">
                             </a>
                         </div>
 
@@ -51,7 +51,7 @@
                             <a th:each="media, iterStat : ${product.productSliders}"
                                data-toggle="tab"
                                th:href="'#thumb' + ${iterStat.index + 2}">
-                                <img th:src="${media.media.filePath}" th:alt="${media.media.alt}">
+                                <img th:src="${media.filePath}" th:alt="${media.alt}">
                             </a>
 <!--                            <a data-toggle="tab" href="#thumb3"><img src="assets/img/products/p3.jpg"-->
 <!--                                                                     alt="product-thumbnail"></a>-->
