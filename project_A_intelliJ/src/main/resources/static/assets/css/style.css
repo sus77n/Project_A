@@ -4117,7 +4117,7 @@ p.checkout-coupon input[type="submit"] {
     border-right: medium none;
     font-size: 14px;
     padding: 15px 0;
-    text-align: center;
+    text-align: right;
 }
 .amount {
     color: #666;
@@ -4128,7 +4128,7 @@ p.checkout-coupon input[type="submit"] {
     border-top: medium none;
     font-family: Montserrat, Arial, Helvetica, sans-serif;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
     vertical-align: middle;
     white-space: nowrap;
