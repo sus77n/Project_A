@@ -173,18 +173,25 @@ public class ProductController {
         return "redirect:/admin/product/list";
     }
 
+
+
+
+//   shop /////
+
     @GetMapping("/shop")
     public String showProductPage(
             @RequestParam(value = "categories", required = false) List<Long> categoryIds,
             Model model) {
 
-        List<Category> categories = categoryService.getAllCategories();
+//      List<Category> categories = categoryService.getAllCategories();
+        List<Category>categories= categoryService.getActiveCategories();
         List<Product> products;
 
         if (categoryIds != null && !categoryIds.isEmpty()) {
             products = service.getProductsByCategoryIds(categoryIds);
         } else {
-            products = service.getAllProducts();
+//            products = service.getAllProducts();
+            products = service.getActiveProductsInActiveCategories();
         }
 
         model.addAttribute("categories", categories);
@@ -202,7 +209,8 @@ public class ProductController {
             @RequestParam(value = "sort", required = false) String sort,
             Model model) {
 
-        List<Product> filteredProducts = service.getAllProducts();
+//        List<Product> filteredProducts = service.getAllProducts();
+        List<Product> filteredProducts = service.getActiveProductsInActiveCategories();
 
         if (categoryIds != null && !categoryIds.isEmpty()) {
             filteredProducts = service.getProductsByCategoryIds(categoryIds);
@@ -241,10 +249,12 @@ public class ProductController {
 
     @GetMapping("/home")
     public String showIndexPage(Model model) {
-        List<Product> products = service.getAllProducts();
+//        List<Product> products = service.getAllProducts();
+        List<Product> products = service.getActiveProductsInActiveCategories();
         List<Product> firstGroup = products.stream().limit(4).toList();
         List<Product> secondGroup = products.size() > 4 ? products.stream().skip(4).limit(4).toList() : Collections.emptyList();
-        List<Category> categories = categoryService.getAllCategories();
+//        List<Category> categories = categoryService.getAllCategories();
+        List<Category>categories= categoryService.getActiveCategories();
         List<Category> displayedCategories = categories.stream().limit(3).toList();
 
         Map<Category, List<Product>> categoryProducts = new LinkedHashMap<>();
@@ -266,10 +276,12 @@ public class ProductController {
 
     @GetMapping("")
     public String showHomePage(Model model) {
-        List<Product> products = service.getAllProducts();
+//        List<Product> products = service.getAllProducts();
+        List<Product> products = service.getActiveProductsInActiveCategories();
         List<Product> firstGroup = products.stream().limit(4).toList();
         List<Product> secondGroup = products.size() > 4 ? products.stream().skip(4).limit(4).toList() : Collections.emptyList();
-        List<Category> categories = categoryService.getAllCategories();
+//        List<Category> categories = categoryService.getAllCategories();
+        List<Category>categories= categoryService.getActiveCategories();
         List<Category> displayedCategories = categories.stream().limit(3).toList();
 
         Map<Category, List<Product>> categoryProducts = new LinkedHashMap<>();
