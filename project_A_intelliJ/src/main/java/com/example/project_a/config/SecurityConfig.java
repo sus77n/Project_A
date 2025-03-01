@@ -32,6 +32,7 @@ public class SecurityConfig {
             if (existingAdmin.isEmpty()) {
                 User admin = new User();
                 admin.setUsername("admin");
+                admin.setEmail("admin@gmail.com");
                 admin.setPassword(passwordEncoder.encode("123")); // Set hashed password
                 admin.setRole("ADMIN"); // Ensure this matches Spring Security role
                 admin.setStatus("Active");
@@ -51,13 +52,14 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService(UserRepository userRepository) {
-        return username -> {
-            User user = userRepository.findByUsername(username)
-                    .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+        return email -> {
+            User user = userRepository.findByEmail(email)
+                    .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
 
             return user;
         };
     }
+
 
     @Bean
     public AuthenticationManager authenticationManager(UserDetailsService userDetailsService) {
@@ -75,9 +77,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/assets/**", "/uploads/**", "/shop", "/home", "/about",
                                 "/blog", "/contact", "/login", "/product-details", "/register",
-                                "/users/save", "/", "/filter-products",
+                                "/users/save", "/filter-products",
                                 "/shop/register", "/users/check/email", "/users/check/username", "/users/check/**",
-                                "/media/**")
+                                "/media/**","/forgot-password","/auth/forgot-password","/reset-password", "/auth/reset-password")
                         .permitAll()
 
                         .requestMatchers("/admin/**").hasRole("ADMIN") // Only "/admin/**" is for admins
@@ -87,6 +89,7 @@ public class SecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
+                        .usernameParameter("email")
                         .successHandler((request, response, authentication) -> {
                             request.getSession().removeAttribute("SPRING_SECURITY_SAVED_REQUEST"); // Clear any saved request
 

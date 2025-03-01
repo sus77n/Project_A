@@ -5,6 +5,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -36,8 +37,14 @@ public class MainController {
     @GetMapping("/compare")
     public String showCompare() {return "shop/compare";}
 
-    @GetMapping("/forgot-password")
-    public String ShowPageForgotPassword() {return "shop/forgot-password";}
+//    @GetMapping("/forgot-password")
+//    public String ShowPageForgotPassword() {return "shop/forgot-password";}
+
+//    @GetMapping("/reset-password")
+//    public String showResetPasswordForm(@RequestParam String token, Model model) {
+//        model.addAttribute("token", token);
+//        return "shop/reset-password";
+//    }
 
     @GetMapping("/login")
     public String ShowPageLogin() {return "shop/login";}

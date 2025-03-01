@@ -38,19 +38,20 @@
                                    Your session has expired. Please log in again.
                                </div>
                                <div class="form-group row">
-                                   <label for="email" class="col-sm-3 col-form-label">Username</label>
+                                   <label for="email" class="col-sm-3 col-form-label">Email</label>
                                    <div class="col-sm-7">
-                                       <input type="text" class="form-control" id="email" name="username" placeholder="Username">
+                                       <input type="text" class="form-control" id="email" name="email" placeholder="Email">
                                    </div>
                                </div>
                                <div class="form-group row">
                                    <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
                                    <div class="col-sm-7">
                                        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
-                                       <button class="btn show-btn" type="button">Show</button>
+                                       <button class="btn show-btn" type="button" id="togglePassword">Show</button>
                                    </div>
                                </div>
                                <div class="login-details text-center mb-25">
+                                   <a th:href="@{/forgot-password}">Forgot your password?</a>
                                    <button type="submit" class="login-btn">Sign in</button>
                                </div>
                                <div class="login-footer text-center">
@@ -69,5 +70,20 @@
     <!-- Main Wrapper End Here -->
 
     <th:block th:replace="layout :: scripts"></th:block>
+
+
+    <!-- Show password -->
+    <script>
+        document.getElementById("togglePassword").addEventListener("click", function () {
+            var passwordField = document.getElementById("inputPassword");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                this.textContent = "Hide"; // Change button text
+            } else {
+                passwordField.type = "password";
+                this.textContent = "Show";
+            }
+        });
+    </script>
 </body>
 </html>

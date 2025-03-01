@@ -68,21 +68,21 @@ public class UserController {
 
     private BCryptPasswordEncoder passwordEncoder;
 
-//    @GetMapping("/users/check/email")
-//    @ResponseBody
-//    public Map<String, Boolean> checkEmailExists(@RequestParam String email) {
-//        boolean exists = service.existsByEmail(email);
-//        Map<String, Boolean> response = new HashMap<>();
-//        response.put("exists", exists);
-//        return response;
-//    }
-
-    @GetMapping("/users/check/username")
+    @GetMapping("/users/check/email")
     @ResponseBody
-    public Map<String, Boolean> checkUsernameExists(@RequestParam String username) {
-        boolean exists = service.existsByUsername(username);
+    public Map<String, Boolean> checkEmailExists(@RequestParam String email) {
+        boolean exists = service.existsByEmail(email);
         Map<String, Boolean> response = new HashMap<>();
         response.put("exists", exists);
         return response;
     }
+
+//    @GetMapping("/users/check/username")
+//    @ResponseBody
+//    public Map<String, Boolean> checkUsernameExists(@RequestParam String username) {
+//        boolean exists = service.existsByUsername(username);
+//        Map<String, Boolean> response = new HashMap<>();
+//        response.put("exists", exists);
+//        return response;
+//    }
 }

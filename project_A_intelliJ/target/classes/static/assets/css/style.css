@@ -4577,6 +4577,10 @@ a.shipping-calculator-button:hover {
     font-size: 13px;
 }
 
+.button-checkout:hover{
+    background-color: #9db5d9;
+}
+
 /*----------------------------------------*/
 /* 20. About us CSS
 /*----------------------------------------*/
