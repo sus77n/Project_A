@@ -305,7 +305,8 @@ public class ProductController {
     @GetMapping("/product-details")
     public String showProductDetails(@RequestParam String productId, Model model) {
         Product product = service.findProductById(Integer.parseInt(productId));
-        List<Product> thisCateProducts = service.getAllProducts();
+//        List<Product> thisCateProducts = service.getAllProducts();
+        List<Product> thisCateProducts = service.getActiveProductsInActiveCategories();
         Long cateID = Long.valueOf(product.getCategory().getId());
 
         thisCateProducts = service.getProductsByCategoryIds(new ArrayList<>() {
