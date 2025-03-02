@@ -25,6 +25,8 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false, unique = false)
     private String password;
 
+    private String resetToken;
+
     @Column(name = "gender")
     private String gender;
 
@@ -38,7 +40,7 @@ public class User implements UserDetails {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "status")
@@ -114,13 +116,13 @@ public class User implements UserDetails {
         this.address = address;
     }
 
-//    public String getEmail() {
-////        return email;
-////    }
-////
-////    public void setEmail(String email) {
-////        this.email = email;
-////    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getStatus() {
         return status;
@@ -145,6 +147,16 @@ public class User implements UserDetails {
     public void setCitizenId(String citizenID) {
         this.citizenId = citizenID;
     }
+
+    public String getresetToken() {
+        return resetToken;
+    }
+
+    public void setresetToken(String token) {
+        this.resetToken = token;
+    }
+
+
 
     @Override
     public String toString() {

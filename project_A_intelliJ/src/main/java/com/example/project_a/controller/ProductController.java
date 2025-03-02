@@ -173,18 +173,31 @@ public class ProductController {
         return "redirect:/admin/product/list";
     }
 
+
+
+
+//   shop /////
+
     @GetMapping("/shop")
     public String showProductPage(
+            @RequestParam(value = "query", required = false) String query,
             @RequestParam(value = "categories", required = false) List<Long> categoryIds,
             Model model) {
 
-        List<Category> categories = categoryService.getAllCategories();
-        List<Product> products;
+//      List<Category> categories = categoryService.getAllCategories();
+        List<Category>categories= categoryService.getActiveCategories();
+//        List<Product> products;
+        List<Product> products = service.getActiveProductsInActiveCategories();
+
+
+        if (query != null && !query.isEmpty()) {
+            products = products.stream()
+                    .filter(p -> p.getName().toLowerCase().contains(query.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
 
         if (categoryIds != null && !categoryIds.isEmpty()) {
             products = service.getProductsByCategoryIds(categoryIds);
-        } else {
-            products = service.getAllProducts();
         }
 
         model.addAttribute("categories", categories);
@@ -202,7 +215,8 @@ public class ProductController {
             @RequestParam(value = "sort", required = false) String sort,
             Model model) {
 
-        List<Product> filteredProducts = service.getAllProducts();
+//        List<Product> filteredProducts = service.getAllProducts();
+        List<Product> filteredProducts = service.getActiveProductsInActiveCategories();
 
         if (categoryIds != null && !categoryIds.isEmpty()) {
             filteredProducts = service.getProductsByCategoryIds(categoryIds);
@@ -241,10 +255,12 @@ public class ProductController {
 
     @GetMapping("/home")
     public String showIndexPage(Model model) {
-        List<Product> products = service.getAllProducts();
+//        List<Product> products = service.getAllProducts();
+        List<Product> products = service.getActiveProductsInActiveCategories();
         List<Product> firstGroup = products.stream().limit(4).toList();
         List<Product> secondGroup = products.size() > 4 ? products.stream().skip(4).limit(4).toList() : Collections.emptyList();
-        List<Category> categories = categoryService.getAllCategories();
+//        List<Category> categories = categoryService.getAllCategories();
+        List<Category>categories= categoryService.getActiveCategories();
         List<Category> displayedCategories = categories.stream().limit(3).toList();
 
         Map<Category, List<Product>> categoryProducts = new LinkedHashMap<>();
@@ -266,10 +282,12 @@ public class ProductController {
 
     @GetMapping("")
     public String showHomePage(Model model) {
-        List<Product> products = service.getAllProducts();
+//        List<Product> products = service.getAllProducts();
+        List<Product> products = service.getActiveProductsInActiveCategories();
         List<Product> firstGroup = products.stream().limit(4).toList();
         List<Product> secondGroup = products.size() > 4 ? products.stream().skip(4).limit(4).toList() : Collections.emptyList();
-        List<Category> categories = categoryService.getAllCategories();
+//        List<Category> categories = categoryService.getAllCategories();
+        List<Category>categories= categoryService.getActiveCategories();
         List<Category> displayedCategories = categories.stream().limit(3).toList();
 
         Map<Category, List<Product>> categoryProducts = new LinkedHashMap<>();
@@ -293,7 +311,8 @@ public class ProductController {
     @GetMapping("/product-details")
     public String showProductDetails(@RequestParam String productId, Model model) {
         Product product = service.findProductById(Integer.parseInt(productId));
-        List<Product> thisCateProducts = service.getAllProducts();
+//        List<Product> thisCateProducts = service.getAllProducts();
+        List<Product> thisCateProducts = service.getActiveProductsInActiveCategories();
         Long cateID = Long.valueOf(product.getCategory().getId());
 
         thisCateProducts = service.getProductsByCategoryIds(new ArrayList<>() {
@@ -306,5 +325,18 @@ public class ProductController {
         model.addAttribute("product", product);
         model.addAttribute("thisCateProducts", thisCateProducts);
         return "shop/product-details";
+    }
+
+    @GetMapping("/search")
+    public String searchProducts(
+            @RequestParam("query") String query,
+            Model model) {
+
+        List<Product> products = service.searchProducts(query);
+
+        model.addAttribute("products", products);
+        model.addAttribute("productsCount", products.size());
+
+        return "shop/shop-list :: productList"; // Return only the fragment
     }
 }

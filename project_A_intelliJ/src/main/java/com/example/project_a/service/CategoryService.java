@@ -21,6 +21,10 @@ public class CategoryService {
         return (List<Category>) categoryRepository.findAll();
     }
 
+    public List<Category> getActiveCategories() {
+        return categoryRepository.findByStatus("Active");
+    }
+
     public void save(Category category) {
         categoryRepository.save(category);
     }

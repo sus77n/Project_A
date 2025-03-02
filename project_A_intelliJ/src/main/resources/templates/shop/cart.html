@@ -2,109 +2,156 @@
 <html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout::page_head}"></head>
 <body>
-    <div class="wrapper">
-        <header class="header-sticky" th:replace="~{layout::page_header}"></header>
-        <!-- Breadcrumb Area Start Here -->
-        <div class="breadcrumb-area pt-65 pb-70 bg-img" style="background-image:url(assets/img/bg-image/hop-brech-bg.jpg);">
-            <div class="container">
-                <div class="breadcrumb-wrap text-center">
-                    <h3>Cart</h3>
-                    <ol class="breadcrumb breadcrumb-list">
-                        <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
-                        <li class="breadcrumb-item active">Cart</li>
-                    </ol>
-                </div>
+<div class="wrapper">
+    <header class="header-sticky" th:replace="~{layout::page_header}"></header>
+    <!-- Breadcrumb Area Start Here -->
+    <div class="breadcrumb-area pt-65 pb-70 bg-img" style="background-image:url(assets/img/bg-image/hop-brech-bg.jpg);">
+        <div class="container">
+            <div class="breadcrumb-wrap text-center">
+                <h3>Cart</h3>
+                <ol class="breadcrumb breadcrumb-list">
+                    <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+                    <li class="breadcrumb-item active">Cart</li>
+                </ol>
             </div>
         </div>
-        <!-- Breadcrumb Area End Here -->
-        <!-- Cart Main Area Start -->
-        <div class="cart-main-area white-bg ptb-80">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <!-- Form Start -->
-                        <form th:action="@{/checkout}" method="post">
-                            <!-- Table Content Start -->
-                            <div class="table-content table-responsive mb-45">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th class="product-thumbnail">Image</th>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
-                                            <th class="product-remove">Remove</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="cart : ${carts}" th:data-cart-id="${cart.id}">
-                                    <td class="product-thumbnail">
-                                                <a href="#"><img th:src="${cart.product.getThumbnail().getImageURL()}" th:alt="${cart.product.getThumbnail().getAlt()}" /></a>
-                                            </td>
-                                            <td class="product-name"><a th:href="@{/product-detail}"><span  th:text="${cart.product.name}"></span></a></td>
-                                            <td class="product-price"> <span  th:text="'£' + ${cart.product.price}"></span></td>
-                                            <td class="product-quantity">
-                                                <input type="number" class="qty-input" th:data-id="${cart.id}" th:value="${cart.quantity}" min="1" />
-                                            </td>
-                                            <td class="product-subtotal"><span  th:text="'£' + ${cart.getTotal()}"></span></td>
-                                            <td class="product-remove"> <a th:href="@{/cart/delete(id=${cart.id})}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- Table Content Start -->
-                            <div class="row">
-                               <!-- Cart Button Start -->
-                                <div class="col-md-8 col-sm-12">
-                                    <div class="buttons-cart">
-                                        <input type="button" id="update-cart-btn" value="Update Cart" />
-
-                                        <a href="/shop">Continue Shopping</a>
-                                    </div>
-                                </div>
-                                <!-- Cart Button Start -->
-                                <!-- Cart Totals Start -->
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="cart_totals float-md-right text-md-right">
-                                        <h2>Cart Totals</h2>
-                                        <br />
-                                        <table class="float-md-right">
-                                            <tbody>
-                                                <tr class="cart-subtotal">
-                                                    <th>Subtotal</th>
-                                                    <td><span class="amount" th:text="'$' + ${total}"></span></td>
-                                                </tr>
-                                                <tr class="order-total">
-                                                    <th>Total</th>
-                                                    <td>
-                                                        <strong><span class="amount"  th:text="'$' + ${total}"></span></strong>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="wc-proceed-to-checkout ">
-<!--                                            <a th:href="@{/checkout}">Proceed to Checkout</a>-->
-                                            <button type="submit" class="button-checkout mt-30">PROCEED TO CHECKOUT</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Cart Totals End -->
-                            </div>
-                            <!-- Row End -->
-                        </form>
-                        <!-- Form End -->
-                    </div>
-                </div>
-                 <!-- Row End -->
-            </div>
-        </div>
-        <!-- Cart Main Area End -->
-        <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
     </div>
-    <!-- Main Wrapper End Here -->
+    <!-- Breadcrumb Area End Here -->
+    <!-- Cart Main Area Start -->
+    <div class="cart-main-area white-bg ptb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <!-- Form Start -->
+                    <form th:action="@{/checkout}" method="post">
+                        <!-- Table Content Start -->
+<!--                        <div class="table-content table-responsive mb-45" >-->
+                            <div class="cart-card" th:each="cart : ${carts}"
+                                 th:data-cart-id="${cart.id}">
+                                <div class="row align-items-center">
+                                    <!-- Delete Button -->
+                                    <div class="col-lg-1">
+                                        <a th:href="@{/cart/delete(id=${cart.id})}" class="text-danger">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
 
-    <th:block th:replace="layout :: scripts"></th:block>
+                                    <!-- Product Image -->
+                                    <div class="col-lg-2 cart-thumbnail">
+                                        <a th:href="@{/product-details(productId=${cart.product.id})}" >
+                                            <img th:src="${cart.product.thumbnail.filePath}" th:alt="${cart.product.getThumbnail().getAlt()}">
+                                        </a>
+                                    </div>
+                                    <!-- Product Name -->
+                                    <div class="col-lg-4">
+                                        <a  th:href="@{/product-details(productId=${cart.product.id})}" >
+                                            <h6 th:text="${cart.product.name}"></h6>
+                                        </a>
+                                    </div>
+
+                                    <!-- Price -->
+                                    <div class="col-lg-2">
+                                        <p th:text="'$' + ${cart.product.price}"></p>
+                                    </div>
+
+                                    <!-- Quantity Input -->
+                                    <div class="col-lg-1 ">
+                                        <input type="number" class="form-control qty-input" th:data-id="${cart.id}" th:value="${cart.quantity}" min="1" >
+                                    </div>
+
+                                    <!-- Total Price -->
+                                    <div class="col-lg-2 ">
+                                        <p th:text="'$' + ${cart.getTotal()}"></p>
+                                    </div>
+
+
+                                </div>
+<!--                            </div>-->
+
+                            <!--                            <table> &ndash;&gt;-->
+                            <!--                                <thead>-->
+                            <!--                                <tr>-->
+                            <!--                                    <th class="product-thumbnail">Image</th>-->
+                            <!--                                    <th class="product-name">Product</th>-->
+                            <!--                                    <th class="product-price">Price</th>-->
+                            <!--                                    <th class="product-quantity">Quantity</th>-->
+                            <!--                                    <th class="product-subtotal">Total</th>-->
+                            <!--                                    <th class="product-remove">Remove</th>-->
+                            <!--                                </tr>-->
+                            <!--                                </thead>-->
+                            <!--                                <tbody>-->
+                            <!--                                <tr th:each="cart : ${carts}" th:data-cart-id="${cart.id}">-->
+                            <!--                                    <td class="product-thumbnail">-->
+                            <!--                                        <a href="#"><img th:src="${cart.product.thumbnail.filePath}"-->
+                            <!--                                                         th:alt="${cart.product.getThumbnail().getAlt()}"/></a>-->
+                            <!--                                    </td>-->
+                            <!--                                    <td class="product-name"><a th:href="@{/product-detail}"><span-->
+                            <!--                                            th:text="${cart.product.name}"></span></a></td>-->
+                            <!--                                    <td class="product-price"><span th:text="'£' + ${cart.product.price}"></span></td>-->
+                            <!--                                    <td class="product-quantity">-->
+                            <!--                                        <input type="number" class="qty-input" th:data-id="${cart.id}"-->
+                            <!--                                               th:value="${cart.quantity}" min="1"/>-->
+                            <!--                                    </td>-->
+                            <!--                                    <td class="product-subtotal"><span th:text="'£' + ${cart.getTotal()}"></span></td>-->
+                            <!--                                    <td class="product-remove"><a th:href="@{/cart/delete(id=${cart.id})}"><i-->
+                            <!--                                            class="fa fa-times" aria-hidden="true"></i></a></td>-->
+                            <!--                                </tr>-->
+                            <!--                                </tbody>-->
+                            <!--                            </table>-->
+                        </div>
+                        <!-- Table Content Start -->
+
+
+                        <div class="row cart-footer">
+                            <!-- Cart Button Start -->
+                            <div class="col-md-8 col-sm-12">
+                                <div class="buttons-cart">
+                                    <!--                                        <input type="button" id="update-cart-btn" value="Update Cart" />-->
+
+                                    <a th:href="@{/shop}">Continue Shopping</a>
+                                </div>
+                            </div>
+                            <!-- Cart Button Start -->
+                            <!-- Cart Totals Start -->
+                            <div class="col-md-4 col-sm-12">
+                                <div class="cart_totals float-md-right text-md-right">
+                                    <h2>Cart Totals</h2>
+                                    <br/>
+                                    <table class="float-md-right">
+                                        <tbody>
+                                        <tr class="cart-subtotal">
+                                            <th>Subtotal</th>
+                                            <td><span class="amount" th:text="'$' + ${total}"></span></td>
+                                        </tr>
+                                        <tr class="order-total">
+                                            <th>Total</th>
+                                            <td>
+                                                <strong><span class="amount" th:text="'$' + ${total}"></span></strong>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="wc-proceed-to-checkout ">
+                                        <button type="submit" class="button-checkout mt-30">PROCEED TO CHECKOUT</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Cart Totals End -->
+                        </div>
+                        <!-- Row End -->
+                    </form>
+                    <!-- Form End -->
+                </div>
+            </div>
+            <!-- Row End -->
+        </div>
+    </div>
+    <!-- Cart Main Area End -->
+    <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
+</div>
+<!-- Main Wrapper End Here -->
+
+<th:block th:replace="layout :: scripts"></th:block>
 
 <script th:inline="javascript">
     $(document).ready(function () {
@@ -115,7 +162,7 @@
             $.ajax({
                 url: "/cart/update",
                 type: "POST",
-                data: { id: cartId, quantity: newQuantity },
+                data: {id: cartId, quantity: newQuantity},
                 success: function (response) {
                     // Update subtotal for this item
                     $(`tr[data-cart-id='${cartId}'] .product-subtotal span`).text('£' + response.subtotal);
@@ -131,51 +178,24 @@
     });
 
 </script>
-<script>
-    $("#update-cart-btn").on("click", function () {
-    let cartData = [];
-    console.log("Da vao ham update");
-    $(".qty-input").each(function () {
-        cartData.push({
-            id: Number($(this).data("id")),  // Convert ID to Integer
-            quantity: Number($(this).val())  // Convert Quantity to Integer
-        });
-    });
 
-    $.ajax({
-        url: "/cart/update-all",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(cartData),
-        success: function (response) {
-            $(".cart_totals .amount").text('$' + response.total);
-            showToast("Cart updated successfully!"); // Show success message
-        },
-        error: function () {
-            alert("Error updating cart. Please try again.");
-        }
-    });
-});
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script th:inline="javascript">
+    function showToast(message, type = "success") {
+        Toastify({
+            text: message,
+            duration: 2000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+            onClick: function () {
+            } // Callback after click
+        }).showToast();
+    }
 </script>
-
-    <!--    Toastify script-->
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
-    <script th:inline="javascript">
-        function showToast(message, type = "success") {
-            Toastify({
-                text: message,
-                duration: 2000,
-                close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "center", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                style: {
-                    background: "linear-gradient(to right, #00b09b, #96c93d)",
-                },
-                onClick: function(){} // Callback after click
-            }).showToast();
-        }
-    </script>
 </body>
 </html>

@@ -18,6 +18,9 @@ public class ProductService {
         return (List<Product>) productRepository.findAll();
     }
 
+    public List<Product> getActiveProductsInActiveCategories() {
+        return productRepository.findActiveProductsInActiveCategories();
+    }
 
     public void save(Product product) {
         productRepository.save(product);
@@ -56,5 +59,9 @@ public class ProductService {
 
     public List<Product> getProductsByCategoryIds(List<Long> categoryIds) {
         return productRepository.findByCategoryIdIn(categoryIds);
+    }
+
+    public List<Product> searchProducts(String query) {
+        return productRepository.searchActiveProductsInActiveCategories(query);
     }
 }

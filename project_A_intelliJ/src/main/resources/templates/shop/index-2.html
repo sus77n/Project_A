@@ -158,39 +158,39 @@
         </div>
     </div>
     <!--Activities end -->
-    <div class="best-seller-area pt-50 pb-90">
-        <div class="container">
-            <div class="section-title text-center mb-45">
-                <h2><i class="fa fa-star" aria-hidden="true"></i> RECOMMENDED FOR YOU <i class="fa fa-star"
-                                                                                         aria-hidden="true"></i></h2>
-            </div>
-            <div class="best-seller-active owl-carousel">
-                <div class="single-aboss-product" th:each="product : ${firstGroup}">
-                    <div class="pro-img">
-                        <a th:href="@{/product-details(productId=${product.getId()})}"><img
-                                th:src="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}"
-                                alt="Product Image"></a>
-                        <div class="pro-actions">
-                        </div>
-                    </div>
-                    <div class="pro-content">
-                        <h4><a th:href="@{/product-details(productId=${product.getId()})}"
-                               th:text="${product.name}"></a></h4>
-                        <div class="pro-price-cart">
-                            <div class="pro-home-price">
-                                <span th:text="'$' + ${product.price}"></span>
-                            </div>
-                            <div class="pro-cart">
-                                <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}"><i
-                                        class="icon-cart"></i></a>
-                                <!--                                                        <a title="Wishlist" href="#"><i class="icon-like"></i></a>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!--    <div class="best-seller-area pt-50 pb-90">-->
+<!--        <div class="container">-->
+<!--            <div class="section-title text-center mb-45">-->
+<!--                <h2><i class="fa fa-star" aria-hidden="true"></i> RECOMMENDED FOR YOU <i class="fa fa-star"-->
+<!--                                                                                         aria-hidden="true"></i></h2>-->
+<!--            </div>-->
+<!--            <div class="best-seller-active owl-carousel">-->
+<!--                <div class="single-aboss-product" th:each="product : ${firstGroup}">-->
+<!--                    <div class="pro-img">-->
+<!--                        <a th:href="@{/product-details(productId=${product.getId()})}"><img-->
+<!--                                th:src="${product.thumbnail != null ? product.thumbnail.filePath : 'default-image.jpg'}"-->
+<!--                                alt="Product Image"></a>-->
+<!--                        <div class="pro-actions">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="pro-content">-->
+<!--                        <h4><a th:href="@{/product-details(productId=${product.getId()})}"-->
+<!--                               th:text="${product.name}"></a></h4>-->
+<!--                        <div class="pro-price-cart">-->
+<!--                            <div class="pro-home-price">-->
+<!--                                <span th:text="'$' + ${product.price}"></span>-->
+<!--                            </div>-->
+<!--                            <div class="pro-cart">-->
+<!--                                <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}"><i-->
+<!--                                        class="icon-cart"></i></a>-->
+<!--                                &lt;!&ndash;                                                        <a title="Wishlist" href="#"><i class="icon-like"></i></a>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="overview-area bg-img pt-155 pb-135"
          style="background-image:url(/assets/img/banner/hop-banner-5.jpg);">
         <div class="container">

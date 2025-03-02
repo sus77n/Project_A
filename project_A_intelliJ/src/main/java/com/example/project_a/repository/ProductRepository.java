@@ -19,4 +19,10 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("SELECT p FROM Product p LEFT JOIN FETCH p.productSliders WHERE p.id = :id")
     Optional<Product> findByIdWithSliders(@Param("id") Integer id);
 
+    @Query("SELECT p FROM Product p WHERE p.status = 'Active' AND p.category.status = 'Active'")
+    List<Product> findActiveProductsInActiveCategories();
+
+    @Query("SELECT p FROM Product p WHERE p.name LIKE %:name% AND p.status = 'Active' AND p.category.status = 'Active'")
+    List<Product> searchActiveProductsInActiveCategories(@Param("name") String name);
+
 }

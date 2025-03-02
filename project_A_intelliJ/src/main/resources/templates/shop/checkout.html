@@ -7,7 +7,7 @@
     <header class="header-sticky" th:replace="~{layout::page_header}"></header>
 
     <!-- Breadcrumb Area Start Here -->
-    <div class="breadcrumb-area pt-65 pb-70 bg-img">
+    <div class="breadcrumb-area pt-65 pb-70 bg-img" style="background-image:url(assets/img/bg-image/hop-brech-bg.jpg);">
         <div class="container">
             <div class="breadcrumb-wrap text-center">
                 <h3>Checkout</h3>
@@ -27,13 +27,13 @@
                 <div class="row">
                     <input type="hidden" th:field="*{user.id}" />
                     <input type="hidden" th:field="*{paymentStatus}"/>
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-5 col-md-5">
                         <div class="checkbox-form mb-sm-40">
                             <h3>Billing Details</h3>
                             <div class="row">
                                 <div class="col-md-12 mb-30">
                                     <div class="checkout-form-list mb-sm-30">
-                                        <label>Name <span class="required">*</span></label>
+                                        <label>Name</label>
                                         <!-- <input type="text" value="Peter" disabled/> -->
                                         <span  id="originalName"  th:text="${order.user.getUsername()}"></span>
                                         <!--  Chỗ này dẫn đến tên người dùng, mặc định lấy từ user, không thay đổi được
@@ -43,22 +43,22 @@
                                 </div>
                                 <div class="col-md-12 mb-30">
                                     <div class="checkout-form-list">
-                                        <label>Address <span class="required">*</span></label>
+                                        <label>Address </label>
                                         <input type="text" th:field="*{address}"/>
                                         <!--   Chỗ này dẫn đến địa chỉ người dùng-->
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="checkout-form-list mb-30">-->
+<!--                                        <label>Email Address <span class="required">*</span></label>-->
+<!--                                        &lt;!&ndash;                                        <input type="email" value="abc@email.com" disabled/>&ndash;&gt;-->
+<!--                                        <span id="originalEmail"  th:text="${order.user.email}"></span>-->
+<!--                                        &lt;!&ndash;   Chỗ này dẫn đến email người dùng&ndash;&gt;-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <div class="col-md-12">
                                     <div class="checkout-form-list mb-30">
-                                        <label>Email Address <span class="required">*</span></label>
-                                        <!--                                        <input type="email" value="abc@email.com" disabled/>-->
-                                        <span id="originalEmail"  th:text="${order.user.email}"></span>
-                                        <!--   Chỗ này dẫn đến email người dùng-->
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>Phone <span class="required">*</span></label>
+                                        <label>Phone </label>
                                         <input type="text" th:field="*{phoneNumber}"/>
                                         <!--   Chỗ này dẫn đến phone người dùng-->
                                     </div>
@@ -66,16 +66,16 @@
                             </div>
                             <div class="different-address">
                                 <div class="ship-different-title">
-                                    <h3>
+                                    <h4>
                                         <label>Ship to a different address?</label>
                                         <input id="ship-box" type="checkbox"/>
-                                    </h3>
+                                    </h4>
                                 </div>
                                 <div id="ship-box-info">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="country-select clearfix mb-30">
-                                                <label>Province/ City <span class="required">*</span></label>
+                                                <label>Province/ City </label>
                                                 <select class="wide" id='provinces' onchange='getProvinces(event)'>
                                                     <option value="">Select</option>
                                                 </select>
@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="country-select clearfix mb-30">
-                                                <label>District <span class="required">*</span></label>
+                                                <label>District </label>
                                                 <select class="wide" id='districts' onchange='getDistricts(event)'>
                                                     <option value="">Select</option>
                                                 </select>
@@ -91,7 +91,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="country-select clearfix mb-30">
-                                                <label>District <span class="required">*</span></label>
+                                                <label>District </label>
                                                 <select class="wide" id='wards'>
                                                     <option value="">Select</option>
                                                 </select>
@@ -99,25 +99,25 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list mb-30">
-                                                <label>Address <span class="required">*</span></label>
+                                                <label>Address </label>
                                                 <input type="text" placeholder="Street address"/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list mb-30">
-                                                <label>Name <span class="required">*</span></label>
+                                                <label>Name </label>
                                                 <input type="text" placeholder=""/>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+<!--                                        <div class="col-md-6">-->
+<!--                                            <div class="checkout-form-list mb-30">-->
+<!--                                                <label>Email Address <span class="required">*</span></label>-->
+<!--                                                <input type="email" placeholder=""/>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+                                        <div class="col-md-12">
                                             <div class="checkout-form-list mb-30">
-                                                <label>Email Address <span class="required">*</span></label>
-                                                <input type="email" placeholder=""/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Phone <span class="required">*</span></label>
+                                                <label>Phone</label>
                                                 <input type="text" placeholder="Phone"/>
                                             </div>
                                         </div>
@@ -128,8 +128,8 @@
                                 <label for="payment-method-select" style="display: block">Choose Payment Method:</label>
                                 <select class="wide" id="payment-method-select" name="paymentMethod" th:field="*{formOfPayment}">
                                     <option value="cash">Cash</option>
-                                    <option value="credit-card">Credit Card</option>
-                                    <option value="e-wallet">E-wallet</option>
+<!--                                    <option value="credit-card">Credit Card</option>-->
+<!--                                    <option value="e-wallet">E-wallet</option>-->
                                 </select>
                             </div>
                             <div class="send-email float-md-right">
@@ -138,7 +138,7 @@
 
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-7 col-md-7">
                         <div class="your-order">
                             <h3>Your order</h3>
                             <div class="your-order-table table-responsive">
@@ -163,7 +163,7 @@
                                     <tfoot>
                                     <tr class="order-total">
                                         <th>Order Total</th>
-                                        <td><span class=" total amount" th:text="'$' + ${total}" ></span>
+                                        <td ><span class=" total amount" th:text="'$' + ${total}" ></span>
                                         </td>
                                     </tr>
                                     </tfoot>

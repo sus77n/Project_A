@@ -26,27 +26,28 @@
               <div class="offset-xl-2 col-xl-10">
                 <div class="register-form login-form clearfix">
                     <form id="registerForm" method="post" th:object="${user}">
-                        <div class="form-group row align-items-center">
-                            <label class="col-lg-3 col-md-3 col-form-label">Social title <span class="required">*</span></label>
-                            <div class="col-lg-6 col-md-6">
-                                <span class="custom-radio"><input name="id_gender" value="male" type="radio" th:field="*{gender}"> Male</span>
-                                <span class="custom-radio"><input name="id_gender" value="female" type="radio" th:field="*{gender}"> Female</span>
-                            </div>
-                        </div>
-<!--                        <div class="form-group row">-->
-<!--                            <label for="email" class="col-lg-3 col-md-3 col-form-label">Email <span class="required">*</span></label>-->
+<!--                        <div class="form-group row align-items-center">-->
+<!--                            <label class="col-lg-3 col-md-3 col-form-label">Social title <span class="required">*</span></label>-->
 <!--                            <div class="col-lg-6 col-md-6">-->
-<!--                                <input type="email" class="form-control" th:field="*{email}" id="email" onblur="checkEmailExists()" required>-->
-<!--                                <small id="emailError" class="text-danger"></small>-->
+<!--                                <span class="custom-radio"><input name="id_gender" value="male" type="radio" th:field="*{gender}"> Male</span>-->
+<!--                                <span class="custom-radio"><input name="id_gender" value="female" type="radio" th:field="*{gender}"> Female</span>-->
 <!--                            </div>-->
 <!--                        </div>-->
                         <div class="form-group row">
-                            <label for="username" class="col-lg-3 col-md-3 col-form-label">Username </label>
+                            <label for="email" class="col-lg-3 col-md-3 col-form-label">Email <span class="required">*</span></label>
                             <div class="col-lg-6 col-md-6">
-                                <input type="text" id="username" class="form-control" pattern="[^#$%^!&*-+=\|'<>,./?]{5}" th:field="*{username}" onblur="checkUsernameExists()" required>
-                                <small id="usernameError" class="text-danger"></small>
+                                <input type="email" class="form-control" th:field="*{email}" id="email" onblur="checkEmailExists()" required>
+                                <small id="emailError" class="text-danger"></small>
                             </div>
                         </div>
+                        <input type="text" id="username" th:field="*{username}" th:value="*{email}" style="display: none;">
+<!--                        <div class="form-group row">-->
+<!--                            <label for="username" class="col-lg-3 col-md-3 col-form-label">Username </label>-->
+<!--                            <div class="col-lg-6 col-md-6">-->
+<!--                                <input type="text" id="username" class="hidden" pattern="[^#$%^!&*-+=\|'<>,./?]{5}" th:field="*{username}" onblur="checkUsernameExists()" required >-->
+<!--                                <small id="usernameError" class="text-danger"></small>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="form-group row">
                             <label for="inputPassword" class="col-lg-3 col-md-3 col-form-label">Password</label>
                             <div class="col-lg-6 col-md-6">
@@ -54,55 +55,6 @@
                                 <button class="btn show-btn" id="showPassWordBtn" type="button">Show</button>
                             </div>
                         </div>
-<!--                        <div class="form-group row">-->
-<!--                            <label for="birthdate" class="col-lg-3 col-md-3 col-form-label">-->
-<!--                                Birthdate <span class="required">*</span>-->
-<!--                            </label>-->
-<!--                            <div class="col-lg-6 col-md-6">-->
-<!--                                <input type="date" id="birthdate" class="form-control" th:field="*{dateOfBirth}" required>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="form-group row">-->
-<!--                            <label class="col-lg-3 col-md-3 col-form-label">Province/ City <span class="required">*</span></label>-->
-<!--                            <div class="col-lg-6 col-md-6">-->
-<!--                                <div class="country-select clearfix">-->
-<!--                                    <select class="wide" id="provinces" name="province" onchange="getProvinces(event)" required>-->
-<!--                                        <option value="">Select</option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-<!--                        <div class="form-group row">-->
-<!--                            <label class="col-lg-3 col-md-3 col-form-label">District <span class="required">*</span></label>-->
-<!--                            <div class="col-lg-6 col-md-6">-->
-<!--                                <div class="country-select clearfix">-->
-<!--                                    <select class="wide" id="districts" name="district" onchange="getDistricts(event)" required>-->
-<!--                                        <option value="">Select</option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-<!--                        <div class="form-group row">-->
-<!--                            <label class="col-lg-3 col-md-3 col-form-label">Ward <span class="required">*</span></label>-->
-<!--                            <div class="col-lg-6 col-md-6">-->
-<!--                                <div class="country-select clearfix">-->
-<!--                                    <select class="wide" id="wards" name="ward" onchange="updateAddress()" required>-->
-<!--                                        <option value="">Select</option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-<!--                        <div class="form-group row">-->
-<!--                            <label for="detailAddr" class="col-lg-3 col-md-3 col-form-label">Detail Address <span class="required">*</span></label>-->
-<!--                            <div class="col-lg-6 col-md-6">-->
-<!--                                <input type="text" id="detailAddr" class="form-control" pattern="[^#$%^!&*-+=\|'<>,./?]{5}" oninput="updateAddress()" required>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <input type="hidden" id="fullAddress" th:field="*{address}">-->
-
                         <div class="form-group row">
                             <label for="phone" class="col-lg-3 col-md-3 col-form-label">Phone Number</label>
                             <div class="col-lg-6 col-md-6">
@@ -138,52 +90,53 @@
     showPassWordBtn.addEventListener("mouseup", togglePassword, false);
 </script>
     <script type="text/javascript">
-        // let emailExists = false;
-        let usernameExists = false;
+        let emailExists = false;
+        // let usernameExists = false;
 
-        // async function checkEmailExists() {
-        //     let email = document.getElementById("email").value;
-        //     if (email) {
-        //         try {
-        //             let response = await fetch(`/users/check/email?email=${email}`);
-        //             let data = await response.json();
-        //             emailExists = data.exists;
-        //             document.getElementById("emailError").innerText = emailExists ? "Email already in use!" : "";
-        //         } catch (error) {
-        //             console.error("Error checking email:", error);
-        //         }
-        //     }
-        // }
-
-        async function checkUsernameExists() {
-            let username = document.getElementById("username").value;
-            if (username) {
+        async function checkEmailExists() {
+            let email = document.getElementById("email").value;
+            if (email) {
                 try {
-                    let response = await fetch(`/users/check/username?username=${username}`);
+                    let response = await fetch(`/users/check/email?email=${email}`);
                     let data = await response.json();
-                    usernameExists = data.exists;
-                    document.getElementById("usernameError").innerText = usernameExists ? "Username already taken!" : "";
+                    emailExists = data.exists;
+                    document.getElementById("emailError").innerText = emailExists ? "Email already in use!" : "";
                 } catch (error) {
-                    console.error("Error checking username:", error);
+                    console.error("Error checking email:", error);
                 }
             }
         }
 
+        // async function checkUsernameExists() {
+        //     let username = document.getElementById("username").value;
+        //     if (username) {
+        //         try {
+        //             let response = await fetch(`/users/check/username?username=${username}`);
+        //             let data = await response.json();
+        //             usernameExists = data.exists;
+        //             document.getElementById("usernameError").innerText = usernameExists ? "Username already taken!" : "";
+        //         } catch (error) {
+        //             console.error("Error checking username:", error);
+        //         }
+        //     }
+        // }
+
         $(document).ready(function () {
             $("#registerForm").submit(async function (event) {
+                $("#username").val($("#email").val());
                 event.preventDefault();
 
-                // await checkEmailExists();
-                await checkUsernameExists();
+                await checkEmailExists();
+                // await checkUsernameExists();
 
                 // if (emailExists || usernameExists) {
-                //     if (emailExists) {
-                //         alert("Email already in use!");
-                //     }
-                    if (usernameExists) {
-                        alert("Username already taken!");
+                    if (emailExists) {
+                        alert("Email already in use!");
                         return;
                     }
+                //     if (usernameExists) {
+                //         alert("Username already taken!");
+                //     }
                 //     return;
                 // }
 
@@ -220,6 +173,5 @@
         });
 
     </script>
-    <script th:src="@{assets/js/locationInVietnam.js}"></script>
 </body>
 </html>
