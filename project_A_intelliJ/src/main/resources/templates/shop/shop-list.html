@@ -141,7 +141,7 @@
                                                     <span class="prev-price" th:text="'$' + ${product.price}"></span>
                                                     <span class="price" th:text="'$' + ${product.price}"></span>
                                                 </p>
-                                                <p th:utext="${product.description}"></p>
+                                                <p th:utext="${product.summary}"></p>
                                                 <div class="pro-cart">
                                                     <a  title="Add To Cart" href="javascript:void(0);" class="add-to-cart-btn" th:data-id="${product.id}">
                                                         <i class="icon-cart"></i>

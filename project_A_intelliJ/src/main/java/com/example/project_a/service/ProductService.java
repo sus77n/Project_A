@@ -60,4 +60,8 @@ public class ProductService {
     public List<Product> getProductsByCategoryIds(List<Long> categoryIds) {
         return productRepository.findByCategoryIdIn(categoryIds);
     }
+
+    public List<Product> searchProducts(String query) {
+        return productRepository.searchActiveProductsInActiveCategories(query);
+    }
 }

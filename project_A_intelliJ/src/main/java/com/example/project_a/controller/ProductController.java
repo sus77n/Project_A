@@ -180,18 +180,26 @@ public class ProductController {
 
     @GetMapping("/shop")
     public String showProductPage(
+            @RequestParam(value = "query", required = false) String query,
             @RequestParam(value = "categories", required = false) List<Long> categoryIds,
             Model model) {
 
 //      List<Category> categories = categoryService.getAllCategories();
         List<Category>categories= categoryService.getActiveCategories();
-        List<Product> products;
+//        List<Product> products;
+        List<Product> products = service.getActiveProductsInActiveCategories();
+
+
+        if (query != null && !query.isEmpty()) {
+            products = products.stream()
+                    .filter(p -> p.getName().toLowerCase().contains(query.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
 
         if (categoryIds != null && !categoryIds.isEmpty()) {
-            products = service.getProductsByCategoryIds(categoryIds);
-        } else {
-//            products = service.getAllProducts();
-            products = service.getActiveProductsInActiveCategories();
+            products = products.stream()
+                    .filter(p -> categoryIds.contains(p.getCategory().getId()))
+                    .collect(Collectors.toList());
         }
 
         model.addAttribute("categories", categories);
@@ -319,5 +327,18 @@ public class ProductController {
         model.addAttribute("product", product);
         model.addAttribute("thisCateProducts", thisCateProducts);
         return "shop/product-details";
+    }
+
+    @GetMapping("/search")
+    public String searchProducts(
+            @RequestParam("query") String query,
+            Model model) {
+
+        List<Product> products = service.searchProducts(query);
+
+        model.addAttribute("products", products);
+        model.addAttribute("productsCount", products.size());
+
+        return "shop/shop-list :: productList"; // Return only the fragment
     }
 }

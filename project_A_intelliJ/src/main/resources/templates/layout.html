@@ -103,11 +103,9 @@
                                     <!-- Search Area Start -->
                                     <ul class="ht-dropdown-search ht-dropdown-mbl search-box-view">
                                         <li>
-                                            <form action="#" class="position-relative">
-                                                <input class="email" placeholder="Search our catalog" name="email"
-                                                       type="text">
-                                                <button type="submit" class="submit"><i class="icon-search"
-                                                                                        aria-hidden="true"></i></button>
+                                            <form th:action="@{/shop}" method="get" class="position-relative">
+                                                <input name="query" placeholder="Search our gear" type="text" required>
+                                                <button type="submit" class="submit"><i class="icon-search" aria-hidden="true"></i></button>
                                             </form>
                                         </li>
                                     </ul>

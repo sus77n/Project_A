@@ -5,6 +5,7 @@ import com.example.project_a.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -79,7 +80,8 @@ public class SecurityConfig {
                                 "/blog", "/contact","/", "/login", "/product-details", "/register",
                                 "/users/save", "/filter-products",
                                 "/shop/register", "/users/check/email", "/users/check/username", "/users/check/**",
-                                "/media/**","/forgot-password","/auth/forgot-password","/reset-password", "/auth/reset-password")
+                                "/media/**","/forgot-password","/auth/forgot-password","/reset-password", "/auth/reset-password",
+                                "/search")
                         .permitAll()
 
                         .requestMatchers("/admin/**").hasRole("ADMIN") // Only "/admin/**" is for admins
