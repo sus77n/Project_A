@@ -197,9 +197,7 @@ public class ProductController {
         }
 
         if (categoryIds != null && !categoryIds.isEmpty()) {
-            products = products.stream()
-                    .filter(p -> categoryIds.contains(p.getCategory().getId()))
-                    .collect(Collectors.toList());
+            products = service.getProductsByCategoryIds(categoryIds);
         }
 
         model.addAttribute("categories", categories);
