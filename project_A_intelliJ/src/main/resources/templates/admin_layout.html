@@ -254,7 +254,7 @@
 
         document.addEventListener("DOMContentLoaded", function () {
             const thumbnailDropzone = new Dropzone("#thumbnail-dropzone", {
-                url: "/media/upload",
+                url: "/admin/media/upload",
                 type: "POST",
                 maxFiles: 1,
                 acceptedFiles: "image/*",
@@ -292,7 +292,7 @@
 
                     this.on("removedfile", function (file) {
                         if (file.uploadedFileName) {
-                            fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
+                            fetch(`/admin/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
                                 method: "DELETE"
                             }).then(response => {
                                 if (response.ok) {
@@ -342,7 +342,7 @@
         let alertShown = false;
 
         const productSliderDropzone = new Dropzone("#product-slider-dropzone", {
-            url: "/media/upload",
+            url: "/admin/media/upload",
             method: "POST",
             acceptedFiles: "image/*",
             addRemoveLinks: true,
@@ -404,7 +404,7 @@
 
                 this.on("removedfile", function (file) {
                     if (file.uploadedFileName) {
-                        fetch(`/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
+                        fetch(`/admin/media/delete?fileName=${encodeURIComponent(file.uploadedFileName)}`, {
                             method: "DELETE"
                         }).then(response => {
                             if (response.ok) {

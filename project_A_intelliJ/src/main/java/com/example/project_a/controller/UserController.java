@@ -20,13 +20,6 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @GetMapping("/user")
-    public String user(Model model) {
-        List<User> users = service.getAllUsers();
-        model.addAttribute("users", users);
-        return "user";
-    }
-
     @GetMapping("/register")
     public String showRegister(Model model) {
         model.addAttribute("user", new User());
@@ -55,7 +48,7 @@ public class UserController {
         return "admin/customer-list";
     }
 
-    @GetMapping("/users/delete/{id}")
+    @GetMapping("/admin/users/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
         try {
             service.deleteUserById(id);

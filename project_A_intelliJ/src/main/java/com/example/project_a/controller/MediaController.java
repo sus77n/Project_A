@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/media")
+@RequestMapping("/admin/media")
 public class MediaController {
     @Autowired
     private MediaService mediaService;
