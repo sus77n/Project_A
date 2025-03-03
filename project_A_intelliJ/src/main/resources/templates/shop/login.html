@@ -71,19 +71,5 @@
 
     <th:block th:replace="layout :: scripts"></th:block>
 
-
-    <!-- Show password -->
-    <script>
-        document.getElementById("togglePassword").addEventListener("click", function () {
-            var passwordField = document.getElementById("inputPassword");
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                this.textContent = "Hide"; // Change button text
-            } else {
-                passwordField.type = "password";
-                this.textContent = "Show";
-            }
-        });
-    </script>
 </body>
 </html>

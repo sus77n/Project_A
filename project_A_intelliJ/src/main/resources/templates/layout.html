@@ -397,6 +397,73 @@
     <script th:src="@{assets/js/main.js}"></script>
 <!--    <script th:src="@{assets/js/locationInVietnam.js}"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+    <script th:inline="javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const message = /*[[${message}]]*/ '';
+            if (message) {
+                Toastify({
+                    text: message,
+                    duration: 3000, // 3 seconds
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "center", // `left`, `center` or `right`
+                    backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                }).showToast();
+            }
+
+            const error = /*[[${error}]]*/ '';
+            if (error) {
+                Toastify({
+                    text: error,
+                    duration: 3000, // 3 seconds
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "center", // `left`, `center` or `right`
+                    backgroundColor: "linear-gradient(to right, #ff4d4d, #ff6666)",
+                }).showToast();
+            }
+        });
+    </script>
+
+    <!-- Show password -->
+
+    <script>
+        // Select all show buttons
+        const showBtns = document.querySelectorAll('.show-btn');
+
+        showBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Find the input field next to the clicked button
+                const passwordInput = this.previousElementSibling;
+
+                // Toggle between password and text type
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                    this.textContent = "Hide";
+                } else {
+                    passwordInput.type = "password";
+                    this.textContent = "Show";
+                }
+            });
+        });
+
+        // Confirm Password Validation Before Submit
+        document.querySelector('#check-password').addEventListener('click', function (e) {
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('c-password').value;
+
+            if (newPassword !== confirmPassword) {
+                e.preventDefault(); // Stop form from submitting
+                alert("Confirm Password does not match!");
+            } else if (newPassword === "") {
+                e.preventDefault();
+                alert("New Password cannot be empty!");
+            }
+        });
+
+    </script>
+
 </th:block>
 
 </body>

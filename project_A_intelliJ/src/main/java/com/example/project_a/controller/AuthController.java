@@ -79,7 +79,7 @@ public class AuthController {
 
         User user = userOpt.get();
         user.setPassword(new BCryptPasswordEncoder().encode(password));
-        user.setresetToken(null);
+        user.setResetToken(null);
         userRepository.save(user);
 
         redirectAttributes.addFlashAttribute("successMessage", "Your password has been reset successfully. Please log in.");

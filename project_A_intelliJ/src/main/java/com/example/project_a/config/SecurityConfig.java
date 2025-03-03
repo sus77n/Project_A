@@ -28,14 +28,14 @@ public class SecurityConfig {
     @Bean
     public CommandLineRunner createAdmin(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         return args -> {
-            Optional<User> existingAdmin = userRepository.findByUsername("admin");
+            Optional<User> existingAdmin = userRepository.findByUsername("admin@gmail.com");
 
             if (existingAdmin.isEmpty()) {
                 User admin = new User();
-                admin.setUsername("admin");
+                admin.setUsername("admin@gmail.com");
                 admin.setEmail("admin@gmail.com");
                 admin.setPassword(passwordEncoder.encode("123")); // Set hashed password
-                admin.setRole("ADMIN"); // Ensure this matches Spring Security role
+                admin.setRole("Admin"); // Ensure this matches Spring Security role
                 admin.setStatus("Active");
 
                 userRepository.save(admin);
