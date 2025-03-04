@@ -4,6 +4,7 @@ import com.example.project_a.model.*;
 import com.example.project_a.service.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +27,8 @@ public class CheckOutController {
 
 
     @PostMapping("/checkout")
-    public String showCheckout(Model model,  HttpSession session) {
-        User user = userService.findUserById(1);
+    public String showCheckout(Model model,  HttpSession session, @AuthenticationPrincipal User user) {
+        User CurrentUser = userService.findUserById(user.getId());
         Order order = new Order();
         order.setUser(user);
         order.setAddress(user.getAddress());
@@ -47,11 +48,11 @@ public class CheckOutController {
     }
 
     @PostMapping("/order/save")
-    public String saveOrder(Order order, RedirectAttributes ra, HttpSession session) {
+    public String saveOrder(Order order, RedirectAttributes ra, @AuthenticationPrincipal User user) {
         service.save(order);
         int userId = order.getUser().getId();
-//        List<Cart> carts = cartService.getCartsByUserId(userId);
-        List<Cart> carts = (List<Cart>) session.getAttribute("cartList");
+        List<Cart> carts = cartService.getCartsByUserId(userId);
+//        List<Cart> carts = (List<Cart>) session.getAttribute("cartList");
         for (Cart cart : carts) {
             OrderDetail orderDetail = new OrderDetail();
             orderDetail.setProduct(cart.getProduct());
@@ -61,6 +62,6 @@ public class CheckOutController {
         }
 //        cartService.clear(userId);
         ra.addFlashAttribute("message", "The Order has been saved successfully.");
-        return "redirect:/account";
+        return "redirect:/account#orders";
     }
 }

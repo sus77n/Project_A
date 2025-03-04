@@ -60,8 +60,8 @@
                                     </div>
 
                                     <!-- Total Price -->
-                                    <div class="col-lg-2 ">
-                                        <p th:text="'$' + ${cart.getTotal()}"></p>
+                                    <div class="col-lg-2">
+                                        <p class="total-price" th:text="'$' + ${cart.getTotal()}"></p>
                                     </div>
 
 
@@ -165,7 +165,7 @@
                 data: {id: cartId, quantity: newQuantity},
                 success: function (response) {
                     // Update subtotal for this item
-                    $(`tr[data-cart-id='${cartId}'] .product-subtotal span`).text('£' + response.subtotal);
+                    $(`.cart-card[data-cart-id='${cartId}']`).find(".total-price").text('$' + response.subtotal);
 
                     // Update overall total
                     $(".cart_totals .amount").text('$' + response.total);
