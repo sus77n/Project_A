@@ -86,46 +86,122 @@
 
                             <div id="orders" class="tab-pane fade">
                                 <h3>Orders</h3>
-                                <div th:each="order : ${orders}" class="order-summary border p-3">
-                                    <div class="shop-header d-flex justify-content-between align-items-center">
+
+                            <!-- 1 order start -->
+<!--                                <div th:each="order : ${orders}" class="order-summary p-3">-->
+                                <div class="order-summary p-3">
+
+                                    <div class="order-header d-flex justify-content-between align-items-center">
                                         <div>
-                                            <button class="btn btn-sm btn-outline-danger">Yêu thích</button>
-                                            <strong th:text="${order.ID}"></strong>
+                                            <p class="order-id">Order ID: #101</p>
+                                            <p class="order-date">January 8, 2025 at 10:00pm </p>
                                         </div>
-                                        <div>
-                                            <button class="btn btn-sm btn-danger">Chat</button>
-                                            <button class="btn btn-sm btn-outline-secondary">Xem Shop</button>
+                                        <div class="order-status">
+                                            <span class="badge bg-light text-dark  px-2 py-1 fs-13">Unpaid</span>
                                         </div>
                                     </div>
 
-                                    <!-- Order Details List -->
-                                    <div class="order-items mt-3">
-                                        <div th:each="item : ${order.details}"
-                                             class="order-item d-flex border-bottom pb-2 mb-2">
-                                            <img th:src="@{/images/{img}(img=${item.product.thumbnail.filePath})}"
-                                                 alt="Product Image" class="img-thumbnail" width="80">
-                                            <div class="ms-3">
-                                                <p class="mb-1" th:text="${item.product.name}"></p>
-                                                <p class="text-muted mb-1"
-                                                   th:text="'Phân loại hàng: ' + ${item.product.category}"></p>
-                                                <p class="mb-0" th:text="'x' + ${item.quantity}"></p>
-                                            </div>
-                                            <div class="ms-auto text-danger"
-                                                 th:text="'₫' + ${item.product.price}"></div>
+                                    <!-- Order Details start here -->
+                                    <div class="order-items mt-3 row align-items-center">
+                                        <div class="col-lg-2 order-thumbnail">
+<!--                                            <a th:href="@{/product-details(productId=${cart.product.id})}" >-->
+                                            <a>
+<!--                                                <img th:src="${cart.product.thumbnail.filePath}" th:alt="${cart.product.getThumbnail().getAlt()}">-->
+                                                <img src="../../../../../../uploads/bp-1-1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-9">
+<!--                                            <a  th:href="@{/product-details(productId=${cart.product.id})}" >-->
+                                            <a>
+                                                <h6>Cooking Pannn nnn nnn nnn</h6>
+                                            </a>
+                                            <p>Price: $100</p>
+                                            <p>Quantity: 5</p>
+                                        </div>
+                                        <div class="col-lg-1 text-right">
+                                            <p class="total-price">$500</p>
                                         </div>
                                     </div>
+                                    <!-- Order Details end -->
+
+                                    <!-- Order Details start here -->
+                                    <div class="order-items mt-3 row align-items-center">
+                                        <div class="col-lg-2 order-thumbnail">
+                                            <!--                                            <a th:href="@{/product-details(productId=${cart.product.id})}" >-->
+                                            <a>
+                                                <!--                                                <img th:src="${cart.product.thumbnail.filePath}" th:alt="${cart.product.getThumbnail().getAlt()}">-->
+                                                <img src="../../../../../../uploads/bp-2-1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <!--                                            <a  th:href="@{/product-details(productId=${cart.product.id})}" >-->
+                                            <a>
+                                                <h6>Cooking Pannn nnn nnn nnn</h6>
+                                            </a>
+                                            <p>Price: $100</p>
+                                            <p>Quantity: 5</p>
+                                        </div>
+                                        <div class="col-lg-1 text-right">
+                                            <p class="total-price">$500</p>
+                                        </div>
+                                    </div>
+                                    <!-- Order Details end -->
 
                                     <div class="order-footer mt-3">
-                                        <p class="text-end">Thành tiền: <strong class="text-danger"
-                                                                                th:text="'₫' + ${order.orderDate}"></strong>
-                                        </p>
                                         <div class="d-flex justify-content-end">
-                                            <button class="btn btn-danger me-2">Mua Lại</button>
-                                            <button class="btn btn-outline-secondary">Yêu Cầu Trả Hàng/Hoàn Tiền
-                                            </button>
+                                            <p class="order-total">Order Total:  <span class="needColor">$1000</span></p>
+                                        </div>
+                                        <div class="d-flex justify-content-end">
+                                            <button class="button-contact">Contact</button>
                                         </div>
                                     </div>
                                 </div>
+<!--                                1 order end -->
+
+                                <!-- 1 order start -->
+                                <div class="order-summary p-3">
+                                    <div class="order-header d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="order-id">Order ID: #102</p>
+                                            <p class="order-date">January 8, 2025 at 10:01pm </p>
+                                        </div>
+                                        <div class="order-status">
+                                            <span class="badge bg-success text-light  px-2 py-1 fs-13">Paid</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Order Details start here -->
+                                    <div class="order-items mt-3 row align-items-center">
+                                        <div class="col-lg-2 order-thumbnail">
+                                            <!--                                            <a th:href="@{/product-details(productId=${cart.product.id})}" >-->
+                                            <a>
+                                                <!--                                                <img th:src="${cart.product.thumbnail.filePath}" th:alt="${cart.product.getThumbnail().getAlt()}">-->
+                                                <img src="../../../../../../uploads/fur-1-1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <!--                                            <a  th:href="@{/product-details(productId=${cart.product.id})}" >-->
+                                            <a>
+                                                <h6>Cooking Pannn nnn nnn nnn</h6>
+                                            </a>
+                                            <p>Price: $100</p>
+                                            <p>Quantity: 5</p>
+                                        </div>
+                                        <div class="col-lg-1 text-right">
+                                            <p class="total-price">$500</p>
+                                        </div>
+                                    </div>
+                                    <!-- Order Details end -->
+
+
+                                    <div class="order-footer mt-3">
+                                        <div class="d-flex justify-content-end">
+                                            <button class="button-contact">Contact</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--                                1 order end -->
+
 
                             </div>
 
