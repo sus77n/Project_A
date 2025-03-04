@@ -1,11 +1,8 @@
 package com.example.project_a.controller;
 
-import com.example.project_a.model.User;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -81,7 +78,7 @@ public class MainController {
     @GetMapping("/admin/customer/details")
     public String ShowPageAdminCustomerDetail(Model model) {
         model.addAttribute("pageTitle", "Customer Details" );
-        return "admin/customer-detail";
+        return "user-detail";
     }
 
     @GetMapping("/error")
