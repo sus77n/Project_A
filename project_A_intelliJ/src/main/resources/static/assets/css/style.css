@@ -471,7 +471,7 @@ ul {
     left: 0;
     opacity: 0;
     position: absolute;
-    top: 115%;
+    top: 110%;
     -webkiit-transform: scaleY(0);
     -webkit-transform: scaleY(0);
     /*transform: translateX(-40%);*/
@@ -3515,6 +3515,16 @@ ul {
     background: #9db5d9;
 }
 
+.add-to-cart-btn{
+    font-size: 30px;
+    font-weight: lighter;
+    color:black;
+}
+
+.add-to-cart-btn:hover{
+    color: #9db5d9;
+}
+
 /*----------------------------------------*/
 /* 13. Login CSS
 /*----------------------------------------*/
@@ -3880,6 +3890,7 @@ ul {
     color: #9db5d9;
     cursor: pointer;
 }
+
 
 /*----------------------------------------*/
 /* 18. Checkout CSS

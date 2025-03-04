@@ -1,11 +1,28 @@
 package com.example.project_a.controller;
 
+import com.example.project_a.model.Order;
+import com.example.project_a.model.Product;
+import com.example.project_a.model.User;
+import com.example.project_a.service.OrderService;
+import com.example.project_a.service.ProductService;
+import com.example.project_a.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
 public class MainController {
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private UserService UserService;
 
     @GetMapping("/blog")
     public String showBlogPage() {return "shop/blog";}
@@ -54,7 +71,13 @@ public class MainController {
 
     @GetMapping("/admin")
     public String ShowPageAdmin(Model model) {
+        List<Order> orders = orderService.getAllOrders();
+        List<Product> products = productService.getAllProducts();
+        List<User> users = UserService.getAllUsers();
         model.addAttribute("pageTitle", "Welcome" );
+        model.addAttribute("listOrder", orders);
+        model.addAttribute("listProduct", products);
+        model.addAttribute("listUser", users);
         return "admin/index";}
 
     @GetMapping("/admin/home")
