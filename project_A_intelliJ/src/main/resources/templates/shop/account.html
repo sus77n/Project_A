@@ -245,6 +245,26 @@
 <th:block th:replace="layout :: scripts"></th:block>
 <script th:src="@{assets/js/locationInVietnam.js}"></script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let hash = window.location.hash;
+        if (hash) {
+            // Remove active classes from all tabs
+            document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active"));
+            document.querySelectorAll(".tab-pane").forEach(pane => pane.classList.remove("show", "active"));
+
+            // Activate the clicked tab
+            let targetTab = document.querySelector(`.nav-link[href="${hash}"]`);
+            let targetPane = document.querySelector(hash);
+
+            if (targetTab && targetPane) {
+                targetTab.classList.add("active");
+                targetPane.classList.add("show", "active");
+            }
+        }
+    });
+</script>
+
 
 </body>
 </html>
