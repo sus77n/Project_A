@@ -1,7 +1,6 @@
 package com.example.project_a.controller;
 
 import com.example.project_a.model.Order;
-import com.example.project_a.model.OrderDetail;
 import com.example.project_a.model.User;
 import com.example.project_a.service.OrderService;
 import com.example.project_a.service.UserService;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -51,25 +49,21 @@ public class UserController {
     }
 
 
-    @GetMapping("/admin/customer/list")
+    @GetMapping("/admin/user/list")
     public String showCustomer(Model model) {
         List<User> users = service.getAllUsers();
         model.addAttribute("users", users);
-        model.addAttribute("pageTitle", "Customer List");
-        return "admin/customer-list";
+        model.addAttribute("pageTitle", "User List");
+        return "admin/user-list";
     }
 
-    @GetMapping("/admin/users/delete/{id}")
-    public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
-        try {
-            service.deleteUserById(id);
-            ra.addFlashAttribute("message", "The user has been deleted successfully.");
-        } catch (Exception e) {
-            ra.addFlashAttribute("error", "An error occurred while trying to delete the user.");
-        }
-        return "redirect:/admin/customer/list";
+    @GetMapping("/admin/user/detail{id}")
+    public String deleteUser(@PathVariable("id") Integer id, Model model) {
+        User user = service.findUserById(id);
+        model.addAttribute("pageTitle", "User List");
+        model.addAttribute("user", user);
+        return "admin/user-detail";
     }
-
 
     @GetMapping("/users/check/email")
     @ResponseBody
@@ -174,5 +168,14 @@ public class UserController {
         model.addAttribute("orders", orders);
 
         return "shop/account";
+    }
+
+    @PostMapping("/admin/user/status/change")
+    public String changeStatus(@RequestParam String userId, RedirectAttributes ra) {
+        User user = service.findUserById(Integer.parseInt(userId));
+        user.setStatus(user.getStatus().equals("Active") ? "Inactive" : "Active");
+        service.save(user);
+        ra.addFlashAttribute("message", "The User has been changed successfully.");
+        return "redirect:/admin/user/list";
     }
 }

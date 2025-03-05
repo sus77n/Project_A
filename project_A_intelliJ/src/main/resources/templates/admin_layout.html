@@ -136,7 +136,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/admin/customer/list}" >
+                <a class="nav-link" th:href="@{/admin/user/list}" >
                                  <span class="nav-icon">
                                       <iconify-icon icon="solar:users-group-two-rounded-bold-duotone"></iconify-icon>
                                  </span>
@@ -146,10 +146,10 @@
                     <ul class="nav sub-navbar-nav">
 
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" th:href="@{/admin/customer/list}">List</a>
+                            <a class="sub-nav-link" th:href="@{/admin/user/list}">List</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" th:href="@{/admin/customer/details}">Details</a>
+                            <a class="sub-nav-link" th:href="@{/admin/user/details}">Details</a>
                         </li>
                     </ul>
                 </div>
@@ -325,7 +325,7 @@
                         if (imgElement) {
                             imgElement.style.width = "100%";
                             imgElement.style.height = "100%";
-                            imgElement.style.objectFit = "cover";
+                            imgElement.style.objectFit = "contain";
                             imgElement.src = fileUrl;
                         }
                     });
@@ -455,7 +455,7 @@
                     if (imgElement) {
                         imgElement.style.width = "100%";
                         imgElement.style.height = "100%";
-                        imgElement.style.objectFit = "cover";
+                        imgElement.style.objectFit = "contain";
                         imgElement.src = fileUrl;
                     }
                 });

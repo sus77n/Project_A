@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="zxx" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 >
 
 <head th:fragment="page_head">
@@ -69,19 +70,19 @@
                                         <li class="active"><a th:href="@{/home}">Home</a></li>
                                         <li><a th:href="@{/shop}">Categories</a>
                                             <!--  Mega-Menu Start -->
-                                                <ul class="ht-dropdown megamenu-three d-flex flex-wrap">
-                                                    <!-- Single Column Start -->
-                                                    <li th:each="category : ${categories}">
-                                                        <ul>
-                                                            <li class="menu-title"
-                                                                th:text="${category.categoryName}"
-                                                                th:data-id="${category.id}">
-                                                            </li>
-                                                        </ul>
-                                                    </li>
+                                            <ul class="ht-dropdown megamenu-three d-flex flex-wrap">
+                                                <!-- Single Column Start -->
+                                                <li th:each="category : ${categories}">
+                                                    <ul>
+                                                        <li class="menu-title"
+                                                            th:text="${category.categoryName}"
+                                                            th:data-id="${category.id}">
+                                                        </li>
+                                                    </ul>
+                                                </li>
 
-                                                    <!-- Single Column End -->
-                                                </ul>
+                                                <!-- Single Column End -->
+                                            </ul>
                                             <!-- Mega-Menu End -->
                                         </li>
                                         <li><a th:href="@{/blog}">Blog</a></li>
@@ -105,15 +106,18 @@
                                         <li>
                                             <form th:action="@{/shop}" method="get" class="position-relative">
                                                 <input name="query" placeholder="Search our gear" type="text" required>
-                                                <button type="submit" class="submit"><i class="icon-search" aria-hidden="true"></i></button>
+                                                <button type="submit" class="submit"><i class="icon-search"
+                                                                                        aria-hidden="true"></i></button>
                                             </form>
                                         </li>
                                     </ul>
                                     <!-- Search Area End -->
                                 </li>
                                 <li class="currency-drop"><a href="#">
-                                    <i class="fa fa-user-o" aria-hidden="true" id="icon-user" sec:authorize="isAuthenticated()"></i>
-                                    <i class="fa fa-sign-in" aria-hidden="true" id="icon-user" sec:authorize="!isAuthenticated()"></i></a>
+                                    <i class="fa fa-user-o" aria-hidden="true" id="icon-user"
+                                       sec:authorize="isAuthenticated()"></i>
+                                    <i class="fa fa-sign-in" aria-hidden="true" id="icon-user"
+                                       sec:authorize="!isAuthenticated()"></i></a>
 
                                     <!-- Currency & Language Selection Start -->
                                     <ul class="ht-dropdown-currency ht-dropdown-mbl cart-box-width currency-selector">
@@ -142,7 +146,8 @@
                                     <!-- Currency & Language Selection End -->
                                 </li>
                                 <li class="cart-drop"><a href="#"><i
-                                        class="header-cart icon-cart"></i><span id="toi-muon-count">0</span> <!-- Default value --></a>
+                                        class="header-cart icon-cart"></i><span id="toi-muon-count">0</span>
+                                    <!-- Default value --></a>
                                     <!-- Cart Box Start -->
                                     <ul class="ht-dropdown-cart ht-dropdown-mbl cart-box-width">
                                         <!-- Single Cart Box Start -->
@@ -153,7 +158,8 @@
                                                 <span class="pro-quantity" th:text="${cartItem.quantity}"></span>
                                             </div>
                                             <div class="cart-content">
-                                                <h6><a th:href="@{/product-details}"><span th:text="${cartItem.product.name}"></span></a></h6>
+                                                <h6><a th:href="@{/product-details}"><span
+                                                        th:text="${cartItem.product.name}"></span></a></h6>
                                                 <span class="cart-price" th:text="${cartItem.getTotal()}"></span>
                                             </div>
                                             <a class="del-icon" href="#"><i class="ion-close"></i></a>
@@ -213,7 +219,8 @@
             <div class="single-aboss-product mb-3">
                 <div class="pro-img">
                     <a th:href="@{/product-details}">
-                        <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : '/assets/img/default-image.jpg'}" alt="Product Image">
+                        <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : '/assets/img/default-image.jpg'}"
+                             alt="Product Image">
                     </a>
                     <div class="pro-actions">
                         <a data-toggle="modal" data-target="#product-window" class="quick-view" href="#">
@@ -241,7 +248,8 @@
         <div th:if="${viewType == 'list'}" class="single-aboss-product">
             <div class="pro-img">
                 <a th:href="@{/product-details}">
-                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : '/assets/img/default-image.jpg'}" alt="Product Image">
+                    <img th:src="${product.thumbnail != null ? product.thumbnail.imageURL : '/assets/img/default-image.jpg'}"
+                         alt="Product Image">
                 </a>
                 <div class="pro-actions">
                     <a data-toggle="modal" data-target="#product-window" class="quick-view" href="#">
@@ -395,7 +403,7 @@
     <script th:src="@{assets/js/plugins.js}"></script>
     <!-- Main activation js -->
     <script th:src="@{assets/js/main.js}"></script>
-<!--    <script th:src="@{assets/js/locationInVietnam.js}"></script>-->
+    <!--    <script th:src="@{assets/js/locationInVietnam.js}"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
     <script th:inline="javascript">
@@ -447,21 +455,6 @@
                 }
             });
         });
-
-        // Confirm Password Validation Before Submit
-        document.querySelector('#check-password').addEventListener('click', function (e) {
-            const newPassword = document.getElementById('new-password').value;
-            const confirmPassword = document.getElementById('c-password').value;
-
-            if (newPassword !== confirmPassword) {
-                e.preventDefault(); // Stop form from submitting
-                alert("Confirm Password does not match!");
-            } else if (newPassword === "") {
-                e.preventDefault();
-                alert("New Password cannot be empty!");
-            }
-        });
-
     </script>
 
 </th:block>
