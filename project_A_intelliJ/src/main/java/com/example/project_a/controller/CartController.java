@@ -9,6 +9,7 @@ import com.example.project_a.service.ProductService;
 import com.example.project_a.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -67,7 +68,11 @@ public class CartController {
     @ResponseBody
     public Map<String, Object> addToCart(@RequestBody Map<String, Integer> request, HttpSession session) {
         Integer productId = request.get("id");
-
+        Integer quantity = request.get("quantity");
+        System.out.println(quantity);
+        if (quantity == null) {
+            quantity = 1;
+        }
         if (productId == null) {
             throw new IllegalArgumentException("Product ID is required");
         }
@@ -88,11 +93,11 @@ public class CartController {
         }
 
         if (existingCartItem != null) {
-            existingCartItem.setQuantity(existingCartItem.getQuantity() + 1);
+            existingCartItem.setQuantity(existingCartItem.getQuantity() + quantity);
         } else {
             Cart newCartItem = new Cart();
             newCartItem.setProduct(productService.findProductById(productId));
-            newCartItem.setQuantity(1);
+            newCartItem.setQuantity(quantity);
             cartList.add(newCartItem);
         }
 
@@ -172,6 +177,37 @@ public class CartController {
         response.put("message", "Your Cart updated successfully!");
         return response;
     }
+
+    @GetMapping("/cart/data")
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> getCartData(HttpSession session) {
+        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+
+        //Check if cartList is null before using it
+        if (cartList == null) {
+            cartList = new ArrayList<>();
+        }
+
+        // Safe iteration, no more NullPointerException
+        for (Cart cart : cartList) {
+            System.out.println(cart.getProduct().getName());
+        }
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("cartSize", cartList.size());
+        response.put("cartItems", cartList.stream().map(cartItem -> {
+            Map<String, Object> itemMap = new HashMap<>();
+            itemMap.put("productName", cartItem.getProduct().getName());
+            itemMap.put("quantity", cartItem.getQuantity());
+            itemMap.put("price", cartItem.getQuantity() * cartItem.getProduct().getPrice());
+            itemMap.put("thumbNail", cartItem.getProduct().getThumbnail().getFilePath());
+            return itemMap;
+        }).collect(Collectors.toList()));
+
+        return ResponseEntity.ok(response);
+    }
+
+
 
 
 
