@@ -499,7 +499,24 @@
         }).showToast();
     }
     $(document).ready(function () {
-
+        $(document).ready(function () {
+            // Fetch cart data when page loads
+            function fetchCartData() {
+                $.ajax({
+                    url: "/cart/data",
+                    type: "GET",
+                    success: function (response) {
+                        console.log("success load page");
+                        updateCartCount(response.cartSize);
+                        updateCartUI(response.cartItems);
+                    },
+                    error: function () {
+                        console.log("Error fetching cart data");
+                    }
+                });
+            }
+            fetchCartData();
+        });
         $(document).on("click", ".add-to-cart-btn", function () {
             console.log("addCartFunc")
             let productId = $(this).attr("data-id"); // Ensure correct ID retrieval

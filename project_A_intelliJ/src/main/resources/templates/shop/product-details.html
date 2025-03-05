@@ -418,6 +418,24 @@
     }
 
     $(document).ready(function () {
+        $(document).ready(function () {
+            // Fetch cart data when page loads
+            function fetchCartData() {
+                $.ajax({
+                    url: "/cart/data",
+                    type: "GET",
+                    success: function (response) {
+                        console.log("success load page");
+                        updateCartCount(response.cartSize);
+                        updateCartUI(response.cartItems);
+                    },
+                    error: function () {
+                        console.log("Error fetching cart data");
+                    }
+                });
+            }
+            fetchCartData();
+        });
         // Ensure quantity does not exceed available stock
         $(document).on("input", ".quantity", function () {
             let stock = parseInt($(this).attr("data-stock"), 10) || 0;

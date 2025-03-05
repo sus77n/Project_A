@@ -10,6 +10,7 @@ import com.example.project_a.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,11 +30,14 @@ public class CartController {
     private ProductService productService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private CartService cartService;
 
 
     @GetMapping("/cart")
-    public String showCart(Model model, HttpSession session) {
-        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+    public String showCart(Model model, HttpSession session,@AuthenticationPrincipal User user) {
+//        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+        List<Cart> cartList = cartService.getCartsByUserId(user.getId());
         for (Cart cart : cartList) {
             System.out.println(cart.getProduct().getName());
         }
@@ -54,8 +58,8 @@ public class CartController {
     }
 
     @GetMapping("/cart/delete")
-    public String deleteCart(@RequestParam("id") String id , RedirectAttributes ra, HttpSession session) {
-        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+    public String deleteCart(@RequestParam("id") String id , RedirectAttributes ra, HttpSession session, @AuthenticationPrincipal User user) {
+        List<Cart> cartList = cartService.getCartsByUserId(user.getId());
         service.deleteCartById(Integer.parseInt(id));
         cartList.removeIf(item -> item.getId().equals(Integer.parseInt(id)));
 
@@ -66,7 +70,7 @@ public class CartController {
 
     @PostMapping("/cart/add")
     @ResponseBody
-    public Map<String, Object> addToCart(@RequestBody Map<String, Integer> request, HttpSession session) {
+    public Map<String, Object> addToCart(@RequestBody Map<String, Integer> request, HttpSession session, @AuthenticationPrincipal User user) {
         Integer productId = request.get("id");
         Integer quantity = request.get("quantity");
         System.out.println(quantity);
@@ -78,7 +82,7 @@ public class CartController {
         }
 
         // Retrieve the cart list from the session (or create a new one)
-        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+        List<Cart> cartList = cartService.getCartsByUserId(user.getId());
         if (cartList == null) {
             cartList = new ArrayList<>();
         }
@@ -98,7 +102,9 @@ public class CartController {
             Cart newCartItem = new Cart();
             newCartItem.setProduct(productService.findProductById(productId));
             newCartItem.setQuantity(quantity);
+            newCartItem.setUser(userService.findUserById(user.getId()));
             cartList.add(newCartItem);
+            service.save(newCartItem);
         }
 
         session.setAttribute("cartList", cartList);
@@ -180,8 +186,9 @@ public class CartController {
 
     @GetMapping("/cart/data")
     @ResponseBody
-    public ResponseEntity<Map<String, Object>> getCartData(HttpSession session) {
-        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+    public ResponseEntity<Map<String, Object>> getCartData(HttpSession session,  @AuthenticationPrincipal User user) {
+        List<Cart> cartList = cartService.getCartsByUserId(user.getId());
+
 
         //Check if cartList is null before using it
         if (cartList == null) {
@@ -189,9 +196,9 @@ public class CartController {
         }
 
         // Safe iteration, no more NullPointerException
-        for (Cart cart : cartList) {
-            System.out.println(cart.getProduct().getName());
-        }
+//        for (Cart cart : cartList) {
+//            service.save(cart);
+//        }
 
         Map<String, Object> response = new HashMap<>();
         response.put("cartSize", cartList.size());
@@ -206,13 +213,4 @@ public class CartController {
 
         return ResponseEntity.ok(response);
     }
-
-
-
-
-
-
-
-
-
 }

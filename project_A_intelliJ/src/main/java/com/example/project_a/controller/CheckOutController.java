@@ -24,6 +24,8 @@ public class CheckOutController {
     private UserService userService;
     @Autowired
     private OrderDetailService orderDetailService;
+    @Autowired
+    private ProductService productService;
 
 
     @PostMapping("/checkout")
@@ -33,7 +35,7 @@ public class CheckOutController {
         order.setUser(user);
         order.setAddress(user.getAddress());
         order.setPhoneNumber(user.getPhoneNumber());
-        order.setPaymentStatus("Unpaid");
+        order.setPaymentStatus("New");
 //        List<Cart> carts = cartService.getCartsByUserId(user.getId());
         List<Cart> carts = (List<Cart>) session.getAttribute("cartList");
         int total = 0;
@@ -54,11 +56,17 @@ public class CheckOutController {
         List<Cart> carts = cartService.getCartsByUserId(userId);
 //        List<Cart> carts = (List<Cart>) session.getAttribute("cartList");
         for (Cart cart : carts) {
+            int productId = cart.getProduct().getId();
+            int quantity = cart.getQuantity();
+            productService.updatStock(productId, quantity);
             OrderDetail orderDetail = new OrderDetail();
             orderDetail.setProduct(cart.getProduct());
             orderDetail.setQuantity(cart.getQuantity());
             order.addDetail(orderDetail);
             orderDetailService.save(orderDetail);
+        }
+        for (Cart cart: carts){
+            cartService.deleteCartById(cart.getId());
         }
 //        cartService.clear(userId);
         ra.addFlashAttribute("message", "The Order has been saved successfully.");
