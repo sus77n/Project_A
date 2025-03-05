@@ -161,63 +161,55 @@
         const shipBox = document.getElementById("ship-box");
         const shipBoxInfo = document.getElementById("ship-box-info");
 
-        // Original fields
-        const originalAddressField = document.querySelector("input[name='address']");
-        const originalNameField = document.getElementById("originalName");
-        const originalEmailField = document.getElementById("originalEmail");
-        const originalPhoneField = document.querySelector("input[name='phoneNumber']");
+        // Original address fields
+        const originalAddressField = document.querySelector("input[name='address']"); // Actual value (hidden)
+        const originalAddressDisplay = originalAddressField.cloneNode(true); // Clone for display only
+        originalAddressDisplay.removeAttribute("name"); // Remove name to prevent form submission
+        originalAddressDisplay.setAttribute("readonly", true); // Make it read-only
+        originalAddressField.style.display = "none"; // Hide actual input field
+        originalAddressField.parentNode.insertBefore(originalAddressDisplay, originalAddressField); // Insert clone before
 
         // New address fields
         const newAddressField = shipBoxInfo.querySelector("input[placeholder='Street address']");
-        const newNameField = shipBoxInfo.querySelector("input[placeholder='']");
-        const newEmailField = shipBoxInfo.querySelector("input[type='email']");
-        const newPhoneField = shipBoxInfo.querySelector("input[placeholder='Phone']");
+        const provinceSelect = document.getElementById("provinces");
+        const districtSelect = document.getElementById("districts");
+        const wardSelect = document.getElementById("wards");
 
-        // Store original values (Check if elements exist to avoid errors)
-        const userAddress = originalAddressField ? originalAddressField.value : "";
-        const userName = originalNameField ? originalNameField.textContent : "";
-        const userEmail = originalEmailField ? originalEmailField.textContent : "";
-        const userPhone = originalPhoneField ? originalPhoneField.value : "";
+        // Store original value
+        const userAddress = originalAddressField.value;
 
-        // Hide the shipping fields initially
+        // Hide shipping fields initially
         shipBoxInfo.style.display = "none";
 
         shipBox.addEventListener("change", function () {
             if (shipBox.checked) {
-                // Show shipping address fields
                 shipBoxInfo.style.display = "block";
-
-                syncInput(newAddressField, originalAddressField);
-                if (originalNameField) syncInput(newNameField, originalNameField, "textContent");
-                if (originalEmailField) syncInput(newEmailField, originalEmailField, "textContent");
-                syncInput(newPhoneField, originalPhoneField);
-
-                // Auto-focus on the first field
-                newAddressField.focus();
+                updateAddress();
             } else {
-                // Hide shipping address section and revert values
                 shipBoxInfo.style.display = "none";
-                revertValue(originalAddressField, userAddress);
-                if (originalNameField) revertValue(originalNameField, userName, "textContent");
-                if (originalEmailField) revertValue(originalEmailField, userEmail, "textContent");
-                revertValue(originalPhoneField, userPhone);
+                originalAddressField.value = userAddress; // Restore original value
             }
         });
 
-        function syncInput(newField, originalField, property = "value") {
-            if (newField && originalField) {
-                newField.addEventListener("input", function () {
-                    if (newField.value.trim() !== "") {
-                        originalField[property] = newField.value;
-                    }
-                });
+        function updateAddress() {
+            const selectedProvince = provinceSelect.options[provinceSelect.selectedIndex]?.text || "";
+            const selectedDistrict = districtSelect.options[districtSelect.selectedIndex]?.text || "";
+            const selectedWard = wardSelect.options[wardSelect.selectedIndex]?.text || "";
+            const detailedAddress = newAddressField.value.trim();
+
+            const fullAddress = `${detailedAddress}, ${selectedWard}, ${selectedDistrict}, ${selectedProvince}`.replace(/, ,/g, "").trim();
+
+            if (shipBox.checked) {
+                originalAddressField.value = fullAddress; // Update real input field (hidden)
             }
         }
 
-        function revertValue(field, originalValue, property = "value") {
-            if (field) field[property] = originalValue;
-        }
+        provinceSelect.addEventListener("change", updateAddress);
+        districtSelect.addEventListener("change", updateAddress);
+        wardSelect.addEventListener("change", updateAddress);
+        newAddressField.addEventListener("input", updateAddress);
     });
+
 
 </script>
 
