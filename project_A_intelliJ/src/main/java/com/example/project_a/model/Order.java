@@ -54,7 +54,13 @@ public class Order {
         }
         return count;
     }
-
+    public  double getTotal(){
+        double total = 0.0;
+        for (OrderDetail detail : details) {
+            total += detail.getQuantity() * detail.getProduct().getPrice();
+        }
+        return total;
+    }
     public void setID(Integer ID) {
         this.id = ID;
     }
@@ -106,21 +112,5 @@ public class Order {
         detail.setOrder(this);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Order [ID=");
-        builder.append(id);
-        builder.append(", formOfPayment=");
-        builder.append(formOfPayment);
-        builder.append(", client id=");
-        builder.append(user.getId());
-        builder.append(", paymentStatus=");
-        builder.append(paymentStatus);
-        builder.append(", orderDate=");
-        builder.append(orderDate);
-        builder.append("]");
 
-        return builder.toString();
-    }
 }

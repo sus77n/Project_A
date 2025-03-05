@@ -1,8 +1,10 @@
 package com.example.project_a.controller;
 
 import com.example.project_a.model.Order;
+import com.example.project_a.model.User;
 import com.example.project_a.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +24,5 @@ public class OrderController {
         model.addAttribute("pageTitle", "Order");
         return "admin/orders-list";
     }
-
-
-
 
 }
