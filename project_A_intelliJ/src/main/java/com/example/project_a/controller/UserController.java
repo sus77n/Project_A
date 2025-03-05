@@ -126,7 +126,7 @@ public class UserController {
                 new UsernamePasswordAuthenticationToken(newUser, null, user.getAuthorities())
         );
         ra.addFlashAttribute("message", "The user has been updated successfully.");
-        return "redirect:/account";
+        return "redirect:/account#address";
     }
 
     @PostMapping("user/update/password")
@@ -146,7 +146,7 @@ public class UserController {
             }
         } else {
             ra.addFlashAttribute("error", "Wrong current password!");
-            return "redirect:/account";
+            return "redirect:/account#password";
         }
 
         User newUser = service.findUserById(Integer.parseInt(userId));
