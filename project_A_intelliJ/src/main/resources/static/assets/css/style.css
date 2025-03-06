@@ -3498,6 +3498,7 @@ ul {
     font-size: 15px;
     font-weight: 500;
     margin-top: 20px;
+    margin-bottom: 20px;
     padding: 10px 30px 9px;
     text-align: center;
     text-transform: uppercase;
@@ -3535,6 +3536,7 @@ ul {
     line-height: 1;
     margin-bottom: 40px;
     text-transform: inherit;
+    text-align: center;
 }
 .login-form {
     background: white none repeat scroll 0 0;
@@ -3643,6 +3645,7 @@ ul {
 }
 .register-form {
     padding: 40px;
+    padding-bottom: 0;
 }
 .contact-form input {
     font-size: 14px;
@@ -5192,4 +5195,12 @@ a.shipping-calculator-button:hover {
     justify-content: flex-end;
 }
 
+/*custom form control*/
+.form-control{
+    background-color: white !important;
+}
+
+.form-control > .grey{
+    background-color: #495057 !important;
+}
 
