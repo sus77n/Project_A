@@ -3,81 +3,76 @@
 <head th:replace="~{layout::page_head}"></head>
 
 <body>
-    <div class="wrapper">
-        <header class="header-sticky" th:replace="~{layout::page_header}"></header>
-        <!-- Breadcrumb Area Start Here -->
-        <div class="breadcrumb-area pt-65 pb-70 bg-img" style="background-image:url(/assets/img/bg-image/hop-brech-bg.jpg);">
-            <div class="container">
-                <div class="breadcrumb-wrap text-center">
-                    <h3>Register</h3>
-                    <ol class="breadcrumb breadcrumb-list">
-                        <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
-                        <li class="breadcrumb-item active">Register</li>
-                    </ol>
-                </div>
+<div class="wrapper">
+    <header class="header-sticky" th:replace="~{layout::page_header}"></header>
+    <!-- Breadcrumb Area Start Here -->
+    <div class="breadcrumb-area pt-65 pb-70 bg-img"
+         style="background-image:url(/assets/img/bg-image/hop-brech-bg.jpg);">
+        <div class="container">
+            <div class="breadcrumb-wrap text-center">
+                <h3>Register</h3>
+                <ol class="breadcrumb breadcrumb-list">
+                    <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+                    <li class="breadcrumb-item active">Register</li>
+                </ol>
             </div>
         </div>
-        <!-- Breadcrumb Area End Here -->
-        <!-- Regester Page Start Here -->
-        <div class="register-area white-bg ptb-80">
-          <div class="container">
+    </div>
+    <!-- Breadcrumb Area End Here -->
+    <!-- Regester Page Start Here -->
+    <div class="register-area white-bg ptb-80">
+        <div class="container">
             <h3 class="login-header">Create an account </h3>
             <div class="row justify-content-center">
-              <div class="col-xl-8">
-                <div class="register-form login-form clearfix">
-                    <form id="registerForm" method="post" th:object="${user}">
-<!--                        <div class="form-group row align-items-center">-->
-<!--                            <label class="col-lg-3 col-md-3 col-form-label">Social title <span class="required">*</span></label>-->
-<!--                            <div class="col-lg-6 col-md-6">-->
-<!--                                <span class="custom-radio"><input name="id_gender" value="male" type="radio" th:field="*{gender}"> Male</span>-->
-<!--                                <span class="custom-radio"><input name="id_gender" value="female" type="radio" th:field="*{gender}"> Female</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-                        <div class="form-group row">
-                            <label for="email" class="col-lg-3 col-md-3 col-form-label">Email</label>
-                            <div class="col-lg-9 col-md-9">
-                                <input type="email" class="form-control" th:field="*{email}" id="email" onblur="checkEmailExists()" required>
-                                <small id="emailError" class="text-danger"></small>
+                <div class="col-xl-7">
+                    <div class="register-form login-form clearfix">
+                        <form th:action="@{/users/save}" id="registerForm" method="post" th:object="${user}">
+                            <div class="form-group row justify-content-center">
+                                <label for="firstName" class="col-lg-3 col-md-3 col-form-label">First name</label>
+                                <div class="col-lg-3 col-md-3">
+                                    <input type="text" id="firstName" class="form-control" th:field="*{firstName}"
+                                           required>
+                                </div>
+                                <label for="lastName" class="col-lg-2 col-md-2 col-form-label">Last name</label>
+                                <div class="col-lg-3 col-md-3">
+                                    <input type="text" id="lastName" class="form-control" th:field="*{lastName}"
+                                           required>
+                                </div>
                             </div>
-                        </div>
-                        <input type="text" id="username" th:field="*{username}" th:value="*{email}" style="display: none;">
-<!--                        <div class="form-group row">-->
-<!--                            <label for="username" class="col-lg-3 col-md-3 col-form-label">Username </label>-->
-<!--                            <div class="col-lg-6 col-md-6">-->
-<!--                                <input type="text" id="username" class="hidden" pattern="[^#$%^!&*-+=\|'<>,./?]{5}" th:field="*{username}" onblur="checkUsernameExists()" required >-->
-<!--                                <small id="usernameError" class="text-danger"></small>-->
-<!--                            </div>-->
-<!--                        </div>-->
-                        <div class="form-group row">
-                            <label for="inputPassword" class="col-lg-3 col-md-3 col-form-label">Password</label>
-                            <div class="col-lg-9 col-md-9">
-                                <input type="password" class="form-control" id="inputPassword" th:field="*{password}" required>
-                                <button class="btn show-btn" id="showPassWordBtn" type="button">Show</button>
+                            <div class="form-group row justify-content-center">
+                                <label for="email" class="col-lg-3 col-md-3 col-form-label">Email</label>
+                                <div class="col-lg-8 col-md-8">
+                                    <input type="email" class="form-control" name="email" th:field="*{email}" id="email"
+                                           onblur="checkEmailExists()" required>
+                                    <input type="email" class="form-control" name="email" th:field="*{username}" th:value="*{email}" hidden>
+                                    <small id="emailError" class="text-danger"></small>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="phone" class="col-lg-3 col-md-3 col-form-label">Phone Number</label>
-                            <div class="col-lg-9 col-md-9">
-                                <input type="tel" id="phone" class="form-control" pattern="[^#$%^!&*-+=\|'<>,./?]{5}" th:field="*{phoneNumber}" required>
+                            <div class="form-group row justify-content-center">
+                                <label for="inputPassword" class="col-lg-3 col-md-3 col-form-label">Password</label>
+                                <div class="col-lg-8 col-md-8">
+                                    <input type="password" class="form-control" id="inputPassword"
+                                           th:field="*{password}" required>
+                                    <button class="btn show-btn" id="showPassWordBtn" type="button">Show</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="register-box mt-20 mb-20 text-center">
-                            <button type="submit" class="login-btn">Register</button>
-                        </div>
-                        <div class="login-footer text-center">
-                            <p>Have account? <a th:href="@{/login}">Go to log in</a></p>
-                        </div>
-                    </form>
+                            <div class="register-box mt-20 mb-20 text-center">
+                                <button type="submit" class="login-btn">Register</button>
+                            </div>
+                            <div class="login-footer text-center">
+                                <p>Have account? <a th:href="@{/login}">Go to log in</a></p>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Register Page End Here -->
-<footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
+    <!-- Register Page End Here -->
+    <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
 </div>
 <!-- Main Wrapper End Here -->
-    <th:block th:replace="layout :: scripts"></th:block>
+<th:block th:replace="layout :: scripts"></th:block>
 <script type="text/javascript">
     const togglePassword = () => {
         console.log('doing')
@@ -92,89 +87,24 @@
     showPassWordBtn.addEventListener("mousedown", togglePassword, false);
     showPassWordBtn.addEventListener("mouseup", togglePassword, false);
 </script>
-    <script type="text/javascript">
-        let emailExists = false;
-        // let usernameExists = false;
+<script type="text/javascript">
+    let emailExists = false;
 
-        async function checkEmailExists() {
-            let email = document.getElementById("email").value;
-            if (email) {
-                try {
-                    let response = await fetch(`/users/check/email?email=${email}`);
-                    let data = await response.json();
-                    emailExists = data.exists;
-                    document.getElementById("emailError").innerText = emailExists ? "Email already in use!" : "";
-                } catch (error) {
-                    console.error("Error checking email:", error);
-                }
+    async function checkEmailExists() {
+        let email = document.getElementById("email").value;
+        if (email) {
+            try {
+                let response = await fetch(`/users/check/email?email=${email}`);
+                let data = await response.json();
+                emailExists = data.exists;
+                document.getElementById("emailError").innerText = emailExists ? "Email already in use!" : "";
+            } catch (error) {
+                console.error("Error checking email:", error);
             }
         }
+    }
 
-        // async function checkUsernameExists() {
-        //     let username = document.getElementById("username").value;
-        //     if (username) {
-        //         try {
-        //             let response = await fetch(`/users/check/username?username=${username}`);
-        //             let data = await response.json();
-        //             usernameExists = data.exists;
-        //             document.getElementById("usernameError").innerText = usernameExists ? "Username already taken!" : "";
-        //         } catch (error) {
-        //             console.error("Error checking username:", error);
-        //         }
-        //     }
-        // }
 
-        $(document).ready(function () {
-            $("#registerForm").submit(async function (event) {
-                $("#username").val($("#email").val());
-                event.preventDefault();
-
-                await checkEmailExists();
-                // await checkUsernameExists();
-
-                // if (emailExists || usernameExists) {
-                    if (emailExists) {
-                        alert("Email already in use!");
-                        return;
-                    }
-                //     if (usernameExists) {
-                //         alert("Username already taken!");
-                //     }
-                //     return;
-                // }
-
-                let formData = $(this).serialize();
-                $.ajax({
-                    type: "POST",
-                    url: "/users/save",
-                    data: formData,
-                    success: function (response) {
-                        showToast("Registration successful!", "success");
-
-                        setTimeout(function () {
-                            window.location.href = "/login"; // Redirect after success
-                        }, 2000); // Redirect after 2 seconds
-                    },
-                    error: function () {
-                        showToast("Registration failed. Please try again!", this.error);
-                    }
-                });
-            });
-
-            function showToast(message, type = "success") {
-                let bgColor = type === "success" ? "linear-gradient(to right, #00b09b, #96c93d)" : "linear-gradient(to right, #e74c3c, #c0392b)";
-                Toastify({
-                    text: message,
-                    duration: 2000,
-                    close: true,
-                    gravity: "top",
-                    position: "center",
-                    stopOnFocus: true,
-                    style: { background: bgColor }
-                }).showToast();
-            }
-        });
-
-    </script>
+</script>
 </body>
 </html>

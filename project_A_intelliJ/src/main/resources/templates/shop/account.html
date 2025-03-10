@@ -44,14 +44,27 @@
                                 <div class="register-form login-form clearfix">
                                     <form th:action="@{/user/update/general}" method="post">
                                         <input name="userId" th:value="${user.id}" type="hidden">
-                                        <input type="hidden" class="form-control" id="username" name="username"
-                                               th:value="${user.username}">
                                         <div class="form-group row">
                                             <label for="email" class="col-lg-3 col-md-4 col-form-label">Email
                                                 address</label>
                                             <div class="col-lg-6 col-md-8">
-                                                <input style="background-color: #e9ecef !important" type="text" class="form-control" id="email" name="email"
-                                                       th:value="${user.email}" disabled >
+                                                <input style="background-color: #e9ecef !important" type="text"
+                                                       class="form-control" id="email" name="email"
+                                                       th:value="${user.email}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="firstName" class="col-lg-3 col-md-4 col-form-label">First
+                                                name</label>
+                                            <div class="col-lg-3 col-md-3">
+                                                <input type="text" id="firstName" name="firstName" class="form-control"
+                                                       th:value="${user.firstName}">
+                                            </div>
+                                            <label for="lastName" class="col-lg-2 col-md-2 col-form-label">Last
+                                                name</label>
+                                            <div class="col-lg-3 col-md-3">
+                                                <input type="text" id="lastName" name="lastName" class="form-control"
+                                                       th:value="${user.lastName}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -83,20 +96,22 @@
                                     <div class="order-header d-flex justify-content-between align-items-center">
                                         <div>
                                             <p class="order-id">Order ID: <span th:text="'#' + ${order.ID}"></span></p>
-                                            <p class="order-date" th:text="${#temporals.format(order.orderDate, 'MMMM d, yyyy hh:mm a')}"></p>
+                                            <p class="order-date"
+                                               th:text="${#temporals.format(order.orderDate, 'MMMM d, yyyy hh:mm a')}"></p>
                                         </div>
                                         <div class="order-status">
-                                       <span class="badge px-2 py-1 fs-13"
-                                             th:classappend="${order.paymentStatus == 'Paid' ? 'bg-success text-light' : 'bg-warning text-dark'}"
-                                             th:text="${order.paymentStatus}">
-                                       </span>
+                                            <span class="px-2 py-1 fs-13"
+                                                  th:classappend="${order.paymentStatus == 'New'} ? 'bg-primary text-light' : (${order.paymentStatus == 'Done'} ? 'bg-success text-light' : 'bg-danger text-light')"
+                                                  th:text="${order.paymentStatus}"></span>
                                         </div>
                                     </div>
                                     <!-- Order Details -->
-                                    <div class="order-items mt-3 row align-items-center" th:each="item : ${order.details}">
+                                    <div class="order-items mt-3 row align-items-center"
+                                         th:each="item : ${order.details}">
                                         <div class="col-lg-2 order-thumbnail">
                                             <a th:href="@{/product-details(productId=${item.product.id})}">
-                                                <img th:src="@{${item.product.thumbnail.filePath}}" th:alt="${item.product.thumbnail.alt}">
+                                                <img th:src="@{${item.product.thumbnail.filePath}}"
+                                                     th:alt="${item.product.thumbnail.alt}">
                                             </a>
                                         </div>
                                         <div class="col-lg-9">
@@ -107,13 +122,15 @@
                                             <p>Quantity: <span th:text="${item.quantity}"></span></p>
                                         </div>
                                         <div class="col-lg-1 text-right">
-                                            <p class="total-price">$<span th:text="${item.quantity * item.product.price}"></span></p>
+                                            <p class="total-price">$<span
+                                                    th:text="${item.quantity * item.product.price}"></span></p>
                                         </div>
                                     </div>
                                     <!-- Order Details End -->
                                     <div class="order-footer mt-3">
                                         <div class="d-flex justify-content-end">
-                                            <p class="order-total">Order Total: <span class="needColor">$<span th:text="${order.getTotal}"></span></span></p>
+                                            <p class="order-total">Order Total: <span class="needColor">$<span
+                                                    th:text="${order.getTotal}"></span></span></p>
                                         </div>
                                         <div class="d-flex justify-content-end">
                                             <button class="button-contact">Contact</button>
@@ -208,7 +225,9 @@
                                                 <button class="btn show-btn" type="button">Show</button>
                                             </div>
                                         </div>
-                                        <button type="submit" id="check-password" class="return-customer-btn float-right">Save</button>
+                                        <button type="submit" id="check-password"
+                                                class="return-customer-btn float-right">Save
+                                        </button>
                                     </form>
                                 </div>
                             </div>
@@ -217,31 +236,30 @@
                 </div>
             </div>
         </div>
+        <!-- My Account Page End Here -->
+        <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
     </div>
-    <!-- My Account Page End Here -->
-    <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
-</div>
-<!-- Main Wrapper End Here -->
-<th:block th:replace="layout :: scripts"></th:block>
-<script th:src="@{assets/js/locationInVietnam.js}"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let hash = window.location.hash;
-        if (hash) {
-            // Remove active classes from all tabs
-            document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active"));
-            document.querySelectorAll(".tab-pane").forEach(pane => pane.classList.remove("show", "active"));
+    <!-- Main Wrapper End Here -->
+    <th:block th:replace="layout :: scripts"></th:block>
+    <script th:src="@{assets/js/locationInVietnam.js}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let hash = window.location.hash;
+            if (hash) {
+                // Remove active classes from all tabs
+                document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active"));
+                document.querySelectorAll(".tab-pane").forEach(pane => pane.classList.remove("show", "active"));
 
-            // Activate the clicked tab
-            let targetTab = document.querySelector(`.nav-link[href="${hash}"]`);
-            let targetPane = document.querySelector(hash);
+                // Activate the clicked tab
+                let targetTab = document.querySelector(`.nav-link[href="${hash}"]`);
+                let targetPane = document.querySelector(hash);
 
-            if (targetTab && targetPane) {
-                targetTab.classList.add("active");
-                targetPane.classList.add("show", "active");
+                if (targetTab && targetPane) {
+                    targetTab.classList.add("active");
+                    targetPane.classList.add("show", "active");
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>

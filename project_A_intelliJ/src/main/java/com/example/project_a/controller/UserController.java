@@ -35,17 +35,20 @@ public class UserController {
         return "shop/register";
     }
 
-    @ResponseBody
     @PostMapping("/users/save")
-    public ResponseEntity<String> saveUser(User user) {
-        try {
-            service.save(user);
-            System.out.println("saved user: " + user);
-            return ResponseEntity.ok("User registration successful");
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Registration failed");
+    public String saveUser(User user,
+                           @RequestParam String email,
+                           RedirectAttributes redirectAttributes) {
+        System.out.println("email here: " + email);
+
+        if (service.existsByEmail(email)) {
+            System.out.println(service.existsByEmail(email));
+            redirectAttributes.addFlashAttribute("error", "This email already exists");
+            return "redirect:/register";
         }
+        service.save(user);
+        redirectAttributes.addFlashAttribute("message", "User registered successfully");
+        return "redirect:/login";
     }
 
 
@@ -57,11 +60,13 @@ public class UserController {
         return "admin/user-list";
     }
 
-    @GetMapping("/admin/user/detail{id}")
+    @GetMapping("/admin/user/detail/{id}")
     public String deleteUser(@PathVariable("id") Integer id, Model model) {
         User user = service.findUserById(id);
+        List<Order> orders = orderService.findOrdersByUserId(user.getId());
         model.addAttribute("pageTitle", "User List");
         model.addAttribute("user", user);
+        model.addAttribute("orders", orders);
         return "admin/user-detail";
     }
 
@@ -74,23 +79,16 @@ public class UserController {
         return response;
     }
 
-//    @GetMapping("/users/check/username")
-//    @ResponseBody
-//    public Map<String, Boolean> checkUsernameExists(@RequestParam String username) {
-//        boolean exists = service.existsByUsername(username);
-//        Map<String, Boolean> response = new HashMap<>();
-//        response.put("exists", exists);
-//        return response;
-//    }
-
     @PostMapping("/user/update/general")
     public String updateUserGeneral(@RequestParam String userId,
-                                    @RequestParam String email,
+                                    @RequestParam String firstName,
+                                    @RequestParam String lastName,
                                     @RequestParam String phone,
                                     @RequestParam String DOB,
                                     RedirectAttributes ra, Model model) {
         User user = service.findUserById(Integer.parseInt(userId));
-        user.setEmail(email);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
         user.setPhoneNumber(phone);
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

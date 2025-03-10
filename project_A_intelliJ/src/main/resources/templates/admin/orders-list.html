@@ -11,117 +11,6 @@
         <div class="page-content">
             <div class="container-xxl">
 
-                <div class="row">
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h4 class="card-title mb-2">Cash</h4>
-                                        <p class="text-muted fw-medium fs-22 mb-0">490</p>
-                                    </div>
-                                    <div>
-                                        <div class="avatar-md bg-primary bg-opacity-10 rounded">
-                                            <iconify-icon icon="solar:cash-out-bold"
-                                                          class="fs-32 text-primary avatar-title"></iconify-icon>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h4 class="card-title mb-2">Credit Card</h4>
-                                        <p class="text-muted fw-medium fs-22 mb-0">0</p>
-                                    </div>
-                                    <div>
-                                        <div class="avatar-md bg-primary bg-opacity-10 rounded">
-                                            <iconify-icon icon="solar:card-2-bold"
-                                                          class="fs-32 text-primary avatar-title"></iconify-icon>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h4 class="card-title mb-2">E-Wallet</h4>
-                                        <p class="text-muted fw-medium fs-22 mb-0">0</p>
-                                    </div>
-                                    <div>
-                                        <div class="avatar-md bg-primary bg-opacity-10 rounded">
-                                            <iconify-icon icon="solar:wallet-bold"
-                                                          class="fs-32 text-primary avatar-title"></iconify-icon>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h4 class="card-title mb-2">New</h4>
-                                        <p class="text-muted fw-medium fs-22 mb-0">200</p>
-                                    </div>
-                                    <div>
-                                        <div class="avatar-md bg-primary bg-opacity-10 rounded">
-                                            <iconify-icon icon="solar:bill-check-bold"
-                                                          class="fs-32 text-primary avatar-title"></iconify-icon>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h4 class="card-title mb-2">Done</h4>
-                                        <p class="text-muted fw-medium fs-22 mb-0">656</p>
-                                    </div>
-                                    <div>
-                                        <div class="avatar-md bg-primary bg-opacity-10 rounded">
-                                            <iconify-icon icon="solar:bill-cross-bold"
-                                                          class="fs-32 text-primary avatar-title"></iconify-icon>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h4 class="card-title mb-2">Total</h4>
-                                        <p class="text-muted fw-medium fs-22 mb-0">1200</p>
-                                    </div>
-                                    <div>
-                                        <div class="avatar-md bg-primary bg-opacity-10 rounded">
-                                            <iconify-icon icon="solar:pie-chart-3-bold"
-                                                          class="fs-32 text-primary avatar-title"></iconify-icon>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="row">
                     <div class="col-xl-12">
@@ -129,17 +18,6 @@
                             <div class="d-flex card-header justify-content-between align-items-center">
                                 <div>
                                     <h4 class="card-title">All Order List</h4>
-                                </div>
-                                <div class="dropdown">
-                                    <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light rounded"
-                                       data-bs-toggle="dropdown" aria-expanded="false">
-                                        This Month
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <!-- item-->
-                                        <a href="#!" class="dropdown-item">This Week</a>
-                                        <a href="#!" class="dropdown-item">This Month</a>
-                                    </div>
                                 </div>
                             </div>
                             <div class="card-body p-0">
@@ -169,14 +47,14 @@
                                             </td>
                                             <td class="text-right"> $<span th:text="${order.ID}"></span></td>
                                             <td class="text-right"><span th:text="${order.getNumeberOfItems()}"></span></td>
-                                            <td class="text-center"><span class="badge bg-light text-dark  px-2 py-1 fs-13" th:text="${order.paymentStatus}"></span></td>
+                                            <td class="text-center"><span class="badge px-2 py-1 fs-13" th:classappend="
+        ${order.paymentStatus == 'New'} ? 'bg-primary-subtle text-primary' :
+        (${order.paymentStatus == 'Done'} ? 'bg-success-subtle text-success' :
+        'bg-danger-subtle text-danger')" th:text="${order.paymentStatus}"></span></td>
                                             <td class="text-start"><span th:text="${order.formOfPayment}"></span></td>
                                             <td class="text-center">
                                                 <div class="d-flex gap-2">
-<!--                                                    <a href="#!" class="btn btn-light btn-sm">-->
-<!--                                                        <iconify-icon icon="solar:eye-broken"-->
-<!--                                                                      class="align-middle fs-18"></iconify-icon>-->
-<!--                                                    </a>-->
+
                                                     <!-- Modal Trigger -->
                                                     <a href="#!" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#orderModal">
                                                         <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
