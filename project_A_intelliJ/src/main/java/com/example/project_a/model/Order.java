@@ -3,8 +3,7 @@ package com.example.project_a.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,7 +96,7 @@ public class Order {
         this.orderDate = orderDate;
     }
     public void setOrderDate() {
-        Date currentDate = new Date(5);
+        Date currentDate = new Date(); // This sets the current date and time
         this.orderDate = currentDate;
     }
     public List<OrderDetail> getDetails() {

@@ -51,6 +51,7 @@ public class CheckOutController {
 
     @PostMapping("/order/save")
     public String saveOrder(Order order, RedirectAttributes ra, @AuthenticationPrincipal User user) {
+        order.setOrderDate();
         service.save(order);
         int userId = order.getUser().getId();
         List<Cart> carts = cartService.getCartsByUserId(userId);
