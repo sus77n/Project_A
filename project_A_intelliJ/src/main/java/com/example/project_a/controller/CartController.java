@@ -58,19 +58,17 @@ public class CartController {
     }
 
     @GetMapping("/cart/delete")
-    public String deleteCart(@RequestParam("id") String id , RedirectAttributes ra, HttpSession session, @AuthenticationPrincipal User user) {
+    public String deleteCart(@RequestParam("id") String id , RedirectAttributes ra, @AuthenticationPrincipal User user) {
         List<Cart> cartList = cartService.getCartsByUserId(user.getId());
         service.deleteCartById(Integer.parseInt(id));
         cartList.removeIf(item -> item.getId().equals(Integer.parseInt(id)));
-
-        session.setAttribute("cartList", cartList);
         ra.addFlashAttribute("message", "The Cart has been deleted successfully.");
         return "redirect:/cart";
     }
 
     @PostMapping("/cart/add")
     @ResponseBody
-    public Map<String, Object> addToCart(@RequestBody Map<String, Integer> request, HttpSession session, @AuthenticationPrincipal User user) {
+    public Map<String, Object> addToCart(@RequestBody Map<String, Integer> request, @AuthenticationPrincipal User user) {
         Integer productId = request.get("id");
         Integer quantity = request.get("quantity");
         System.out.println(quantity);
@@ -98,6 +96,7 @@ public class CartController {
 
         if (existingCartItem != null) {
             existingCartItem.setQuantity(existingCartItem.getQuantity() + quantity);
+            service.updateCart(existingCartItem.getId()+"", existingCartItem);
         } else {
             Cart newCartItem = new Cart();
             newCartItem.setProduct(productService.findProductById(productId));
@@ -106,8 +105,6 @@ public class CartController {
             cartList.add(newCartItem);
             service.save(newCartItem);
         }
-
-        session.setAttribute("cartList", cartList);
 
         // Calculate total cart size
         int totalCartItems = cartList.stream().mapToInt(Cart::getQuantity).sum();
@@ -130,19 +127,21 @@ public class CartController {
 
     @PostMapping("/cart/update")
     @ResponseBody
-    public Map<String, Object> updateCart(@RequestParam("id") Integer cartId, @RequestParam("quantity") Integer quantity, HttpSession session) {
-        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+    public Map<String, Object> updateCart(@RequestParam("id") Integer cartId, @RequestParam("quantity") Integer quantity, @AuthenticationPrincipal User user) {
+        List<Cart> cartList = cartService.getCartsByUserId(user.getId());
 
         if (cartList != null) {
             for (Cart cart : cartList) {
                 if (cart.getId().equals(cartId)) {
+                    System.out.println("checkQuantity");
+                    System.out.println(quantity);
                     cart.setQuantity(quantity);
+                    cartService.updateCart(cartId+"", cart);
                     break;
                 }
             }
         }
 
-        session.setAttribute("cartList", cartList);
 
         int total = cartList.stream().mapToInt(Cart::getTotal).sum();
         int subtotal = cartList.stream()
@@ -157,32 +156,32 @@ public class CartController {
         return response;
     }
 
-    @PostMapping("/cart/update-all")
-    @ResponseBody
-    public Map<String, Object> updateAllCart(@RequestBody List<Map<String, Object>> cartUpdates, HttpSession session) {
-        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
-        System.out.println("inUppAll");
-        for (Map<String, Object> request : cartUpdates) {
-            Integer cartId = (Integer) request.get("id");
-            Integer quantity = (Integer) request.get("quantity");
-
-            for (Cart cart : cartList) {
-                if (cart.getId().equals(cartId)) {
-                    cart.setQuantity(quantity);
-                }
-                System.out.println(cart.getQuantity());
-            }
-        }
-
-        session.setAttribute("cartList", cartList);
-
-        int total = cartList.stream().mapToInt(Cart::getTotal).sum();
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("total", total);
-        response.put("message", "Your Cart updated successfully!");
-        return response;
-    }
+//    @PostMapping("/cart/update-all")
+//    @ResponseBody
+//    public Map<String, Object> updateAllCart(@RequestBody List<Map<String, Object>> cartUpdates, HttpSession session) {
+//        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+//        System.out.println("inUppAll");
+//        for (Map<String, Object> request : cartUpdates) {
+//            Integer cartId = (Integer) request.get("id");
+//            Integer quantity = (Integer) request.get("quantity");
+//
+//            for (Cart cart : cartList) {
+//                if (cart.getId().equals(cartId)) {
+//                    cart.setQuantity(quantity);
+//                }
+//                System.out.println(cart.getQuantity());
+//            }
+//        }
+//
+//        session.setAttribute("cartList", cartList);
+//
+//        int total = cartList.stream().mapToInt(Cart::getTotal).sum();
+//
+//        Map<String, Object> response = new HashMap<>();
+//        response.put("total", total);
+//        response.put("message", "Your Cart updated successfully!");
+//        return response;
+//    }
 
     @GetMapping("/cart/data")
     @ResponseBody
@@ -194,14 +193,13 @@ public class CartController {
         if (cartList == null) {
             cartList = new ArrayList<>();
         }
-
-        // Safe iteration, no more NullPointerException
-//        for (Cart cart : cartList) {
-//            service.save(cart);
-//        }
+        int cartSize = 0;
+        for (Cart cart : cartList) {
+           cartSize += cart.getQuantity();
+        }
 
         Map<String, Object> response = new HashMap<>();
-        response.put("cartSize", cartList.size());
+        response.put("cartSize", cartSize);
         response.put("cartItems", cartList.stream().map(cartItem -> {
             Map<String, Object> itemMap = new HashMap<>();
             itemMap.put("productName", cartItem.getProduct().getName());

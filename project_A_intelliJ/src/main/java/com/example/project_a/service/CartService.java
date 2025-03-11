@@ -34,12 +34,14 @@ public class CartService {
 
     public void updateCart(String id, Cart updatedCart) {
         // Fetch the existing cart
-        int categoryId = Integer.parseInt(id);
-        Cart cart = repo.findById(categoryId)
+        int cartId = Integer.parseInt(id);
+        Cart cart = repo.findById(cartId)
                 .orElseThrow(() -> new IllegalArgumentException("cart not found with ID: " + id));
         // Update the fields of the existing cart
-        cart.setUser(updatedCart.getUser());
-
+        System.out.println("checkCartService");
+        System.out.println(cart.getQuantity());
+        System.out.println(updatedCart.getQuantity());
+        cart.setQuantity(updatedCart.getQuantity());
         // Save the updated cart
         repo.save(cart);
     }
