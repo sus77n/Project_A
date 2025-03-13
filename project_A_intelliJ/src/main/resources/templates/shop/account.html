@@ -27,7 +27,7 @@
                     <div class="col-lg-2">
                         <!-- Nav tabs -->
                         <ul class="nav flex-column dashboard-list" role="tablist">
-                            <li><a class="nav-link active" data-toggle="tab" href="#account-details">General Information</a>
+                            <li><a class="nav-link active" data-toggle="tab" href="#account-details">General</a>
                             </li>
                             <li><a class="nav-link" data-toggle="tab" href="#address">Address</a></li>
                             <li><a class="nav-link" data-toggle="tab" href="#password">Password</a></li>
@@ -95,45 +95,53 @@
                                 <div class="order-summary p-3" th:each="order : ${orders}">
                                     <div class="order-header d-flex justify-content-between align-items-center">
                                         <div>
-                                            <p class="order-id">Order ID: <span th:text="'#' + ${order.ID}"></span></p>
-                                            <p class="order-date"
-                                               th:text="${#temporals.format(order.orderDate, 'MMMM d, yyyy hh:mm a')}"></p>
+<!--                                            <p class="order-id">Order ID: <span th:text="'#' + ${order.ID}"></span></p>-->
+
+                                            <p class="order-id" th:text="${order.orderDate}"></p>
                                         </div>
                                         <div class="order-status">
-                                            <span class="px-2 py-1 fs-13"
-                                                  th:classappend="${order.paymentStatus == 'New'} ? 'bg-primary text-light' : (${order.paymentStatus == 'Done'} ? 'bg-success text-light' : 'bg-danger text-light')"
-                                                  th:text="${order.paymentStatus}"></span>
+                                            <p th:text="${order.paymentStatus}"
+                                               th:class="'status-' + ${#strings.toLowerCase(order.paymentStatus)}">
+                                            </p>
                                         </div>
                                     </div>
                                     <!-- Order Details -->
-                                    <div class="order-items mt-3 row align-items-center"
-                                         th:each="item : ${order.details}">
+                                    <div class="order-items mt-3 row align-items-center "
+                                         th:if="${not #lists.isEmpty(order.details)}"
+                                         th:with="lastItem=${order.details[order.details.size() - 1]}">
                                         <div class="col-lg-2 order-thumbnail">
-                                            <a th:href="@{/product-details(productId=${item.product.id})}">
-                                                <img th:src="@{${item.product.thumbnail.filePath}}"
-                                                     th:alt="${item.product.thumbnail.alt}">
+                                            <a th:href="@{/product-details(productId=${lastItem.product.id})}">
+                                                <img th:src="@{${lastItem.product.thumbnail.filePath}}"
+                                                     th:alt="${lastItem.product.thumbnail.alt}">
                                             </a>
                                         </div>
-                                        <div class="col-lg-9">
-                                            <a th:href="@{/product-details(productId=${item.product.id})}">
-                                                <h6 th:text="${item.product.name}"></h6>
+                                        <div class="col-lg-8">
+                                            <a th:href="@{/product-details(productId=${lastItem.product.id})}">
+                                                <h6 th:text="${lastItem.product.name}"></h6>
                                             </a>
-                                            <p>Price: $<span th:text="${item.product.price}"></span></p>
-                                            <p>Quantity: <span th:text="${item.quantity}"></span></p>
+                                            <p>Price: $<span th:text="${lastItem.product.price}"></span></p>
+                                            <p>Quantity: <span th:text="${lastItem.quantity}"></span></p>
                                         </div>
-                                        <div class="col-lg-1 text-right">
-                                            <p class="total-price">$<span
-                                                    th:text="${item.quantity * item.product.price}"></span></p>
+                                        <div class="col-lg-2 text-right">
+                                            <p class="total-price">$
+                                                <span th:text="${#numbers.formatDecimal(lastItem.quantity * lastItem.product.price, 0, 'COMMA', 2, 'POINT')}"></span>
+                                            </p>
                                         </div>
                                     </div>
                                     <!-- Order Details End -->
-                                    <div class="order-footer mt-3">
-                                        <div class="d-flex justify-content-end">
-                                            <p class="order-total">Order Total: <span class="needColor">$<span
-                                                    th:text="${order.getTotal}"></span></span></p>
+                                    <div class="order-footer mt-3 mr-15">
+                                        <div class="slider-btn mt-75 show-all mb-15">
+                                            <a class="animated" th:href="@{account/orders/details/{orderId}(orderId=${order.getID()})}">More details <i class="animated icon-right-arrow"></i></a>
+                                        </div>
+                                        <div class="d-flex justify-content-end mt-20 mb-10">
+                                            <p class="order-total">Order Total:
+                                                <span class="needColor">$
+        <span th:text="${#numbers.formatDecimal(order.getTotal, 0, 'COMMA', 2, 'POINT')}"></span>
+    </span>
+                                            </p>
                                         </div>
                                         <div class="d-flex justify-content-end">
-                                            <button class="button-contact">Contact</button>
+                                            <button class="button-contact">Cancel</button>
                                         </div>
                                     </div>
                                 </div>
@@ -239,6 +247,7 @@
         <!-- My Account Page End Here -->
         <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
     </div>
+</div>
     <!-- Main Wrapper End Here -->
     <th:block th:replace="layout :: scripts"></th:block>
     <script th:src="@{assets/js/locationInVietnam.js}"></script>

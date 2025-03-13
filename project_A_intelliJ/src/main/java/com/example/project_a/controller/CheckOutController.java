@@ -36,8 +36,7 @@ public class CheckOutController {
         order.setAddress(user.getAddress());
         order.setPhoneNumber(user.getPhoneNumber());
         order.setPaymentStatus("New");
-//        List<Cart> carts = cartService.getCartsByUserId(user.getId());
-        List<Cart> carts = (List<Cart>) session.getAttribute("cartList");
+        List<Cart> carts = cartService.getCartsByUserId(user.getId());
         int total = 0;
         for (Cart cart : carts) {
             total += cart.getTotal();
@@ -51,6 +50,7 @@ public class CheckOutController {
 
     @PostMapping("/order/save")
     public String saveOrder(Order order, RedirectAttributes ra, @AuthenticationPrincipal User user) {
+        order.setOrderDate();
         service.save(order);
         int userId = order.getUser().getId();
         List<Cart> carts = cartService.getCartsByUserId(userId);

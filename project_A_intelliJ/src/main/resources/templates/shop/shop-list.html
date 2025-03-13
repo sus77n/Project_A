@@ -93,7 +93,7 @@
                                                         </h4>
                                                         <div class="pro-price-cart">
                                                             <div class="pro-home-price">
-                                                                <span th:text="'$' + ${product.price}"></span>
+                                                                <span class="price" th:text="'$' + ' ' + ${#numbers.formatDecimal(product.price, 2, 'COMMA', 2, 'POINT')}"></span>
                                                             </div>
                                                             <div class="pro-cart">
                                                                 <a  title="Add To Cart" href="javascript:void(0);" class="add-to-cart-btn" th:data-id="${product.id}">
@@ -138,8 +138,7 @@
                                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                                 </div>
                                                 <p>
-                                                    <span class="prev-price" th:text="'$' + ${product.price}"></span>
-                                                    <span class="price" th:text="'$' + ${product.price}"></span>
+                                                    <span class="price" th:text="'$' + ' ' + ${#numbers.formatDecimal(product.price, 2, 'COMMA', 2, 'POINT')}"></span>
                                                 </p>
                                                 <p th:utext="${product.summary}"></p>
                                                 <div class="pro-cart">
@@ -422,7 +421,11 @@
                     console.log("success");
                     updateCartCount(response.cartSize);
                     updateCartUI(response.cartItems);
-                    showToast("Product added to cart!");
+                    if (response.ErrorMessage != null) {
+                        showToast(response.ErrorMessage, "error");
+                    }else {
+                        showToast("Product added to cart!");
+                    }
                 },
                 error: function () {
                     showToast("Error adding product to cart!", "error");

@@ -58,21 +58,22 @@ public class CartController {
     }
 
     @GetMapping("/cart/delete")
-    public String deleteCart(@RequestParam("id") String id , RedirectAttributes ra, HttpSession session, @AuthenticationPrincipal User user) {
+    public String deleteCart(@RequestParam("id") String id , RedirectAttributes ra, @AuthenticationPrincipal User user) {
         List<Cart> cartList = cartService.getCartsByUserId(user.getId());
         service.deleteCartById(Integer.parseInt(id));
         cartList.removeIf(item -> item.getId().equals(Integer.parseInt(id)));
-
-        session.setAttribute("cartList", cartList);
         ra.addFlashAttribute("message", "The Cart has been deleted successfully.");
         return "redirect:/cart";
     }
 
     @PostMapping("/cart/add")
     @ResponseBody
-    public Map<String, Object> addToCart(@RequestBody Map<String, Integer> request, HttpSession session, @AuthenticationPrincipal User user) {
+    public Map<String, Object> addToCart(@RequestBody Map<String, Integer> request, @AuthenticationPrincipal User user) {
         Integer productId = request.get("id");
         Integer quantity = request.get("quantity");
+
+
+        Map<String, Object> response = new HashMap<>();
         System.out.println(quantity);
         if (quantity == null) {
             quantity = 1;
@@ -97,23 +98,35 @@ public class CartController {
         }
 
         if (existingCartItem != null) {
-            existingCartItem.setQuantity(existingCartItem.getQuantity() + quantity);
+            // Check if requested quantity exceeds available stock
+            if (existingCartItem.getQuantity() + quantity > existingCartItem.getProduct().getInStock()) {
+                response.put("ErrorMessage", "Insufficient stock! Only " + existingCartItem.getProduct().getInStock() + " available.");
+            }else if (existingCartItem.getQuantity() + quantity > 100){
+                response.put("ErrorMessage", "You cannot order more than 100 items!");
+            }else {
+                existingCartItem.setQuantity(existingCartItem.getQuantity() + quantity);
+                service.updateCart(existingCartItem.getId()+"", existingCartItem);
+            }
+
         } else {
             Cart newCartItem = new Cart();
-            newCartItem.setProduct(productService.findProductById(productId));
-            newCartItem.setQuantity(quantity);
-            newCartItem.setUser(userService.findUserById(user.getId()));
-            cartList.add(newCartItem);
-            service.save(newCartItem);
-        }
+            if (quantity <= productService.findProductById(productId).getInStock()){
+                newCartItem.setProduct(productService.findProductById(productId));
+                newCartItem.setQuantity(quantity);
+                newCartItem.setUser(userService.findUserById(user.getId()));
+                cartList.add(newCartItem);
+                service.save(newCartItem);
+            }else {
+                response.put("ErrorMessage", "Insufficient stock! Only " + existingCartItem.getProduct().getInStock() + " available.");
+            }
 
-        session.setAttribute("cartList", cartList);
+        }
 
         // Calculate total cart size
         int totalCartItems = cartList.stream().mapToInt(Cart::getQuantity).sum();
 
         // Build response
-        Map<String, Object> response = new HashMap<>();
+
         response.put("cartSize", totalCartItems);
         response.put("cartItems", cartList.stream()
                 .map(cartItem -> {
@@ -130,19 +143,28 @@ public class CartController {
 
     @PostMapping("/cart/update")
     @ResponseBody
-    public Map<String, Object> updateCart(@RequestParam("id") Integer cartId, @RequestParam("quantity") Integer quantity, HttpSession session) {
-        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
-
+    public Map<String, Object> updateCart(@RequestParam("id") Integer cartId, @RequestParam("quantity") Integer quantity, @AuthenticationPrincipal User user) {
+        List<Cart> cartList = cartService.getCartsByUserId(user.getId());
+        Map<String, Object> response = new HashMap<>();
         if (cartList != null) {
             for (Cart cart : cartList) {
                 if (cart.getId().equals(cartId)) {
-                    cart.setQuantity(quantity);
-                    break;
+                    System.out.println("checkQuantity");
+                    if (quantity > cart.getProduct().getInStock()) {
+                        System.out.println("Check error quantity");
+                        response.put("ErrorMessage", "Insufficient stock! Only " + cart.getProduct().getInStock() + " available.");
+                        break;
+                    }else {
+                        System.out.println(quantity);
+                        cart.setQuantity(quantity);
+                        cartService.updateCart(cartId+"", cart);
+                        break;
+                    }
+
                 }
             }
         }
 
-        session.setAttribute("cartList", cartList);
 
         int total = cartList.stream().mapToInt(Cart::getTotal).sum();
         int subtotal = cartList.stream()
@@ -151,38 +173,38 @@ public class CartController {
                 .map(Cart::getTotal)
                 .orElse(0);
 
-        Map<String, Object> response = new HashMap<>();
+
         response.put("subtotal", subtotal);
         response.put("total", total);
         return response;
     }
 
-    @PostMapping("/cart/update-all")
-    @ResponseBody
-    public Map<String, Object> updateAllCart(@RequestBody List<Map<String, Object>> cartUpdates, HttpSession session) {
-        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
-        System.out.println("inUppAll");
-        for (Map<String, Object> request : cartUpdates) {
-            Integer cartId = (Integer) request.get("id");
-            Integer quantity = (Integer) request.get("quantity");
-
-            for (Cart cart : cartList) {
-                if (cart.getId().equals(cartId)) {
-                    cart.setQuantity(quantity);
-                }
-                System.out.println(cart.getQuantity());
-            }
-        }
-
-        session.setAttribute("cartList", cartList);
-
-        int total = cartList.stream().mapToInt(Cart::getTotal).sum();
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("total", total);
-        response.put("message", "Your Cart updated successfully!");
-        return response;
-    }
+//    @PostMapping("/cart/update-all")
+//    @ResponseBody
+//    public Map<String, Object> updateAllCart(@RequestBody List<Map<String, Object>> cartUpdates, HttpSession session) {
+//        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+//        System.out.println("inUppAll");
+//        for (Map<String, Object> request : cartUpdates) {
+//            Integer cartId = (Integer) request.get("id");
+//            Integer quantity = (Integer) request.get("quantity");
+//
+//            for (Cart cart : cartList) {
+//                if (cart.getId().equals(cartId)) {
+//                    cart.setQuantity(quantity);
+//                }
+//                System.out.println(cart.getQuantity());
+//            }
+//        }
+//
+//        session.setAttribute("cartList", cartList);
+//
+//        int total = cartList.stream().mapToInt(Cart::getTotal).sum();
+//
+//        Map<String, Object> response = new HashMap<>();
+//        response.put("total", total);
+//        response.put("message", "Your Cart updated successfully!");
+//        return response;
+//    }
 
     @GetMapping("/cart/data")
     @ResponseBody
@@ -194,14 +216,13 @@ public class CartController {
         if (cartList == null) {
             cartList = new ArrayList<>();
         }
-
-        // Safe iteration, no more NullPointerException
-//        for (Cart cart : cartList) {
-//            service.save(cart);
-//        }
+        int cartSize = 0;
+        for (Cart cart : cartList) {
+           cartSize += cart.getQuantity();
+        }
 
         Map<String, Object> response = new HashMap<>();
-        response.put("cartSize", cartList.size());
+        response.put("cartSize", cartSize);
         response.put("cartItems", cartList.stream().map(cartItem -> {
             Map<String, Object> itemMap = new HashMap<>();
             itemMap.put("productName", cartItem.getProduct().getName());

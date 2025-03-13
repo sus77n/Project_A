@@ -173,11 +173,20 @@ public class UserController {
     public String showAccount(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("user", user);
 
-        // Assuming user.getId() returns the user's ID
         List<Order> orders = orderService.findOrdersByUserId(user.getId());
         model.addAttribute("orders", orders);
 
         return "shop/account";
+    }
+
+    @GetMapping("/account/orders/details/{orderId}")
+    public String showOrderDetails(@AuthenticationPrincipal User user,@PathVariable("orderId") String orderId, Model model) {
+        Order order = orderService.findOrderById(Integer.parseInt(orderId));
+        int totalItem = orderService.getAllOrders().size();
+        model.addAttribute("totalItem", totalItem);
+        model.addAttribute("order", order);
+        model.addAttribute("user", user);
+        return "shop/order-history";
     }
 
     @PostMapping("/admin/user/status/change")

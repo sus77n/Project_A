@@ -4760,6 +4760,8 @@ a.shipping-calculator-button:hover {
 .dashboard-content {
     border: 1px solid #ebebeb;
     padding: 30px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
 }
 .dashboard-content h3 {
     text-transform: capitalize;
@@ -4869,8 +4871,13 @@ a.shipping-calculator-button:hover {
 .order-header .order-id{
     font-weight: 600;
 }
-.order-status > span{
-    font-size: 15px;
+
+.order-status{
+    display: flex;
+}
+
+.order-date{
+    margin-right: 10px;
 }
 
 .order-items .total-price{
@@ -4893,17 +4900,17 @@ a.shipping-calculator-button:hover {
 
 
 .order-summary .button-contact{
-    background-color: #303030;
-    color: #f0f0f0;
+    background-color: #a92222;
+    color: white;
     padding: 15px 25px;
     border: none;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .order-summary .button-contact:hover{
-    background-color: #9db5d9;
-    color: #f0f0f0;
+    background-color: #f64747;
+    color: white;
 }
 
 .order-summary .order-total{
@@ -4914,10 +4921,53 @@ a.shipping-calculator-button:hover {
 }
 
 .needColor{
-    font-size: 18px;
+    font-size: 20px;
+    margin-left: 5px;
     color: #9db5d9;
 }
 
+.status-new{
+    background-color: #ffe2d5;
+    color: rgba(255, 108, 47, 1) ;
+    font-weight: 600;
+    font-size: 13px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.status-cancel{
+    background-color: #fcdfdf;
+    color: rgba(239, 95, 95,1);
+    font-weight: 600;
+    font-size: 13px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.status-done{
+    background-color: #d3f3df;
+    color: rgba(34, 197, 94,1);
+    font-weight: 600;
+    font-size: 13px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.order-footer .animated{
+    font-size: 15px ;
+}
 /*------------------Order History View End----------------------*/
 
 
@@ -5204,3 +5254,26 @@ a.shipping-calculator-button:hover {
     background-color: #495057 !important;
 }
 
+
+/*custom form control*/
+.order-history{
+
+}
+
+.order-history h3{
+    border-bottom: 1px solid #ebebeb;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.order-history h6{
+    font-size: 17px;
+    color: #9db5d9;
+}
+
+.order-history .element-right p {
+    font-size: 16px;
+}
