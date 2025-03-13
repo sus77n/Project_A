@@ -4,12 +4,18 @@ import com.example.project_a.model.Order;
 import com.example.project_a.model.User;
 import com.example.project_a.service.OrderService;
 import com.example.project_a.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +34,8 @@ public class UserController {
 
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @GetMapping("/register")
     public String showRegister(Model model) {
@@ -38,6 +46,7 @@ public class UserController {
     @PostMapping("/users/save")
     public String saveUser(User user,
                            @RequestParam String email,
+                           HttpServletRequest request,
                            RedirectAttributes redirectAttributes) {
         System.out.println("email here: " + email);
 
@@ -47,8 +56,11 @@ public class UserController {
             return "redirect:/register";
         }
         service.save(user);
+
+        autoLogin(user, request);
+
         redirectAttributes.addFlashAttribute("message", "User registered successfully");
-        return "redirect:/login";
+        return "redirect:/account";
     }
 
 
@@ -176,4 +188,18 @@ public class UserController {
         ra.addFlashAttribute("message", "The User has been changed successfully.");
         return "redirect:/admin/user/list";
     }
+
+
+    private void autoLogin(User user, HttpServletRequest request) {
+        // Load user details from UserService
+        UserDetails userDetails = service.findUserByEmail(user.getEmail());
+
+        UsernamePasswordAuthenticationToken authToken =
+                new UsernamePasswordAuthenticationToken(userDetails, user.getPassword(), userDetails.getAuthorities());
+
+        SecurityContextHolder.getContext().setAuthentication(authToken);
+        HttpSession session = request.getSession();
+        session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+    }
+
 }

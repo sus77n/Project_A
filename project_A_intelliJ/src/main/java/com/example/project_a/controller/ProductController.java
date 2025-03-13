@@ -8,6 +8,7 @@ import com.example.project_a.service.MediaService;
 import com.example.project_a.service.ProductService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.net.http.HttpRequest;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -251,12 +253,17 @@ public class ProductController {
     }
 
     @GetMapping("/home")
-    public String showIndexPage(Model model) {
-//        List<Product> products = service.getAllProducts();
+    public String showIndexPage(Model model, HttpSession session) {
+
+        String message = (String) session.getAttribute("message");
+        if (message != null) {
+            model.addAttribute("message", message);
+            session.removeAttribute("message"); // Prevent message from persisting on refresh
+        }
+
         List<Product> products = service.getActiveProductsInActiveCategories();
         List<Product> firstGroup = products.stream().limit(4).toList();
         List<Product> secondGroup = products.size() > 4 ? products.stream().skip(4).limit(4).toList() : Collections.emptyList();
-//        List<Category> categories = categoryService.getAllCategories();
         List<Category>categories= categoryService.getActiveCategories();
         List<Category> displayedCategories = categories.stream().limit(3).toList();
 
