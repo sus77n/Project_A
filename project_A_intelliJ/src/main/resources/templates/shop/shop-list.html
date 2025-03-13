@@ -422,7 +422,11 @@
                     console.log("success");
                     updateCartCount(response.cartSize);
                     updateCartUI(response.cartItems);
-                    showToast("Product added to cart!");
+                    if (response.ErrorMessage != null) {
+                        showToast(response.ErrorMessage, "error");
+                    }else {
+                        showToast("Product added to cart!");
+                    }
                 },
                 error: function () {
                     showToast("Error adding product to cart!", "error");
