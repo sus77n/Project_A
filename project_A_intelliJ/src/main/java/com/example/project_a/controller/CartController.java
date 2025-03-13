@@ -75,7 +75,7 @@ public class CartController {
 
         Map<String, Object> response = new HashMap<>();
         System.out.println(quantity);
-        if (quantity == null) {
+        if (quantity == null || quantity <= 0) {
             quantity = 1;
         }
         if (productId == null) {
@@ -117,7 +117,7 @@ public class CartController {
                 cartList.add(newCartItem);
                 service.save(newCartItem);
             }else {
-                response.put("ErrorMessage", "Insufficient stock! Only " + existingCartItem.getProduct().getInStock() + " available.");
+                response.put("ErrorMessage", "Insufficient stock! Only " + productService.findProductById(productId).getInStock() + " available.");
             }
 
         }
