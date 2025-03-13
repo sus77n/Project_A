@@ -159,11 +159,12 @@
             let cartId = $(this).data("id");
             let newQuantity = parseInt($(this).val(), 10);
 
-            if (isNaN(newQuantity) || newQuantity < 1) {
-                newQuantity = 1;
-            } else if (newQuantity > 100) {
+            if (newQuantity > 100) {
                 newQuantity = 100;
                 showToast("You cannot order more than 100 items!", "error");
+            }
+            if (isNaN(newQuantity) || newQuantity < 1) {
+                newQuantity = 1;
             }
 
             $(this).val(newQuantity); // Ensure the input reflects the allowed value

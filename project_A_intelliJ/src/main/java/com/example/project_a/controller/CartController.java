@@ -101,6 +101,8 @@ public class CartController {
             // Check if requested quantity exceeds available stock
             if (existingCartItem.getQuantity() + quantity > existingCartItem.getProduct().getInStock()) {
                 response.put("ErrorMessage", "Insufficient stock! Only " + existingCartItem.getProduct().getInStock() + " available.");
+            }else if (existingCartItem.getQuantity() + quantity > 100){
+                response.put("ErrorMessage", "You cannot order more than 100 items!");
             }else {
                 existingCartItem.setQuantity(existingCartItem.getQuantity() + quantity);
                 service.updateCart(existingCartItem.getId()+"", existingCartItem);
