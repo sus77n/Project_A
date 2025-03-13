@@ -39,8 +39,8 @@ public class UserService {
 
     public void save(User user) {
         String hashedPassword = hashingPassword(user.getPassword());
+        user.setUsername(user.getEmail());
         user.setPassword(hashedPassword);
-        System.out.println("Saving user: " + user);
         userRepository.save(user);
     }
 
@@ -57,6 +57,11 @@ public class UserService {
 
     public User findUserById(Integer id) {
         Optional<User> user = userRepository.findById(id);
+        return user.orElse(null);
+    }
+
+    public User findUserByEmail(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
         return user.orElse(null);
     }
 

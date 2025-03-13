@@ -4,6 +4,7 @@ import com.example.project_a.model.User;
 import com.example.project_a.repository.UserRepository;
 import com.example.project_a.service.UserService;
 import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -46,6 +47,17 @@ public class AuthController {
         return "redirect:/forgot-password";
     }
 
+    @PostMapping("/login")
+    public String login(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("message", "Login successful!");
+        return "redirect:/home";
+    }
+
+    @GetMapping("/logout")
+    public String logoutSuccess(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("message", "You have been logged out successfully!");
+        return "redirect:/login";
+    }
 
     @GetMapping("/reset-password")
     public String showResetPasswordForm(@RequestParam(required = false) String token,

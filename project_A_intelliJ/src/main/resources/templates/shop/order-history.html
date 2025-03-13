@@ -1,0 +1,82 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout::page_head}"></head>
+
+<body>
+<div class="wrapper">
+    <header class="header-sticky" th:replace="~{layout::page_header}"></header>
+
+    <div class="breadcrumb-area pt-65 pb-70 bg-img"
+         style="background-image:url(/assets/img/bg-image/hop-brech-bg.jpg);">
+        <div class="container">
+            <div class="breadcrumb-wrap text-center">
+                <h3>Order History</h3>
+                <ol class="breadcrumb breadcrumb-list">
+                    <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+                    <li class="breadcrumb-item"><a th:href="@{/account}">My Account</a></li>
+                    <li class="breadcrumb-item active">Order History</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Area End Here -->
+    <!-- Error 404 Area Start -->
+    <div class="error404-area white-bg ptb-80">
+        <div class="container">
+            <div class="order-history row">
+                <div class="col-8 mr-50">
+                    <h3>Items</h3>
+                    <div class="order-items mt-10 row align-items-center" th:each="item: ${order.details}">
+                        <div class="col-lg-2 order-thumbnail">
+                            <a th:href="@{/product-details(productId=${item.product.id})}">
+                                <img th:src="@{${item.product.thumbnail.filePath}}"
+                                     th:alt="${item.product.thumbnail.alt}">
+                            </a>
+                        </div>
+                        <div class="col-lg-8">
+                            <a th:href="@{/product-details(productId=${item.product.id})}">
+                                <h6 th:text="${item.product.name}"></h6>
+                            </a>
+                            <p>Price: $<span th:text="${item.product.price}"></span></p>
+                            <p>Quantity: <span th:text="${item.quantity}"></span></p>
+                        </div>
+                        <div class="col-lg-2 text-right">
+                            <p class="total-price">$
+                                <span th:text="${#numbers.formatDecimal(item.quantity * item.product.price, 0, 'COMMA', 2, 'POINT')}"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 ">
+                    <div class="element-right mb-30">
+                        <h3>Order summary</h3>
+                        <p>Status: <span th:text="${order.paymentStatus}"></span></p>
+                        <p>Date: <span th:text="${order.orderDate}"></span></p>
+                        <p>Total items: <span th:text="${totalItem}"></span></p>
+                        <p class="needColor ml-0">Total: <span th:text="${#numbers.formatDecimal(order.total, 0, 'COMMA', 2,'POINT')}"></span></p>
+                    </div>
+                    <div class="element-right mb-30">
+                        <h3>Billing Address</h3>
+                        <p>Phone number: <span th:text="${order.phoneNumber}"></span></p>
+                        <p>Address: <span th:text="${order.address}"></span></p>
+                    </div>
+                    <div class="element-right">
+                        <h3>Payment Method</h3>
+                        <p><span th:text="${order.formOfPayment}"></span></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Error 404 Area End -->
+    <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
+
+</div>
+<!-- Main Wrapper End Here -->
+
+<th:block th:replace="layout :: scripts"></th:block>
+
+</body>
+</html>
