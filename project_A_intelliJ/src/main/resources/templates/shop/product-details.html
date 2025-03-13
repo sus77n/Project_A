@@ -448,6 +448,13 @@
                 return;
             }
 
+            if (quantity > 100) {
+                showToast("You cannot order more than 100 items!", "error");
+                $(this).val(100);
+                addToCartBtn.prop("disabled", false);
+                return;
+            }
+
             if (quantity > stock) {
                 showToast("You cannot order more than the available stock!", "error");
                 $(this).val(stock);
@@ -478,7 +485,11 @@
                 success: function (response) {
                     updateCartCount(response.cartSize);
                     updateCartUI(response.cartItems);
-                    showToast("Product added to cart!");
+                    if (response.ErrorMessage != null) {
+                        showToast(response.ErrorMessage, "error");
+                    }else {
+                        showToast("Product added to cart!");
+                    }
                 },
                 error: function () {
                     showToast("Error adding product to cart!", "error");

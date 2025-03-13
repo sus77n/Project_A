@@ -155,9 +155,19 @@
 
 <script th:inline="javascript">
     $(document).ready(function () {
-        $(".qty-input").on("change", function () {
+        $(".qty-input").on("input change", function () { // Listen to both "input" and "change" events
             let cartId = $(this).data("id");
-            let newQuantity = $(this).val();
+            let newQuantity = parseInt($(this).val(), 10);
+
+            if (newQuantity > 100) {
+                newQuantity = 100;
+                showToast("You cannot order more than 100 items!", "error");
+            }
+            if (isNaN(newQuantity) || newQuantity < 1) {
+                newQuantity = 1;
+            }
+
+            $(this).val(newQuantity); // Ensure the input reflects the allowed value
 
             $.ajax({
                 url: "/cart/update",
@@ -169,9 +179,13 @@
 
                     // Update overall total
                     $(".cart_totals .amount").text('$' + response.total);
+
+                    if (response.ErrorMessage != null) {
+                        showToast(response.ErrorMessage, "error");
+                    }
                 },
                 error: function () {
-                    alert("Error updating cart. Please try again.");
+                    showToast("Failed to update cart. Please try again.", "error");
                 }
             });
         });
@@ -182,18 +196,15 @@
 <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script th:inline="javascript">
     function showToast(message, type = "success") {
+        let bgColor = type === "error" ? "#ff4d4d" : "linear-gradient(to right, #00b09b, #96c93d)";
         Toastify({
             text: message,
             duration: 2000,
             close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "center", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-                background: "linear-gradient(to right, #00b09b, #96c93d)",
-            },
-            onClick: function () {
-            } // Callback after click
+            gravity: "top",
+            position: "center",
+            stopOnFocus: true,
+            style: {background: bgColor},
         }).showToast();
     }
 </script>

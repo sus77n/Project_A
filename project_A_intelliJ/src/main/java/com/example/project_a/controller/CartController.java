@@ -71,6 +71,9 @@ public class CartController {
     public Map<String, Object> addToCart(@RequestBody Map<String, Integer> request, @AuthenticationPrincipal User user) {
         Integer productId = request.get("id");
         Integer quantity = request.get("quantity");
+
+
+        Map<String, Object> response = new HashMap<>();
         System.out.println(quantity);
         if (quantity == null) {
             quantity = 1;
@@ -95,22 +98,35 @@ public class CartController {
         }
 
         if (existingCartItem != null) {
-            existingCartItem.setQuantity(existingCartItem.getQuantity() + quantity);
-            service.updateCart(existingCartItem.getId()+"", existingCartItem);
+            // Check if requested quantity exceeds available stock
+            if (existingCartItem.getQuantity() + quantity > existingCartItem.getProduct().getInStock()) {
+                response.put("ErrorMessage", "Insufficient stock! Only " + existingCartItem.getProduct().getInStock() + " available.");
+            }else if (existingCartItem.getQuantity() + quantity > 100){
+                response.put("ErrorMessage", "You cannot order more than 100 items!");
+            }else {
+                existingCartItem.setQuantity(existingCartItem.getQuantity() + quantity);
+                service.updateCart(existingCartItem.getId()+"", existingCartItem);
+            }
+
         } else {
             Cart newCartItem = new Cart();
-            newCartItem.setProduct(productService.findProductById(productId));
-            newCartItem.setQuantity(quantity);
-            newCartItem.setUser(userService.findUserById(user.getId()));
-            cartList.add(newCartItem);
-            service.save(newCartItem);
+            if (quantity <= productService.findProductById(productId).getInStock()){
+                newCartItem.setProduct(productService.findProductById(productId));
+                newCartItem.setQuantity(quantity);
+                newCartItem.setUser(userService.findUserById(user.getId()));
+                cartList.add(newCartItem);
+                service.save(newCartItem);
+            }else {
+                response.put("ErrorMessage", "Insufficient stock! Only " + existingCartItem.getProduct().getInStock() + " available.");
+            }
+
         }
 
         // Calculate total cart size
         int totalCartItems = cartList.stream().mapToInt(Cart::getQuantity).sum();
 
         // Build response
-        Map<String, Object> response = new HashMap<>();
+
         response.put("cartSize", totalCartItems);
         response.put("cartItems", cartList.stream()
                 .map(cartItem -> {
@@ -129,15 +145,22 @@ public class CartController {
     @ResponseBody
     public Map<String, Object> updateCart(@RequestParam("id") Integer cartId, @RequestParam("quantity") Integer quantity, @AuthenticationPrincipal User user) {
         List<Cart> cartList = cartService.getCartsByUserId(user.getId());
-
+        Map<String, Object> response = new HashMap<>();
         if (cartList != null) {
             for (Cart cart : cartList) {
                 if (cart.getId().equals(cartId)) {
                     System.out.println("checkQuantity");
-                    System.out.println(quantity);
-                    cart.setQuantity(quantity);
-                    cartService.updateCart(cartId+"", cart);
-                    break;
+                    if (quantity > cart.getProduct().getInStock()) {
+                        System.out.println("Check error quantity");
+                        response.put("ErrorMessage", "Insufficient stock! Only " + cart.getProduct().getInStock() + " available.");
+                        break;
+                    }else {
+                        System.out.println(quantity);
+                        cart.setQuantity(quantity);
+                        cartService.updateCart(cartId+"", cart);
+                        break;
+                    }
+
                 }
             }
         }
@@ -150,7 +173,7 @@ public class CartController {
                 .map(Cart::getTotal)
                 .orElse(0);
 
-        Map<String, Object> response = new HashMap<>();
+
         response.put("subtotal", subtotal);
         response.put("total", total);
         return response;
