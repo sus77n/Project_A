@@ -22,10 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class UserController {
@@ -174,10 +171,23 @@ public class UserController {
         model.addAttribute("user", user);
 
         List<Order> orders = orderService.findOrdersByUserId(user.getId());
+
+        orders.sort(Comparator.comparing((Order o) -> getStatusPriority(o.getPaymentStatus()))
+                .thenComparing(Order::getOrderDate));
         model.addAttribute("orders", orders);
 
         return "shop/account";
     }
+    // Helper method to define priority for statuses
+    private int getStatusPriority(String status) {
+        switch (status) {
+            case "New": return 1;    // Highest priority
+            case "Done": return 2;
+            case "Cancel": return 3; // Lowest priority
+            default: return 4;       // Any unknown status comes last
+        }
+    }
+
 
     @GetMapping("/account/orders/details/{orderId}")
     public String showOrderDetails(@AuthenticationPrincipal User user,@PathVariable("orderId") String orderId, Model model) {

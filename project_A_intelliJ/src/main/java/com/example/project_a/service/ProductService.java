@@ -65,10 +65,16 @@ public class ProductService {
         return productRepository.searchActiveProductsInActiveCategories(query);
     }
 
-    public void updatStock(int productId, int quantity) {
+    public void exportStock(int productId, int quantity) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new IllegalArgumentException("Product not found with ID: "));
         product.setInStock(product.getInStock() - quantity);
+        productRepository.save(product);
+    }
+    public void importStock(int productId, int quantity) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new IllegalArgumentException("Product not found with ID: "));
+        product.setInStock(product.getInStock() + quantity);
         productRepository.save(product);
     }
 }
