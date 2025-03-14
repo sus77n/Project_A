@@ -26,9 +26,39 @@ public class OrderController {
     @GetMapping("/admin/order/list")
     public String listAllOrders(Model model) {
         List<Order> orders = service.getAllOrders();
+
+        // Sort orders based on custom logic
+        orders.sort((o1, o2) -> {
+            int priority1 = getStatusPriority(o1.getPaymentStatus());
+            int priority2 = getStatusPriority(o2.getPaymentStatus());
+
+            // Sort by priority first
+            if (priority1 != priority2) {
+                return Integer.compare(priority1, priority2);
+            }
+
+            // If status is "New", sort by orderDate ascending (oldest first)
+            if ("New".equals(o1.getPaymentStatus())) {
+                return o1.getOrderDate().compareTo(o2.getOrderDate());
+            }
+
+            // If status is "Done" or "Cancel", sort by orderDate descending (newest first)
+            return o2.getOrderDate().compareTo(o1.getOrderDate());
+        });
+
         model.addAttribute("orders", orders);
         model.addAttribute("pageTitle", "Order");
         return "admin/orders-list";
+    }
+
+    // Helper method to assign priority to order status
+    private int getStatusPriority(String status) {
+        switch (status) {
+            case "New": return 1;    // Highest priority
+            case "Done": return 2;
+            case "Cancel": return 3; // Lowest priority
+            default: return 4;       // Any unknown status comes last
+        }
     }
 
     @GetMapping("/order/cancel")
