@@ -40,14 +40,15 @@
                                 <div class="col-md-12 mb-30">
                                     <div class="checkout-form-list">
                                         <label>Address </label>
-                                        <input type="text" th:field="*{address}"/>
+                                        <input type="text" th:field="*{address}" required/>
+
                                         <!--   Chỗ này dẫn đến địa chỉ người dùng-->
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkout-form-list mb-30">
                                         <label>Phone </label>
-                                        <input type="text" th:field="*{phoneNumber}"/>
+                                        <input type="text" th:field="*{phoneNumber}" required/>
                                         <!--   Chỗ này dẫn đến phone người dùng-->
                                     </div>
                                 </div>
@@ -127,14 +128,19 @@
                                             <span class="product-quantity" th:text="${cart.quantity}"></span>
                                         </td>
                                         <td class="product-total">
-                                            <span class="amount" th:text="${cart.getTotal()}"></span>
+                                            <span class="amount" th:text="'$' + ${#numbers.formatDecimal(cart.getTotal(), 1, 2)}"></span>
+
                                         </td>
                                     </tr>
                                     </tbody>
                                     <tfoot>
                                     <tr class="order-total">
                                         <th>Order Total</th>
-                                        <td><span class=" total amount" th:text="'$' + ${total}"></span>
+                                        <td>
+                                        <td>
+                                            <span class="amount" th:text="'$' + ${#numbers.formatDecimal(total, 1, 2)}"></span>
+                                        </td>
+
                                         </td>
                                     </tr>
                                     </tfoot>
@@ -160,57 +166,45 @@
     document.addEventListener("DOMContentLoaded", function () {
         const shipBox = document.getElementById("ship-box");
         const shipBoxInfo = document.getElementById("ship-box-info");
-
-        // Original address fields
-        const originalAddressField = document.querySelector("input[name='address']"); // Actual value (hidden)
-        const originalAddressDisplay = originalAddressField.cloneNode(true); // Clone for display only
-        originalAddressDisplay.removeAttribute("name"); // Remove name to prevent form submission
-        originalAddressDisplay.setAttribute("readonly", true); // Make it read-only
-        originalAddressField.style.display = "none"; // Hide actual input field
-        originalAddressField.parentNode.insertBefore(originalAddressDisplay, originalAddressField); // Insert clone before
-
-        // New address fields
+        const originalAddressField = document.querySelector("input[name='address']");
         const newAddressField = shipBoxInfo.querySelector("input[placeholder='Street address']");
         const provinceSelect = document.getElementById("provinces");
         const districtSelect = document.getElementById("districts");
         const wardSelect = document.getElementById("wards");
 
-        // Store original value
-        const userAddress = originalAddressField.value;
-
-        // Hide shipping fields initially
-        shipBoxInfo.style.display = "none";
+        const userAddress = originalAddressField.value.trim(); // Store user's existing address
 
         shipBox.addEventListener("change", function () {
             if (shipBox.checked) {
                 shipBoxInfo.style.display = "block";
-                updateAddress();
+                updateOriginalAddress(); // Update immediately if already filled
             } else {
                 shipBoxInfo.style.display = "none";
-                originalAddressField.value = userAddress; // Restore original value
+                originalAddressField.value = userAddress; // Restore original address
             }
         });
 
-        function updateAddress() {
-            const selectedProvince = provinceSelect.options[provinceSelect.selectedIndex]?.text || "";
-            const selectedDistrict = districtSelect.options[districtSelect.selectedIndex]?.text || "";
-            const selectedWard = wardSelect.options[wardSelect.selectedIndex]?.text || "";
-            const detailedAddress = newAddressField.value.trim();
+        function updateOriginalAddress() {
+            if (!shipBox.checked) return;
 
-            const fullAddress = `${detailedAddress}, ${selectedWard}, ${selectedDistrict}, ${selectedProvince}`.replace(/, ,/g, "").trim();
+            let selectedProvince = provinceSelect.options[provinceSelect.selectedIndex]?.text || "";
+            let selectedDistrict = districtSelect.options[districtSelect.selectedIndex]?.text || "";
+            let selectedWard = wardSelect.options[wardSelect.selectedIndex]?.text || "";
+            let detailedAddress = newAddressField.value.trim();
 
-            if (shipBox.checked) {
-                originalAddressField.value = fullAddress; // Update real input field (hidden)
-            }
+            let newAddress = [detailedAddress, selectedWard, selectedDistrict, selectedProvince]
+                .filter(Boolean) // Remove empty values
+                .join(", ");
+
+            originalAddressField.value = newAddress || userAddress;
         }
 
-        provinceSelect.addEventListener("change", updateAddress);
-        districtSelect.addEventListener("change", updateAddress);
-        wardSelect.addEventListener("change", updateAddress);
-        newAddressField.addEventListener("input", updateAddress);
+        // Listen for changes and update the address dynamically
+        provinceSelect.addEventListener("change", updateOriginalAddress);
+        districtSelect.addEventListener("change", updateOriginalAddress);
+        wardSelect.addEventListener("change", updateOriginalAddress);
+        newAddressField.addEventListener("input", updateOriginalAddress);
     });
-
-
 </script>
 
 

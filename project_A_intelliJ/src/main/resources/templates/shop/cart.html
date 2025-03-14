@@ -51,7 +51,7 @@
 
                                     <!-- Price -->
                                     <div class="col-lg-2">
-                                        <p th:text="'$' + ${cart.product.price}"></p>
+                                        <p th:text="'$' + ${#numbers.formatDecimal(cart.product.price, 1, 2)}"></p>
                                     </div>
 
                                     <!-- Quantity Input -->
@@ -61,47 +61,14 @@
 
                                     <!-- Total Price -->
                                     <div class="col-lg-2">
-                                        <p class="total-price" th:text="'$' + ${cart.getTotal()}"></p>
+                                        <p class="total-price" th:text="'$' + ${#numbers.formatDecimal(cart.getTotal(), 1, 2)}"></p>
                                     </div>
 
 
                                 </div>
-<!--                            </div>-->
 
-                            <!--                            <table> &ndash;&gt;-->
-                            <!--                                <thead>-->
-                            <!--                                <tr>-->
-                            <!--                                    <th class="product-thumbnail">Image</th>-->
-                            <!--                                    <th class="product-name">Product</th>-->
-                            <!--                                    <th class="product-price">Price</th>-->
-                            <!--                                    <th class="product-quantity">Quantity</th>-->
-                            <!--                                    <th class="product-subtotal">Total</th>-->
-                            <!--                                    <th class="product-remove">Remove</th>-->
-                            <!--                                </tr>-->
-                            <!--                                </thead>-->
-                            <!--                                <tbody>-->
-                            <!--                                <tr th:each="cart : ${carts}" th:data-cart-id="${cart.id}">-->
-                            <!--                                    <td class="product-thumbnail">-->
-                            <!--                                        <a href="#"><img th:src="${cart.product.thumbnail.filePath}"-->
-                            <!--                                                         th:alt="${cart.product.getThumbnail().getAlt()}"/></a>-->
-                            <!--                                    </td>-->
-                            <!--                                    <td class="product-name"><a th:href="@{/product-detail}"><span-->
-                            <!--                                            th:text="${cart.product.name}"></span></a></td>-->
-                            <!--                                    <td class="product-price"><span th:text="'£' + ${cart.product.price}"></span></td>-->
-                            <!--                                    <td class="product-quantity">-->
-                            <!--                                        <input type="number" class="qty-input" th:data-id="${cart.id}"-->
-                            <!--                                               th:value="${cart.quantity}" min="1"/>-->
-                            <!--                                    </td>-->
-                            <!--                                    <td class="product-subtotal"><span th:text="'£' + ${cart.getTotal()}"></span></td>-->
-                            <!--                                    <td class="product-remove"><a th:href="@{/cart/delete(id=${cart.id})}"><i-->
-                            <!--                                            class="fa fa-times" aria-hidden="true"></i></a></td>-->
-                            <!--                                </tr>-->
-                            <!--                                </tbody>-->
-                            <!--                            </table>-->
                         </div>
                         <!-- Table Content Start -->
-
-
                         <div class="row cart-footer">
                             <!-- Cart Button Start -->
                             <div class="col-md-8 col-sm-12">
@@ -121,12 +88,12 @@
                                         <tbody>
                                         <tr class="cart-subtotal">
                                             <th>Subtotal</th>
-                                            <td><span class="amount" th:text="'$' + ${total}"></span></td>
+                                            <td><span class="amount" th:text="'$' + ${#numbers.formatDecimal(total, 1, 2)}"></span></td>
                                         </tr>
                                         <tr class="order-total">
                                             <th>Total</th>
                                             <td>
-                                                <strong><span class="amount" th:text="'$' + ${total}"></span></strong>
+                                                <strong><span class="amount" th:text="'$' + ${#numbers.formatDecimal(total, 1, 2)}"></span></strong>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -174,11 +141,16 @@
                 type: "POST",
                 data: {id: cartId, quantity: newQuantity},
                 success: function (response) {
+                    // Ensure correct calculation with proper decimal formatting
+                    let formattedSubtotal = parseFloat(response.subtotal).toFixed(2);
+                    let formattedTotal = parseFloat(response.total).toFixed(2);
+
                     // Update subtotal for this item
-                    $(`.cart-card[data-cart-id='${cartId}']`).find(".total-price").text('$' + response.subtotal);
+                    $(`.cart-card[data-cart-id='${cartId}']`).find(".total-price").text('$' + formattedSubtotal);
 
                     // Update overall total
-                    $(".cart_totals .amount").text('$' + response.total);
+                    $(".cart_totals .amount").text('$' + formattedTotal);
+
 
                     if (response.ErrorMessage != null) {
                         showToast(response.ErrorMessage, "error");

@@ -166,8 +166,8 @@ public class CartController {
         }
 
 
-        int total = cartList.stream().mapToInt(Cart::getTotal).sum();
-        int subtotal = cartList.stream()
+        double total = cartList.stream().mapToInt(Cart::getTotal).sum();
+        double subtotal = cartList.stream()
                 .filter(cart -> cart.getId().equals(cartId))
                 .findFirst()
                 .map(Cart::getTotal)
