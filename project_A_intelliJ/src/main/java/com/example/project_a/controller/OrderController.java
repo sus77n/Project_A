@@ -61,8 +61,18 @@ public class OrderController {
         }
     }
 
+    @GetMapping("/admin/order/done")
+    public String doneOrder(@RequestParam("id") String id , RedirectAttributes ra, @AuthenticationPrincipal User user) {
+        Order order = service.findOrderById(Integer.parseInt(id));
+        order.setPaymentStatus("Done");
+        service.update(order);
+        List<OrderDetail> orderDetails = order.getDetails();
+        ra.addFlashAttribute("message", "The Order has been done successfully.");
+        return "redirect:/admin/order/list";
+    }
+
     @GetMapping("/order/cancel")
-    public String deleteCart(@RequestParam("id") String id , RedirectAttributes ra, @AuthenticationPrincipal User user) {
+    public String cancelOrder(@RequestParam("id") String id , RedirectAttributes ra, @AuthenticationPrincipal User user) {
         Order order = service.findOrderById(Integer.parseInt(id));
         order.setPaymentStatus("Cancel");
         service.update(order);
