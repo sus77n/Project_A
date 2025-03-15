@@ -37,7 +37,7 @@
                                                 <span th:text="${order.ID}"></span>
                                             </td>
                                             <td class="text-center">
-                                                <span th:text="${order.orderDate}"></span>
+                                                <span  th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"></span>
                                             </td>
                                             <td class="text-start">
                                                 <span th:text="${order.user.username}"></span>
@@ -87,7 +87,7 @@
                                                                                                 <span th:text="${order.ID}"></span>
                                                                                                 <span th:text="${order.paymentStatus}" class="badge bg-success-subtle text-success px-2 py-1 fs-13"></span>
                                                                                             </h4>
-                                                                                            <p th:text="${order.orderDate}" class="mb-0"></p>
+                                                                                            <p  th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd HH:mm')}" class="mb-0"></p>
                                                                                         </div>
                                                                                         <div>
                                                                                             <a th:href="@{/admin/order/done(id=${order.ID})}" class="btn btn-primary">Mark as done</a>
