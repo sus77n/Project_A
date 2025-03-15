@@ -97,7 +97,8 @@
                                         <div>
 <!--                                            <p class="order-id">Order ID: <span th:text="'#' + ${order.ID}"></span></p>-->
 
-                                            <p class="order-id" th:text="${order.orderDate}"></p>
+                                            <p class="order-id" th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"></p>
+
                                         </div>
                                         <div class="order-status">
                                             <p th:text="${order.paymentStatus}"

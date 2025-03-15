@@ -29,7 +29,7 @@ public class Order {
     private String paymentStatus;
 
     @Column(name = "order_date")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
 
     @Getter

@@ -52,7 +52,7 @@
                     <div class="element-right mb-30">
                         <h3>Order summary</h3>
                         <p>Status: <span th:text="${order.paymentStatus}"></span></p>
-                        <p>Date: <span th:text="${order.orderDate}"></span></p>
+                        <p>Date: <span  th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"></span></p>
                         <p>Total items: <span th:text="${totalItem}"></span></p>
                         <p class="needColor ml-0">Total: <span th:text="${#numbers.formatDecimal(order.total, 0, 'COMMA', 2,'POINT')}"></span></p>
                     </div>

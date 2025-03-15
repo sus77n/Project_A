@@ -172,20 +172,25 @@ public class UserController {
 
         List<Order> orders = orderService.findOrdersByUserId(user.getId());
 
-        orders.sort(Comparator.comparing((Order o) -> getStatusPriority(o.getPaymentStatus()))
-                .thenComparing(Order::getOrderDate));
+        orders.sort(Comparator
+                .comparing((Order o) -> getStatusPriority(o.getPaymentStatus())) // Sort by status priority
+                .thenComparing(o -> o.getPaymentStatus().equals("New")
+                        ? o.getOrderDate().toInstant().toEpochMilli() * -1  // New orders: newest first
+                        : o.getOrderDate().toInstant().toEpochMilli())      // Done/Cancel: oldest first
+        );
         model.addAttribute("orders", orders);
 
         return "shop/account";
     }
-    // Helper method to define priority for statuses
+    // Helper method for payment status priority
+    private static final Map<String, Integer> STATUS_PRIORITY = Map.of(
+            "New", 1,
+            "Done", 2,
+            "Cancel", 3
+    );
+
     private int getStatusPriority(String status) {
-        switch (status) {
-            case "New": return 1;    // Highest priority
-            case "Done": return 2;
-            case "Cancel": return 3; // Lowest priority
-            default: return 4;       // Any unknown status comes last
-        }
+        return STATUS_PRIORITY.getOrDefault(status, 4);
     }
 
 
