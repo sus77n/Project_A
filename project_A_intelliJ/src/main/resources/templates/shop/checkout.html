@@ -127,15 +127,14 @@
                                             <span class="product-quantity" th:text="${cart.quantity}"></span>
                                         </td>
                                         <td class="product-total">
-                                            <span class="amount" th:text="${cart.getTotal()}"></span>
+                                            <span class="amount" th:text="|${#numbers.formatDecimal(cart.getTotal(), 0, 'COMMA', 2, 'POINT')}|"></span>
                                         </td>
                                     </tr>
                                     </tbody>
                                     <tfoot>
                                     <tr class="order-total">
                                         <th>Order Total</th>
-                                        <td><span class=" total amount" th:text="'$' + ${total}"></span>
-                                        </td>
+                                        <td><span class="total amount" th:text="|$${#numbers.formatDecimal(total, 0, 'COMMA', 2, 'POINT')}|"></span></td>
                                     </tr>
                                     </tfoot>
                                 </table>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -37,9 +38,9 @@ public class CheckOutController {
         order.setPhoneNumber(user.getPhoneNumber());
         order.setPaymentStatus("New");
         List<Cart> carts = cartService.getCartsByUserId(user.getId());
-        int total = 0;
+        BigDecimal total = BigDecimal.ZERO;
         for (Cart cart : carts) {
-            total += cart.getTotal();
+            total = total.add(cart.getTotal());
         }
         model.addAttribute("total", total);
         model.addAttribute("order", order);

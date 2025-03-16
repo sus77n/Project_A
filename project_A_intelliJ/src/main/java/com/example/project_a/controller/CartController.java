@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,7 +46,10 @@ public class CartController {
             cartList = new ArrayList<>();
         }
 
-        int total = cartList.stream().mapToInt(Cart::getTotal).sum();
+        BigDecimal total = cartList.stream()
+                .map(Cart::getTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add); // Sum all BigDecimal values
+
         for (Cart cart : cartList) {
             if(cart.getId() == null) {
                 service.save(cart);
@@ -166,12 +170,15 @@ public class CartController {
         }
 
 
-        int total = cartList.stream().mapToInt(Cart::getTotal).sum();
-        int subtotal = cartList.stream()
+        BigDecimal total = cartList.stream()
+                .map(Cart::getTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        BigDecimal subtotal = cartList.stream()
                 .filter(cart -> cart.getId().equals(cartId))
                 .findFirst()
                 .map(Cart::getTotal)
-                .orElse(0);
+                .orElse(BigDecimal.ZERO);
 
 
         response.put("subtotal", subtotal);
