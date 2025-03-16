@@ -29,7 +29,7 @@ public class Order {
     private String paymentStatus;
 
     @Column(name = "order_date")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
 
     @Getter
@@ -56,7 +56,7 @@ public class Order {
     public  double getTotal(){
         double total = 0.0;
         for (OrderDetail detail : details) {
-            total += detail.getQuantity() * detail.getProduct().getPrice();
+            total += (detail.getQuantity()*1.0) * detail.getProduct().getPrice();
         }
         return total;
     }

@@ -170,6 +170,7 @@ public class CartController {
         }
 
 
+
         BigDecimal total = cartList.stream()
                 .map(Cart::getTotal)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);

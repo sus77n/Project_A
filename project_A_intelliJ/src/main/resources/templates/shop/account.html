@@ -97,7 +97,8 @@
                                         <div>
 <!--                                            <p class="order-id">Order ID: <span th:text="'#' + ${order.ID}"></span></p>-->
 
-                                            <p class="order-id" th:text="${order.orderDate}"></p>
+                                            <p class="order-id" th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"></p>
+
                                         </div>
                                         <div class="order-status">
                                             <p th:text="${order.paymentStatus}"
@@ -120,7 +121,7 @@
                                                 <h6 th:text="${lastItem.product.name}"></h6>
                                             </a>
                                             <p>Price: $<span th:text="${lastItem.product.price}"></span></p>
-                                            <p>Quantity: <span th:text="${lastItem.quantity}"></span></p>
+                                               <p>Quantity: <span th:text="${lastItem.quantity}"></span></p>
                                         </div>
                                         <div class="col-lg-2 text-right">
                                             <p class="total-price">$
@@ -141,7 +142,10 @@
                                             </p>
                                         </div>
                                         <div class="d-flex justify-content-end">
-                                            <button class="button-contact">Cancel</button>
+                                            <button class="button-contact"><a th:href="@{/order/cancel(id=${order.ID})}">
+                                                Cancel
+                                            </a></button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -268,6 +272,23 @@
                     targetPane.classList.add("show", "active");
                 }
             }
+            // Disable "Cancel" button if order status is not "New"
+            document.querySelectorAll(".order-summary").forEach(order => {
+                let statusElement = order.querySelector(".order-status p");
+                let cancelButton = order.querySelector(".button-contact a");
+                let buttonContact = order.querySelector(".button-contact");
+
+                if (statusElement && cancelButton) {
+                    let statusText = statusElement.textContent.trim().toLowerCase();
+                    if (statusText !== "new") {
+                        cancelButton.style.opacity = "0.5";
+                        cancelButton.style.cursor = "not-allowed";
+                        cancelButton.style.pointerEvents = "none"; // Prevents clicking
+                        buttonContact.style.backgroundColor = "gray"; // Change whole button-contact background
+                        buttonContact.style.color = "white"; // Ensure text is readable
+                    }
+                }
+            });
         });
     </script>
 </body>
