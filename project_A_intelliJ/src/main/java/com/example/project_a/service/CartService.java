@@ -4,6 +4,7 @@ import com.example.project_a.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,13 +53,14 @@ public class CartService {
     public List<Cart> getCartsByUserId(Integer userId) {
         return repo.findCartItemsByUser(userId);
     }
-    public double calculateTotal(Integer userId) {
+    public BigDecimal calculateTotal(Integer userId) {
         List<Cart> carts = getCartsByUserId(userId);
-        double total = 0.0;
+        BigDecimal total = BigDecimal.ZERO;
         for (Cart cart : carts) {
-            total += cart.getTotal();
+            total = total.add(cart.getTotal());
         }
         return total;
+
     }
 
     public boolean isProductExist(Integer productId, Integer userId) {

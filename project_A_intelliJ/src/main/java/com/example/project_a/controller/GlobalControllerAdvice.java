@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +26,7 @@ public class GlobalControllerAdvice {
         }
 
         List<Cart> carts = service.getCartsByUserId(Integer.parseInt(userId));
-        double total = service.calculateTotal(Integer.parseInt(userId)); // Update with taxes/shipping if applicable
+        BigDecimal total = service.calculateTotal(Integer.parseInt(userId)); // Update with taxes/shipping if applicable
         int numberOfItems = carts.size();
         Map<String, Object> cartData = new HashMap<>();
         cartData.put("cartItems", carts);

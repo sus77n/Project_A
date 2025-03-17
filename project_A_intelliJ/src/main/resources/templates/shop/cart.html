@@ -51,7 +51,8 @@
 
                                     <!-- Price -->
                                     <div class="col-lg-2">
-                                        <p th:text="'$' + ${#numbers.formatDecimal(cart.product.price, 1, 2)}"></p>
+                                        <p th:text="|$${#numbers.formatDecimal(cart.product.price, 0, 'COMMA', 2, 'POINT')}|"></p>
+
                                     </div>
 
                                     <!-- Quantity Input -->
@@ -61,7 +62,7 @@
 
                                     <!-- Total Price -->
                                     <div class="col-lg-2">
-                                        <p class="total-price" th:text="'$' + ${#numbers.formatDecimal(cart.getTotal(), 1, 2)}"></p>
+                                        <p class="total-price" th:text="|$${#numbers.formatDecimal(cart.getTotal(), 0, 'COMMA', 2, 'POINT')}|"></p>
                                     </div>
 
 
@@ -88,12 +89,15 @@
                                         <tbody>
                                         <tr class="cart-subtotal">
                                             <th>Subtotal</th>
-                                            <td><span class="amount" th:text="'$' + ${#numbers.formatDecimal(total, 1, 2)}"></span></td>
+                                            <td><span class="amount" th:text="|$${#numbers.formatDecimal(total, 0, 'COMMA', 2, 'POINT')}|"></span></td>
+
                                         </tr>
                                         <tr class="order-total">
                                             <th>Total</th>
                                             <td>
-                                                <strong><span class="amount" th:text="'$' + ${#numbers.formatDecimal(total, 1, 2)}"></span></strong>
+
+                                                <strong><span class="amount" th:text="|$${#numbers.formatDecimal(total, 0, 'COMMA', 2, 'POINT')}|"></span></strong>
+
                                             </td>
                                         </tr>
                                         </tbody>
