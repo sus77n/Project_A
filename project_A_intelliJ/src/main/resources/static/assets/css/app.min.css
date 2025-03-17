@@ -4999,6 +4999,12 @@ textarea.form-control-lg {
   list-style: none;
 }
 
+.logout-item {
+  position: absolute;
+  bottom: 25px;
+  width: 100%; /* Ensures full width */
+}
+
 .nav-link {
   display: block;
   padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
