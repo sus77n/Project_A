@@ -53,12 +53,6 @@ public class AuthController {
         return "redirect:/home";
     }
 
-    @GetMapping("/logout")
-    public String logoutSuccess(RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("message", "You have been logged out successfully!");
-        return "redirect:/login";
-    }
-
     @GetMapping("/reset-password")
     public String showResetPasswordForm(@RequestParam(required = false) String token,
                                         @RequestParam(required = false) Boolean success,

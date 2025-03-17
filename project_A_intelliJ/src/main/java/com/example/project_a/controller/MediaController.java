@@ -39,46 +39,9 @@ public class MediaController {
         }
     }
 
-    @PostMapping("/upload-multiple")
-    @ResponseBody
-    public ResponseEntity<Map<String, Object>> uploadMedias(@RequestParam("file") MultipartFile[] files) {
-        List<String> fileNames = new ArrayList<>();
-        List<String> filePaths = new ArrayList<>();
-
-        try {
-            for (MultipartFile file : files) {
-                String fileName = mediaService.store(file);
-                String filePath = mediaService.getFileUrl(fileName);
-
-                fileNames.add(fileName);
-                filePaths.add(filePath);
-            }
-
-            Map<String, Object> response = new HashMap<>();
-            response.put("fileNames", fileNames);
-            response.put("filePaths", filePaths);
-
-            return ResponseEntity.ok(response);
-
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("error", "Failed to upload files: " + e.getMessage()));
-        }
-    }
-
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteMedia(@RequestParam("fileName") String fileName) {
-        try {
-            boolean deleted = mediaService.removeFromStorage(fileName); // Implement this in your StorageService
-            if (deleted) {
-                return ResponseEntity.ok().body(Map.of("message", "File deleted successfully."));
-            } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "File not found."));
-            }
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("error", "Failed to delete file: " + e.getMessage()));
-        }
+        return ResponseEntity.ok().body(Map.of("message", "File deleted successfully."));
     }
 
     @GetMapping("/get/{id}")

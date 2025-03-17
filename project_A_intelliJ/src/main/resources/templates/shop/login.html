@@ -13,7 +13,6 @@
                     <h3>Login</h3>
                     <ol class="breadcrumb breadcrumb-list">
                         <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
-                        <li class="breadcrumb-item"><a th:href="@{/account}">Account</a></li>
                         <li class="breadcrumb-item active">Login</li>
                     </ol>
                 </div>
@@ -28,6 +27,15 @@
                    <div class="col-lg-7 ">
                        <div class="login-form">
                            <form th:action="@{/login}" method="post">
+                               <div th:if="${param.error}" class="alert alert-danger text-center">
+                                   Invalid username or password. Please try again.
+                               </div>
+                               <div th:if="${param.logout}" class="alert alert-success text-center">
+                                   You have been logged out successfully.
+                               </div>
+                               <div th:if="${param.expired}" class="alert alert-warning text-center">
+                                   Your session has expired. Please log in again.
+                               </div>
                                <div class="form-group row justify-content-center">
                                    <label for="email" class="col-sm-2 col-form-label">Email</label>
                                    <div class="col-sm-8">
