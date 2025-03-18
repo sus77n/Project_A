@@ -172,28 +172,13 @@ public class UserController {
 
         List<Order> orders = orderService.findOrdersByUserId(user.getId());
 
-        orders.sort(Comparator
-                .comparing((Order o) -> getStatusPriority(o.getPaymentStatus())) // Sort by status priority
-                .thenComparing(o -> o.getPaymentStatus().equals("New")
-                        ? o.getOrderDate().toInstant().toEpochMilli() * -1  // New orders: newest first
-                        : o.getOrderDate().toInstant().toEpochMilli())      // Done/Cancel: oldest first
-        );
+        // Sort only by order date (newest first)
+        orders.sort(Comparator.comparing((Order o) -> o.getOrderDate().toInstant().toEpochMilli()).reversed());
         model.addAttribute("orders", orders);
 
         return "shop/account";
     }
-    // Helper method for payment status priority
-    private static final Map<String, Integer> STATUS_PRIORITY = Map.of(
-            "New", 1,
-            "Done", 2,
-            "Cancel", 3
-    );
-
-    private int getStatusPriority(String status) {
-        return STATUS_PRIORITY.getOrDefault(status, 4);
-    }
-
-
+    
     @GetMapping("/account/orders/details/{orderId}")
     public String showOrderDetails(@AuthenticationPrincipal User user,@PathVariable("orderId") String orderId, Model model) {
         Order order = orderService.findOrderById(Integer.parseInt(orderId));
