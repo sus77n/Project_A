@@ -67,7 +67,7 @@ public class OrderController {
         order.setPaymentStatus("Done");
         service.update(order);
         List<OrderDetail> orderDetails = order.getDetails();
-        ra.addFlashAttribute("message", "The Order has been done successfully.");
+        ra.addFlashAttribute("message", "The Order been marked successfully.");
         return "redirect:/admin/order/list";
     }
 
@@ -81,7 +81,7 @@ public class OrderController {
             Product product = ProductService.findProductById(orderDetail.getProduct().getId());
             productService.importStock(product.getId(), orderDetail.getQuantity());
         }
-        ra.addFlashAttribute("message", "The Order has been canclled successfully.");
+        ra.addFlashAttribute("message", "The order has been cancelled successfully.");
         return "redirect:/account#orders";
     }
 }
