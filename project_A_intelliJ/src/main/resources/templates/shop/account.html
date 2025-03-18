@@ -38,6 +38,9 @@
                     </div>
                     <div class="col-lg-10">
                         <!-- Tab panes -->
+                            <div th:if="${newUser}" class="alert alert-success text-center">
+                                Welcome! Before you continue, please update your delivery details.
+                            </div>
                         <div class="tab-content dashboard-content mt-all-40">
                             <div id="account-details" class="tab-pane fade show active">
                                 <h3>Account details </h3>
@@ -45,40 +48,40 @@
                                     <form th:action="@{/user/update/general}" method="post">
                                         <input name="userId" th:value="${user.id}" type="hidden">
                                         <div class="form-group row">
-                                            <label for="email" class="col-lg-3 col-md-4 col-form-label">Email
+                                            <label for="email" class="col-3 col-form-label">Email
                                                 address</label>
-                                            <div class="col-lg-6 col-md-8">
+                                            <div class="col-8">
                                                 <input style="background-color: #e9ecef !important" type="text"
                                                        class="form-control" id="email" name="email"
                                                        th:value="${user.email}" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="firstName" class="col-lg-3 col-md-4 col-form-label">First
+                                            <label for="firstName" class="col-3 col-form-label">First
                                                 name</label>
-                                            <div class="col-lg-3 col-md-3">
+                                            <div class="col-3">
                                                 <input type="text" id="firstName" name="firstName" class="form-control"
                                                        th:value="${user.firstName}">
                                             </div>
-                                            <label for="lastName" class="col-lg-2 col-md-2 col-form-label">Last
+                                            <label for="lastName" class="col-2 col-form-label">Last
                                                 name</label>
-                                            <div class="col-lg-3 col-md-3">
+                                            <div class="col-3">
                                                 <input type="text" id="lastName" name="lastName" class="form-control"
                                                        th:value="${user.lastName}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="phone" class="col-lg-3 col-md-4 col-form-label">Phone
+                                            <label for="phone" class="col-3 col-form-label">Phone
                                                 number</label>
-                                            <div class="col-lg-6 col-md-8">
+                                            <div class="col-8">
                                                 <input type="tel" class="form-control" id="phone" name="phone"
                                                        th:value="${user.phoneNumber}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="birth"
-                                                   class="col-lg-3 col-md-4 col-form-label">Birthdate</label>
-                                            <div class="col-lg-6 col-md-8">
+                                                   class="col-3 col-form-label">Birthdate</label>
+                                            <div class="col-8">
                                                 <input type="date" class="form-control" id="birth" name="DOB"
                                                        th:value="${#dates.format(user.dateOfBirth, 'yyyy-MM-dd')}">
                                             </div>
@@ -95,9 +98,10 @@
                                 <div class="order-summary p-3" th:each="order : ${orders}">
                                     <div class="order-header d-flex justify-content-between align-items-center">
                                         <div>
-<!--                                            <p class="order-id">Order ID: <span th:text="'#' + ${order.ID}"></span></p>-->
+                                            <!--                                            <p class="order-id">Order ID: <span th:text="'#' + ${order.ID}"></span></p>-->
 
-                                            <p class="order-id" th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"></p>
+                                            <p class="order-id"
+                                               th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"></p>
 
                                         </div>
                                         <div class="order-status">
@@ -121,7 +125,7 @@
                                                 <h6 th:text="${lastItem.product.name}"></h6>
                                             </a>
                                             <p>Price: $<span th:text="${lastItem.product.price}"></span></p>
-                                               <p>Quantity: <span th:text="${lastItem.quantity}"></span></p>
+                                            <p>Quantity: <span th:text="${lastItem.quantity}"></span></p>
                                         </div>
                                         <div class="col-lg-2 text-right">
                                             <p class="total-price">$
@@ -132,7 +136,9 @@
                                     <!-- Order Details End -->
                                     <div class="order-footer mt-3 mr-15">
                                         <div class="slider-btn mt-75 show-all mb-15">
-                                            <a class="animated" th:href="@{account/orders/details/{orderId}(orderId=${order.getID()})}">More details <i class="animated icon-right-arrow"></i></a>
+                                            <a class="animated"
+                                               th:href="@{account/orders/details/{orderId}(orderId=${order.getID()})}">More
+                                                details <i class="animated icon-right-arrow"></i></a>
                                         </div>
                                         <div class="d-flex justify-content-end mt-20 mb-10">
                                             <p class="order-total">Order Total:
@@ -142,7 +148,8 @@
                                             </p>
                                         </div>
                                         <div class="d-flex justify-content-end">
-                                            <button class="button-contact"><a th:href="@{/order/cancel(id=${order.ID})}">
+                                            <button class="button-contact"><a
+                                                    th:href="@{/order/cancel(id=${order.ID})}">
                                                 Cancel
                                             </a></button>
 
@@ -160,8 +167,8 @@
                                         <p class="mb-30"><strong>Your current address: </strong><span
                                                 th:text="${user.address} ?: 'You don\'t have an address'"></span></p>
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-md-3 col-form-label">Province/ City </label>
-                                            <div class="col-lg-6 col-md-6">
+                                            <label class="col-3 col-form-label">Province/ City </label>
+                                            <div class="col-8">
                                                 <div class="country-select clearfix">
                                                     <select class="wide" id="provinces" name="province"
                                                             onchange="getProvinces(event)">
@@ -171,8 +178,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-md-3 col-form-label">District </label>
-                                            <div class="col-lg-6 col-md-6">
+                                            <label class="col-3 col-form-label">District </label>
+                                            <div class="col-8">
                                                 <div class="country-select clearfix">
                                                     <select class="wide" id="districts" name="district"
                                                             onchange="getDistricts(event)">
@@ -182,8 +189,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-md-3 col-form-label">Ward</label>
-                                            <div class="col-lg-6 col-md-6">
+                                            <label class="col-3 col-form-label">Ward</label>
+                                            <div class="col-8">
                                                 <div class="country-select clearfix">
                                                     <select class="wide" id="wards" name="ward"
                                                             onchange="updateAddress()">
@@ -193,9 +200,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="detailAddr" class="col-lg-3 col-md-3 col-form-label">Detail
+                                            <label for="detailAddr" class="col-3 col-form-label">Detail
                                                 Address</label>
-                                            <div class="col-lg-6 col-md-6">
+                                            <div class="col-8">
                                                 <input type="text" id="detailAddr" class="form-control"
                                                        placeholder="Street Address"
                                                        pattern="[^#$%^!&*-+=\|'<>,./?]{5,}" oninput="updateAddress()">
@@ -212,26 +219,26 @@
                                     <form th:action="@{/user/update/password}" method="post">
                                         <input name="userId" th:value="${user.id}" type="hidden">
                                         <div class="form-group row">
-                                            <label for="input-password" class="col-lg-3 col-md-4 col-form-label">Current
+                                            <label for="input-password" class="col-3 col-form-label">Current
                                                 password</label>
-                                            <div class="col-lg-6 col-md-8">
+                                            <div class="col-8">
                                                 <input type="password" class="form-control" id="input-password"
                                                        name="currentPassword">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="new-password" class="col-lg-3 col-md-4 col-form-label">New
+                                            <label for="new-password" class="col-3 col-form-label">New
                                                 password</label>
-                                            <div class="col-lg-6 col-md-8">
+                                            <div class="col-8">
                                                 <input type="password" class="form-control" id="new-password"
                                                        name="newPassword">
                                                 <button class="btn show-btn" type="button">Show</button>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="c-password" class="col-lg-3 col-md-4 col-form-label">Confirm
+                                            <label for="c-password" class="col-3 col-form-label">Confirm
                                                 password</label>
-                                            <div class="col-lg-6 col-md-8">
+                                            <div class="col-8">
                                                 <input type="password" class="form-control" id="c-password"
                                                        name="confirmPassword">
                                                 <button class="btn show-btn" type="button">Show</button>
@@ -252,44 +259,44 @@
         <footer class="footer-area bg-img" th:replace="~{layout::page_footer}"></footer>
     </div>
 </div>
-    <!-- Main Wrapper End Here -->
-    <th:block th:replace="layout :: scripts"></th:block>
-    <script th:src="@{assets/js/locationInVietnam.js}"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let hash = window.location.hash;
-            if (hash) {
-                // Remove active classes from all tabs
-                document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active"));
-                document.querySelectorAll(".tab-pane").forEach(pane => pane.classList.remove("show", "active"));
+<!-- Main Wrapper End Here -->
+<th:block th:replace="layout :: scripts"></th:block>
+<script th:src="@{assets/js/locationInVietnam.js}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let hash = window.location.hash;
+        if (hash) {
+            // Remove active classes from all tabs
+            document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active"));
+            document.querySelectorAll(".tab-pane").forEach(pane => pane.classList.remove("show", "active"));
 
-                // Activate the clicked tab
-                let targetTab = document.querySelector(`.nav-link[href="${hash}"]`);
-                let targetPane = document.querySelector(hash);
+            // Activate the clicked tab
+            let targetTab = document.querySelector(`.nav-link[href="${hash}"]`);
+            let targetPane = document.querySelector(hash);
 
-                if (targetTab && targetPane) {
-                    targetTab.classList.add("active");
-                    targetPane.classList.add("show", "active");
+            if (targetTab && targetPane) {
+                targetTab.classList.add("active");
+                targetPane.classList.add("show", "active");
+            }
+        }
+        // Disable "Cancel" button if order status is not "New"
+        document.querySelectorAll(".order-summary").forEach(order => {
+            let statusElement = order.querySelector(".order-status p");
+            let cancelButton = order.querySelector(".button-contact a");
+            let buttonContact = order.querySelector(".button-contact");
+
+            if (statusElement && cancelButton) {
+                let statusText = statusElement.textContent.trim().toLowerCase();
+                if (statusText !== "new") {
+                    cancelButton.style.opacity = "0.5";
+                    cancelButton.style.cursor = "not-allowed";
+                    cancelButton.style.pointerEvents = "none"; // Prevents clicking
+                    buttonContact.style.backgroundColor = "gray"; // Change whole button-contact background
+                    buttonContact.style.color = "white"; // Ensure text is readable
                 }
             }
-            // Disable "Cancel" button if order status is not "New"
-            document.querySelectorAll(".order-summary").forEach(order => {
-                let statusElement = order.querySelector(".order-status p");
-                let cancelButton = order.querySelector(".button-contact a");
-                let buttonContact = order.querySelector(".button-contact");
-
-                if (statusElement && cancelButton) {
-                    let statusText = statusElement.textContent.trim().toLowerCase();
-                    if (statusText !== "new") {
-                        cancelButton.style.opacity = "0.5";
-                        cancelButton.style.cursor = "not-allowed";
-                        cancelButton.style.pointerEvents = "none"; // Prevents clicking
-                        buttonContact.style.backgroundColor = "gray"; // Change whole button-contact background
-                        buttonContact.style.color = "white"; // Ensure text is readable
-                    }
-                }
-            });
         });
-    </script>
+    });
+</script>
 </body>
 </html>

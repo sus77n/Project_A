@@ -128,7 +128,7 @@
                                                     <a th:href="@{/login}">Log in</a>
                                                 </li>
                                                 <li sec:authorize="!isAuthenticated()">
-                                                    <a th:href="@{/register}">Sign in</a>
+                                                    <a th:href="@{/register}">Sign up</a>
                                                 </li>
 
                                                 <!-- Show when logged in -->
@@ -152,31 +152,32 @@
                                     <!-- Cart Box Start -->
                                     <ul class="ht-dropdown-cart ht-dropdown-mbl cart-box-width">
                                         <!-- Single Cart Box Start -->
-                                        <li class="single-cart-box" th:each="cartItem : ${cartData.cartItems}">
-                                            <div class="cart-img">
-                                                <a href="#"><img th:src="@{/assets/img/products/p1.jpg}"
-                                                                 alt="cart-image"></a>
-                                                <span class="pro-quantity" th:text="${cartItem.quantity}"></span>
-                                            </div>
-                                            <div class="cart-content">
-                                                <h6><a th:href="@{/product-details}"><span
-                                                        th:text="${cartItem.product.name}"></span></a></h6>
-                                                <span class="cart-price" th:text="${cartItem.getTotal()}"></span>
-                                            </div>
-                                            <a class="del-icon" href="#"><i class="ion-close"></i></a>
-                                        </li>
+<!--                                        <li class="single-cart-box" th:each="cartItem : ${cartData.cartItems}">-->
+<!--                                            <div class="cart-img">-->
+<!--                                                <a href="#"><img th:src="@{/assets/img/products/p1.jpg}"-->
+<!--                                                                 alt="cart-image"></a>-->
+<!--                                                <span class="pro-quantity" th:text="${cartItem.quantity}"></span>-->
+<!--                                            </div>-->
+<!--                                            <div class="cart-content">-->
+<!--                                                -->
+<!--                                                <h6><a th:href="@{/product-details(productId=${product.id})}"><span-->
+<!--                                                        th:text="${cartItem.product.name}"></span></a></h6>-->
+<!--                                                <span class="cart-price text-right" th:text="${cartItem.getTotal()}"></span>-->
+<!--                                            </div>-->
+<!--                                            <a class="del-icon" href="#"><i class="ion-close"></i></a>-->
+<!--                                        </li>-->
 
-                                        <!-- Single Cart Box End -->
+<!--                                        &lt;!&ndash; Single Cart Box End &ndash;&gt;-->
 
-                                        <!-- Cart Footer Inner Start -->
-                                        <li class="cart-footer">
-                                            <ul class="price-content">
-                                                <li>Total <span th:text="${cartData.total}">$</span></li>
-                                            </ul>
-                                            <div class="cart-actions text-center">
-                                                <a class="cart-checkout" th:href="@{/cart}">View Cart</a>
-                                            </div>
-                                        </li>
+<!--                                        &lt;!&ndash; Cart Footer Inner Start &ndash;&gt;-->
+<!--                                        <li class="cart-footer">-->
+<!--                                            <ul class="price-content">-->
+<!--                                                <li>Total <span th:text="${cartData.total}">$</span></li>-->
+<!--                                            </ul>-->
+<!--                                            <div class="cart-actions text-center">-->
+<!--                                                <a class="cart-checkout" th:href="@{/cart}">View Cart</a>-->
+<!--                                            </div>-->
+<!--                                        </li>-->
                                         <!-- Cart Footer Inner End -->
                                     </ul>
                                     <!-- Cart Box End -->

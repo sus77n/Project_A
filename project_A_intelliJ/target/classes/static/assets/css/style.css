@@ -4900,12 +4900,15 @@ a.shipping-calculator-button:hover {
 
 
 .order-summary .button-contact{
-    background-color: #a92222;
-    color: white;
+    background-color: #ff0000;
     padding: 15px 25px;
     border: none;
     font-weight: 600;
     font-size: 15px;
+}
+
+.order-summary .button-contact a {
+    color: white;
 }
 
 .order-summary .button-contact:hover{

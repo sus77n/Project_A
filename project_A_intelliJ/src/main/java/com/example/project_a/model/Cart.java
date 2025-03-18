@@ -3,6 +3,9 @@ package com.example.project_a.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 @Entity
 @Table(name ="carts")
 public class Cart {
@@ -22,8 +25,10 @@ public class Cart {
     @Column(name = "quantity")
     private int quantity;
 
-    public int getTotal() {
-       return (int) (quantity*this.product.getPrice());
+    public BigDecimal getTotal() {
+        return BigDecimal.valueOf(quantity)
+                .multiply(BigDecimal.valueOf(this.product.getPrice()))
+                .setScale(2, RoundingMode.HALF_UP); // Ensures 2 decimal places
     }
 
     public Integer getId() {

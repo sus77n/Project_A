@@ -45,8 +45,6 @@ public class UserController {
                            @RequestParam String email,
                            HttpServletRequest request,
                            RedirectAttributes redirectAttributes) {
-        System.out.println("email here: " + email);
-
         if (service.existsByEmail(email)) {
             System.out.println(service.existsByEmail(email));
             redirectAttributes.addFlashAttribute("error", "This email already exists");
@@ -55,7 +53,7 @@ public class UserController {
         service.save(user);
 
         autoLogin(user, request);
-
+        redirectAttributes.addFlashAttribute("newUser", true);
         redirectAttributes.addFlashAttribute("message", "User registered successfully");
         return "redirect:/account";
     }
