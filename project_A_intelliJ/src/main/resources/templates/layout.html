@@ -635,33 +635,6 @@
             }
             fetchCartData();
         });
-
-
-        $(document).on("click", ".add-to-cart-btn", function () {
-            console.log("addCartFunc");
-            let productId = $(this).attr("data-id");
-            $.ajax({
-                type: "POST",
-                url: "/cart/add",
-                contentType: "application/json",
-                data: JSON.stringify({id: productId}),
-                success: function (response) {
-                    console.log("success");
-                    updateCartCount(response.cartSize);
-                    updateCartUI(response.cartItems);
-                    if (response.ErrorMessage != null) {
-                        showToast(response.ErrorMessage, "error");
-                    }else {
-                        showToast("Product added to cart!");
-                    }
-                },
-                error: function () {
-                    showToast("Error adding product to cart!", "error");
-                }
-            });
-        });
-
-
         // Handle "View Cart" button click
         $(document).on("click", "#view-cart-btn", function () {
             window.location.href = "/cart";

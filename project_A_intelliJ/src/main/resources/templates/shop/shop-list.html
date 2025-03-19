@@ -235,5 +235,32 @@
 <!-- Main Wrapper End Here -->
 
 <th:block th:replace="layout :: scripts"></th:block>
+
+<SCRIPT type="text/javascript">
+    $(document).on("click", ".add-to-cart-btn", function () {
+        console.log("addCartFunc");
+        let productId = $(this).attr("data-id");
+        $.ajax({
+            type: "POST",
+            url: "/cart/add",
+            contentType: "application/json",
+            data: JSON.stringify({id: productId}),
+            success: function (response) {
+                console.log("success");
+                updateCartCount(response.cartSize);
+                updateCartUI(response.cartItems);
+                if (response.ErrorMessage != null) {
+                    showToast(response.ErrorMessage, "error");
+                }else {
+                    showToast("Product added to cart!");
+                }
+            },
+            error: function () {
+                showToast("Error adding product to cart!", "error");
+            }
+        });
+    });
+
+</SCRIPT>
 </body>
 </html>
