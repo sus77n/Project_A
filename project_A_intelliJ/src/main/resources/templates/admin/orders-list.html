@@ -90,8 +90,10 @@
                                                                                             <p  th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd HH:mm')}" class="mb-0"></p>
                                                                                         </div>
                                                                                         <div>
-                                                                                            <a th:href="@{/admin/order/done(id=${order.ID})}" class="btn btn-primary">Mark as done</a>
+                                                                                            <a th:href="@{/admin/order/done(id=${order.ID})}" class="btn btn-primary"
+                                                                                               th:if="${order.paymentStatus != 'Done'}">Mark as done</a>
                                                                                         </div>
+
                                                                                     </div>
                                                                                 </div>
 

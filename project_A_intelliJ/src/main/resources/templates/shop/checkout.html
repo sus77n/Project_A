@@ -34,7 +34,7 @@
                                 <div class="col-md-12 mb-30">
                                     <div class="checkout-form-list mb-sm-30">
                                         <label>Name</label>
-                                        <input type="text" id="originalName" th:value="${order.user.getUsername()}"/>
+                                        <input type="text" id="originalName" th:value="${order.user.getFullName()}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-30">
@@ -99,7 +99,7 @@
                                 <label for="payment-method-select" style="display: block">Choose Payment Method:</label>
                                 <select class="wide" id="payment-method-select" name="paymentMethod"
                                         th:field="*{formOfPayment}">
-                                    <option value="cash">Cash</option>
+                                    <option value="Cash">Cash</option>
                                     <!--                                    <option value="credit-card">Credit Card</option>-->
                                     <!--                                    <option value="e-wallet">E-wallet</option>-->
                                 </select>

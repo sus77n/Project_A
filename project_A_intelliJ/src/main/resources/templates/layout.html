@@ -128,7 +128,7 @@
                                                     <a th:href="@{/login}">Log in</a>
                                                 </li>
                                                 <li sec:authorize="!isAuthenticated()">
-                                                    <a th:href="@{/register}">Sign in</a>
+                                                    <a th:href="@{/register}">Sign up</a>
                                                 </li>
 
                                                 <!-- Show when logged in -->
@@ -234,7 +234,7 @@
                     <h4><a th:href="@{/product-details}" th:text="${product.name}"></a></h4>
                     <div class="pro-price-cart">
                         <div class="pro-home-price">
-                            <span th:text="'$' + ${product.price}"></span>
+                            <span th:text="'$' + ${#numbers.formatDecimal(product.price, 1, 2)}"></span>
                         </div>
                         <div class="pro-cart">
                             <a title="Add To Cart" th:href="@{/cart/add(id=${product.id})}">
@@ -458,6 +458,192 @@
             });
         });
     </script>
+
+
+<!--    Start Script of shoplist-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const checkboxes = document.querySelectorAll(".category-filter");
+            const gridView = document.getElementById("grid-view");
+            const listView = document.getElementById("list-view");
+
+            // Initialize price range slider
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 10000,
+                values: [0, 10000],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                },
+                stop: function (event, ui) {
+                    fetchFilteredProducts();
+                }
+            });
+
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                " - $" + $("#slider-range").slider("values", 1));
+
+            function fetchFilteredProducts() {
+                let selectedCategories = [];
+                document.querySelectorAll(".category-filter:checked").forEach((cb) => {
+                    selectedCategories.push(cb.value);
+                });
+
+                let minPrice = $("#slider-range").slider("values", 0);
+                let maxPrice = $("#slider-range").slider("values", 1);
+                let selectedSortElement = document.querySelector(".option.selected");
+                let selectedSort = selectedSortElement ? selectedSortElement.getAttribute("data-value") : "";
+
+                console.log("Fetching products with:", { selectedCategories, minPrice, maxPrice, selectedSort });
+
+                let queryParams = new URLSearchParams();
+                if (selectedCategories.length > 0) {
+                    queryParams.append("categories", selectedCategories.join(","));
+                }
+                queryParams.append("minPrice", minPrice);
+                queryParams.append("maxPrice", maxPrice);
+                if (selectedSort) {
+                    queryParams.append("sort", selectedSort);
+                }
+
+                fetch('/filter-products?' + queryParams.toString(), {
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/json'}
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        console.log("Response received, updating UI");
+                        document.getElementById("product-container").innerHTML = data;
+
+                        if (gridView.classList.contains("show")) {
+                            listView.classList.remove("show", "active");
+                            gridView.classList.add("show", "active");
+                        } else {
+                            gridView.classList.remove("show", "active");
+                            listView.classList.add("show", "active");
+                        }
+                    })
+                    .catch(error => console.error('Error fetching products:', error));
+            }
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener("change", fetchFilteredProducts);
+            });
+
+            document.getElementById("sort-options").addEventListener("click", function (event) {
+                console.log("Sort option clicked:", event.target);
+
+                if (event.target.tagName === "LI") {
+                    console.log("Clicked on:", event.target.getAttribute("data-value"));
+
+                    // Remove 'selected' class from all options
+                    document.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
+
+                    // Add 'selected' class to the clicked option
+                    event.target.classList.add("selected");
+
+                    console.log("Sorting changed to:", event.target.getAttribute("data-value"));
+
+                    // Fetch the filtered and sorted products
+                    fetchFilteredProducts();
+                }
+            });
+
+
+        });
+
+
+
+    </script>
+
+
+
+    <!-- jquery 3.2.1 -->
+
+    <script th:inline="javascript">
+        function showToast(message, type = "success") {
+            Toastify({
+                text: message,
+                duration: 2000,
+                close: true,
+                gravity: "top",
+                position: "center",
+                stopOnFocus: true,
+                style: {
+                    background: type === "error"
+                        ? "linear-gradient(to right, #ff5f6d, #ffc3a0)"
+                        : "linear-gradient(to right, #00b09b, #96c93d)",
+                },
+                onClick: function () {
+                }
+            }).showToast();
+        }
+
+        function updateCartCount(count) {
+            $("#toi-muon-count").text(count);
+        }
+
+        function updateCartUI(cartItems) {
+            let cartContainer = $(".ht-dropdown-cart");
+            cartContainer.empty();
+            let totalPrice = 0;
+
+            cartItems.forEach((item) => {
+                let cartHtml = `
+                <li class="single-cart-box">
+                    <div class="cart-img">
+                        <a href="#"><img src="${item.thumbNail}" alt="cart-image"></a>
+                        <span class="pro-quantity">${item.quantity}</span>
+                    </div>
+                    <div class="cart-content">
+                        <h6><a href="/product-details">${item.productName}</a></h6>
+                        <span class="cart-price">$ ${parseFloat(item.price).toFixed(2)}</span>
+                    </div>
+                    <a class="del-icon" href="#"><i class="ion-close"></i></a>
+                </li>`;
+                cartContainer.append(cartHtml);
+                totalPrice += parseFloat(item.price) * item.quantity;
+            });
+
+            let footer = `
+                <li class="cart-footer">
+                    <ul class="price-content">
+                        <li>Total <span>$ ${totalPrice.toFixed(2)}</span></li>
+                    </ul>
+                    <div class="cart-actions text-center">
+                        <a class="cart-checkout" id="view-cart-btn">View Cart</a>
+                    </div>
+                </li>`;
+            cartContainer.append(footer);
+        }
+        $(document).ready(function () {
+            // Fetch cart data when page loads
+            function fetchCartData() {
+                $.ajax({
+                    url: "/cart/data",
+                    type: "GET",
+                    success: function (response) {
+                        console.log("success load page");
+                        updateCartCount(response.cartSize);
+                        updateCartUI(response.cartItems);
+                    },
+                    error: function () {
+                        console.log("Error fetching cart data");
+                    }
+                });
+            }
+            fetchCartData();
+        });
+        // Handle "View Cart" button click
+        $(document).on("click", "#view-cart-btn", function () {
+            window.location.href = "/cart";
+        });
+    </script>
+
+<!--    End Script of shoplist &ndash;&gt;-->
+
+
 
 </th:block>
 
