@@ -92,7 +92,6 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasRole("ADMIN") // Only "/admin/**" is for admins
                         .anyRequest().hasRole("CLIENT") // Clients can access anything else
                 )
-
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
@@ -109,7 +108,6 @@ public class SecurityConfig {
                         })
                         .permitAll()
                 )
-
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")

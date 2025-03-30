@@ -133,7 +133,7 @@
 
                                                 <!-- Show when logged in -->
                                                 <li class="mb-10" sec:authorize="isAuthenticated()">
-                                                    <span>Hello, <span th:text="${#authentication.name}"></span>!</span>
+                                                    <span>Hello, <span th:text="${#authentication.principal.fullName}"></span>!</span>
                                                 </li>
                                                 <li sec:authorize="isAuthenticated()">
                                                     <a th:href="@{/account}">My Account</a>

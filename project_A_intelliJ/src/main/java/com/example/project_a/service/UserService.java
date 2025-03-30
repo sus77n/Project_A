@@ -76,16 +76,10 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-
     @Transactional()
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
-
-//    @Transactional()
-//    public boolean existsByUsername(String username) {
-//        return userRepository.existsByUsername(username);
-//    }
 
     public void sendPasswordResetToken(String email) throws MessagingException, UnsupportedEncodingException {
         Optional<User> userOpt = userRepository.findByEmail(email);
@@ -103,11 +97,6 @@ public class UserService {
 
     private void sendResetEmail(String to, String token) throws MessagingException, UnsupportedEncodingException {
         String resetLink = "http://localhost:8080/reset-password?token=" + token;
-
-//        SimpleMailMessage message = new SimpleMailMessage();
-//        message.setTo(email);
-//        message.setSubject("Password Reset Request");
-//        message.setText("Click the link below to reset your password:\n" + resetLink);
 
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
