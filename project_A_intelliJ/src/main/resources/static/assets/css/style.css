@@ -5280,3 +5280,8 @@ a.shipping-calculator-button:hover {
 .order-history .element-right p {
     font-size: 16px;
 }
+
+.locationInVietnam .nice-select .list {
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto;
+}
