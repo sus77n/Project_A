@@ -43,7 +43,7 @@
                                                 <span th:text="${order.user.username}"></span>
                                             </td>
                                             <td class="text-right">
-                                                $<span th:text="${#numbers.formatDecimal(order.getTotal(), 1, 2)}"></span>
+                                                $<span th:text="${#numbers.formatDecimal(order.getTotal(), 0, 'COMMA', 2, 'POINT')}"></span>
                                             </td>
                                             <td class="text-right">
                                                 <span th:text="${order.getNumeberOfItems()}"></span>
